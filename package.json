@@ -1,12 +1,12 @@
 {
-    "name": "mean",
-    "description": "MEAN - A Modern Stack: MongoDB, ExpressJS, AngularJS, NodeJS. (BONUS: Passport User Support).",
+    "name": "solarmongo",
+    "description": "SolarMongo - A modern customer relationship management system for solar companies.",
     "version": "0.1.2",
-    "private": false,
-    "author": "Amos Haviv",
+    "private": true,
+    "author": "Sean Thomas",
     "repository": {
         "type": "git",
-        "url": "https://github.com/linnovate/mean.git"
+        "url": "https://st362@bitbucket.org/st362/solarmongo.git"
     },
     "engines": {
         "node": "0.10.x",
@@ -26,9 +26,6 @@
         "crypto": "latest",
         "passport": "latest",
         "passport-local": "latest",
-        "passport-facebook": "latest",
-        "passport-twitter": "latest",
-        "passport-github": "latest",
         "passport-google-oauth": "latest",
         "lodash": "latest",
         "view-helpers": "latest",

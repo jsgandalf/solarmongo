@@ -3,26 +3,11 @@
 module.exports = {
     db: "mongodb://localhost/mean-dev",
     app: {
-        name: "MEAN - A Modern Stack - Development"
-    },
-    facebook: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
-        callbackURL: "http://localhost:3000/auth/facebook/callback"
-    },
-    twitter: {
-        clientID: "CONSUMER_KEY",
-        clientSecret: "CONSUMER_SECRET",
-        callbackURL: "http://localhost:3000/auth/twitter/callback"
-    },
-    github: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
-        callbackURL: "http://localhost:3000/auth/github/callback"
+        name: "SolarMongo - A Modern CRM - Development"
     },
     google: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
+        clientID: "1028720550280-qucacunbmdp33hhktqhjla76opo59061.apps.googleusercontent.com",
+        clientSecret: "ok27jOd0W-NwJzbZRl8esJ2i",
         callbackURL: "http://localhost:3000/auth/google/callback"
     }
 }

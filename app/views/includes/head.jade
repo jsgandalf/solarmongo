@@ -6,24 +6,44 @@ head
   title= appName+' - '+title
   meta(http-equiv='Content-type', content='text/html;charset=UTF-8')
   meta(name="keywords", content="node.js, express, mongoose, mongodb, angularjs")
-  meta(name="description", content="MEAN - A Modern Stack: MongoDB, ExpressJS, AngularJS, NodeJS. (BONUS: Passport User Support).")
+  meta(name="description", content="SolarMongo - A modern customer relationship management system for solar companies.")
 
   link(href='/img/icons/favicon.ico', rel='shortcut icon', type='image/x-icon')
   
   meta(property='fb:app_id', content='APP_ID')
   meta(property='og:title', content='#{appName} - #{title}')
-  meta(property='og:description', content='MEAN - A Modern Stack: MongoDB, ExpressJS, AngularJS, NodeJS. (BONUS: Passport User Support).')
+  meta(property='og:description', content='SolarMongo - A modern customer relationship management system for solar companies.')
   meta(property='og:type', content='website')
   meta(property='og:url', content='APP_URL')
   meta(property='og:image', content='APP_LOGO')
-  meta(property='og:site_name', content='MEAN - A Modern Stack')
+  meta(property='og:site_name', content='SolarMongo - A Modern CRM')
   meta(property='fb:admins', content='APP_ADMIN')
 
-  link(rel='stylesheet', href='/lib/bootstrap/docs/assets/css/bootstrap.css')
-  //- link(rel='stylesheet', href='/lib/bootstrap/dist/css/bootstrap-responsive.css')
-  link(rel='stylesheet', href='/css/common.css')
+  //bootstrap
+  link(rel="stylesheet", href="css/bootstrap/bootstrap.css")
+  link(rel="stylesheet", href="css/bootstrap/bootstrap-responsive.css")
+  link(rel="stylesheet", href="css/bootstrap/bootstrap-overrides.css")
 
-  link(rel='stylesheet', href='/css/views/articles.css')
+  //fonts
+  link(rel="stylesheet", href="css/lib/font-awesome.css")
+  //open sans font
+  link(rel="stylesheet", href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800')
+  //lato font
+  link(rel="stylesheet", href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic')
+  
+  //jquery-ui
+  link(rel="stylesheet", href="css/lib/jquery-ui-1.10.2.custom.css")
+
+  //global styles
+  if(isLoggedIn)
+    link(rel="stylesheet" href="css/compiled/layout.css")
+  else
+    link(rel="stylesheet" href="css/views/home.css")
+  link(rel="stylesheet" href="css/compiled/elements.css")
+  link(rel="stylesheet" href="css/compiled/icons.css")
+
+  //page specific styles
+  link(rel="stylesheet" href="css/compiled/index.css")
 
   //if lt IE 9
     script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')

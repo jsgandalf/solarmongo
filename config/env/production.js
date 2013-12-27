@@ -8,6 +8,6 @@ module.exports = {
     google: {
         clientID: "1028720550280-mq35e7pihf64fc01go2jp0v961v5o7i7.apps.googleusercontent.com",
         clientSecret: "rylhUu_M_4mHSDrCa7YRMQrT",
-        callbackURL: "http://solarmongo.herokuapp.com/oauth2callback"
+        callbackURL: "http://solarmongo.herokuapp.com/auth/google/callback"
     }
 }

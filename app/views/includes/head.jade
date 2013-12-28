@@ -35,15 +35,21 @@ head
   link(rel="stylesheet", href="css/lib/jquery-ui-1.10.2.custom.css")
 
   //global styles
+  //showcase forms
+  //page specific styles
   if(isLoggedIn)
-    link(rel="stylesheet" href="css/compiled/layout.css")
+    link(rel="stylesheet", href="css/compiled/layout.css")
+    link(rel="stylesheet", href="css/compiled/index.css")
+    link(rel="stylesheet", href="css/compiled/form-showcase.css", media="screen")
+    link(rel="stylesheet", href="css/lib/select2.css")
+    link(rel="stylesheet", href='css/compiled/tables.css')
   else
     link(rel="stylesheet" href="css/views/home.css")
   link(rel="stylesheet" href="css/compiled/elements.css")
   link(rel="stylesheet" href="css/compiled/icons.css")
 
-  //page specific styles
-  link(rel="stylesheet" href="css/compiled/index.css")
+
+  
 
   //if lt IE 9
     script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')

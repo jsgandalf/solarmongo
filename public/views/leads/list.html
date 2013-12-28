@@ -1,0 +1,64 @@
+<div id="pad-wrapper" class="table-products">
+            
+    <!-- products table-->
+    <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
+    <div class="table-wrapper products-table">
+        <div class="row head">
+            <div class="col-md-12">
+                <h4>Leads</h4>
+            </div>
+        </div>
+        <div class="row filter-block">
+            <div class="pull-left span6 offset3">
+                <!--<div class="ui-select">
+                    <select>
+                      <option>Filter by Name</option>
+                      <option>Signed last 30 days</option>
+                      <option>Filter by New Leads</option>
+                    </select>
+                </div>-->
+                <input type="text" class="search" ng-model="query">
+                <a href="#/leads/add" class="btn-flat new-product">+ Lead</a>
+            </div>
+        </div>
+        <div class="row ">
+            <table ng-table="tableParams" class="table table-hover">
+                <tr ng-repeat="lead in $data | filter:query">
+                    <td data-title="'Name'">
+                        <input type="checkbox">
+                        <!--<i class="icon-list-table icon-book"></i>-->
+                        <div class="img">
+                            <img src="img/table-img.png">
+                        </div>
+                        <a href="#" class="name">{{lead.firstName}} {{lead.lastName}}</a>
+                    </td>
+                    <td data-title="'Company Name'" class="description">
+                        <span>{{lead.companyName | placeholder}}</span>
+                    </td>
+                    <td data-title="'Title'">
+                        <a href="#" class="description">{{lead.title | placeholder}}</a>
+                    </td>
+                    <td data-title="'Work Phone'">
+                        <a href="#" class="description">{{lead.phoneWork | placeholder}}</a>
+                    </td>
+                    <td data-title="'Mobile Phone'">
+                        <a href="#" class="description">{{lead.phoneMobile | placeholder}}</a>
+                    </td>
+                    <td data-title="'Address'">
+                        {{lead.address | placeholder}}, {{lead.city | placeholder}}, {{lead.state | placeholder}} {{lead.zip | placeholder}}
+                    </td>
+                    <td data-title="'Country'">
+                        {{lead.country | placeholder}}
+                    </td>
+                    <td data-title="'Status'">
+                        <span class="label label-success">New</span>
+                        <ul class="actions">
+                            <li><i class="table-edit"></i></li>
+                            <li class="last"><i class="table-delete" ng-click="delete($index)"></i></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

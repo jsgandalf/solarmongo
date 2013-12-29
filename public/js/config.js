@@ -10,17 +10,14 @@ angular.module('mean').config(['$routeProvider',
         when('/leads', {
             templateUrl: 'views/leads/list.html'
         }).
-        when('/articles', {
-            templateUrl: 'views/articles/list.html'
+        when('/leads/create', {
+            templateUrl: 'views/leads/create.html'
         }).
-        when('/articles/create', {
-            templateUrl: 'views/articles/create.html'
+        when('/leads/:leadId/edit', {
+            templateUrl: 'views/leads/edit.html'
         }).
-        when('/articles/:articleId/edit', {
-            templateUrl: 'views/articles/edit.html'
-        }).
-        when('/articles/:articleId', {
-            templateUrl: 'views/articles/view.html'
+        when('/leads/:leadId', {
+            templateUrl: 'views/leads/view.html'
         }).
         when('/', {
             redirectTo: '/dashboard'

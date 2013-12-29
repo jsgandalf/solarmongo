@@ -4,97 +4,97 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    Article = mongoose.model('Article'),
+    Lead = mongoose.model('Lead'),
     _ = require('lodash');
 
 
 /**
- * Find article by id
+ * Find lead by id
  */
-exports.article = function(req, res, next, id) {
-    Article.load(id, function(err, article) {
+exports.lead = function(req, res, next, id) {
+    Lead.load(id, function(err, lead) {
         if (err) return next(err);
-        if (!article) return next(new Error('Failed to load article ' + id));
-        req.article = article;
+        if (!lead) return next(new Error('Failed to load lead ' + id));
+        req.lead = lead;
         next();
     });
 };
 
 /**
- * Create a article
+ * Create a lead
  */
 exports.create = function(req, res) {
-    var article = new Article(req.body);
-    article.user = req.user;
+    var lead = new Lead(req.body);
+    lead.user = req.user;
 
-    article.save(function(err) {
+    lead.save(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                article: article
+                lead: lead
             });
         } else {
-            res.jsonp(article);
+            res.jsonp(lead);
         }
     });
 };
 
 /**
- * Update a article
+ * Update a lead
  */
 exports.update = function(req, res) {
-    var article = req.article;
+    var lead = req.lead;
 
-    article = _.extend(article, req.body);
+    lead = _.extend(lead, req.body);
 
-    article.save(function(err) {
+    lead.save(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                article: article
+                lead: lead
             });
         } else {
-            res.jsonp(article);
+            res.jsonp(lead);
         }
     });
 };
 
 /**
- * Delete an article
+ * Delete an lead
  */
 exports.destroy = function(req, res) {
-    var article = req.article;
+    var lead = req.lead;
 
-    article.remove(function(err) {
+    lead.remove(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                article: article
+                lead: lead
             });
         } else {
-            res.jsonp(article);
+            res.jsonp(lead);
         }
     });
 };
 
 /**
- * Show an article
+ * Show an lead
  */
 exports.show = function(req, res) {
-    res.jsonp(req.article);
+    res.jsonp(req.lead);
 };
 
 /**
- * List of Articles
+ * List of leads by id
  */
 exports.all = function(req, res) {
-    Article.find().sort('-created').populate('user', 'name username').exec(function(err, articles) {
+    Lead.find({user : req.user._id.toString()}).sort('-created').populate('user', 'name username').exec(function(err, leads) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
-            res.jsonp(articles);
+            res.jsonp(leads);
         }
     });
 };

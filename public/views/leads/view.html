@@ -1,0 +1,14 @@
+<section data-ng-controller="LeadsController" data-ng-init="findOne()">
+    <span>{{lead.created | date:'medium'}}</span>/
+    <span>{{lead.user.name}}</span>
+    <h2>{{lead.title}}</h2>
+    <div data-ng-show="global.user._id == lead.user._id">
+        <a class="btn" href="/#!/leads/{{lead._id}}/edit">
+        	<i class="icon-edit"></i>
+        </a> 
+        <a class="btn" data-ng-click="remove();">
+            <i class="icon-trash"></i>
+        </a>
+    </div>
+    <div>{{lead.content}}</div>
+</section>

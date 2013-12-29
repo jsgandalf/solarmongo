@@ -1,4 +1,125 @@
-<section data-ng-controller="LeadsController">
+<div id="pad-wrapper" class="form-page" data-ng-controller="LeadsController">
+    <div class="row form-wrapper">
+        <!-- left column -->
+        <div class="col-md-8 column">
+            <form name="lead_form" novalidate ng-submit="addLead()">
+                <div class="field-box">
+                    <label>Name:</label>
+                    <div class="col-md-3">
+                        <input class="form-control"
+                            type="text"
+                            placeholder="First Name"
+                            name="fistName" 
+                            ng-model="lead.firstName" 
+                            maxlength="30"
+                            required />
+                    </div>
+                    <div class="col-md-3">
+                        <input class="form-control"
+                            type="text"
+                            placeholder="Last Name"
+                            name="lastName" 
+                            ng-model="lead.lastName" 
+                            maxlength="30"
+                            required />
+                    </div>
+                    <div class="error col-md-2" 
+                        ng-show="lead_form.submitted">
+                        <small class="error" 
+                            ng-show="lead_form.fistName.$invalid && lead_form.fistName.$error.required">
+                            First Name is required.
+                        </small>
+                        <small class="error" 
+                            ng-show="lead_form.lastName.$invalid && lead_form.lastName.$error.required">
+                            Last Name is required.
+                        </small>
+                    </div>
+                    <!--<div class="col-md-3">
+                        <input name="lastName" ng-model="leadForm.lastName" required class="form-control" type="text"  placeholder="Last Name"/>
+                    </div>
+                    <div>leadForm.submitted = {{leadForm.submitted}} invalid={{leadForm.firstName.$invalid}}</div>
+                    <div class="error col-md-2" 
+                        ng-show="signup_form.name.$invalid && signup_form.submitted">
+                        <small class="error" 
+                            ng-show="signup_form.name.$error.required">
+                            First name is required.
+                        </small>
+                    </div>          -->                    
+                </div>
+                <div class="field-box">
+                    <label>Company Name:</label>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" name="companyName" ng-model="lead.companyName"/>
+                    </div>                  
+                </div>
+                <div class="field-box">
+                    <label>Title:</label>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" name="leadTitle" ng-model="lead.leadTitle"/>
+                    </div>                  
+                </div>
+                <div class="field-box">
+                    <label>Status:</label>
+                    <div class="ui-select">
+                        <select name="leadStatus" ng-model="lead.leadStatus">
+                            <option selected>New</option>
+                            <option>Working</option>
+                            <option>Unqualified</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-box">
+                    <label>Email Address:</label>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" name="email" ng-model="lead.email"/>
+                    </div>                  
+                </div>
+                <div class="field-box">
+                    <label>Phone:</label>
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" name="mobile" ng-model="lead.phoneMobile" placeholder="Mobile"/>
+                    </div>
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" name="Work" ng-model="lead.phoneWork" placeholder="Work"/>
+                    </div>                              
+                </div>
+                <div class="field-box">
+                    <label>Address:</label>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" name="address" ng-model="lead.address"/>
+                    </div>                  
+                </div>
+                <div class="field-box">
+                    <label></label>
+                    <div class="col-md-2">
+                        <input class="form-control" type="text" name="city" ng-model="lead.city" placeholder="City"/>
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" type="text" name="state" ng-model="lead.state" placeholder="State"/>
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" type="text" name="zip" ng-model="lead.zip" placeholder="Zip"/>
+                    </div>                             
+                </div>
+                <div class="field-box">
+                    <label>Country:</label>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" name="country" ng-model="lead.country"/>
+                    </div>                  
+                </div>
+                <div class="field-box">
+                    <label></label>
+                    <div class="col-md-6">
+                        <div class="ui-group pull-right">
+                            <a href="#/leads" class="btn-flat white">Cancel</a>
+                            <button type="submit" class="btn-flat primary">Save</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+<section >
 	<form class="form-horizontal" data-ng-submit="create()">
 		<div class="control-group">
 			<label class="control-label" for="title">Title</label>

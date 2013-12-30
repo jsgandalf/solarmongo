@@ -2,11 +2,24 @@
 
 angular.module('mean.leads').controller('LeadsController', ['$scope', '$routeParams', '$location', 'Global', 'Leads', function ($scope, $routeParams, $location, Global, Leads) {
     $scope.global = Global;
-
+    $scope.submitted = false;
     $scope.create = function() {
         var lead = new Leads({
+            firstName: this.firstName,
+            lastName: this.lastName,
+            companyName: this.companyName,
             title: this.title,
-            content: this.content
+            status: this.status,
+            email: this.email,
+            phoneWork: this.phoneWork,
+            phoneMobile: this.phoneMobile,
+            address: this.address,
+            city: this.city,
+            state: this.state,
+            zip: this.zip,
+            country: this.country,
+            longitude: null,
+            latitude: null,
         });
         lead.$save(function(response) {
             $location.path('leads/' + response._id);

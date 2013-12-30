@@ -24,7 +24,7 @@
   width: 120px;
 }
 .new-user .form-wrapper input[type="text"] {
-  margin: 0;
+  margin: -4px 0 0 0;
   padding: 3px 6px;
 }
 .new-user .form-wrapper .address-fields {
@@ -35,6 +35,18 @@
 .new-user .form-wrapper input.small {
   width: 30%;
   margin-top: 20px;
+  margin-right: 20px;
+}
+#state{
+  width: 30%;
+  margin: 19px 20px 0;
+  height: 29px;
+}
+#state select{
+  padding: 4px 30px 0 7px;
+}
+.new-user .form-wrapper input.small-inline {
+  width: 35.3%;
   margin-right: 20px;
 }
 .new-user .form-wrapper input.last {
@@ -144,5 +156,12 @@
   .new-user .form-wrapper input.small {
     width: inherit;
     margin: 20px 0px 0px 0px;
+  }
+  .new-user .form-wrapper input.small-inline {
+    width: inherit;
+    margin: 20px 0px 0px 0px;
+  }
+  #state{
+    width: 100%;
   }
 }

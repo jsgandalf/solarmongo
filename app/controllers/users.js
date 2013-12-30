@@ -61,7 +61,7 @@ exports.create = function(req, res, next) {
             switch (err.code) {
                 case 11000:
                 case 11001:
-                    message = 'Username already exists';
+                    message = 'Email already exists';
                     break;
                 default:
                     message = 'Please fill all the required fields';

@@ -53,7 +53,7 @@ LeadSchema.path('lastName').validate(function(lastName) {
 LeadSchema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
-    }).populate('user', 'name username').exec(cb);
+    }).populate('user', 'name').exec(cb);
 };
 
 mongoose.model('Lead', LeadSchema);

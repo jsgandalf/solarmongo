@@ -6,6 +6,17 @@
 var mongoose = require('mongoose'),
     User = mongoose.model('User');
 
+/**
+ * Show api docs
+ */
+exports.docs = function(req, res) {
+    res.render('pages/api', {
+        title: 'Api Docs',
+        user: req.user ? JSON.stringify(req.user) : 'null',
+        isLoggedIn: req.user ? true : false
+    });
+};
+
 /*
 	Create a user
 	params: 

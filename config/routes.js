@@ -55,12 +55,13 @@ module.exports = function(app, passport, auth) {
 
     //Api auth
     var api = require('../app/controllers/api');
+    app.get('/api', api.docs)
     app.all('/api/signin', passport.authenticate('basic', { session: false }), users.me);
     app.all('/api/signup', api.createUser);
 
     //Api
     app.get('/api/leads', passport.authenticate('basic', { session: false }), leads.all);
-    app.post('/api/leads', passport.authenticate('basic', { session: false }), leads.all);
+    app.post('/api/leads', passport.authenticate('basic', { session: false }), leads.create);
     app.get('/leads/:leadId', passport.authenticate('basic', { session: false }), leads.show);
     app.put('/leads/:leadId', passport.authenticate('basic', { session: false }), auth.lead.hasAuthorization, leads.update);
     app.del('/leads/:leadId', passport.authenticate('basic', { session: false }), auth.lead.hasAuthorization, leads.destroy);

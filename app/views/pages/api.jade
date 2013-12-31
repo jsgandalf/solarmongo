@@ -1,0 +1,38 @@
+extends ../layouts/default
+
+block content
+	.container
+		.hero-unit
+			h1 Api Implementation
+			h3 Auth
+			p
+				| For Mobile App development, get and post requests have been made available for testing purposes.  Our routing requires 2 parameters: email, password.  Once authentication has been set, you no longer need to pass these values.
+			p
+				ul
+					li
+						| SIGN IN (GET): /api/signin - requires: email, password - returns user
+					li
+						| SIGN UP (POST): /api/signup - requires, email, password of new user - returns _id, message. Message will be "success" if true
+
+			h3 Leads
+			p
+				| Implementation is less than traditional, you will be using GET, POST, PUT, and DEL for your requests
+				ul
+					li
+						| GET LEADS(GET): /api/leads - returns: user (that is logged in), firstName, lastName, .. etc 
+					li
+						| Underconstruction: CREATE LEAD(POST): /api/leads - requires at least: firstName, lastName - returns ??
+					li
+						| GET A LEAD(GET): /leads/:leadId - requires: leadId - returns a lead, user (that is logged in), firstName, lastName, .. etc 
+					li
+						| Undercontruction: UPDATE LEAD(PUT): /leads/:leadId - requires: leadId - updates a lead - returns ???
+					li
+						| Undercontruction: DELETE LEAD(DEL): /leads/:leadId - requires: leadId - updates a lead - returns ???
+			p
+
+		hr
+		footer
+			p &copy; SolarMongo 2014
+
+	script(type="text/javascript").
+		window.user = !{user};

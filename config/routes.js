@@ -53,6 +53,11 @@ module.exports = function(app, passport, auth) {
     app.get('/contactus', pages.contactUs);
     app.get('/aboutus', pages.aboutUs);
 
+    //Api auth
+    var api = require('../app/controllers/api');
+    app.all('/api/signin', passport.authenticate('basic', { session: false }), users.me);
+    app.all('/api/signup', api.createUser);
+
     //Api
     app.get('/api/leads', passport.authenticate('basic', { session: false }), leads.all);
     app.post('/api/leads', passport.authenticate('basic', { session: false }), leads.all);

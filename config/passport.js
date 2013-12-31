@@ -49,6 +49,11 @@ module.exports = function(passport) {
     ));    
 
     //Use google strategy
+    /* If you get the following error: 
+    MongoError: E11000 duplicate key error index: mean-dev.users.$username_1  dup key: { : null }
+    you need to drop the old key of "username_1"
+    type in mongo shell: db.users.dropIndex('username_1')
+    */
     passport.use(new GoogleStrategy({
             clientID: config.google.clientID,
             clientSecret: config.google.clientSecret,
@@ -62,7 +67,6 @@ module.exports = function(passport) {
                     user = new User({
                         name: profile.displayName,
                         email: profile.emails[0].value,
-                        username: profile.username,
                         provider: 'google',
                         google: profile._json
                     });

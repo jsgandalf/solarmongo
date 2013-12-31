@@ -88,7 +88,7 @@ exports.show = function(req, res) {
  * List of leads by id
  */
 exports.all = function(req, res) {
-    Lead.find({user : req.user._id.toString()}).sort('-created').populate('user', 'name username').exec(function(err, leads) {
+    Lead.find({user : req.user._id.toString()}).sort('-created').populate('user', 'name').exec(function(err, leads) {
         if (err) {
             res.render('error', {
                 status: 500

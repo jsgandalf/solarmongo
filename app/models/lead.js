@@ -8,23 +8,28 @@ var mongoose = require('mongoose'),
 
 
 /**
- * Article Schema
+ * Lead Schema
  */
 var LeadSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
     },
-    title: {
-        type: String,
-        default: '',
-        trim: true
-    },
-    content: {
-        type: String,
-        default: '',
-        trim: true
-    },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    companyName: { type: String},
+    title: { type: String},
+    status: { type: String},
+    email: { type: String},
+    phoneWork: { type: String},
+    phoneMobile: { type: String},
+    address: { type: String},
+    city: { type: String},
+    state: { type: String},
+    zip: { type: String},
+    country: { type: String},
+    longitude: {type: Number},
+    latitude: {type: Number},
     user: {
         type: Schema.ObjectId,
         ref: 'User'
@@ -34,9 +39,13 @@ var LeadSchema = new Schema({
 /**
  * Validations
  */
-LeadSchema.path('title').validate(function(title) {
-    return title.length;
-}, 'Title cannot be blank');
+LeadSchema.path('firstName').validate(function(firstName) {
+    return firstName.length;
+}, 'First Name of lead cannot be blank');
+
+LeadSchema.path('lastName').validate(function(lastName) {
+    return lastName.length;
+}, 'Last Name of lead cannot be blank');
 
 /**
  * Statics
@@ -44,7 +53,7 @@ LeadSchema.path('title').validate(function(title) {
 LeadSchema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
-    }).populate('user', 'name username').exec(cb);
+    }).populate('user', 'name').exec(cb);
 };
 
 mongoose.model('Lead', LeadSchema);

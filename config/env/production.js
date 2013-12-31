@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    db: "mongodb://heroku:3e09a00238e4f66456518a290537d81c@dharma.mongohq.com:10061/app20720888",
+    db: "mongodb://jm9102488aftu:A8$`EN}}2vSVnhjrs#S`@dharma.mongohq.com:10061/app20720888",
     app: {
         name: "SolarMongo - A Modern CRM - Production"
     },

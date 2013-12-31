@@ -30,6 +30,7 @@ var LeadSchema = new Schema({
     country: { type: String},
     longitude: {type: Number},
     latitude: {type: Number},
+    notes: {type: String},
     user: {
         type: Schema.ObjectId,
         ref: 'User'

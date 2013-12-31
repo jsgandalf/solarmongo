@@ -20,13 +20,29 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
             country: this.country,
             longitude: null,
             latitude: null,
+            notes: this.notes,
         });
         lead.$save(function(response) {
-            $location.path('leads/' + response._id);
+            //$location.path('leads/' + response._id);
+            $location.path('leads/');
         });
 
+        this.firstName = '';
+        this.lastName = '';
+        this.companyName = '';
         this.title = '';
-        this.content = '';
+        this.status = '';
+        this.email = '';
+        this.phoneWork = '';
+        this.phoneMobile = '';
+        this.address = '';
+        this.city = '';
+        this.state = '';
+        this.zip = '';
+        this.country = '';
+        this.longitude = '';
+        this.latitude = '';
+        this.notes = '';
     };
 
     $scope.remove = function(lead) {

@@ -2,22 +2,22 @@
     <div class="row-fluid header">
         <div class="row-fluid form-wrapper">
             <div class="span9 with-sidebar">
-                <form class="new_user_form">
+                <form class="new_user_form" data-ng-submit="create()">
                     <div class="span12 field-box">
                         <label>Name:</label>
                         <input type="text" data-ng-model="firstName" placeholder="First Name" class="span12 small-inline" maxlength="30" required>
                         <input type="text" data-ng-model="lastName" placeholder="Last Name" class="span12 small-inline last" maxlength="30" required>
                         <div class="error col-md-2" 
                             data-ng-show="lead_form.submitted">
-                        <small class="error" 
-                            data-ng-show="lead_form.firstName.$invalid && lead_form.firstName.$error.required">
-                            First Name is required.
-                        </small>
-                        <small class="error" 
-                            data-ng-show="lead_form.lastName.$invalid && lead_form.lastName.$error.required">
-                            Last Name is required.
-                        </small>
-                    </div>
+                            <small class="error" 
+                                data-ng-show="lead_form.firstName.$invalid && lead_form.firstName.$error.required">
+                                First Name is required.
+                            </small>
+                            <small class="error" 
+                                data-ng-show="lead_form.lastName.$invalid && lead_form.lastName.$error.required">
+                                Last Name is required.
+                            </small>
+                        </div>
                     </div>
                     <div class="span12 field-box">
                         <label>Company:</label>
@@ -25,41 +25,24 @@
                     </div>
                     <div class="span12 field-box">
                         <label>Title:</label>
-                        <input class="span9" type="text" name="title" data-ng-model="title"/>
-                    </div>
-                    <div class="span12 field-box">
-                        <label>State:</label>
-                        <div class="ui-select span5">
-                            <select>
-                                <option value="AK">Alaska</option>
-                                <option value="HI">Hawaii</option>
-                                <option value="CA">California</option>
-                                <option value="NV">Nevada</option>
-                                <option value="OR">Oregon</option>
-                                <option value="WA">Washington</option>
-                                <option value="AZ">Arizona</option>
-                            </select>
-                        </div>
+                        <input class="span9" type="text" name="title" placeholder="Professional career" data-ng-model="title"/>
                     </div>
                     <div class="span12 field-box">
                         <label>Email:</label>
-                        <input type="text" class="span9">
+                        <input type="text" class="span9" data-ng-model="email" placeholder="example@example.com">
                     </div>
-                    <div class="span12 field-box">
+                     <div class="span12 field-box">
                         <label>Phone:</label>
-                        <input type="text" class="span9">
-                    </div>
-                    <div class="span12 field-box">
-                        <label>Website:</label>
-                        <input type="text" class="span9">
+                        <input type="text" data-ng-model="phoneWork" placeholder="Work Phone" class="span12 small-inline" maxlength="30">
+                        <input type="text" data-ng-model="phoneMobile" placeholder="Mobile Phone" class="span12 small-inline last" maxlength="30">
                     </div>
                     <div class="span12 field-box">
                         <label>Address:</label>
                         <div class="address-fields">
-                            <input type="text" placeholder="Street address" class="span12">
-                            <input type="text" placeholder="City" class="span12 small">
+                            <input type="text" placeholder="Street address" class="span12" data-ng-model="address">
+                            <input type="text" placeholder="City" class="span12 small" data-ng-model="city">
                             <div id="state" class="ui-select small">
-                                <select>
+                                <select data-ng-model="state">
                                     <option value="AK">Alaska</option>
                                     <option value="HI">Hawaii</option>
                                     <option value="CA">California</option>
@@ -69,127 +52,39 @@
                                     <option value="AZ">Arizona</option>
                                 </select>
                             </div>
-                            <input type="text" placeholder="Postal Code" class="span12 small last">
+                            <input type="text" data-ng-model="zip" placeholder="Postal Code" class="span12 small last">
                         </div>
                     </div>
                     <div class="span12 field-box textarea">
                         <label>Notes:</label>
-                        <textarea class="span9"></textarea>
+                        <textarea class="span9" data-ng-model="notes"></textarea>
                         <span class="charactersleft">90 characters remaining. Field limited to 100 characters</span>
                     </div>
                     <div class="span11 field-box actions">
-                        <input type="button" value="Create user" class="btn-glow primary">
+                        <input type="submit" value="Create Lead" class="btn-glow primary">
                         <span>OR</span>
-                        <input type="reset" class="reset" value="Cancel">
+                        <input type="reset" class="reset" value="Cancel" onclick="window.history.back()">
                     </div>
                 </form>
-                <div id="pad-wrapper" class="form-page" data-ng-controller="LeadsController">
-                    <div class="row form-wrapper">
-                        <!-- left column -->
-                        <div class="col-md-8 column">
-                            <form name="lead_form" novalidate data-ng-submit="create()">
-                                <div class="field-box">
-                                    <label>Name:</label>
-                                    <div class="col-md-3">
-                                        <input class="form-control"
-                                            type="text"
-                                            placeholder="First Name"
-                                            name="firstName" 
-                                            data-ng-model="firstName" 
-                                            maxlength="30"
-                                            required />
-                                    </div>
-                                    <div class="col-md-3">
-                                        <input class="form-control"
-                                            type="text"
-                                            placeholder="Last Name"
-                                            name="lastName" 
-                                            data-ng-model="lastName" 
-                                            maxlength="30"
-                                            required />
-                                    </div>
-                                    <div class="error col-md-2" 
-                                        data-ng-show="lead_form.submitted">
-                                        <small class="error" 
-                                            data-ng-show="lead_form.firstName.$invalid && lead_form.firstName.$error.required">
-                                            First Name is required.
-                                        </small>
-                                        <small class="error" 
-                                            data-ng-show="lead_form.lastName.$invalid && lead_form.lastName.$error.required">
-                                            Last Name is required.
-                                        </small>
-                                    </div>  
-                                </div>
-                                <div class="field-box">
-                                    <label>Company Name:</label>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" name="companyName" data-ng-model="companyName"/>
-                                    </div>                  
-                                </div>
-                                <div class="field-box">
-                                    <label>Title:</label>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" name="leadTitle" data-ng-model="leadTitle"/>
-                                    </div>                  
-                                </div>
-                                <div class="field-box">
-                                    <label>Status:</label>
-                                    <div class="ui-select">
-                                        <select name="leadStatus" data-ng-model="leadStatus">
-                                            <option selected>New</option>
-                                            <option>Working</option>
-                                            <option>Unqualified</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="field-box">
-                                    <label>Email Address:</label>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" name="email" data-ng-model="email"/>
-                                    </div>                  
-                                </div>
-                                <div class="field-box">
-                                    <label>Phone:</label>
-                                    <div class="col-md-3">
-                                        <input class="form-control" type="text" name="mobile" data-ng-model="phoneMobile" placeholder="Mobile"/>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <input class="form-control" type="text" name="work" data-ng-model="phoneWork" placeholder="Work"/>
-                                    </div>                              
-                                </div>
-                                <div class="field-box">
-                                    <label>Address:</label>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" name="address" data-ng-model="address"/>
-                                    </div>                  
-                                </div>
-                                <div class="field-box">
-                                    <label></label>
-                                    <div class="col-md-2">
-                                        <input class="form-control" type="text" name="city" data-ng-model="city" placeholder="City"/>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input class="form-control" type="text" name="state" data-ng-model="state" placeholder="State"/>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input class="form-control" type="text" name="zip" data-ng-model="zip" placeholder="Zip"/>
-                                    </div>                             
-                                </div>
-                                <div class="field-box">
-                                    <label>Country:</label>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" name="country" data-ng-model="country"/>
-                                    </div>                  
-                                </div>
-                                <div class="field-box">
-                                    <label></label>
-                                    <div class="col-md-6">
-                                        <div class="ui-group pull-right">
-                                            <a href="#/leads" class="btn-flat white">Cancel</a>
-                                            <button type="submit" class="btn-flat primary">Save</button>
-                                        </div>
-                                    </div>
-                            </form>
-                        </div>
-                    </div>
+            </div>
+            <div class="span3 form-sidebar pull-right">
+                <div class="btn-group toggle-inputs hidden-tablet">
+                    <button class="glow left" data-input="inline">Tags</button>
+                    <button class="glow right active" data-input="normal">More Tags</button>
                 </div>
+                <div class="alert alert-info hidden-tablet">
+                    <i class="icon-lightbulb pull-left"></i>
+                    Click above to see difference between inline and normal inputs on a form
+                </div>                        
+                <h6>Sidebar text for instructions</h6>
+                <p>Add multiple users at once</p>
+                <p>Choose one of the following file types:</p>
+                <ul>
+                    <li><a href="#">Upload a vCard file</a></li>
+                    <li><a href="#">Import from a CSV file</a></li>
+                    <li><a href="#">Import from an Excel file</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<section data-ng-controller="LeadsController" data-ng-init="find()">
+    <ul class="articles unstyled">
+        <li data-ng-repeat="lead in leads">
+            <span>{{lead.created | date:'medium'}}</span> /
+            <span>{{lead.user.name}}</span>
+            <h2><a data-ng-href="#!/leads/{{lead._id}}">{{lead.title}}</a></h2>
+            <div>{{lead.content}}</div>
+        </li>
+    </ul>
+    <h1 data-ng-hide="!leads || leads.length">No leads yet. <br> Why don't you <a href="/#!/leads/create">Create One</a>?</h1>
+</section>

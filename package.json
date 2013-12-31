@@ -27,6 +27,7 @@
         "passport": "latest",
         "passport-local": "latest",
         "passport-google-oauth": "latest",
+        "passport-http": "latest",
         "lodash": "latest",
         "view-helpers": "latest",
         "mean-logger": "latest",

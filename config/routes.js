@@ -53,4 +53,10 @@ module.exports = function(app, passport, auth) {
     app.get('/contactus', pages.contactUs);
     app.get('/aboutus', pages.aboutUs);
 
+    //Api
+    app.get('/api/leads', passport.authenticate('basic', { session: false }), leads.all);
+    app.post('/api/leads', passport.authenticate('basic', { session: false }), leads.all);
+    app.get('/leads/:leadId', passport.authenticate('basic', { session: false }), leads.show);
+    app.put('/leads/:leadId', passport.authenticate('basic', { session: false }), auth.lead.hasAuthorization, leads.update);
+    app.del('/leads/:leadId', passport.authenticate('basic', { session: false }), auth.lead.hasAuthorization, leads.destroy);
 };

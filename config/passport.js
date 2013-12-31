@@ -3,6 +3,7 @@
 var mongoose = require('mongoose'),
     LocalStrategy = require('passport-local').Strategy,
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
+    BasicStrategy = require('passport-http').BasicStrategy,
     User = mongoose.model('User'),
     config = require('./config');
 
@@ -77,6 +78,30 @@ module.exports = function(passport) {
                 } else {
                     return done(err, user);
                 }
+            });
+        }
+    ));
+
+    //Protect endpoints in api using the BASIC strategry, requires passport-http
+    passport.use(new BasicStrategy(
+      function(email, password, done) {
+            User.findOne({
+                email: email
+            }, function(err, user) {
+                if (err) {
+                    return done(err);
+                }
+                if (!user) {
+                    return done(null, false, {
+                        message: 'Unknown user'
+                    });
+                }
+                if (!user.authenticate(password)) {
+                    return done(null, false, {
+                        message: 'Invalid password'
+                    });
+                }
+                return done(null, user);
             });
         }
     ));

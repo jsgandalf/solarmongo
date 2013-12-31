@@ -48,4 +48,9 @@ module.exports = function(app, passport, auth) {
     var index = require('../app/controllers/index');
     app.get('/', index.render);
 
+    //Contact us route
+    var pages = require('../app/controllers/pages');
+    app.get('/contactus', pages.contactUs);
+    app.get('/aboutus', pages.aboutUs);
+
 };

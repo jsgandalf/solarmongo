@@ -1,0 +1,18 @@
+extends ../layouts/default
+
+block content
+	if (isLoggedIn)
+		div.content
+			div.skins-nav
+				a.skin.first_nav.selected(href="#")
+					span.icon
+						span.text Default skin
+				a.skin.second_nav(href="#", data-file="css/compiled/skins/dark.css")
+					span.icon
+						span.text Dark skin
+			div.view-container
+				div.container-fluid(data-ng-view)
+	else				
+		include ../pages/aboutUsPage
+	script(type="text/javascript").
+		window.user = !{user};

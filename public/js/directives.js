@@ -7,14 +7,14 @@ angular.module( 'navigationDirective', [] ).directive( 'navigationList', functio
     controller: function ( $scope, $location, Global ) {
         $scope.global = Global;
         $scope.menu = [{
-            'title': 'Learn',
-            'link': 'learn'
+            'title': 'About Us',
+            'link': '../aboutus'
         }, {
-            'title': 'Partners',
+            'title': 'Pricing',
             'link': 'partner'
         }, {
             'title': 'Contact',
-            'link': 'contact'
+            'link': '../contactus'
         }];
         $scope.navList = [{"name":"Dashboard","route":"dashboard","icon":"icon-home"},
                 {"name":"Leads","route":"leads","icon":"icon-book"},

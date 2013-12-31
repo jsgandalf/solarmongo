@@ -22,7 +22,7 @@
                     </ul>
                 </li>
                 <li data-ng-repeat="item in menu" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
-                    <a href="#!/{{item.link}}">{{item.title}}</a>
+                    <a href="{{item.link}}">{{item.title}}</a>
                 </li>
                 <li>
                     <a href="/signup">Sign Up</a>

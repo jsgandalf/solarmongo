@@ -1,64 +1,127 @@
-<div id="pad-wrapper" class="table-products" data-ng-controller="LeadsController" data-ng-init="find()">
-    <!-- products table-->
-    <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
-    <div class="table-wrapper products-table">
-        <div class="row head">
-            <div class="col-md-12">
-                <h4>Leads</h4>
+<div id="pad-wrapper" class="users-list" data-ng-controller="LeadsController" data-ng-init="find()">
+    <div class="row-fluid header">
+        <div class="span12 pull-right">
+            <h3>Leads</h3>
+            <input data-ng-model="query" type="text" class="span5 search" placeholder="Type a lead's name...">
+            
+            <!-- custom popup filter -->
+            <!-- styles are located in css/elements.css -->
+            <!-- script that enables this dropdown is located in js/theme.js -->
+            <div class="ui-dropdown">
+                <div class="head" data-toggle="tooltip" title="" data-original-title="Click me!">
+                    Filter leads
+                    <i class="arrow-down"></i>
+                </div>  
+                <div class="dialog" style="display: none;">
+                    <div class="pointer">
+                        <div class="arrow"></div>
+                        <div class="arrow_border"></div>
+                    </div>
+                    <div class="body">
+                        <p class="title">
+                            Show leads where:
+                        </p>
+                        <div class="form">
+                            <select>
+                                <option>Name</option>
+                                <option>Email</option>
+                                <option>Number of orders</option>
+                                <option>Signed up</option>
+                                <option>Last seen</option>
+                            </select>
+                            <select>
+                                <option>is equal to</option>
+                                <option>is not equal to</option>
+                                <option>is greater than</option>
+                                <option>starts with</option>
+                                <option>contains</option>
+                            </select>
+                            <input type="text">
+                            <a class="btn-flat small">Add filter</a>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <a href="#!/leads/create" class="btn-flat success pull-right">
+                <span>+</span>
+                Lead
+            </a>
         </div>
-        <div class="row filter-block">
-            <div class="pull-left span6 offset3">
-                <!--<div class="ui-select">
-                    <select>
-                      <option>Filter by Name</option>
-                      <option>Signed last 30 days</option>
-                      <option>Filter by New Leads</option>
-                    </select>
-                </div>-->
-                <input type="text" class="search" ng-model="query">
-                <a href="#!/leads/create" class="btn-flat new-product">+ Lead</a>
-            </div>
-        </div>
-        <div class="row ">
+    </div>
+        <!-- Users table -->
+        <div class="row-fluid table">
             <table class="table table-hover">
                 <thead>
-	                <tr>
-	                	<td>Name</td>
-	                	<td>Company Name</td>
-	                	<td>Title</td>
-	                	<td>Phone</td>
-	                	<td>Address</td>
-	                </tr>
-	            </thead>
+                    <tr>
+                        <th class="span4 sortable">
+                            Name
+                        </th>
+                        <th class="span3 sortable">
+                            <span class="line"></span>City, State
+                        </th>
+                        <th class="span2 sortable">
+                            <span class="line"></span>Email
+                        </th>
+                        <th class="span3 sortable align-right">
+                            <span class="line"></span>Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <!-- row -->
                 <tr data-ng-repeat="lead in leads | filter:query">
                     <td>
-                        <input type="checkbox">
-                        <!--<i class="icon-list-table icon-book"></i>-->
-                        <!--<div class="img">
-                            <img src="img/table-img.png">
-                        </div>-->
+                        <img src="img/contact-img.png" class="img-circle avatar hidden-phone">
                         <a href="#!/leads/{{lead._id}}" class="name">{{lead.firstName}} {{lead.lastName}}</a>
-                    </td>
-                    
-                    <td>
-                        <!--<a href="#!/leads/{{lead._id}}" class="description">-->{{lead.phoneMobile | placeholder}}
+                        <span class="subtext">{{lead.company}}</span>
                     </td>
                     <td>
-                        {{lead.address | placeholder}}, {{lead.city | placeholder}}, {{lead.state | placeholder}} {{lead.zip | placeholder}}
+                        {{lead.city | placeholder}}, {{lead.state | placeholder}}
                     </td>
                     <td>
-                        {{lead.country | placeholder}}
+                        {{lead.email}}
                     </td>
-                    <td>
-                        <span class="label label-success">New</span>
+                    <td class="align-right">
                         <ul class="actions">
                             <li><a href="/#!/leads/{{lead._id}}/edit"><i class="table-edit"></i></a></li>
                             <li class="last"><i class="table-delete" data-ng-click="remove(lead);"></i></li>
                         </ul>
                     </td>
                 </tr>
+                </tbody>
             </table>
         </div>
-    </div>
+        <div class="pagination pull-right">
+            <ul>
+                <li><a href="#">‹</a></li>
+                <li><a class="active" href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">›</a></li>
+            </ul>
+        </div>
+    <!-- end users table -->
+    <!-- end side-bar with span9 -->
+    <!--<div class="span3 form-sidebar pull-left">
+            <div class="btn-group toggle-inputs hidden-tablet">
+                <button class="glow left" data-input="inline">Tags</button>
+                <button class="glow right active" data-input="normal">More Tags</button>
+            </div>
+            <div class="alert alert-info hidden-tablet">
+                <i class="icon-lightbulb pull-left"></i>
+                Click above to see difference between inline and normal inputs on a form
+            </div>                        
+            <h6>Sidebar text for instructions</h6>
+            <p>Add multiple users at once</p>
+            <p>Choose one of the following file types:</p>
+            <ul>
+                <li><a href="#">Upload a vCard file</a></li>
+                <li><a href="#">Import from a CSV file</a></li>
+                <li><a href="#">Import from an Excel file</a></li>
+            </ul>
+        </div>
+    </div>-->
 </div>

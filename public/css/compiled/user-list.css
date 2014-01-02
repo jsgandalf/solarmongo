@@ -1,7 +1,9 @@
+
 .users-list .header input.search {
   padding: 5px 6px;
   position: relative;
   top: -1px;
+  margin-left: 120px;
 }
 .users-list .header input.search:focus {
   box-shadow: none;
@@ -48,12 +50,51 @@
   margin-top: 25px;
 }
 
+.users-list .table ul.actions {
+  margin: 5px 0 0 0;
+  padding: 0;
+  float: right;
+}
+.users-list .table ul.actions li {
+  display: inline;
+  padding: 5px 6px 0px 3px;
+}
+.users-list .table ul.actions li.last {
+  border: 0 none;
+}
+.users-list .table ul.actions i {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity .1s linear;
+  -moz-transition: opacity .1s linear;
+  -webkit-transition: opacity .1s linear;
+  -o-transition: opacity .1s linear;
+}
+.users-list .table ul.actions i:hover {
+  opacity: 1;
+}
+
 /* responsive */
+@media (max-width: 1200px) {
+  .users-list .header input.search{
+    margin-left:50px;
+  }
+}
+
+@media (max-width: 900px) {
+  .users-list .header input.search{
+    margin-left:20px;
+  }
+}
+
 @media (max-width: 767px) {
   .ui-dropdown .dialog .body {
     width: 250px;
     left: 58%;
     position: relative;
+  }
+  .users-list .header input.search{
+    margin-left:0;
   }
 
   .users-list .table a.name {
@@ -69,6 +110,7 @@
   }
   .users-list .header input.search {
     margin-bottom: 18px;
+
   }
   .users-list .header .ui-dropdown {
     float: left;

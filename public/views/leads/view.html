@@ -4,7 +4,7 @@
         <div class="span8">
             <img src="img/contact-profile.png" class="avatar img-circle">
             <h3 class="name">{{lead.firstName}} {{lead.lastName}}</h3>
-            <span class="area">{{lead.lastName | placeholder}}</span>
+            <span class="area">{{lead.title}} at {{lead.companyName | placeholder}}</span>
         </div>
         <div data-ng-show="global.user._id == lead.user._id">
             <a class="btn-flat icon pull-right delete-user" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete user" data-ng-click="remove();">

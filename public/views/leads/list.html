@@ -70,11 +70,11 @@
                 </thead>
                 <tbody>
                 <!-- row -->
-                <tr data-ng-repeat="lead in leads | filter:query">
+                <tr data-ng-repeat="lead in leads | filter:query" ng-class="{first: $first}">
                     <td>
-                        <img src="img/contact-img.png" class="img-circle avatar hidden-phone">
-                        <a href="#!/leads/{{lead._id}}" class="name">{{lead.firstName}} {{lead.lastName}}</a>
-                        <span class="subtext">{{lead.company}}</span>
+                        <!--<img src="img/contact-img.png" class="img-circle avatar hidden-phone">-->
+                        <a href="#!/leads/{{lead._id}}" class="name"><i class="icon-book table-icon"></i>{{lead.firstName}} {{lead.lastName}}</a>
+                        <span class="subtext">{{lead.companyName}}</span>
                     </td>
                     <td>
                         {{lead.city | placeholder}}, {{lead.state | placeholder}}

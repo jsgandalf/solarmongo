@@ -2,8 +2,8 @@
     <!-- header -->
     <div class="row-fluid header">
         <div class="span8">
-            <img src="img/contact-profile.png" class="avatar img-circle">
-            <h3 class="name">{{lead.firstName}} {{lead.lastName}}</h3>
+            <!--<img src="img/contact-profile.png" class="avatar img-circle">-->
+            <h3 class="name"><i class="icon-user table-icon"></i><span>{{lead.firstName}} {{lead.lastName}}</span></h3>
             <span class="area">{{lead.title}} at {{lead.companyName | placeholder}}</span>
         </div>
         <div data-ng-show="global.user._id == lead.user._id">

@@ -141,6 +141,9 @@
   padding: 0 10px 10px 10px;
   vertical-align:bottom;
 }
+.new-user .address-fields .truss{
+  margin-left:60px;
+}
 
 /* responsive */
 @media (max-width: 767px) {

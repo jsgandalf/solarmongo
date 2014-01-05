@@ -8,16 +8,16 @@
                     </div>
                     <div class="span12 field-box">
                         <label>Name:</label>
-                        <input type="text" data-ng-model="lead.siteSurvey.jobSite.firstName" placeholder="First Name" class="span12 small-inline" maxlength="30" required>
-                        <input type="text" data-ng-model="lead.siteSurvey.jobSite.lastName" placeholder="Last Name" class="span12 small-inline last" maxlength="30" required>
+                        <input type="text" data-ng-model="lead.jobSite.firstName" placeholder="First Name" class="span12 small-inline" maxlength="30">
+                        <input type="text" data-ng-model="lead.jobSite.lastName" placeholder="Last Name" class="span12 small-inline last" maxlength="30">
                     </div>
                     <div class="span12 field-box">
                         <label>Address:</label>
                         <div class="address-fields">
-                            <input type="text" placeholder="Street address" class="span12" data-ng-model="lead.address">
-                            <input type="text" placeholder="City" class="span12 small" data-ng-model="lead.city">
+                            <input type="text" placeholder="Street address" class="span12" data-ng-model="lead.jobSite.address">
+                            <input type="text" placeholder="City" class="span12 small" data-ng-model="lead.jobSite.city">
                             <div id="state" class="ui-select small">
-                                <select data-ng-model="lead.state">
+                                <select data-ng-model="lead.jobSite.state">
                                     <option value="">Select State</option>
                                     <option value="AL">Alabama</option> 
                                     <option value="AK">Alaska</option> 
@@ -72,7 +72,7 @@
                                     <option value="WY">Wyoming</option>
                                 </select>
                             </div>
-                            <input type="text" data-ng-model="lead.zip" placeholder="Postal Code" class="span12 small last">
+                            <input type="text" data-ng-model="lead.jobSite.zip" placeholder="Postal Code" class="span12 small last">
                         </div>
                     </div>
                     <div class="span12 field-box">
@@ -80,17 +80,17 @@
                     </div>
                     <div class="span12 field-box">
                         <label>Roofing:</label>
-                        <input type="text" data-ng-model="lead.siteSurvey.siteNotes.roofingType" placeholder="Roofing Type" class="span12 small-inline" maxlength="30">
-                        <input type="text" data-ng-model="lead.siteSurvey.siteNotes.layers" placeholder="Number of Layers" class="span12 small-inline last" maxlength="30">
+                        <input type="text" data-ng-model="lead.siteNotes.roofingType" placeholder="Roofing Type" class="span12 small-inline" maxlength="30">
+                        <input type="text" data-ng-model="lead.siteNotes.layers" placeholder="Number of Layers" class="span12 small-inline last" maxlength="30">
                     </div>
                     <div class="span12 field-box">
                         <label>Installation:</label>
-                        <input type="text" data-ng-model="lead.siteSurvey.siteNotes.height" placeholder="Installation Height" class="span12 small-inline" maxlength="30">
-                        <input type="text" data-ng-model="lead.siteSurvey.siteNotes.pitch" placeholder="Roof Pitch" class="span12 small-inline last" maxlength="30">
+                        <input type="text" data-ng-model="lead.siteNotes.height" placeholder="Installation Height" class="span12 small-inline" maxlength="30">
+                        <input type="text" data-ng-model="lead.siteNotes.pitch" placeholder="Roof Pitch" class="span12 small-inline last" maxlength="30">
                     </div>
                     <div class="span12 field-box">
                         <label>Location:</label>
-                        <input class="span9" type="text" name="title" placeholder="Site Location" data-ng-model="lead.title"/>
+                        <input class="span9" type="text" name="title" placeholder="Site Location" data-ng-model="lead.siteNotes.location"/>
                     </div>
                     <div class="span12 field-box">
                         <label>Visiblity:</label>
@@ -99,12 +99,17 @@
                             <div class="middle slider-frame primary">
                                 <span class="slider-button off" data-off-text="NO" data-on-text="YES">NO</span>
                             </div>
-                            <input type="text" placeholder="Rafter Spacing and Size" class="span12 top" data-ng-model="lead.city">
+                            <input type="text" placeholder="Rafter Spacing and Size" class="span12 top" data-ng-model="lead.siteNotes.rafterSpacingAndSize">
                             <div class="middle-text">Engineered Truss:</div>
-                            <div class="middle slider-frame primary">
+                            <div class="middle slider-frame primary truss">
                                 <span class="slider-button off" data-off-text="NO" data-on-text="YES">NO</span>
                             </div>
-                            <input type="text" placeholder="Truss Type if not Engineered" class="span12 top" data-ng-model="lead.city">
+                            <input type="text" placeholder="Truss Type if not Engineered" class="span12 top" data-ng-model="lead.siteNotes.otherTruss">
+                            <div class="span12 field-box textarea">
+                                <label>Description:</label>
+                                <textarea class="span12" data-ng-model="lead.siteNotes.description"></textarea>
+                                <span class="charactersleft">90 characters remaining. Field limited to 100 characters</span>
+                            </div>
                         </div>
                     </div>
                     <div class="span12 field-box">
@@ -166,13 +171,13 @@
                     </div>
                     <div class="span12 field-box">
                         <label>Bill:</label>
-                        <input type="text" data-ng-model="lead.siteSurvey.jobSite.firstName" placeholder="Part Bill" class="span12 small-inline" maxlength="30" required>
-                        <input type="text" data-ng-model="lead.siteSurvey.jobSite.lastName" placeholder="Full Bill" class="span12 small-inline last" maxlength="30" required>
+                        <input type="text" data-ng-model="lead.customerExpectation.partBill" placeholder="Part Bill" class="span12 small-inline" maxlength="30">
+                        <input type="text" data-ng-model="lead.customerExpectation.fullBill" placeholder="Full Bill" class="span12 small-inline last" maxlength="30">
                     </div>
                     <div class="span12 field-box">
                         <label>System Type:</label>
                         <div class="ui-select small">
-                            <select data-ng-model="lead.state">
+                            <select data-ng-model="lead.customerExpectation.systemType">
                                 <option value="">Grid Interactive</option>
                                 <option value="">Grid Interactive With Battery Backup</option>
                                 <option value="">Off Grid</option>
@@ -181,7 +186,7 @@
                     </div>
                     <div class="span9 field-box textarea">
                         <label>Notes:</label>
-                        <textarea class="span9" data-ng-model="lead.notes"></textarea>
+                        <textarea class="span9" data-ng-model="lead.siteSurveyNotes"></textarea>
                         <span class="charactersleft">90 characters remaining. Field limited to 100 characters</span>
                     </div>
                     <div class="span11 field-box actions">

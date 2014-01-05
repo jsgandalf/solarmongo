@@ -21,6 +21,43 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
             longitude: null,
             latitude: null,
             notes: this.notes,
+            siteSurvey:[{
+                jobSite: {
+                    firstName:this.firstName,
+                    lastName:this.lastName,
+                    address:this.address,
+                    city:this.city,
+                    state:this.state,
+                    zip:this.zip
+                },
+                siteNotes:{
+                    roofingType:'',
+                    layers:'',
+                    height:'',
+                    pitch:'',
+                    location:'',
+                    eyeAvailability:false,
+                    rafterSpacingAndSize:'',
+                    truss:false,
+                    otherTruss:'',
+                    description:''
+                },
+                pictures: {
+                    site:false,
+                    inverterLocation:false,
+                    powerMeterClosed:false,
+                    powerMeterOpen:false,
+                    shadingProblems:false,
+                    arrayLocation:false,
+                    breakerPanelsClosed:false,
+                    breakerPanelsOpen:false
+                },
+                customerExpectation:{
+                    partBill:'',
+                    fullBill:'',
+                    systemType:''
+                }
+            }]
         });
         lead.$save(function(response) {
             //$location.path('leads/' + response._id);
@@ -63,6 +100,13 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
 
     $scope.update = function() {
         var lead = $scope.lead;
+        var siteSurvey = $scope.siteSurvey
+        console.log(siteSurvey)
+        /*var siteSurvey = $scope.lead.jobSite;
+        if(siteSurvey){
+            lead.siteSurvey.push(siteSurvey)
+            console.log("here");
+        }*/
         if (!lead.updated) {
             lead.updated = [];
         }

@@ -6,7 +6,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-
 /**
  * Lead Schema
  */
@@ -31,6 +30,44 @@ var LeadSchema = new Schema({
     longitude: {type: Number},
     latitude: {type: Number},
     notes: {type: String},
+    siteSurvey: [{
+        jobSite: {
+            firstName:{type: String, default: '', trim: true},
+            lastName:{type: String, default: '', trim: true},
+            address:{type: String, default: '', trim: true},
+            city:{type: String, default: '', trim: true},
+            state:{type: String, default: '', trim: true},
+            zip:{type: String, default: '', trim: true}
+        },
+        siteNotes: {
+            roofingType:{type: String, default: '', trim:true},
+            layers:{type: String, default: '', trim:true},
+            height:{type: String, default: '', trim:true},
+            pitch:{type: String, default: '', trim:true},
+            location:{type: String, default: '', trim:true},
+            eyeAvailability:{type: Boolean, default: false},
+            rafterSpacingAndSize:{type: String, default: '', trim:true},
+            truss:{type: Boolean, default: false},
+            otherTruss:{type: String, default: '', trim:true},
+            description:{type: String, default: '', trim:true}
+        },
+        pictures: {
+            site:{type: Boolean, default: false},
+            inverterLocation:{type: Boolean, default: false},
+            powerMeterClosed:{type: Boolean, default: false},
+            powerMeterOpen:{type: Boolean, default: false},
+            shadingProblems:{type: Boolean, default: false},
+            arrayLocation:{type: Boolean, default: false},
+            breakerPanelsClosed:{type: Boolean, default: false},
+            breakerPanelsOpen:{type: Boolean, default: false}
+        },
+        customerExpectation: {
+            partBill:{type: String, default: '', trim:true},
+            fullBill:{type: String, default: '', trim:true},
+            systemType:{type: String, default: '', trim:true}
+        },
+        notes:{type: String, default: '', trim:true}
+    }],
     user: {
         type: Schema.ObjectId,
         ref: 'User'

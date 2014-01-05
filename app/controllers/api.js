@@ -28,8 +28,8 @@ exports.docs = function(req, res) {
 */
 exports.createUser = function(req, res) {
     var user = new User({
-    	email: req.query.email,
-    	password: req.query.password
+        email: req.query.email,
+        password: req.query.password
     });
     var message = null;
 
@@ -44,12 +44,10 @@ exports.createUser = function(req, res) {
                 default:
                     message = 'Please fill all the required fields';
             }
-            res.jsonp({"message:":message});
+            res.jsonp({'message:':message});
         }else{
-        	message = "success";
-        	user["_id"];
-	        res.jsonp({"message:":message,"_id":user["_id"]});
+            message = 'success';
+            res.jsonp({'message:':message,'_id':user['_id']});
         }
-        
     });
 };

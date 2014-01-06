@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module( 'navigationDirective', [] ).directive( 'navigationList', function () {
+ var myDirectives = angular.module( 'myDirectives', [] );
+
+ myDirectives.directive( 'navigationList', function () {
   return {
     restrict: 'E', // allow as an element; the default is only an attribute
     templateUrl: 'views/navigation/navlist.html', // load the template file
@@ -29,7 +31,7 @@ angular.module( 'navigationDirective', [] ).directive( 'navigationList', functio
   };
 });
 
-angular.module( 'siteSurveyDirective', [] ).directive( 'siteSurveyDirective', function () {
+myDirectives.directive( 'siteSurveyDirective', function () {
   return {
     restrict: 'E', // allow as an element; the default is only an attribute
     templateUrl: 'views/leads/siteSurvey.html', // load the template file

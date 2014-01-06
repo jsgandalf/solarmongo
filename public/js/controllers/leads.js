@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.leads').controller('LeadsController', ['$scope', '$routeParams', '$location', 'Global', 'Leads', function ($scope, $routeParams, $location, Global, Leads) {
+angular.module('mean.leads').controller('LeadsController', ['$scope', '$routeParams', '$location', 'Global', 'Modal', 'Leads', function ($scope, $routeParams, $location, Global, Modal, Leads) {
     $scope.global = Global;
     $scope.submitted = false;
     $scope.create = function() {
@@ -99,14 +99,13 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
 
     $scope.update = function() {
         var lead = $scope.lead;
-        console.log(lead);
         if (!lead.updated) {
             lead.updated = [];
         }
         lead.updated.push(new Date().getTime());
 
         lead.$update(function() {
-            $location.path('leads/' + lead._id);
+            Modal.open("Updated","Lead Successfully Updated!");
         });
     };
 

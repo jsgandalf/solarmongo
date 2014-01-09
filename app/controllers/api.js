@@ -6,6 +6,23 @@
 var mongoose = require('mongoose'),
     User = mongoose.model('User');
 
+//getToken
+exports.getToken = function(req, res){
+    if (req.user) {
+        User.createUserToken(req.user.email, function(err, usersToken) {
+            // console.log('token generated: ' +usersToken);
+            // console.log(err);
+            if (err) {
+                res.json({error: 'Issue generating token'});
+            } else {
+                res.json({token : usersToken});
+            }
+        });
+    } else {
+        res.json({error: 'AuthError'});
+    }
+}
+
 /**
  * Show api docs
  */

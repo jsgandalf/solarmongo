@@ -28,13 +28,15 @@
         "passport-local": "latest",
         "passport-google-oauth": "latest",
         "passport-http": "latest",
+        "passport-http-bearer": "1.0.1",
         "lodash": "latest",
         "view-helpers": "latest",
         "mean-logger": "latest",
         "bower": "latest",
         "grunt": "latest",
         "grunt-cli": "latest",
-        "grunt-env": "latest"
+        "grunt-env": "latest",
+        "jwt-simple": "~0.1.0"
     },
     "devDependencies": {
         "supertest": "latest",

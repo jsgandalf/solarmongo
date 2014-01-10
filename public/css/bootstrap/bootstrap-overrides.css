@@ -366,4 +366,10 @@ table th span.line{
 	height: 10px;
 }
 
-
+/* Custom overrides */
+.tab-content{
+	overflow:hidden;
+}
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus{
+	outline:0;
+}

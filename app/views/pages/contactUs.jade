@@ -1,18 +1,34 @@
 extends ../layouts/default
 
 block content
-	if (isLoggedIn)
-		div.content
-			div.skins-nav
-				a.skin.first_nav.selected(href="#")
-					span.icon
-						span.text Default skin
-				a.skin.second_nav(href="#", data-file="css/compiled/skins/dark.css")
-					span.icon
-						span.text Dark skin
-			div.view-container
-				div.container-fluid(data-ng-view)
-	else				
-		include ../pages/contactUsPage
-	script(type="text/javascript").
-		window.user = !{user};
+  .container
+    .hero-unit
+        h1 Contact Us
+        p
+          | We want to talk with. Allow us to help streamline your sales and make your workflow easier and faster than ever.
+        p
+
+          div#contact-area
+          form(method='post',action='')
+            label(for='name') Name *
+            input(type='text',name='name',id='name')
+
+            label(for='companyName') Company Name 
+            input(type='text',name='companyname',id='companyName') 
+
+            label(for='phone') Phone Number *
+            input(type='text',name='phone',id='phone') 
+
+            label(for='email') Email *
+            input(type='text',name='email',id='email') 
+
+            label(for='inquiry') Inquiry *
+            input(type='text',name='inquiry',id='inquiry',class='span5',rows='30')
+
+          input(type='submit',name='submit',value='Submit').submit-button
+
+      hr
+    footer
+      p &copy; SolarMongo 2014
+   script(type="text/javascript").
+      window.user = !{user};

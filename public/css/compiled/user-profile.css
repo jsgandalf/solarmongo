@@ -1,3 +1,9 @@
+.user-profile h3{
+  font-size: 20px;
+}
+.user-profile .header{
+  margin-bottom:25px;
+}
 .user-profile .header .avatar {
   float: left;
   margin-right: 25px;
@@ -6,8 +12,8 @@
   top: 3px;
 }
 .user-profile .header .name {
-  font-weight: 600;
-  margin: 20px 0 8px 0;
+  font-weight: 600;0
+  margin: 0 0 5px;
   line-height: 26px;
   margin-bottom: 10px;
   float: none;
@@ -16,6 +22,7 @@
   color: #7d848c;
   font-style: italic;
   font-size: 14px;
+  margin-left: 64px;
 }
 .user-profile .header a.btn-flat {
   margin-top: 18px;
@@ -108,6 +115,24 @@
 }
 .user-profile .address ul i.ico-mail {
   margin-right: 5px;
+}
+.margintop10{
+  margin-top:10px;
+}
+.user-profile i.table-icon{
+  font-size: 34px;
+  opacity: 0.7;
+  filter:alpha(opacity=70);
+  transition: opacity 0.1s ease 0s;
+  display:inline-block;
+}
+.user-profile h1.main-title span{
+  font-size: 26px;
+  font-weight: 400;
+  margin-left: 10px;
+  position: relative;
+  top: 7px;
+  vertical-align: top;
 }
 
 /* responsive */

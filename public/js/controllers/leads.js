@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.leads').controller('LeadsController', ['$scope', '$routeParams', '$location', 'Global', 'Leads', function ($scope, $routeParams, $location, Global, Leads) {
+angular.module('mean.leads').controller('LeadsController', ['$scope', '$routeParams', '$location', 'Global', 'Modal', 'Leads', function ($scope, $routeParams, $location, Global, Modal, Leads) {
     $scope.global = Global;
     $scope.submitted = false;
     $scope.create = function() {
@@ -21,6 +21,42 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
             longitude: null,
             latitude: null,
             notes: this.notes,
+            jobSite: {
+                firstName:'',
+                lastName:'',
+                address:'',
+                city:'',
+                state:'',
+                zip:''
+            },
+            siteNotes:{
+                roofingType:'',
+                layers:'',
+                height:'',
+                pitch:'',
+                location:'',
+                eyeAvailability:false,
+                rafterSpacingAndSize:'',
+                truss:false,
+                otherTruss:'',
+                description:''
+            },
+            pictures: {
+                site:false,
+                inverterLocation:false,
+                powerMeterClosed:false,
+                powerMeterOpen:false,
+                shadingProblems:false,
+                arrayLocation:false,
+                breakerPanelsClosed:false,
+                breakerPanelsOpen:false
+            },
+            customerExpectation:{
+                partBill:'',
+                fullBill:'',
+                systemType:''
+            },
+            siteSurveyNotes: ''
         });
         lead.$save(function(response) {
             //$location.path('leads/' + response._id);
@@ -69,7 +105,7 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
         lead.updated.push(new Date().getTime());
 
         lead.$update(function() {
-            $location.path('leads/' + lead._id);
+            Modal.open("Updated","Lead Successfully Updated!");
         });
     };
 

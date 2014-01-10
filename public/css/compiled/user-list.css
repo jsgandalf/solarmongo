@@ -1,7 +1,9 @@
+
 .users-list .header input.search {
   padding: 5px 6px;
   position: relative;
   top: -1px;
+  margin-left: 120px;
 }
 .users-list .header input.search:focus {
   box-shadow: none;
@@ -37,9 +39,18 @@
   font-size: 14px;
   margin: 15px 0 0 0;
 }
+.users-list .table a.name:hover{
+  text-decoration: underline;
+}
+.users-list .table a.name:hover i{
+  text-decoration: none;
+  opacity: 1;
+  filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+
 .users-list .table .subtext {
   font-size: 12px;
-  margin-left: 0;
+  margin-left: 40px;
   color: #778391;
   font-style: italic;
   margin-top: 0;
@@ -48,12 +59,69 @@
   margin-top: 25px;
 }
 
+.users-list .table ul.actions {
+  margin: 5px 0 0 0;
+  padding: 0;
+  float: right;
+}
+.users-list .table ul.actions li {
+  display: inline;
+  padding: 5px 6px 0px 3px;
+}
+.users-list .table ul.actions li.last {
+  border: 0 none;
+}
+.users-list .table ul.actions i {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity .1s linear;
+  -moz-transition: opacity .1s linear;
+  -webkit-transition: opacity .1s linear;
+  -o-transition: opacity .1s linear;
+}
+.users-list .table ul.actions i:hover {
+  opacity: 1;
+}
+
+.users-list i.table-icon:hover{
+  text-decoration: none;
+  opacity: 1;
+  filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+.users-list i.table-icon{
+  font-size: 30px;
+  top: 5px;
+  height: 24px;
+  left: 0;
+  opacity: 0.7;
+  filter:alpha(opacity=70); /* For IE8 and earlier */
+  position: relative;
+  transition: opacity 0.1s ease 0s;
+  width: 40px;
+  display:inline-block;
+}
+
 /* responsive */
+@media (max-width: 1200px) {
+  .users-list .header input.search{
+    margin-left:50px;
+  }
+}
+
+@media (max-width: 900px) {
+  .users-list .header input.search{
+    margin-left:20px;
+  }
+}
+
 @media (max-width: 767px) {
   .ui-dropdown .dialog .body {
     width: 250px;
     left: 58%;
     position: relative;
+  }
+  .users-list .header input.search{
+    margin-left:0;
   }
 
   .users-list .table a.name {
@@ -69,6 +137,7 @@
   }
   .users-list .header input.search {
     margin-bottom: 18px;
+
   }
   .users-list .header .ui-dropdown {
     float: left;

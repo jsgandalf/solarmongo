@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module( 'navigationDirective', [] ).directive( 'navigationList', function () {
+ var myDirectives = angular.module( 'myDirectives', [] );
+
+ myDirectives.directive( 'navigationList', function () {
   return {
     restrict: 'E', // allow as an element; the default is only an attribute
     templateUrl: 'views/navigation/navlist.html', // load the template file
@@ -13,7 +15,7 @@ angular.module( 'navigationDirective', [] ).directive( 'navigationList', functio
             'title': 'Pricing',
             'link': 'partner'
         }, {
-            'title': 'Contact',
+            'theitle': 'Contact',
             'link': '../contactus'
         }];
         $scope.navList = [{"name":"Dashboard","route":"dashboard","icon":"icon-home"},
@@ -26,5 +28,12 @@ angular.module( 'navigationDirective', [] ).directive( 'navigationList', functio
             return ("/"+route) === $location.path();
         }
     }
+  };
+});
+
+myDirectives.directive( 'siteSurveyDirective', function () {
+  return {
+    restrict: 'E', // allow as an element; the default is only an attribute
+    templateUrl: 'views/leads/siteSurvey.html', // load the template file
   };
 });

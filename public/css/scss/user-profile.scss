@@ -90,6 +90,7 @@
 			width: 90%;
 			margin-bottom: 30px;
 			float: right;
+			border: 0px;
 		}
 		ul {
 			padding: 0;
@@ -133,7 +134,7 @@
 	}
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 	.user-profile {
 		.profile {
 			.bio{

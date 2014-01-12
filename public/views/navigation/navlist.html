@@ -41,14 +41,15 @@
 
 <!-- navbar is authenticated-->
 <div class="navbar navbar-inverse" data-ng-show="global.authenticated">
-    <div class="navbar-inner">
-        <button type="button" class="btn btn-navbar visible-phone" id="menu-toggler">
+    <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" id="menu-toggler">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
         
-        <a class="brand" href="#!/dashboard"><!--<img src="img/logo.png" alt="logo" />-->SolarMongo</a>
+        <a class="navbar-brand" href="#!/dashboard"><!--<img src="img/logo.png" alt="logo" />-->SolarMongo</a>
 
         <ul class="nav pull-right">
             <li class="hidden-phone">

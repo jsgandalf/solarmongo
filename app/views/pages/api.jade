@@ -4,9 +4,14 @@ block content
 	.container
 		.hero-unit
 			h1 Api Implementation
+			h3 Getting a token
+			p
+				| REQUEST TOKEN (POST) - requires: email, password - returns the token that is user specific. Will require email and password as parameters.
+			p
+
 			h3 Auth
 			p
-				| For Mobile App development, our routing requires 2 parameters: email, password.  Once authentication has been set, you no longer need to pass these values, I think, not sure if thats true on mobile, you may need to test that out, its possible you need username and password with every request.
+				| These are the Auth routes.  They will require email and password as parameters.
 			p
 				ul
 					li
@@ -16,18 +21,18 @@ block content
 
 			h3 Leads
 			p
-				| Implementation is less than traditional, you will be using GET, POST, PUT, and DEL for your requests
+				| You will be using GET, POST, PUT, and DEL for your requests. All requests requires the following: access_token
 				ul
 					li
 						| GET LEADS(GET): /api/leads - returns: user (that is logged in), firstName, lastName, .. etc 
 					li
 						| Underconstruction: CREATE LEAD(POST): /api/leads - requires at least: firstName, lastName - returns ??
 					li
-						| GET A LEAD(GET): /leads/:leadId - requires: leadId - returns a lead, user (that is logged in), firstName, lastName, .. etc 
+						| GET A LEAD(GET): /api/leads/:leadId - requires: leadId - returns a lead, user (that is logged in), firstName, lastName, .. etc 
 					li
-						| Undercontruction: UPDATE LEAD(PUT): /leads/:leadId - requires: leadId - updates a lead - returns ???
+						| Undercontruction: UPDATE LEAD(PUT): /api/leads/:leadId - requires: leadId - updates a lead - returns ???
 					li
-						| Undercontruction: DELETE LEAD(DEL): /leads/:leadId - requires: leadId - updates a lead - returns ???
+						| Undercontruction: DELETE LEAD(DEL): /api/leads/:leadId - requires: leadId - updates a lead - returns ???
 			p
 
 		hr

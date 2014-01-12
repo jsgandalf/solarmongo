@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     crypto = require('crypto'),
+    config = require('../../config/config'),
     authTypes = ['google'],
     jwt = require('jwt-simple'),
     tokenSecret = '@CSHeM*$[*GE_Q&stqOAIvkl6s%P-[B!De5o]HFzjM18BFa_!8D|{i2bBm.iE<W';
@@ -17,6 +18,7 @@ var Token = new Schema({
     token: {type: String},
     date_created: {type: Date, default: Date.now},
 });
+
 Token.methods.hasExpired= function(){
     var now = new Date();
     return (now.getTime() - this.date_created.getTime()) > config.ttl;
@@ -130,6 +132,11 @@ UserSchema.methods = {
         return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
     },
 };
+
+UserSchema.statics.getExpiration = function(){
+    console.log("this: "+this);
+    console.log("exp: "+this.token.token.expiration);
+}
 
 /*
 * Encode token

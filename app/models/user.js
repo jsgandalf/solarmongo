@@ -133,11 +133,6 @@ UserSchema.methods = {
     },
 };
 
-UserSchema.statics.getExpiration = function(){
-    console.log("this: "+this);
-    console.log("exp: "+this.token.token.expiration);
-}
-
 /*
 * Encode token
 *

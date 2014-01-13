@@ -1,100 +1,85 @@
 <!-- navbar not authenticated -->
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" data-ng-hide="global.authenticated">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">SolarMongo</a>    
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav pull-left hidden-xs">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle hidden-xs hidden-sm" data-toggle="dropdown">
-                            Product
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Features Overview</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Pricing</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Stories</li>
-                            <li><a href="#">testimonials</a></li>
-                        </ul>
-                    </li>
-                    <li data-ng-repeat="item in menu" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
-                        <a href="{{item.link}}">{{item.title}}</a>
-                    </li>
-                    <li>
-                        <a href="/signup">Sign Up</a>
-                    </li>
-                </ul>
-               <!-- <ul class="nav navbar-nav pull-left hidden-xs">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Product <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Features Overview</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Pricing</a></li>
-                            <li class="divider"></li>
-                            <li class="nav-header">Stories</li>
-                            <li><a href="#">testimonials</a></li>
-                        </ul>
-                    </li>
-                    <li data-ng-repeat="item in menu" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
-                        <a href="{{item.link}}">{{item.title}}</a>
-                    </li>
-                    <li>
-                        <a href="/signup">Sign Up</a>
-                    </li>
-                </ul>-->
-                <form action="/users/session" method="post" class="navbar-form navbar-right ng-pristine ng-valid" role="form">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="email" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="password" name="password" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-success">Sign in</button>
-                </form>
-            </div><!--/.nav-collapse -->
-            </div>
-            </div>
+<header class="navbar navbar-inverse navbar-fixed-top" role="navigation" data-ng-hide="global.authenticated">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">SolarMongo</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav pull-left hidden-xs">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle hidden-xs hidden-sm" data-toggle="dropdown">
+                        Product
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Features Overview</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Stories</li>
+                        <li><a href="#">testimonials</a></li>
+                    </ul>
+                </li>
+                <li data-ng-repeat="item in menu" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
+                    <a href="{{item.link}}">{{item.title}}</a>
+                </li>
+                <li>
+                    <a href="/signup">Sign Up</a>
+                </li>
+            </ul>
+            <form action="/users/session" method="post" class="navbar-form navbar-right ng-pristine ng-valid" role="form">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+        </div><!--/.nav-collapse -->
+    </div>
+</header>
 <!-- end navbar not authenticated -->
 
 <!-- navbar is authenticated-->
-<div class="navbar navbar-inverse" data-ng-show="global.authenticated">
+<header class="navbar navbar-inverse" role="navigation" data-ng-show="global.authenticated">
     <div class="navbar-header">
-        <button class="navbar-toggle" type="button" data-toggle="collapse" id="menu-toggler">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
         
-        <a class="navbar-brand" href="#!/dashboard"><!--<img src="img/logo.png" alt="logo" />-->SolarMongo</a>
+        <a class="navbar-brand" href="#!/dashboard">SolarMongo</a>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav pull-right">
+                <li class="hidden-xs hidden-sm">
+                    <input class="search" type="text" />
+                </li>
 
-        <ul class="nav pull-right">
-            <li class="hidden-phone">
-                <input class="search" type="text" />
-            </li>
-
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle hidden-phone" data-toggle="dropdown">
-                    {{global.user.name}}
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="/signout">Sign Out</a></li>
-                </ul>
-            </li>
-        </ul>            
+                <li class="dropdown hidden-xs hidden-sm">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        {{global.user.name}}
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/signout">Sign Out</a></li>
+                    </ul>
+                </li>
+                <li class="visible-xs visible-sm">
+                    <a href="/signout">Sign Out</a>
+                </li>
+            </ul>            
+        </div>
     </div>
-</div>
+</header>
 <!-- end navbar -->
 
 <!-- sidebar -->

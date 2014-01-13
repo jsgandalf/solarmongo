@@ -219,7 +219,7 @@ textarea::-webkit-input-placeholder {
 }
 /* menu toggler */
 .navbar-inverse .navbar-toggle {
-	float: left;
+	float: right;
 	margin-top: 10px;
 	margin-left: 15px;
 }

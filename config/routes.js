@@ -48,12 +48,9 @@ module.exports = function(app, passport, auth) {
     //Finish with setting up the leadId param
     app.param('leadId', leads.lead);
 
-    //Home route
-    var index = require('../app/controllers/index');
-    app.get('/', index.render);
-
     //Pages route
     var pages = require('../app/controllers/pages');
+    app.get('/', pages.index);
     app.get('/contactus', pages.contactUs);
     app.get('/aboutus', pages.aboutUs);
     app.get('/api', pages.api);

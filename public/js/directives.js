@@ -15,7 +15,7 @@
             'title': 'Pricing',
             'link': 'partner'
         }, {
-            'theitle': 'Contact',
+            'title': 'Contact Us',
             'link': '../contactus'
         }];
         $scope.navList = [{"name":"Dashboard","route":"dashboard","icon":"icon-home"},

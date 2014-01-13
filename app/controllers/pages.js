@@ -23,3 +23,10 @@ exports.api = function(req, res) {
         title: "About Us"
     });
 };
+
+exports.index = function(req, res) {
+    res.render('index', {
+        user: req.user ? JSON.stringify(req.user) : 'null',
+        isLoggedIn: req.user ? true : false
+    });
+};

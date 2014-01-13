@@ -229,6 +229,11 @@ textarea::-webkit-input-placeholder {
 	text-transform: uppercase;
 	font-weight: lighter;
 	padding: 11px 20px;
+    font-size: 26px;
+    line-height: 20px;
+    position: relative;
+    top: 3px;
+    float:left;
 }
 .navbar-inverse .navbar-brand strong {
 	font-weight: normal;
@@ -363,4 +368,8 @@ table th span.line{
 }
 .nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus{
 	outline:0;
+}
+.carousel-control.left,
+.carousel-control.right {
+	cursor: pointer;
 }

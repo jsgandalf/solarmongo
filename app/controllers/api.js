@@ -8,19 +8,28 @@ var mongoose = require('mongoose'),
 
 //getToken
 exports.getToken = function(req, res){
-    if (req.user) {
-        User.createUserToken(req.user.email, function(err, usersToken) {
-            // console.log('token generated: ' +usersToken);
-            // console.log(err);
+    var email = req.query.email;
+    var password = req.query.password;
+    User.findOne({
+        email: email
+    }, function(err, user) {
+        if (err) {
+            res.json({error: err});
+        }
+        if (!user) {
+            res.json({error: 'Unknown user'});
+        }
+        if (!user.authenticate(password)) {
+            res.json({error: 'Invalid password'});
+        }
+        User.createUserToken(email, function(err, usersToken) {
             if (err) {
                 res.json({error: 'Issue generating token'});
             } else {
                 res.json({token : usersToken});
             }
         });
-    } else {
-        res.json({error: 'AuthError'});
-    }
+    });
 }
 
 /**

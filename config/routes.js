@@ -68,6 +68,6 @@ module.exports = function(app, passport, auth) {
     app.del('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.destroy);
 
     // curl -v http://localhost:3000/?access_token=123456789
-    app.get('/token', api.getToken)
-    app.post('/token', api.getToken)
+    app.get('/api/token', api.getToken)
+    app.post('/api/token', api.getToken)
 };

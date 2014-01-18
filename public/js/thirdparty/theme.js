@@ -73,7 +73,7 @@ $(function () {
 
 
   // mobile side-menu slide toggler
-  var $menu = $("#sidebar-nav");
+  /*var $menu = $("#sidebar-nav");
   $("body").click(function () {
     if ($(this).hasClass("menu")) {
       $(this).removeClass("menu");
@@ -88,7 +88,7 @@ $(function () {
   });
   $(window).resize(function() { 
     $(this).width() > 769 && $("body.menu").removeClass("menu")
-  })
+  })*/
 
 
 	// build all tooltips from data-attributes

@@ -23,10 +23,13 @@
                 {"name":"Contacts","route":"contacts","icon":"icon-user"},
                 {"name":"Tasks","route":"tasks","icon":"icon-check"},
                 {"name":"Reports","route":"reports","icon":"icon-bar-chart"}];
-        $scope.isCollapsed = true;
+        $scope.isCollapsed = false;
         $scope.isActive = function(route) {
             return ("/"+route) === $location.path();
         }
+    },
+    link: function (scope, element, attrs) {
+        
     }
   };
 });

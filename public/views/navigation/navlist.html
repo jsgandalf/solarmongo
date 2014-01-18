@@ -48,7 +48,7 @@
 <!-- end navbar not authenticated -->
 
 <!-- navbar is authenticated-->
-<header class="navbar navbar-inverse" role="banner">
+<header class="navbar navbar-inverse" role="banner" data-ng-show="global.authenticated">
         <div class="navbar-header">
             <button class="navbar-toggle" type="button" data-toggle="collapse" id="menu-toggler" ng-click="isCollapsed = !isCollapsed">
                 <span class="sr-only">Toggle navigation</span>
@@ -209,26 +209,19 @@
 <!-- end navbar -->
 
 <!-- sidebar -->
-<div data-ng-show="global.authenticated" collapse="isCollapsed">
-    <div>
-        <ul id="sidebar-nav">
-            <li>STuff</li>
-        </ul>
-    </div>
-    <!--<div id="sidebar-nav">
-        <ul id="dashboard-menu">
-            <li ng-class="{active:isActive(list.route)}" ng-repeat="list in navList">
-                <div class="pointer" ng-class="{hide:!isActive(list.route)}">
-                    <div class="arrow"></div>
-                    <div class="arrow_border"></div>
-                </div>
-                <a ng-href="#!/{{list.route}}">
-                    <i class="{{list.icon}}"></i>
-                    <span>{{list.name}}</span>
-                </a>
-            </li>
-        </ul>
-    </div>-->
+<div id="sidebar-nav" ng-class="{display:isCollapsed}" data-ng-show="global.authenticated">
+    <ul id="dashboard-menu">
+        <li ng-class="{active:isActive(list.route)}" ng-repeat="list in navList">
+            <div class="pointer" ng-class="{hide:!isActive(list.route)}">
+                <div class="arrow"></div>
+                <div class="arrow_border"></div>
+            </div>
+            <a ng-href="#!/{{list.route}}">
+                <i class="{{list.icon}}"></i>
+                <span>{{list.name}}</span>
+            </a>
+        </li>
+    </ul>
 </div>
 <!-- end sidebar -->
 

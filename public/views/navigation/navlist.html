@@ -212,7 +212,7 @@
 <!-- sidebar -->
 <div id="sidebar-nav" ng-class="{display:isCollapsed}" data-ng-show="global.authenticated">
     <ul id="dashboard-menu">
-        <li ng-click="alert('yo')" ng-class="{active:isActive(list.route)}" ng-repeat="list in navList">
+        <li ng-click="changeCollapsed()" ng-class="{active:isActive(list.route)}" ng-repeat="list in navList">
             <div class="pointer" ng-class="{hide:!isActive(list.route)}">
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>

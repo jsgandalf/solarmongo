@@ -21,7 +21,7 @@ h1 small, h2 small, h3 small, h4 small, h5 small {
 input.search {
   background: url("../../img/lens.png") #fcfcfc no-repeat 95%;
   box-shadow: none;
-  height: 19px;
+  height: 30px;
   font-size: 13px;
   padding: 2px 6px;
   border: 1px solid #d0dde9;
@@ -31,7 +31,7 @@ input.search {
 }
 
 .header {
-  margin-bottom: 50px;
+  margin: 0 0 50px;
 }
 .header h1, .header h2, .header h3, .header h4, .header h5 {
   float: left;
@@ -387,7 +387,7 @@ input.search {
 }
 
 #pad-wrapper {
-  padding: 0px 25px;
+  padding: 0px 40px;
   margin-top: 55px;
 }
 #pad-wrapper h4 {
@@ -548,9 +548,9 @@ input.search {
     -o-transition: left .25s ease;
     -ms-transition: left .25s ease;
     transition: left .25s ease;
+    height: 100%;
   }
   #sidebar-nav.display {
-    position: absolute;
     left: 0;
     height: 100%;
   }

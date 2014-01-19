@@ -24,16 +24,13 @@
                 {"name":"Tasks","route":"tasks","icon":"icon-check"},
                 {"name":"Reports","route":"reports","icon":"icon-bar-chart"}];
         $scope.isCollapsed = false;
-        $scope.changeCollapsed = function(){
-            console.log("changed");
+        $scope.changeCollapsed = function($event){
+            $event.stopPropagation();
             $scope.isCollapsed = !$scope.isCollapsed;
         }
         $scope.isActive = function(route) {
             return ("/"+route) === $location.path();
         }
-    },
-    link: function (scope, element, attrs) {
-        console.log(element.find("#sidebar-nav").html());
     }
   };
 });

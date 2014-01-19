@@ -4,7 +4,7 @@
 .users-list .header input.search {
   padding: 5px 6px;
   position: relative;
-  top: -1px;
+  top: 0px;
   margin-left: 120px;
 }
 .users-list .header input.search:focus {

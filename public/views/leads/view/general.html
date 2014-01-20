@@ -18,20 +18,18 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-2 control-label">Name:</label>
-                        <div class="col-md-10">
-                            <div class="form-inline">
-                                <div class="form-group">
-                                    <input type="text" data-ng-model="lead.firstName" placeholder="First Name" class="form-control col-md-12 small-inline" maxlength="30" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" data-ng-model="lead.lastName" placeholder="Last Name" class="form-control col-md-12 small-inline last" maxlength="30" required>
-                                </div>
-                            </div>
+                        <div class="col-md-2 control-label">
+                          <label>Name:</label>
+                        </div>
+                        <div class="col-md-4">
+                          <input type="text" data-ng-model="lead.firstName" placeholder="First Name" class="form-control" maxlength="30" required>
+                        </div>
+                        <div class="col-md-4">
+                          <input type="text" data-ng-model="lead.lastName" placeholder="Last Name" class="form-control" maxlength="30" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-2 control-label">Company:</label>
+                        <label class="col-md-2 control-label">Company:</label>  
                         <div class="col-md-8">
                             <input class="form-control" type="text" name="companyName" data-ng-model="lead.companyName" placeholder="Company Name"/>
                         </div>
@@ -48,11 +46,16 @@
                             <input class="form-control" type="text" data-ng-model="lead.email" placeholder="example@example.com">
                         </div>
                     </div>
-                    
-                     <div class="col-md-12 field-box">
-                        <label>Phone:</label>
-                        <input type="text" data-ng-model="lead.phoneWork" placeholder="Work Phone" class="span12 small-inline" maxlength="30">
-                        <input type="text" data-ng-model="lead.phoneMobile" placeholder="Mobile Phone" class="span12 small-inline last" maxlength="30">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                          <label>Phone:</label>
+                        </div>
+                        <div class="col-md-4">
+                          <input type="text" data-ng-model="lead.phoneWork" placeholder="Work Phone" class="form-control" maxlength="30">
+                        </div>
+                        <div class="col-md-4">
+                          <input type="text" data-ng-model="lead.phoneMobile" placeholder="Mobile Phone" class="form-control" maxlength="30">
+                        </div>
                     </div>
                     <div class="col-md-12 field-box">
                         <label>Address:</label>
@@ -147,7 +150,7 @@
                     <li><a href="#">Import from a CSV file</a></li>
                     <li><a href="#">Import from an Excel file</a></li>
                 </ul>
-            </div>-->
+            </div>
         </div>
     </div>
 </div>

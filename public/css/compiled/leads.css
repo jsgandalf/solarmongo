@@ -1,5 +1,280 @@
-.form-wrapper input.small-inline {
-    margin-right: 20px;
-    width: 35.3%;
+#state{
+  /*width: 30%;*/
+  height: 34px;
+  margin-top: -4px;
+}
+#state select{
+  padding: 7px 30px 0 7px;
 }
 
+.tag-sidebar{
+	margin-top:25px;
+}
+
+.col-md-1_5 {
+    width: 11.333%;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+}
+@media (min-width: 768px) {
+	.col-sm-1_5 {
+	    float: left;
+	}
+}
+@media (min-width: 992px) {
+	.col-md-1_5 {
+	    float: left;
+	}
+}
+@media (min-width: 1200px) {
+	.col-lg-1_5 {
+	    float: left;
+	}
+}
+
+.form-wrapper textarea {
+  height: 88px;
+}
+.textarea {
+  margin-top: 0px;
+}
+span.charactersleft {
+  display: block;
+  color: #9ba0a5;
+  text-align: left;
+  margin-left: 18%;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.leads {
+  /* form sidebar*/ }
+  .leads .form-wrapper .with-sidebar {
+    border-right: 1px solid #edeef1;
+    box-shadow: 4px 0px 3px -1px rgba(226, 226, 226, 0.1); }
+  .leads .form-sidebar .alert {
+    margin: 10px 0px 30px 0px; }
+    .leads .form-sidebar .alert i {
+      margin-bottom: 30px; }
+  .leads .form-sidebar h6 {
+    font-weight: 600;
+    text-transform: uppercase; }
+  .leads .form-sidebar p {
+    color: #777e86; }
+  .leads .form-sidebar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    .leads .form-sidebar ul a {
+      text-decoration: underline; }
+
+/* responsive */
+@media (max-width: 991px) {
+  .leads .form-wrapper .with-sidebar {
+    border-right: 0 none;
+    box-shadow: none; }
+  .leads .form-sidebar {
+    margin-top: 40px; } }
+ 
+
+/* Old CSS need to merge this with the top */
+.leads {
+  margin:0;
+}
+.leads .form-wrapper .with-sidebar {
+  border-right: 1px solid #edeef1;
+  box-shadow: 4px 0px 3px -1px rgba(226, 226, 226, 0.1);
+}
+.leads .form-wrapper .container {
+  width: 90%;
+  float: left;
+}
+.leads .form-wrapper .field-box {
+  margin-bottom: 25px;
+  margin-left: 0;
+  float: left;
+  width: 100%;
+}
+
+.leads .form-wrapper input[type="text"] {
+  margin: -4px 0 0 0;
+  padding: 3px 6px;
+}
+
+.leads .form-wrapper input.small {
+  width: 30%;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.leads .form-wrapper input.last {
+  margin-right: 0;
+}
+.leads .form-wrapper input:-moz-placeholder {
+  font-style: italic;
+}
+.leads .form-wrapper input:-ms-input-placeholder {
+  font-style: italic;
+}
+.leads .form-wrapper input::-webkit-input-placeholder {
+  font-style: italic;
+}
+.leads .form-wrapper textarea {
+  height: 88px;
+}
+.leads .textarea {
+  margin-top: 0px;
+}
+.leads .textarea span.charactersleft {
+  display: block;
+  color: #9ba0a5;
+  text-align: left;
+  margin-left: 18%;
+  font-size: 13px;
+  font-style: italic;
+}
+.leads .actions {
+  margin-top: 30px;
+  text-align: right;
+  padding-right: 40px;
+}
+.leads .actions span {
+  text-transform: uppercase;
+  color: #7e91aa;
+  font-weight: 600;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 2px 0 8px;
+}
+.leads .actions input.reset {
+  color: #7e91aa;
+  font-weight: 500;
+}
+.leads .form-sidebar .alert {
+  margin: 20px 0px 60px 0px;
+}
+.leads .form-sidebar .alert i {
+  margin-bottom: 40px;
+}
+.leads .form-sidebar h6 {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.leads .form-sidebar p {
+  color: #777e86;
+}
+.leads .form-sidebar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.leads .form-sidebar ul a {
+  text-decoration: underline;
+}
+
+.leads div.middle-text{
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+  position: relative;
+}
+
+.leads div.middle{
+  display: inline-block;
+  position: relative;
+  left:20px;
+  margin-right:45px;
+  cursor:pointer;
+}
+.leads .form-wrapper input.middle{
+  margin: 20px 20px 0 50px;
+  width: 59%;
+}
+.leads .form-wrapper input.top{
+  margin: 20px 0px 20px 0px;
+}
+
+
+/* responsive */
+@media (max-width: 767px) {
+  .leads .form-wrapper .container {
+    width: 100%;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #edeef1;
+    box-shadow: 0px 4px 3px -1px rgba(226, 226, 226, 0.1);
+  }
+  .leads .form-wrapper .with-sidebar {
+    border-right: 0 none;
+    box-shadow: none;
+  }
+  
+  .leads .form-wrapper .textarea label {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  .leads .form-wrapper .textarea textarea {
+    width: 97%;
+  }
+  .leads .textarea span.charactersleft {
+    display: inline-block;
+    margin-left: 0;
+  }
+  .leads .actions {
+    margin-top: 0;
+  }
+  .leads .form-sidebar {
+    margin-top: 40px;
+  }
+}
+@media (max-width: 979px) {
+  .leads .form-wrapper .address-fields .control-label{
+  	display:none;
+  }
+  .leads .form-wrapper input.small {
+    width: inherit;
+    margin: 20px 0px 0px 0px;
+  }
+  .leads .form-wrapper input.small-inline {
+    margin: 10px 0px 0px 0px;
+  }
+  #state{
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+@media only screen and (max-width: 400px),
+(max-device-width: 400px)  {
+
+  /* Force table to not be like tables anymore */
+  table, thead, tbody, th, td, tr { 
+    display: block; 
+  }
+  
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr { 
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  td { 
+    /* Behave  like a "row" */
+    border: none;
+    position: relative;
+    padding-left: 50%; 
+  }
+  
+  td:before { 
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%; 
+    padding-right: 10px; 
+    white-space: nowrap;
+  }
+}

@@ -385,4 +385,14 @@ table th span.line{
 label {
     display: inline-block;
     font-weight: 600;
+    margin-bottom: 10px !important;
+}
+.form-control::-moz-placeholder {
+  font-style: italic;
+}
+.form-control::input:-ms-input-placeholder {
+  font-style: italic;
+}
+.form-control::input::-webkit-input-placeholder {
+  font-style: italic;
 }

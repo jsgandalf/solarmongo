@@ -373,3 +373,16 @@ table th span.line{
 .carousel-control.right {
 	cursor: pointer;
 }
+
+.form-inline .form-group{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.form-horizontal .control-label {
+    text-align: left;
+}
+label {
+    display: inline-block;
+    font-weight: 600;
+}

@@ -56,7 +56,7 @@ module.exports = function(passport) {
     you need to drop the old key of "username_1"
     type in mongo shell: db.users.dropIndex('username_1')
     */
-    passport.use(new GoogleStrategy({
+    /*passport.use(new GoogleStrategy({
             clientID: config.google.clientID,
             clientSecret: config.google.clientSecret,
             callbackURL: config.google.callbackURL
@@ -81,7 +81,7 @@ module.exports = function(passport) {
                 }
             });
         }
-    ));
+    ));*/
 
     //Protect endpoints in api using the BASIC strategry, requires passport-http
     passport.use(new BasicStrategy(

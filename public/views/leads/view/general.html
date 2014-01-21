@@ -3,14 +3,6 @@
         <div class="row form-wrapper">
             <div class="col-md-9 with-sidebar">
                 <form class="form-horizontal" role="form" data-ng-submit="update()">
-                    <!--<div class="col-md-12 field-box">
-                        <h3>General</h3>
-                    </div>-->
-                    <!--<div class="col-md-12 field-box">
-                        <label>Name:</label>
-                        <input type="text" data-ng-model="lead.firstName" placeholder="First Name" class="form-control col-md-12 small-inline" maxlength="30" required>
-                        <input type="text" data-ng-model="lead.lastName" placeholder="Last Name" class="form-control col-md-12 small-inline last" maxlength="30" required>
-                    </div>-->
                     <br>
                     <div class="form-group">
                         <div class="col-md-8">
@@ -54,7 +46,7 @@
                           <input type="text" data-ng-model="lead.phoneWork" placeholder="Work Phone" class="form-control" maxlength="30">
                         </div>
                         <div class="col-md-5">
-                          <input type="text" data-ng-model="lead.phoneMobile" placeholder="Mobile Phone" class="form-control" maxlength="30">
+                          <input type="text" data-ng-model="lead.phoneMobile" placeholder="Mobile Phone" class="form-control small-inline" maxlength="30">
                         </div>
                     </div>
                     <div class="form-group">
@@ -66,7 +58,7 @@
                         </div>
                     </div>
                     <div class="form-group address-fields">
-                        <div class="col-md-1_5 control-label">
+                        <div class="col-md-1_5 control-label ghost_label">
                           <label>&nbsp;</label>
                         </div>
                         <div class="col-md-3">
@@ -142,7 +134,7 @@
                             <span class="charactersleft">90 characters remaining. Field limited to 100 characters</span>
                         </div>
                     </div>
-                    <div class="span11 field-box actions">
+                    <div class="col-md-11 field-box actions">
                         <input type="submit" value="Update Lead" class="btn-glow primary">
                         <span>OR</span>
                         <input type="reset" class="reset" value="Cancel" onclick="window.history.back()">

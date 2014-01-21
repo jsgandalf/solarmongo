@@ -2,31 +2,40 @@ extends ../layouts/default
 
 block content
   .container
-    .hero-unit
+    .jumbotron
         h1 Contact Us
+        br
         p
-          | We want to talk with. Allow us to help streamline your sales and make your workflow easier and faster than ever.
-        p
-
-          div#contact-area
-          form(method='post',action='')
-            label(for='name') Name *
-            input(type='text',name='name',id='name')
-
-            label(for='companyName') Company Name 
-            input(type='text',name='companyname',id='companyName') 
-
-            label(for='phone') Phone Number *
-            input(type='text',name='phone',id='phone') 
-
-            label(for='email') Email *
-            input(type='text',name='email',id='email') 
-
-            label(for='inquiry') Inquiry *
-            input(type='text',name='inquiry',id='inquiry',class='span5',rows='30')
-
-          input(type='submit',name='submit',value='Submit').submit-button
-
+          | We want to talk with you. Allow us to help streamline your sales and make your workflow easier and faster than ever.
+        br
+        .container
+            .row.header.no-jumbotron
+              .row.form-wrapper
+                .col-md-12
+                  form.form-horizontal(role='form')
+                      .form-group
+                        .col-md-2.control-label
+                          label Name:
+                        .col-md-5
+                          input.form-control(type='text', data-ng-model='firstName', placeholder='First Name', maxlength='30', required='required')
+                        .col-md-5
+                          input.form-control.small-inline(type='text', data-ng-model='lastName', placeholder='Last Name', maxlength='30', required='required')
+                      .form-group
+                        label.col-md-2.control-label Company:
+                        .col-md-10
+                          input.form-control(type='text', name='companyName', data-ng-model='companyName', placeholder='Company Name')
+                      .form-group
+                        label.col-md-2.control-label Phone:
+                        .col-md-10
+                          input.form-control(type='text', name='phone', data-ng-model='phone', placeholder='Phone Number')
+                      .form-group
+                        label.col-md-2.control-label Email:
+                        .col-md-10
+                          input.form-control(type='text', data-ng-model='email', placeholder='example@example.com')
+                      .form-group
+                        label.col-md-2.control-label Inquiry:
+                        .col-md-10
+                          textarea.form-control(rows='5',type='text', data-ng-model='inquiry', placeholder='Your inquiry here...')
       hr
     footer
       p &copy; SolarMongo 2014

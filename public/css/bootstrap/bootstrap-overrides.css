@@ -274,6 +274,7 @@ textarea::-webkit-input-placeholder {
 .dropdown-submenu:hover > a,
 .dropdown-submenu:focus > a {
 	background: rgb(60, 91, 121) !important;
+    color: #FFF;
 }
 
 

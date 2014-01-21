@@ -1,3 +1,7 @@
+.ghost_label{
+    display:block;
+}
+
 #state{
   /*width: 30%;*/
   height: 34px;
@@ -179,14 +183,28 @@ span.charactersleft {
   font-weight: 600;
   display: inline-block;
   position: relative;
+  margin-top: 6px;
 }
 
 .leads div.middle{
   display: inline-block;
   position: relative;
   left:20px;
-  margin-right:45px;
   cursor:pointer;
+}
+.leads .middletable .middle{
+  display: inline-block;
+  position: relative;
+  left:20px;
+  cursor:pointer;
+  margin-right: 45px;
+}
+.leads .middletable1 .middle{
+  display: inline-block;
+  position: relative;
+  left:20px;
+  cursor:pointer;
+  margin-right: 45px;
 }
 .leads .form-wrapper input.middle{
   margin: 20px 20px 0 50px;
@@ -230,6 +248,15 @@ span.charactersleft {
   }
 }
 @media (max-width: 979px) {
+    .col-md-1_5{
+        width: 100%;
+    }
+    .leads .middletable1 .middle{
+        left:33px;
+    }
+   .ghost_label{
+        display:none;
+   }
   .leads .form-wrapper .address-fields .control-label{
   	display:none;
   }
@@ -247,6 +274,7 @@ span.charactersleft {
 }
 @media only screen and (max-width: 400px),
 (max-device-width: 400px)  {
+
 
   /* Force table to not be like tables anymore */
   table, thead, tbody, th, td, tr { 

@@ -16,11 +16,19 @@ exports.aboutUs = function(req, res) {
     });
 };
 
+exports.pricing = function(req, res) {
+    res.render('pages/pricing', {
+        user: req.user ? JSON.stringify(req.user) : 'null',
+        isLoggedIn: req.user ? true : false,
+        title: "Pricing"
+    });
+};
+
 exports.api = function(req, res) {
     res.render('pages/api', {
         user: req.user ? JSON.stringify(req.user) : 'null',
         isLoggedIn: req.user ? true : false,
-        title: "About Us"
+        title: "API"
     });
 };
 

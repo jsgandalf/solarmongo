@@ -53,6 +53,7 @@ module.exports = function(app, passport, auth) {
     app.get('/', pages.index);
     app.get('/contactus', pages.contactUs);
     app.get('/aboutus', pages.aboutUs);
+    app.get('/pricing', pages.pricing);
     app.get('/api', pages.api);
 
     //Api auth

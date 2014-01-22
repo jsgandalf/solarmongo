@@ -38,10 +38,10 @@ var LeadSchema = new Schema({
         state:{type: String, default: '', trim: true},
         zip:{type: String, default: '', trim: true}
     },
-    siteNotes: {
+    jobSite: {
         roofingType:{type: String, default: '', trim:true},
         layers:{type: String, default: '', trim:true},
-        height:{type: String, default: '', trim:true},
+        height:{type: Number, default: '', trim:true},
         pitch:{type: String, default: '', trim:true},
         location:{type: String, default: '', trim:true},
         eyeAvailability:{type: Boolean, default: false},

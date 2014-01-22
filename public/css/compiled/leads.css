@@ -1,97 +1,50 @@
-.new-user {
-  /* form sidebar*/ }
-  .new-user .form-wrapper .with-sidebar {
-    border-right: 1px solid #edeef1;
-    box-shadow: 4px 0px 3px -1px rgba(226, 226, 226, 0.1); }
-  .new-user .form-sidebar .alert {
-    margin: 10px 0px 30px 0px; }
-    .new-user .form-sidebar .alert i {
-      margin-bottom: 30px; }
-  .new-user .form-sidebar h6 {
-    font-weight: 600;
-    text-transform: uppercase; }
-  .new-user .form-sidebar p {
-    color: #777e86; }
-  .new-user .form-sidebar ul {
-    margin: 0;
-    padding: 0;
-    list-style: none; }
-    .new-user .form-sidebar ul a {
-      text-decoration: underline; }
-
-/* responsive */
-@media (max-width: 991px) {
-  .new-user .form-wrapper .with-sidebar {
-    border-right: 0 none;
-    box-shadow: none; }
-  .new-user .form-sidebar {
-    margin-top: 40px; } }
- 
-
-/* Old CSS need to merge this with the top */
-.new-user {
-  margin:0;
-}
-.new-user .form-wrapper .with-sidebar {
-  border-right: 1px solid #edeef1;
-  box-shadow: 4px 0px 3px -1px rgba(226, 226, 226, 0.1);
-}
-.new-user .form-wrapper .container {
-  width: 90%;
-  float: left;
-}
-.new-user .form-wrapper .field-box {
-  margin-bottom: 25px;
-  margin-left: 0;
-  float: left;
-  width: 100%;
-}
-.new-user .form-wrapper label {
-  display: inline-block;
-  float: left;
-  font-weight: 600;
-  font-size: 13px;
-  cursor: auto;
-  width: 120px;
-}
-.new-user .form-wrapper input[type="text"] {
-  margin: -4px 0 0 0;
-  padding: 3px 6px;
-}
-.new-user .form-wrapper .address-fields {
-  margin-left: 0px;
-  float: left;
-  width: 75%;
-}
-.new-user .form-wrapper input.small {
-  width: 30%;
-  margin-top: 20px;
-  margin-right: 20px;
+.ghost_label{
+    display:block;
 }
 
-.new-user .form-wrapper input.small-inline {
-  width: 35.3%;
-  margin-right: 20px;
+#state{
+  /*width: 30%;*/
+  height: 34px;
+  margin-top: -4px;
 }
-.new-user .form-wrapper input.last {
-  margin-right: 0;
+#state select{
+  padding: 7px 30px 0 7px;
 }
-.new-user .form-wrapper input:-moz-placeholder {
-  font-style: italic;
+
+.tag-sidebar{
+	margin-top:25px;
 }
-.new-user .form-wrapper input:-ms-input-placeholder {
-  font-style: italic;
+
+.col-md-1_5 {
+    width: 11.333%;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
 }
-.new-user .form-wrapper input::-webkit-input-placeholder {
-  font-style: italic;
+@media (min-width: 768px) {
+	.col-sm-1_5 {
+	    float: left;
+	}
 }
-.new-user .form-wrapper textarea {
+@media (min-width: 992px) {
+	.col-md-1_5 {
+	    float: left;
+	}
+}
+@media (min-width: 1200px) {
+	.col-lg-1_5 {
+	    float: left;
+	}
+}
+
+.form-wrapper textarea {
   height: 88px;
 }
-.new-user .textarea {
+.textarea {
   margin-top: 0px;
 }
-.new-user .textarea span.charactersleft {
+span.charactersleft {
   display: block;
   color: #9ba0a5;
   text-align: left;
@@ -99,12 +52,99 @@
   font-size: 13px;
   font-style: italic;
 }
-.new-user .actions {
+
+.leads {
+  /* form sidebar*/ }
+  .leads .form-wrapper .with-sidebar {
+    border-right: 1px solid #edeef1;
+    box-shadow: 4px 0px 3px -1px rgba(226, 226, 226, 0.1); }
+  .leads .form-sidebar .alert {
+    margin: 10px 0px 30px 0px; }
+    .leads .form-sidebar .alert i {
+      margin-bottom: 30px; }
+  .leads .form-sidebar h6 {
+    font-weight: 600;
+    text-transform: uppercase; }
+  .leads .form-sidebar p {
+    color: #777e86; }
+  .leads .form-sidebar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    .leads .form-sidebar ul a {
+      text-decoration: underline; }
+
+/* responsive */
+@media (max-width: 991px) {
+  .leads .form-wrapper .with-sidebar {
+    border-right: 0 none;
+    box-shadow: none; }
+  .leads .form-sidebar {
+    margin-top: 40px; } }
+ 
+
+/* Old CSS need to merge this with the top */
+.leads {
+  margin:0;
+}
+.leads .form-wrapper .with-sidebar {
+  border-right: 1px solid #edeef1;
+  box-shadow: 4px 0px 3px -1px rgba(226, 226, 226, 0.1);
+}
+.leads .form-wrapper .container {
+  width: 90%;
+  float: left;
+}
+.leads .form-wrapper .field-box {
+  margin-bottom: 25px;
+  margin-left: 0;
+  float: left;
+  width: 100%;
+}
+
+.leads .form-wrapper input[type="text"] {
+  margin: -4px 0 0 0;
+  padding: 3px 6px;
+}
+
+.leads .form-wrapper input.small {
+  width: 30%;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.leads .form-wrapper input.last {
+  margin-right: 0;
+}
+.leads .form-wrapper input:-moz-placeholder {
+  font-style: italic;
+}
+.leads .form-wrapper input:-ms-input-placeholder {
+  font-style: italic;
+}
+.leads .form-wrapper input::-webkit-input-placeholder {
+  font-style: italic;
+}
+.leads .form-wrapper textarea {
+  height: 88px;
+}
+.leads .textarea {
+  margin-top: 0px;
+}
+.leads .textarea span.charactersleft {
+  display: block;
+  color: #9ba0a5;
+  text-align: left;
+  margin-left: 18%;
+  font-size: 13px;
+  font-style: italic;
+}
+.leads .actions {
   margin-top: 30px;
   text-align: right;
   padding-right: 40px;
 }
-.new-user .actions span {
+.leads .actions span {
   text-transform: uppercase;
   color: #7e91aa;
   font-weight: 600;
@@ -112,117 +152,129 @@
   vertical-align: middle;
   margin: 0 2px 0 8px;
 }
-.new-user .actions input.reset {
+.leads .actions input.reset {
   color: #7e91aa;
   font-weight: 500;
 }
-.new-user .form-sidebar .alert {
+.leads .form-sidebar .alert {
   margin: 20px 0px 60px 0px;
 }
-.new-user .form-sidebar .alert i {
+.leads .form-sidebar .alert i {
   margin-bottom: 40px;
 }
-.new-user .form-sidebar h6 {
+.leads .form-sidebar h6 {
   font-weight: 600;
   text-transform: uppercase;
 }
-.new-user .form-sidebar p {
+.leads .form-sidebar p {
   color: #777e86;
 }
-.new-user .form-sidebar ul {
+.leads .form-sidebar ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.new-user .form-sidebar ul a {
+.leads .form-sidebar ul a {
   text-decoration: underline;
 }
 
-.new-user div.middle-text{
+.leads div.middle-text{
   font-size: 13px;
   font-weight: 600;
   display: inline-block;
   position: relative;
+  margin-top: 6px;
 }
 
-.new-user div.middle{
+.leads div.middle{
   display: inline-block;
   position: relative;
   left:20px;
-  margin-right:45px;
   cursor:pointer;
 }
-.new-user .form-wrapper input.middle{
+.leads .middletable .middle{
+  display: inline-block;
+  position: relative;
+  left:20px;
+  cursor:pointer;
+  margin-right: 45px;
+}
+.leads .middletable1 .middle{
+  display: inline-block;
+  position: relative;
+  left:20px;
+  cursor:pointer;
+  margin-right: 45px;
+}
+.leads .form-wrapper input.middle{
   margin: 20px 20px 0 50px;
   width: 59%;
 }
-.new-user .form-wrapper input.top{
+.leads .form-wrapper input.top{
   margin: 20px 0px 20px 0px;
 }
-.new-user .address-fields table{
-  width: 100%;
-}
-.new-user .address-fields table td{
-  padding: 0 10px 10px 10px;
-  vertical-align:bottom;
-}
-.new-user .address-fields .truss{
-  margin-left:60px;
-}
+
 
 /* responsive */
 @media (max-width: 767px) {
-  .new-user .form-wrapper .container {
+  .leads .form-wrapper .container {
     width: 100%;
     padding-bottom: 20px;
     border-bottom: 1px solid #edeef1;
     box-shadow: 0px 4px 3px -1px rgba(226, 226, 226, 0.1);
   }
-  .new-user .form-wrapper .with-sidebar {
+  .leads .form-wrapper .with-sidebar {
     border-right: 0 none;
     box-shadow: none;
   }
-  .new-user .form-wrapper label {
-    margin: 0;
-  }
-  .new-user .form-wrapper .textarea label {
+  
+  .leads .form-wrapper .textarea label {
     width: 100%;
     text-align: left;
     margin-bottom: 10px;
   }
-  .new-user .form-wrapper .textarea textarea {
+  .leads .form-wrapper .textarea textarea {
     width: 97%;
   }
-  .new-user .textarea span.charactersleft {
+  .leads .textarea span.charactersleft {
     display: inline-block;
     margin-left: 0;
   }
-  .new-user .actions {
+  .leads .actions {
     margin-top: 0;
   }
-  .new-user .form-sidebar {
+  .leads .form-sidebar {
     margin-top: 40px;
   }
 }
 @media (max-width: 979px) {
-  .new-user .form-wrapper .address-fields {
-    margin-top: 30px;
-    width: 100%;
+    .col-md-1_5{
+        width: 100%;
+    }
+    .leads .middletable1 .middle{
+        left:33px;
+    }
+   .ghost_label{
+        display:none;
+   }
+  .leads .form-wrapper .address-fields .control-label{
+  	display:none;
   }
-  .new-user .form-wrapper input.small {
+  .leads .form-wrapper input.small {
     width: inherit;
     margin: 20px 0px 0px 0px;
   }
-  .new-user .form-wrapper input.small-inline {
-    width: inherit;
-    margin: 20px 0px 0px 0px;
+  .leads .form-wrapper input.small-inline {
+    margin: 10px 0px 0px 0px;
   }
   #state{
     width: 100%;
+    margin-top: 10px;
   }
 }
 @media only screen and (max-width: 400px),
 (max-device-width: 400px)  {
+
 
   /* Force table to not be like tables anymore */
   table, thead, tbody, th, td, tr { 

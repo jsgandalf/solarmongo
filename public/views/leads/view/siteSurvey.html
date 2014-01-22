@@ -1,212 +1,306 @@
-<div class="new-user" data-ng-controller="LeadsController" data-ng-init="findOne()">
-    <div class="row-fluid header">
-        <div class="row-fluid form-wrapper">
-            <div class="span12"> <!--with-sidebar-->
-                <form class="new_user_form" data-ng-submit="update()">
-                    <div class="span12 field-box">
-                        <h3>Job Site</h3>
-                    </div>
-                    <div class="span12 field-box">
-                        <label>Name:</label>
-                        <input type="text" data-ng-model="lead.jobSite.firstName" placeholder="First Name" class="span12 small-inline" maxlength="30">
-                        <input type="text" data-ng-model="lead.jobSite.lastName" placeholder="Last Name" class="span12 small-inline last" maxlength="30">
-                    </div>
-                    <div class="span12 field-box">
-                        <label>Address:</label>
-                        <div class="address-fields">
-                            <input type="text" placeholder="Street address" class="span12" data-ng-model="lead.jobSite.address">
-                            <input type="text" placeholder="City" class="span12 small" data-ng-model="lead.jobSite.city">
-                            <div id="state" class="ui-select small">
-                                <select data-ng-model="lead.jobSite.state">
-                                    <option value="">Select State</option>
-                                    <option value="AL">Alabama</option> 
-                                    <option value="AK">Alaska</option> 
-                                    <option value="AZ">Arizona</option> 
-                                    <option value="AR">Arkansas</option> 
-                                    <option value="CA">California</option> 
-                                    <option value="CO">Colorado</option> 
-                                    <option value="CT">Connecticut</option> 
-                                    <option value="DE">Delaware</option> 
-                                    <option value="DC">District Of Columbia</option> 
-                                    <option value="FL">Florida</option> 
-                                    <option value="GA">Georgia</option> 
-                                    <option value="HI">Hawaii</option> 
-                                    <option value="ID">Idaho</option> 
-                                    <option value="IL">Illinois</option> 
-                                    <option value="IN">Indiana</option> 
-                                    <option value="IA">Iowa</option> 
-                                    <option value="KS">Kansas</option> 
-                                    <option value="KY">Kentucky</option> 
-                                    <option value="LA">Louisiana</option> 
-                                    <option value="ME">Maine</option> 
-                                    <option value="MD">Maryland</option> 
-                                    <option value="MA">Massachusetts</option> 
-                                    <option value="MI">Michigan</option> 
-                                    <option value="MN">Minnesota</option> 
-                                    <option value="MS">Mississippi</option> 
-                                    <option value="MO">Missouri</option> 
-                                    <option value="MT">Montana</option> 
-                                    <option value="NE">Nebraska</option> 
-                                    <option value="NV">Nevada</option> 
-                                    <option value="NH">New Hampshire</option> 
-                                    <option value="NJ">New Jersey</option> 
-                                    <option value="NM">New Mexico</option> 
-                                    <option value="NY">New York</option> 
-                                    <option value="NC">North Carolina</option> 
-                                    <option value="ND">North Dakota</option> 
-                                    <option value="OH">Ohio</option> 
-                                    <option value="OK">Oklahoma</option> 
-                                    <option value="OR">Oregon</option> 
-                                    <option value="PA">Pennsylvania</option> 
-                                    <option value="RI">Rhode Island</option> 
-                                    <option value="SC">South Carolina</option> 
-                                    <option value="SD">South Dakota</option> 
-                                    <option value="TN">Tennessee</option> 
-                                    <option value="TX">Texas</option> 
-                                    <option value="UT">Utah</option> 
-                                    <option value="VT">Vermont</option> 
-                                    <option value="VA">Virginia</option> 
-                                    <option value="WA">Washington</option> 
-                                    <option value="WV">West Virginia</option> 
-                                    <option value="WI">Wisconsin</option> 
-                                    <option value="WY">Wyoming</option>
-                                </select>
-                            </div>
-                            <input type="text" data-ng-model="lead.jobSite.zip" placeholder="Postal Code" class="span12 small last">
+<div class="leads" data-ng-controller="LeadsController" data-ng-init="findOne()">
+    <div class="row header">
+        <div class="row form-wrapper">
+            <div class="col-md-9"> <!--without-sidebar-->
+                <form class="form-horizontal" role="form" data-ng-submit="update()">
+                    <br>
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            <h3>Job Site</h3>
                         </div>
                     </div>
-                    <div class="span12 field-box">
-                        <h3>Site Notes</h3>
+                    <div class="form-group">
+                        <div class="col-md-1_5 control-label">
+                            <label>Name:</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" data-ng-model="lead.jobSite.firstName" placeholder="First Name" class="form-control" maxlength="30">
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" data-ng-model="lead.jobSite.lastName" placeholder="Last Name" class="form-control small-inline" maxlength="30">
+                        </div>
                     </div>
-                    <div class="span12 field-box">
-                        <label>Roofing:</label>
-                        <input type="text" data-ng-model="lead.siteNotes.roofingType" placeholder="Roofing Type" class="span12 small-inline" maxlength="30">
-                        <input type="text" data-ng-model="lead.siteNotes.layers" placeholder="Number of Layers" class="span12 small-inline last" maxlength="30">
+                    <div class="form-group">
+                        <div class="col-md-1_5 control-label">
+                            <label>Address:</label>    
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" placeholder="Street address" class="form-control" data-ng-model="lead.jobSite.address">
+                        </div>
                     </div>
-                    <div class="span12 field-box">
-                        <label>Installation:</label>
-                        <input type="text" data-ng-model="lead.siteNotes.height" placeholder="Installation Height" class="span12 small-inline" maxlength="30">
-                        <input type="text" data-ng-model="lead.siteNotes.pitch" placeholder="Roof Pitch" class="span12 small-inline last" maxlength="30">
+                    <div class="form-group address-fields">
+                        <div class="col-md-1_5 control-label ghost_label">
+                            <label>&nbsp;</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" placeholder="City" class="form-control" data-ng-model="lead.jobSite.city">
+                        </div>
+                        <div id="state" class="ui-select col-md-4">
+                            <select data-ng-model="lead.jobSite.state">
+                                <option value="">Select State</option>
+                                <option value="AL">Alabama</option> 
+                                <option value="AK">Alaska</option> 
+                                <option value="AZ">Arizona</option> 
+                                <option value="AR">Arkansas</option> 
+                                <option value="CA">California</option> 
+                                <option value="CO">Colorado</option> 
+                                <option value="CT">Connecticut</option> 
+                                <option value="DE">Delaware</option> 
+                                <option value="DC">District Of Columbia</option> 
+                                <option value="FL">Florida</option> 
+                                <option value="GA">Georgia</option> 
+                                <option value="HI">Hawaii</option> 
+                                <option value="ID">Idaho</option> 
+                                <option value="IL">Illinois</option> 
+                                <option value="IN">Indiana</option> 
+                                <option value="IA">Iowa</option> 
+                                <option value="KS">Kansas</option> 
+                                <option value="KY">Kentucky</option> 
+                                <option value="LA">Louisiana</option> 
+                                <option value="ME">Maine</option> 
+                                <option value="MD">Maryland</option> 
+                                <option value="MA">Massachusetts</option> 
+                                <option value="MI">Michigan</option> 
+                                <option value="MN">Minnesota</option> 
+                                <option value="MS">Mississippi</option> 
+                                <option value="MO">Missouri</option> 
+                                <option value="MT">Montana</option> 
+                                <option value="NE">Nebraska</option> 
+                                <option value="NV">Nevada</option> 
+                                <option value="NH">New Hampshire</option> 
+                                <option value="NJ">New Jersey</option> 
+                                <option value="NM">New Mexico</option> 
+                                <option value="NY">New York</option> 
+                                <option value="NC">North Carolina</option> 
+                                <option value="ND">North Dakota</option> 
+                                <option value="OH">Ohio</option> 
+                                <option value="OK">Oklahoma</option> 
+                                <option value="OR">Oregon</option> 
+                                <option value="PA">Pennsylvania</option> 
+                                <option value="RI">Rhode Island</option> 
+                                <option value="SC">South Carolina</option> 
+                                <option value="SD">South Dakota</option> 
+                                <option value="TN">Tennessee</option> 
+                                <option value="TX">Texas</option> 
+                                <option value="UT">Utah</option> 
+                                <option value="VT">Vermont</option> 
+                                <option value="VA">Virginia</option> 
+                                <option value="WA">Washington</option> 
+                                <option value="WV">West Virginia</option> 
+                                <option value="WI">Wisconsin</option> 
+                                <option value="WY">Wyoming</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" data-ng-model="lead.jobSite.zip" placeholder="Postal Code" class="form-control small-inline">
+                        </div>
                     </div>
-                    <div class="span12 field-box">
-                        <label>Location:</label>
-                        <input class="span9" type="text" name="title" placeholder="Site Location" data-ng-model="lead.siteNotes.location"/>
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            <h3>Site Notes</h3>
+                        </div>
                     </div>
-                    <div class="span12 field-box">
-                        <label>Visiblity:</label>
-                        <div class="address-fields">
+                    <div class="form-group">
+                        <div class="col-md-1_5 control-label">
+                            <label>Roofing:</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" data-ng-model="lead.siteNotes.roofingType" placeholder="Roofing Type" class="form-control" maxlength="30">
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" data-ng-model="lead.siteNotes.layers" placeholder="Number of Layers" class="form-control small-inline" maxlength="30">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-1_5 control-label">
+                            <label>Installation:</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" data-ng-model="lead.siteNotes.height" placeholder="Installation Height" class="form-control" maxlength="30">
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" data-ng-model="lead.siteNotes.pitch" placeholder="Roof Pitch" class="form-control small-inline" maxlength="30">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-1_5 control-label">
+                            <label>Location:</label>    
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="title" placeholder="Site Location" data-ng-model="lead.siteNotes.location"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-1_5 control-label">
+                            <label>Visibility:</label>    
+                        </div>
+                        <div class="col-md-5">
                             <div class="middle-text">Solar Eye Availability Photo:</div>
                             <div class="middle slider-frame primary" ng-click="lead.siteNotes.eyeAvailability = !lead.siteNotes.eyeAvailability">
                                 <span ng-class="{'on' : lead.siteNotes.eyeAvailability, '' : !lead.siteNotes.eyeAvailability}" class="slider-button off">{{lead.siteNotes.eyeAvailability && 'YES' || 'NO'}}</span>
                             </div>
-                            <input type="text" placeholder="Rafter Spacing and Size" class="span12 top" data-ng-model="lead.siteNotes.rafterSpacingAndSize">
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" placeholder="Rafter Spacing and Size" class="form-control small-inline" data-ng-model="lead.siteNotes.rafterSpacingAndSize">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-1_5 control-label ghost_label">
+                            <label>&nbsp;</label>
+                        </div>
+                        <div class="col-md-5">
                             <div class="middle-text">Engineered Truss:</div>
-                            <div class="middle slider-frame primary truss" ng-click="lead.siteNotes.truss = !lead.siteNotes.truss">
+                            <div class="middle slider-frame primary" ng-click="lead.siteNotes.truss = !lead.siteNotes.truss">
                                 <span ng-class="{'on' : lead.siteNotes.truss, '' : !lead.siteNotes.truss}" class="slider-button off">{{lead.siteNotes.truss && 'YES' || 'NO'}}</span>
                             </div>
-                            <input type="text" placeholder="Truss Type if not Engineered" class="span12 top" data-ng-model="lead.siteNotes.otherTruss">
-                            <div class="span12 field-box textarea">
-                                <label>Description:</label>
-                                <textarea class="span12" data-ng-model="lead.siteNotes.description"></textarea>
-                                <span class="charactersleft">90 characters remaining. Field limited to 100 characters</span>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" placeholder="Truss Type if not Engineered" class="form-control small-inline" data-ng-model="lead.siteNotes.otherTruss">
+                        </div>
+                    </div>    
+                    <div class="form-group">
+                        <div class="col-md-1_5 control-label">
+                            <label>Description:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <textarea class="form-control" data-ng-model="lead.siteNotes.description"></textarea>
+                            <span class="charactersleft">90 characters remaining. Field limited to 100 characters</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            <h3>Pictures of Location:</h3>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-1_5 control-label">
+                            <label>Pictures:</label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="middletable1">
+                                <table>
+                                    <tr>
+                                        <td><div class="middle-text">Site:</div></td>
+                                        <td>
+                                            <div class="middle slider-frame primary" ng-click="lead.pictures.site = !lead.pictures.site">
+                                                <span ng-class="{'on' : lead.pictures.site, '' : !lead.pictures.site}" class="slider-button off">{{lead.pictures.site && 'YES' || 'NO'}}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="middle-text">Inverter Location:</div></td>
+                                        <td>
+                                            <div class="middle slider-frame primary" ng-click="lead.pictures.inverterLocation = !lead.pictures.inverterLocation">
+                                                <span ng-class="{'on' : lead.pictures.inverterLocation, '' : !lead.pictures.inverterLocation}" class="slider-button off">{{lead.pictures.inverterLocation && 'YES' || 'NO'}}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="middle-text">Power Meter Closed:</div></td>
+                                        <td>
+                                            <div class="middle slider-frame primary" ng-click="lead.pictures.powerMeterClosed = !lead.pictures.powerMeterClosed">
+                                                <span ng-class="{'on' : lead.pictures.powerMeterClosed, '' : !lead.pictures.powerMeterClosed}" class="slider-button off">{{lead.pictures.powerMeterClosed && 'YES' || 'NO'}}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="middle-text">Power Meter Open:</div></td>
+                                        <td>
+                                            <div class="middle slider-frame primary" ng-click="lead.pictures.powerMeterOpen = !lead.pictures.powerMeterOpen">
+                                                <span ng-class="{'on' : lead.pictures.powerMeterOpen, '' : !lead.pictures.powerMeterOpen}" class="slider-button off">{{lead.pictures.powerMeterOpen && 'YES' || 'NO'}}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+    
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="middletable">
+                                <table>
+                                    <tr>
+                                        <td><div class="middle-text">Shading Problems:</div></td>
+                                        <td>
+                                            <div class="middle slider-frame primary" ng-click="lead.pictures.shadingProblems = !lead.pictures.shadingProblems">
+                                                <span ng-class="{'on' : lead.pictures.shadingProblems, '' : !lead.pictures.shadingProblems}" class="slider-button off">{{lead.pictures.shadingProblems && 'YES' || 'NO'}}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="middle-text">Array Location:</div></td>
+                                        <td>
+                                            <div class="middle slider-frame primary" ng-click="lead.pictures.arrayLocation = !lead.pictures.arrayLocation">
+                                                <span ng-class="{'on' : lead.pictures.arrayLocation, '' : !lead.pictures.arrayLocation}" class="slider-button off">{{lead.pictures.arrayLocation && 'YES' || 'NO'}}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="middle-text">Breaker Panels Closed:</div></td>
+                                        <td>
+                                            <div class="middle slider-frame primary" ng-click="lead.pictures.breakerPanelsClosed = !lead.pictures.breakerPanelsClosed">
+                                                <span ng-class="{'on' : lead.pictures.breakerPanelsClosed, '' : !lead.pictures.breakerPanelsClosed}" class="slider-button off">{{lead.pictures.breakerPanelsClosed && 'YES' || 'NO'}}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="middle-text">Breaker Panels Open:</div></td>
+                                        <td>
+                                            <div class="middle slider-frame primary" ng-click="lead.pictures.breakerPanelsOpen = !lead.pictures.breakerPanelsOpen">
+                                                <span ng-class="{'on' : lead.pictures.breakerPanelsOpen, '' : !lead.pictures.breakerPanelsOpen}" class="slider-button off">{{lead.pictures.breakerPanelsOpen && 'YES' || 'NO'}}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+    
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div class="span12 field-box">
-                        <h3>Pictures of Location:</h3>
-                    </div>
-                    <div class="span12 field-box">
-                        <label>Pictures:</label>
-                        <div class="address-fields">
-                            <table>
-                                <tr>
-                                    <td><div class="middle-text">Site:</div></td>
-                                    <td>
-                                        <div class="middle slider-frame primary" ng-click="lead.pictures.site = !lead.pictures.site">
-                                            <span ng-class="{'on' : lead.pictures.site, '' : !lead.pictures.site}" class="slider-button off">{{lead.pictures.site && 'YES' || 'NO'}}</span>
-                                        </div>
-                                    </td>
-                                    <td><div class="middle-text">Shading Problems:</div></td>
-                                    <td>
-                                        <div class="middle slider-frame primary" ng-click="lead.pictures.shadingProblems = !lead.pictures.shadingProblems">
-                                            <span ng-class="{'on' : lead.pictures.shadingProblems, '' : !lead.pictures.shadingProblems}" class="slider-button off">{{lead.pictures.shadingProblems && 'YES' || 'NO'}}</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><div class="middle-text">Inverter Location:</div></td>
-                                    <td>
-                                        <div class="middle slider-frame primary" ng-click="lead.pictures.inverterLocation = !lead.pictures.inverterLocation">
-                                            <span ng-class="{'on' : lead.pictures.inverterLocation, '' : !lead.pictures.inverterLocation}" class="slider-button off">{{lead.pictures.inverterLocation && 'YES' || 'NO'}}</span>
-                                        </div>
-                                    </td>
-                                    <td><div class="middle-text">Array Location:</div></td>
-                                    <td>
-                                        <div class="middle slider-frame primary" ng-click="lead.pictures.arrayLocation = !lead.pictures.arrayLocation">
-                                            <span ng-class="{'on' : lead.pictures.arrayLocation, '' : !lead.pictures.arrayLocation}" class="slider-button off">{{lead.pictures.arrayLocation && 'YES' || 'NO'}}</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><div class="middle-text">Power Meter Closed:</div></td>
-                                    <td>
-                                        <div class="middle slider-frame primary" ng-click="lead.pictures.powerMeterClosed = !lead.pictures.powerMeterClosed">
-                                            <span ng-class="{'on' : lead.pictures.powerMeterClosed, '' : !lead.pictures.powerMeterClosed}" class="slider-button off">{{lead.pictures.powerMeterClosed && 'YES' || 'NO'}}</span>
-                                        </div>
-                                    </td>
-                                    <td><div class="middle-text">Breaker Panels Closed:</div></td>
-                                    <td>
-                                        <div class="middle slider-frame primary" ng-click="lead.pictures.breakerPanelsClosed = !lead.pictures.breakerPanelsClosed">
-                                            <span ng-class="{'on' : lead.pictures.breakerPanelsClosed, '' : !lead.pictures.breakerPanelsClosed}" class="slider-button off">{{lead.pictures.breakerPanelsClosed && 'YES' || 'NO'}}</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><div class="middle-text">Power Meter Open:</div></td>
-                                    <td>
-                                        <div class="middle slider-frame primary" ng-click="lead.pictures.powerMeterOpen = !lead.pictures.powerMeterOpen">
-                                            <span ng-class="{'on' : lead.pictures.powerMeterOpen, '' : !lead.pictures.powerMeterOpen}" class="slider-button off">{{lead.pictures.powerMeterOpen && 'YES' || 'NO'}}</span>
-                                        </div>
-                                    </td>
-                                    <td><div class="middle-text">Breaker Panels Open:</div></td>
-                                    <td>
-                                        <div class="middle slider-frame primary" ng-click="lead.pictures.breakerPanelsOpen = !lead.pictures.breakerPanelsOpen">
-                                            <span ng-class="{'on' : lead.pictures.breakerPanelsOpen, '' : !lead.pictures.breakerPanelsOpen}" class="slider-button off">{{lead.pictures.breakerPanelsOpen && 'YES' || 'NO'}}</span>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                            </table>
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            <h3>Monthly Usage?</h3>
                         </div>
                     </div>
-                    <div class="span12 field-box">
-                        <h3>Monthly Usage?</h3>
-                    </div>
-                    <div class="span12 field-box">
-                        <h3>Customer Expectation:</h3>
-                    </div>
-                    <div class="span12 field-box">
-                        <label>Bill:</label>
-                        <input type="text" data-ng-model="lead.customerExpectation.partBill" placeholder="Part Bill" class="span12 small-inline" maxlength="30">
-                        <input type="text" data-ng-model="lead.customerExpectation.fullBill" placeholder="Full Bill" class="span12 small-inline last" maxlength="30">
-                    </div>
-                    <div class="span12 field-box">
-                        <label>System Type:</label>
-                        <div class="ui-select span3">
-                            <select data-ng-model="lead.customerExpectation.systemType">
-                                <option value="">Please Select System Type</option>
-                                <option value="Grid Interactive">Grid Interactive</option>
-                                <option value="Grid Interactive With Battery Backup">Grid Interactive With Battery Backup</option>
-                                <option value="Off Grid">Off Grid</option>
-                            </select>
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            <h3>Customer Expectation:</h3>
                         </div>
                     </div>
-                    <div class="span9 field-box textarea">
-                        <label>Notes:</label>
-                        <textarea class="span9" data-ng-model="lead.siteSurveyNotes"></textarea>
-                        <span class="charactersleft">90 characters remaining. Field limited to 100 characters</span>
+                    <div class="form-group">
+                        <div class="col-md-1_5 control-label">
+                            <label>Bill:</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" data-ng-model="lead.customerExpectation.partBill" placeholder="Part Bill" class="form-control small-inline" maxlength="30">
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" data-ng-model="lead.customerExpectation.fullBill" placeholder="Full Bill" class="form-control small-inline" maxlength="30">
+                        </div>
                     </div>
-                    <div class="span11 field-box actions">
+                    <div class="form-group">
+                        <div class="col-md-1_5 control-label">
+                            <label>System Type:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="ui-select">
+                                <select data-ng-model="lead.customerExpectation.systemType">
+                                    <option value="">Please Select System Type</option>
+                                    <option value="Grid Interactive">Grid Interactive</option>
+                                    <option value="Grid Interactive With Battery Backup">Grid Interactive With Battery Backup</option>
+                                    <option value="Off Grid">Off Grid</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-1_5 control-label">
+                            <label>Notes:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <textarea class="form-control" data-ng-model="lead.siteSurveyNotes"></textarea>
+                            <span class="charactersleft">90 characters remaining. Field limited to 100 characters</span>
+                        </div>
+                    </div>
+                    <div class="col-md-11 field-box actions">
                         <input type="submit" value="Update Lead" class="btn-glow primary">
                         <span>OR</span>
                         <input type="reset" class="reset" value="Cancel" onclick="window.history.back()">

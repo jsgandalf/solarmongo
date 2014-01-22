@@ -1,18 +1,18 @@
 <div id="pad-wrapper" class="users-list" data-ng-controller="LeadsController" data-ng-init="find()">
-    <div class="row-fluid header">
-        <div class="span12 pull-right">
-            <h3>Leads</h3>
-            <input data-ng-model="query" type="text" class="span5 search" placeholder="Type a lead's name...">
+    <div class="row header">
+        <h3>Leads</h3>
+        <div class="col-md-10 col-sm-12 col-xs-12 pull-right">
+            <input class="col-md-4 search" data-ng-model="query" type="text" placeholder="Type a lead's name...">
             
             <!-- custom popup filter -->
             <!-- styles are located in css/elements.css -->
             <!-- script that enables this dropdown is located in js/theme.js -->
             <div class="ui-dropdown">
-                <div class="head" data-toggle="tooltip" title="" data-original-title="Click me!">
-                    Filter leads
+                <div data-original-title="Click me!" class="head" data-toggle="tooltip" title="">
+                    Filter users
                     <i class="arrow-down"></i>
                 </div>  
-                <div class="dialog" style="display: none;">
+                <div style="display: none;" class="dialog">
                     <div class="pointer">
                         <div class="arrow"></div>
                         <div class="arrow_border"></div>
@@ -36,72 +36,69 @@
                                 <option>starts with</option>
                                 <option>contains</option>
                             </select>
-                            <input type="text">
+                            <input class="form-control" type="text">
                             <a class="btn-flat small">Add filter</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <a href="#!/leads/create" class="btn-flat success pull-right">
+            <a href="#!/leads/create" class="btn btn-success pull-right">
                 <span>+</span>
                 Lead
             </a>
         </div>
     </div>
-        <!-- Users table -->
-        <div class="row-fluid table">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th class="span4 sortable">
-                            Name
-                        </th>
-                        <th class="span3 sortable">
-                            <span class="line"></span>City, State
-                        </th>
-                        <th class="span2 sortable">
-                            <span class="line"></span>Email
-                        </th>
-                        <th class="span3 sortable align-right">
-                            <span class="line"></span>Actions
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                <!-- row -->
-                <tr data-ng-repeat="lead in leads | filter:query" ng-class="{first: $first}">
-                    <td>
-                        <!--<img src="img/contact-img.png" class="img-circle avatar hidden-phone">-->
-                        <a href="#!/leads/{{lead._id}}" class="name"><i class="icon-book table-icon"></i>{{lead.firstName}} {{lead.lastName}}</a>
-                        <span class="subtext">{{lead.companyName}}</span>
-                    </td>
-                    <td>
-                        {{lead.city | placeholder}}, {{lead.state | placeholder}}
-                    </td>
-                    <td>
-                        {{lead.email}}
-                    </td>
-                    <td class="align-right">
-                        <ul class="actions">
-                            <li class="last"><i class="table-delete" data-ng-click="remove(lead);"></i></li>
-                        </ul>
-                    </td>
+    <!-- Users table -->
+    <div class="row col-md-12">
+        <table class="table table-hover">
+            <thead> 
+                <tr>
+                    <th class="span4 sortable">
+                        Name
+                    </th>
+                    <th class="span3 sortable">
+                        <span class="line"></span>City, State
+                    </th>
+                    <th class="span2 sortable">
+                        <span class="line"></span>Email
+                    </th>
+                    <th class="span3 sortable align-right">
+                        <span class="line"></span>Actions
+                    </th>
                 </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="pagination pull-right">
-            <ul>
-                <li><a href="#">‹</a></li>
-                <li><a class="active" href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">›</a></li>
-            </ul>
-        </div>
+            </thead>
+            <tbody>
+            <!-- row -->
+            <tr data-ng-repeat="lead in leads | filter:query" ng-class="{first: $first}">
+                <td>
+                    <!--<img src="img/contact-img.png" class="img-circle avatar hidden-phone">-->
+                    <a href="#!/leads/{{lead._id}}" class="name"><i class="icon-book table-icon"></i>{{lead.firstName}} {{lead.lastName}}</a>
+                    <span class="subtext">{{lead.companyName}}</span>
+                </td>
+                <td>
+                    {{lead.city | placeholder}}, {{lead.state | placeholder}}
+                </td>
+                <td>
+                    {{lead.email}}
+                </td>
+                <td class="align-right">
+                    <ul class="actions">
+                        <li class="last"><i class="table-delete" data-ng-click="remove(lead);"></i></li>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <ul class="pagination">
+            <li><a href="#">«</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">»</a></li>
+        </ul>
     <!-- end users table -->
     <!-- end side-bar with span9 -->
     <!--<div class="span3 form-sidebar pull-left">

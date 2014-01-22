@@ -274,6 +274,7 @@ textarea::-webkit-input-placeholder {
 .dropdown-submenu:hover > a,
 .dropdown-submenu:focus > a {
 	background: rgb(60, 91, 121) !important;
+    color: #FFF;
 }
 
 
@@ -372,4 +373,27 @@ table th span.line{
 .carousel-control.left,
 .carousel-control.right {
 	cursor: pointer;
+}
+
+.form-inline .form-group{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.form-horizontal .control-label {
+    text-align: left;
+}
+label {
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 10px !important;
+}
+.form-control::-moz-placeholder {
+  font-style: italic;
+}
+.form-control::input:-ms-input-placeholder {
+  font-style: italic;
+}
+.form-control::input::-webkit-input-placeholder {
+  font-style: italic;
 }

@@ -23,7 +23,11 @@
                 {"name":"Contacts","route":"contacts","icon":"icon-user"},
                 {"name":"Tasks","route":"tasks","icon":"icon-check"},
                 {"name":"Reports","route":"reports","icon":"icon-bar-chart"}];
-        $scope.isCollapsed = true;
+        $scope.isCollapsed = false;
+        $scope.changeCollapsed = function($event){
+            $event.stopPropagation();
+            $scope.isCollapsed = !$scope.isCollapsed;
+        }
         $scope.isActive = function(route) {
             return ("/"+route) === $location.path();
         }

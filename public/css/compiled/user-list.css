@@ -4,7 +4,7 @@
 .users-list .header input.search {
   padding: 5px 6px;
   position: relative;
-  top: -1px;
+  top: 0px;
   margin-left: 120px;
 }
 .users-list .header input.search:focus {
@@ -32,6 +32,8 @@
 .users-list .table td {
   vertical-align: middle;
   font-size: 13px;
+  padding-top:20px;
+  padding-bottom:20px;
 }
 .users-list .table img.avatar {
   float: left;
@@ -45,7 +47,6 @@
   display: block;
   font-weight: 600;
   font-size: 14px;
-  margin: 15px 0 0 0;
 }
 .users-list .table .subtext {
   font-size: 12px;
@@ -53,6 +54,7 @@
   color: #778391;
   font-style: italic;
   margin-top: 0;
+  margin-left:40px;
 }
 .users-list .pagination {
   margin-top: 25px;

@@ -67,7 +67,11 @@ module.exports = function(app, passport, auth) {
     app.put('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.update);
     app.del('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.destroy);
 
-    // curl -v http://localhost:3000/?access_token=123456789
+    // curl -v http://localhost:3000/api/leads?access_token=123456789
     app.get('/api/token', api.getToken)
     app.post('/api/token', api.getToken)
+    
+    var sendgrid = require('../app/controllers/emails');
+    // mailing server
+    app.post('/sendContactEmail',sendgrid.sendContactEmail);
 };

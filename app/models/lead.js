@@ -36,9 +36,7 @@ var LeadSchema = new Schema({
         address:{type: String, default: '', trim: true},
         city:{type: String, default: '', trim: true},
         state:{type: String, default: '', trim: true},
-        zip:{type: String, default: '', trim: true}
-    },
-    jobSite: {
+        zip:{type: String, default: '', trim: true},
         roofingType:{type: String, default: '', trim:true},
         layers:{type: String, default: '', trim:true},
         height:{type: Number, default: '', trim:true},

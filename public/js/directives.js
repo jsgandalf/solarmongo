@@ -13,7 +13,7 @@
             'link': '../aboutus'
         }, {
             'title': 'Pricing',
-            'link': 'partner'
+            'link': '../pricing'
         }, {
             'title': 'Contact Us',
             'link': '../contactus'

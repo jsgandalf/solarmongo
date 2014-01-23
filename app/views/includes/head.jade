@@ -33,10 +33,12 @@ head
   //lato font
   link(rel="stylesheet", href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic')
   
-
+  link(rel="stylesheet" href="/css/compiled/leads.css")
+  link(rel="stylesheet" href="/css/compiled/elements.css")
   //global styles
   //showcase forms
   //page specific styles
+  
   if(isLoggedIn)
     link(rel="stylesheet", href="/css/compiled/layout.css")
     link(rel="stylesheet", href="/css/compiled/index.css")
@@ -46,12 +48,11 @@ head
     link(rel="stylesheet", href='/css/compiled/new-user.css')
     link(rel="stylesheet", href='/css/compiled/user-profile.css')
     link(rel="stylesheet", href='/css/compiled/user-list.css')
-    link(rel="stylesheet" href="/css/compiled/elements.css")
-    link(rel="stylesheet" href="/css/compiled/icons.css")
-    link(rel="stylesheet" href="/css/compiled/leads.css")
+    link(rel="stylesheet" href="/css/compiled/icons.css")    
   else
     link(rel="stylesheet" href="/css/views/home.css")
     link(rel="stylesheet" href="/css/compiled/slider.css")
+
 
   //if lt IE 9
     script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')

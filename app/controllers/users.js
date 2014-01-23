@@ -4,7 +4,8 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    User = mongoose.model('User');
+    User = mongoose.model('User'),
+    stripe = require('./payments');
 
 /**
  * Auth callback
@@ -54,9 +55,11 @@ exports.session = function(req, res) {
 exports.create = function(req, res, next) {
     var user = new User(req.body);
     var message = null;
-
+    console.log(user.email);
+    console.log(user);
+    stripe.addCustomer(req, res, user.email);
     user.provider = 'local';
-    user.save(function(err) {
+    /*user.save(function(err) {
         if (err) {
             switch (err.code) {
                 case 11000:
@@ -76,7 +79,7 @@ exports.create = function(req, res, next) {
             if (err) return next(err);
             return res.redirect('/');
         });
-    });
+    });*/
 };
 
 /**

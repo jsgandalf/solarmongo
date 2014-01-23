@@ -1,26 +1,265 @@
 extends auth
 
-block auth
-  h2 Sign up
-  br
-  form.signup.form-horizontal(role="form",action="/users", method="post")
-    .form-group
-      label.control-label.col-md-3(for='name') Full Name:
-      .col-md-9
-        input.form-control#name(type='text', name="name", placeholder='Full name', value=user.name)
+block auth  
+    .leads(data-ng-controller='LeadsController', data-ng-init='findOne()')
+      .row.header
+        .row.form-wrapper
+          .col-md-9
+            
+            form.form-horizontal(role='form', data-ng-submit='update()')
+              .form-group
+                .col-md-12
+                    h1 Sign up
+              .form-group
+                .col-md-12
+                  h3 Account
+              .form-group
+                label.col-md-1_5.control-label Name:
+                .col-md-10
+                  input.form-control(type='text', name="name", placeholder='Full name', value=user.name)
+              .form-group
+                label.col-md-1_5.control-label Email:
+                .col-md-10
+                  input.form-control(type='text', name="email", placeholder='Email', value=user.email)
+              .form-group
+                label.col-md-1_5.control-label Password:
+                .col-md-10
+                  input.form-control(type='password', name="password", placeholder='Password')
+              .form-group
+                .col-md-12
+                  h3 Company Information  
+              .form-group
+                label.col-md-1_5.control-label Company:
+                .col-md-10
+                  input.form-control(type='text', name='companyName', data-ng-model='lead.companyName', placeholder='Company Name')
+              .form-group
+                label.col-md-1_5.control-label Website:
+                .col-md-10
+                  input.form-control(type='text', name='website', data-ng-model='lead.companyName', placeholder='Website Name')
+              .form-group
+                label.col-md-1_5.control-label Email:
+                .col-md-10
+                  input.form-control(type='text', data-ng-model='lead.email', placeholder='example@example.com')
+              .form-group
+                label.col-md-1_5.control-label Phone:
+                .col-md-4
+                  input.form-control(type='text', data-ng-model='lead.email', placeholder='Work Phone')
+              .form-group
+                .col-md-1_5.control-label
+                  label Address:
+                .col-md-10
+                  input.form-control(type='text', placeholder='Street address', data-ng-model='lead.address')
+              .form-group.address-fields
+                .col-md-1_5.control-label.ghost_label
+                  label  
+                .col-md-3
+                  input.form-control(type='text', placeholder='City', data-ng-model='lead.city')
+                #state.ui-select.col-md-4
+                  select(data-ng-model='lead.state')
+                    option(value='') Select State
+                    option(value='AL') Alabama
+                    option(value='AK') Alaska
+                    option(value='AZ') Arizona
+                    option(value='AR') Arkansas
+                    option(value='CA') California
+                    option(value='CO') Colorado
+                    option(value='CT') Connecticut
+                    option(value='DE') Delaware
+                    option(value='DC') District Of Columbia
+                    option(value='FL') Florida
+                    option(value='GA') Georgia
+                    option(value='HI') Hawaii
+                    option(value='ID') Idaho
+                    option(value='IL') Illinois
+                    option(value='IN') Indiana
+                    option(value='IA') Iowa
+                    option(value='KS') Kansas
+                    option(value='KY') Kentucky
+                    option(value='LA') Louisiana
+                    option(value='ME') Maine
+                    option(value='MD') Maryland
+                    option(value='MA') Massachusetts
+                    option(value='MI') Michigan
+                    option(value='MN') Minnesota
+                    option(value='MS') Mississippi
+                    option(value='MO') Missouri
+                    option(value='MT') Montana
+                    option(value='NE') Nebraska
+                    option(value='NV') Nevada
+                    option(value='NH') New Hampshire
+                    option(value='NJ') New Jersey
+                    option(value='NM') New Mexico
+                    option(value='NY') New York
+                    option(value='NC') North Carolina
+                    option(value='ND') North Dakota
+                    option(value='OH') Ohio
+                    option(value='OK') Oklahoma
+                    option(value='OR') Oregon
+                    option(value='PA') Pennsylvania
+                    option(value='RI') Rhode Island
+                    option(value='SC') South Carolina
+                    option(value='SD') South Dakota
+                    option(value='TN') Tennessee
+                    option(value='TX') Texas
+                    option(value='UT') Utah
+                    option(value='VT') Vermont
+                    option(value='VA') Virginia
+                    option(value='WA') Washington
+                    option(value='WV') West Virginia
+                    option(value='WI') Wisconsin
+                    option(value='WY') Wyoming
+                .col-md-3
+                  input.form-control.small-inline(type='text', data-ng-model='lead.zip', placeholder='Postal Code')
+              .form-group
+                .col-md-12
+                  h3 Subscription Plan
+              .form-group
+                .col-md-12
+                    .radio
+                      label
+                        input#optionsRadios1(type='radio', name='optionsRadios', value='option1')
+                        | Pricing plan Bronze: $300 dollars per month, 
+                    .radio
+                      label
+                        input#optionsRadios2(type='radio', name='optionsRadios', value='option2')
+                        | Pricing plan Silver, $750 dollars per month
+                    .radio
+                      label
+                        input#optionsRadios1(type='radio', name='optionsRadios', value='option1')
+                        | Pricing plan Gold, $1500 dollars per month
+                    .radio
+                      label
+                        input#optionsRadios2(type='radio', name='optionsRadios', value='option2')
+                        | Call 801-602-5510 for higher plans
 
-    .form-group
-      label.control-label.col-md-3(for='email') Email
-      .col-md-9
-        input.form-control#email(type='text', name="email", placeholder='Email', value=user.email)
-
-    .form-group
-      label.control-label.col-md-3(for='password') Password
-      .col-md-9
-        input.form-control#password(type='password', name="password", placeholder='Password')
-
-    .form-actions
-      button.btn.btn-primary(type='submit') Sign up
-      &nbsp;
-      | or&nbsp;
-      a.show-login(href="/signin") login
+              .form-group
+                .col-md-12
+                  h3 Billing Information  
+              .form-group
+                .col-md-1_5.control-label
+                  label Name:
+                .col-md-10
+                  input.form-control(type='text', placeholder='Enter your name exactly as it appears on your card', data-ng-model='lead.address')
+              .form-group
+                .col-md-1_5.control-label
+                  label Card:
+                .col-md-10
+                  input.form-control(type='text', placeholder='Enter your card number', data-ng-model='lead.address')
+              .form-group
+                .col-md-1_5.control-label
+                  label Expiration:
+                .col-md-10
+                  #state.ui-select.col-md-5
+                      select()
+                        option(value='') Select Month
+                        option(value='AL') Jan
+                        option(value='AK') Feb
+                        option(value='AZ') March
+                        option(value='AR') April
+                        option(value='CA') May
+                        option(value='CO') June
+                        option(value='CT') July
+                        option(value='AK') Aug
+                        option(value='AZ') Sept
+                        option(value='AR') Oct
+                        option(value='CA') Nov
+                        option(value='CO') Dec
+                    #state.ui-select.col-md-5
+                        select()
+                            option(value='') Select Year
+                            option(value='AL') 2014
+                            option(value='AK') 2015
+                            option(value='AZ') 2016
+                            option(value='AR') 2017
+                            option(value='CA') 2018
+                            option(value='CO') 2019
+                            option(value='CT') 2020
+                            option(value='AK') 2021
+                            option(value='AZ') 2022
+                            option(value='AR') 2023
+                            option(value='CA') 2024
+                            option(value='CO') 2025
+                            option(value='CO') 2026
+                            option(value='CO') 2027
+                            option(value='CO') 2028
+                            option(value='CO') 2029
+                            option(value='CO') 2030
+                            option(value='CO') 2031
+                            option(value='CO') 2032
+                            option(value='CO') 2033
+                            option(value='CO') 2034
+              .form-group
+                .col-md-1_5.control-label
+                  label CW2:
+                .col-md-10
+                  input.form-control(type='text', placeholder='3 digit for Visa/MC on back - 4 digit for Amex on front', data-ng-model='lead.address') 
+              .form-group
+                .col-md-1_5.control-label
+                  label Billing:
+                .col-md-10
+                  input.form-control(type='text', placeholder='Street address', data-ng-model='lead.address')
+              .form-group.address-fields
+                .col-md-1_5.control-label.ghost_label
+                  label
+                .col-md-3
+                  input.form-control(type='text', placeholder='City', data-ng-model='lead.city')
+                #state.ui-select.col-md-4
+                  select(data-ng-model='lead.state')
+                    option(value='') Select State
+                    option(value='AL') Alabama
+                    option(value='AK') Alaska
+                    option(value='AZ') Arizona
+                    option(value='AR') Arkansas
+                    option(value='CA') California
+                    option(value='CO') Colorado
+                    option(value='CT') Connecticut
+                    option(value='DE') Delaware
+                    option(value='DC') District Of Columbia
+                    option(value='FL') Florida
+                    option(value='GA') Georgia
+                    option(value='HI') Hawaii
+                    option(value='ID') Idaho
+                    option(value='IL') Illinois
+                    option(value='IN') Indiana
+                    option(value='IA') Iowa
+                    option(value='KS') Kansas
+                    option(value='KY') Kentucky
+                    option(value='LA') Louisiana
+                    option(value='ME') Maine
+                    option(value='MD') Maryland
+                    option(value='MA') Massachusetts
+                    option(value='MI') Michigan
+                    option(value='MN') Minnesota
+                    option(value='MS') Mississippi
+                    option(value='MO') Missouri
+                    option(value='MT') Montana
+                    option(value='NE') Nebraska
+                    option(value='NV') Nevada
+                    option(value='NH') New Hampshire
+                    option(value='NJ') New Jersey
+                    option(value='NM') New Mexico
+                    option(value='NY') New York
+                    option(value='NC') North Carolina
+                    option(value='ND') North Dakota
+                    option(value='OH') Ohio
+                    option(value='OK') Oklahoma
+                    option(value='OR') Oregon
+                    option(value='PA') Pennsylvania
+                    option(value='RI') Rhode Island
+                    option(value='SC') South Carolina
+                    option(value='SD') South Dakota
+                    option(value='TN') Tennessee
+                    option(value='TX') Texas
+                    option(value='UT') Utah
+                    option(value='VT') Vermont
+                    option(value='VA') Virginia
+                    option(value='WA') Washington
+                    option(value='WV') West Virginia
+                    option(value='WI') Wisconsin
+                    option(value='WY') Wyoming
+                .col-md-3
+                  input.form-control.small-inline(type='text', data-ng-model='lead.zip', placeholder='Postal Code')
+              .col-md-11.field-box.actions
+                input.btn-glow.primary(type='submit', value='Sign up')
+                span OR
+                a.btn(href="/signin") Help

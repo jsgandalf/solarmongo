@@ -6,7 +6,7 @@ block auth
         .row.form-wrapper
           .col-md-9
             
-            form.form-horizontal(role='form', data-ng-submit='update()')
+            form.form-horizontal(role='form', action="/users", method="post")
               .form-group
                 .col-md-12
                     h1 Sign up
@@ -24,26 +24,26 @@ block auth
               .form-group
                 label.col-md-1_5.control-label Password:
                 .col-md-10
-                  input.form-control(type='password', name="password", placeholder='Password')
+                  input.form-control(type='password', name="password", placeholder='Password', value=user.password)
               .form-group
                 .col-md-12
                   h3 Company Information  
               .form-group
                 label.col-md-1_5.control-label Company:
                 .col-md-10
-                  input.form-control(type='text', name='companyName', data-ng-model='lead.companyName', placeholder='Company Name')
+                  input.form-control(type='text', name='companyName' placeholder='Company Name', value=user.companyName)
               .form-group
                 label.col-md-1_5.control-label Website:
                 .col-md-10
-                  input.form-control(type='text', name='website', data-ng-model='lead.companyName', placeholder='Website Name')
+                  input.form-control(type='text', name='website', placeholder='Website Name',value=user.website)
               .form-group
                 label.col-md-1_5.control-label Email:
                 .col-md-10
-                  input.form-control(type='text', data-ng-model='lead.email', placeholder='example@example.com')
+                  input.form-control(type='text', placeholder='example@example.com',value=user.email)
               .form-group
                 label.col-md-1_5.control-label Phone:
                 .col-md-4
-                  input.form-control(type='text', data-ng-model='lead.email', placeholder='Work Phone')
+                  input.form-control(type='text', data-ng-model='lead.email', value=user.work)
               .form-group
                 .col-md-1_5.control-label
                   label Address:
@@ -191,20 +191,20 @@ block auth
               .form-group
                 .col-md-1_5.control-label
                   label CW2:
-                .col-md-10
-                  input.form-control(type='text', placeholder='3 digit for Visa/MC on back - 4 digit for Amex on front', data-ng-model='lead.address') 
+                .col-md-6
+                  input.form-control(type='text', placeholder='3 digit for Visa/MC on back - 4 digit for Amex on front', name="cw3")
               .form-group
                 .col-md-1_5.control-label
                   label Billing:
                 .col-md-10
-                  input.form-control(type='text', placeholder='Street address', data-ng-model='lead.address')
+                  input.form-control(type='text', placeholder='Street address')
               .form-group.address-fields
                 .col-md-1_5.control-label.ghost_label
                   label
                 .col-md-3
-                  input.form-control(type='text', placeholder='City', data-ng-model='lead.city')
+                  input.form-control(type='text', placeholder='City', name="city")
                 #state.ui-select.col-md-4
-                  select(data-ng-model='lead.state')
+                  select(name='user.billingState')
                     option(value='') Select State
                     option(value='AL') Alabama
                     option(value='AK') Alaska
@@ -258,8 +258,8 @@ block auth
                     option(value='WI') Wisconsin
                     option(value='WY') Wyoming
                 .col-md-3
-                  input.form-control.small-inline(type='text', data-ng-model='lead.zip', placeholder='Postal Code')
+                  input.form-control.small-inline(type='text', name='billingZip', placeholder='Postal Code')
               .col-md-11.field-box.actions
                 input.btn-glow.primary(type='submit', value='Sign up')
                 span OR
-                a.btn(href="/signin") Help
+                a.btn(type="submit") Help

@@ -28,8 +28,15 @@ exports.signin = function(req, res) {
 /**
  * Show sign up form
  */
-exports.signup = function(req, res) {
+/*exports.signup = function(req, res) {
     res.render('users/signup', {
+        title: 'Sign up',
+        user: new User()
+    });
+};*/
+
+exports.signup = function(req, res) {
+    res.render('pages/signup', {
         title: 'Sign up',
         user: new User()
     });
@@ -62,8 +69,7 @@ exports.create = function(req, res, next) {
     if(!validator.isEmail(user.email))
         message = "Not a valid email";
     //else if(user.password
-    /*
-    stripe.addCustomer(req, res, user);
+    //stripe.addCustomer(req, res, user);
     user.provider = 'local';
     user.save(function(err) {
         if (err) {
@@ -85,7 +91,7 @@ exports.create = function(req, res, next) {
             if (err) return next(err);
             return res.redirect('/');
         });
-    });*/
+    });
 };
 
 /**

@@ -19,10 +19,11 @@
             'link': '../contactus'
         }];
         $scope.navList = [{"name":"Dashboard","route":"dashboard","icon":"icon-home"},
-                {"name":"Leads","route":"leads","icon":"icon-book"},
-                {"name":"Contacts","route":"contacts","icon":"icon-user"},
-                {"name":"Tasks","route":"tasks","icon":"icon-check"},
-                {"name":"Reports","route":"reports","icon":"icon-bar-chart"}];
+                {"name":"Leads","route":"leads","icon":"icon-user"},
+                {"name":"Branding","route":"branding","icon":"icon-th-large"}];
+                //{"name":"Contacts","route":"contacts","icon":"icon-user"},
+                //{"name":"Tasks","route":"tasks","icon":"icon-check"},
+                //{"name":"Reports","route":"reports","icon":"icon-bar-chart"}];
         $scope.isCollapsed = false;
         $scope.changeCollapsed = function($event){
             $event.stopPropagation();

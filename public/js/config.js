@@ -16,6 +16,9 @@ angular.module('mean').config(['$routeProvider',
         when('/leads/:leadId', {
             templateUrl: 'views/leads/view/view.html'
         }).
+        when('/branding', {
+            templateUrl: 'views/branding/branding.html'
+        }).
         when('/', {
             redirectTo: '/dashboard'
         }).

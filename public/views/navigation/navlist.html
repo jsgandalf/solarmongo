@@ -1,5 +1,5 @@
 <!-- navbar not authenticated -->
-<header class="navbar navbar-inverse navbar-fixed-top" role="navigation" data-ng-if="!global.authenticated">
+<header class="navbar navbar-inverse navbar-fixed-top" role="navigation" data-ng-hide="global.authenticated">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -48,9 +48,9 @@
 <!-- end navbar not authenticated -->
 
 <!-- navbar is authenticated-->
-<header class="navbar navbar-inverse" role="banner" data-ng-if="global.authenticated">
+<header class="navbar navbar-inverse" role="banner" data-ng-show="global.authenticated">
         <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" id="menu-toggler" ng-click="changeCollapsed($event)">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" id="menu-toggler" ng-click="isCollapsed = !isCollapsed">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -95,65 +95,19 @@
     </header>
 <!-- end navbar -->
 <!-- sidebar -->
-<!--ng-click="listCollapsed(list)"-->
-<!--ng-class="{display:list.isCollapsed}"-->
 <div id="sidebar-nav" ng-class="{display:isCollapsed}" data-ng-show="global.authenticated">
     <ul id="dashboard-menu">
-        <li ng-click="changeCollapsed($event)" ng-class="{active:isActiveDropdown(list.route)}" ng-repeat="list in navList">
-            <a ng-if="list.dropdown" ng-click="changeListCollapsed(list)" class="dropdown-toggle">
-                <i class="icon-group"></i>
-                <span>{{list.name}}</span>
-                <i class="icon-chevron-down"></i>
-            </a>
-            <ul ng-if="list.list" class="submenu" ng-show="list.isCollapsed">
-                <li ng-repeat="sublist in list.list">
-                    <a ng-class="{active:isActive(sublist.route)}" href="#!/{{sublist.route}}">{{sublist.name}}</a>
-                </li>
-            </ul>
-            <a ng-if="list.dropdown==false" ng-href="#!/{{list.route}}" ng-click="changeListCollapsed(list)">
-                <i class="{{list.icon}}"></i>
-                <span>{{list.name}}</span>
-            </a>
+        <li ng-click="changeCollapsed($event)" ng-class="{active:isActive(list.route)}" ng-repeat="list in navList">
             <div class="pointer" ng-class="{hide:!isActive(list.route)}">
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
             </div>
+            <a ng-href="#!/{{list.route}}">
+                <i class="{{list.icon}}"></i>
+                <span>{{list.name}}</span>
+            </a>
         </li>
     </ul>
 </div>
-
-
-<!--<div id="sidebar-nav">
-    <ul id="dashboard-menu">
-        <li ng-class="{active:route=='dashboard'}" ng-click="route='dashboard'">
-            <div class="pointer">
-                <div class="arrow"></div>
-                <div class="arrow_border"></div>
-            </div>
-            <a href="/#!/dashboard">
-                <i class="icon-home"></i>
-                <span>Home</span>
-            </a>
-        </li>            
-        <li ng-class="{active:route=='crm'}" ng-click="route='crm'">
-            <a class="dropdown-toggle">
-                <i class="icon-group"></i>
-                <span>CRM</span>
-                <i class="icon-chevron-down"></i>
-            </a>
-            <ul style="display: none;" class="submenu">
-                <li><a href="/#!/leads">Leads</a></li>
-                <li><a href="#">Settings</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="chart-showcase.html">
-                <i class="icon-signal"></i>
-                <span>Admin</span>
-            </a>
-        </li>
-       
-    </ul>
-    
-</div>-->
 <!-- end sidebar -->
+

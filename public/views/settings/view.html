@@ -3,7 +3,7 @@
     <div class="row header">
         <div class="col-md-8">
             <!--<img src="img/contact-profile.png" class="avatar img-circle">-->
-            <h1 class="main-title"><i class="icon-book table-icon"></i><span>Company Name Here</span></h1>
+            <h1 class="main-title"><i class="icon-book table-icon"></i><span>{{lead.firstName}} {{lead.lastName}}</span></h1>
         </div>
         <div data-ng-show="global.user._id == lead.user._id">
             <a class="btn-flat icon pull-right delete-user" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete Lead" data-ng-click="remove();">
@@ -13,12 +13,12 @@
     </div>
     <div class="tabbable"> <!-- Only required for left/right tabs -->
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab1" data-toggle="tab">General</a></li>
-            <li><a href="#tab2" data-toggle="tab">Site Survey</a></li>
+            <li class="active"><a href="#tab1" data-toggle="tab">Branding</a></li>
+            <li><a href="#tab2" data-toggle="tab">Users</a></li>
         </ul>
         <div class="tab-content" id="tab-content">
-            <div class="tab-pane active" id="tab1" data-ng-include="'views/leads/view/general.html'"></div>
-            <div class="tab-pane" id="tab2" data-ng-include="'views/leads/view/siteSurvey.html'"></div>
+            <div class="tab-pane active" id="tab1" data-ng-include="'views/settings/branding.html'"></div>
+            <div class="tab-pane" id="tab2" data-ng-include="''"></div>
         </div>
     </div>
 </div

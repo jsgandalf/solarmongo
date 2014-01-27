@@ -10,7 +10,7 @@ block content
                 //    img(src="/img/icons/google.png")
                 .col-md-12
                   if message && message.length
-                    .fade.in.alert.alert-error
+                    .fade.in.alert.alert-danger
                       button.close(type="button", data-dismiss="alert") &times;
                       strong #{message}
                   block auth

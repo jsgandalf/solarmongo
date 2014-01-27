@@ -4,7 +4,7 @@ module.exports = function(app, passport, auth) {
     //User Routes
     var users = require('../app/controllers/users');
     app.get('/signin', users.signin);
-    app.get('/signup', users.signup);
+    app.get('/demo', users.signup);
     app.get('/signout', users.signout);
     app.get('/users/me', users.me);
 
@@ -12,6 +12,8 @@ module.exports = function(app, passport, auth) {
     app.post('/users', users.create);
 
     //forgot password link, requires email
+    app.get('/forgotpassword', users.getForgetPassword)
+    app.get('/resetpasswordsuccess', users.getResetPasswordSuccess)
     app.post('/forgot',users.forgotPassword);
     app.get('/reset/:id',users.resetPassword);
 
@@ -58,15 +60,14 @@ module.exports = function(app, passport, auth) {
 
     //Api auth
     var api = require('../app/controllers/api');
-    app.all('/api/signin', passport.authenticate('basic', { session: false }), users.me);
-    app.all('/api/signup', api.createUser);
+    app.get('/api/user', passport.authenticate('bearer', { session: false }), users.me);
 
     //Api
     app.get('/api/leads', passport.authenticate('bearer', { session: false }), leads.all);
     app.post('/api/leads', passport.authenticate('bearer', { session: false }), leads.create);
     app.get('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), leads.show);
-    app.put('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.update);
-    app.del('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.destroy);
+    app.put('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), leads.update);
+    app.del('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), leads.destroy);
 
     // curl -v http://localhost:3000/api/leads?access_token=123456789
     app.get('/api/token', api.getToken)

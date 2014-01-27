@@ -23,7 +23,7 @@ angular.module('mean').config(['$routeProvider',
             templateUrl: 'views/settings/view.html'
         }).
         when('/', {
-            redirectTo: '/dashboard'
+            redirectTo: '/leads'
         }).
         otherwise({
             redirectTo: '/'

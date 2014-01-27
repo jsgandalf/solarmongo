@@ -21,7 +21,7 @@
             'title': 'Demo',
             'link': '../demo'
         }];
-        $scope.navList = [{"name":"Dashboard","route":"dashboard","icon":"icon-home"},
+        $scope.navList = [//{"name":"Dashboard","route":"dashboard","icon":"icon-home"},
                 {"name":"Leads","route":"leads","icon":"icon-group"},
                 {"name":"Settings","route":"settings","icon":"icon-cog"}];
                 //{"name":"Tasks","route":"tasks","icon":"icon-check"},

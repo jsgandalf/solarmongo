@@ -3,7 +3,8 @@ extends auth
 block auth
   h2 #{title}
   br
-  form.signin.form-horizontal(role="form",action="/users/session", method="post")
+  form.signin.form-horizontal(role="form",action="/resetpassword", method="post")
+    input(type="hidden" value="#{token}" name="token")
     .form-group
       label.control-label.col-md-2(for='password') Password:
       .col-md-10

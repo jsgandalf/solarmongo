@@ -6,7 +6,9 @@
 var mongoose = require('mongoose'),
     User = mongoose.model('User'),
     stripe = require('./payments'),
-    validator = require('validator');
+    validator = require('validator'),
+    mailer = require('./emails'),
+    config = require('../../config/config');
 
 /**
  * Auth callback
@@ -19,7 +21,6 @@ exports.authCallback = function(req, res) {
  * Show login form
  */
 exports.signin = function(req, res) {
-    console.log(req)
     res.render('users/signin', {
         title: 'Signin',
         message: 'Invalid email/password combination.'
@@ -29,15 +30,14 @@ exports.signin = function(req, res) {
 /**
  * Show sign up form
  */
-/*exports.signup = function(req, res) {
-    res.render('users/signup', {
+exports.demo = function(req, res) {
+    res.render('pages/demo', {
         title: 'Sign up',
         user: new User()
     });
-};*/
-
-exports.signup = function(req, res) {
-    res.render('pages/signup', {
+};
+exports.signup_admin = function(req, res) {
+    res.render('users/signup_admin', {
         title: 'Sign up',
         user: new User()
     });
@@ -64,7 +64,6 @@ exports.session = function(req, res) {
 exports.create = function(req, res, next) {
     var user = new User(req.body);
     var message = "";
-    console.log(user);
     if(user.email == "")
         message = "Email is required";
     if(!validator.isEmail(user.email))
@@ -130,12 +129,11 @@ exports.getResetPasswordSuccess = function(req, res){
         user: req.user ? JSON.stringify(req.user) : 'null',
         isLoggedIn: req.user ? true : false,
         title: "Password Request Sent",
-        message: "A reset link has been sent to your email. If your email has not been sent, allow 1 to 2 minutes to come in or check your spam folder. For security purposes, this link expires in 20 minutes."
+        paragraph: "A reset link has been sent to your email. If your email has not been sent, allow 1 to 2 minutes to come in or check your spam folder. For security purposes, this link expires in 20 minutes."
     });
 }
 exports.forgotPassword = function(req, res){
     var email = req.body.email;
-    console.log(email);
     var message ="";
     if(email == "")
         message = "Email is required";
@@ -161,29 +159,28 @@ exports.forgotPassword = function(req, res){
                 });
             } else {
                 var token = user.reset_token;
-                var resetLink = 'http://localhost:3000/reset/'+ token;
-
-                //TODO: This is all temporary hackish. When we have email configured
-                //properly, all this will be stuffed within that email instead :)
-                res.send('<h2>Reset Email (simulation)</h2><br><p>To reset your password click the URL below.</p><br>' +
-                '<a href=' + resetLink + '>' + resetLink + '</a><br>' +
-                'If you did not request your password to be reset please ignore this email and your password will stay as it is.');
+                var resetLink = 'http://' + config.host + '/reset/'+ token;
+                mailer.sendResetPassword(user.email, resetLink);
+                res.render('users/template', {
+                    user: req.user ? JSON.stringify(req.user) : 'null',
+                    isLoggedIn: req.user ? true : false,
+                    title: "Forgot Password",
+                    paragraph: "Please Check your email. You will have 20 minutes to resest your password."
+                });
             }
         });
-    console.log(message)    
 }
 
 exports.resetPassword = function(req, res){
-    console.log('GOT IN /reset/:id...');
     var token = req.params.id,
-        message = 'There was an issue with the reset password link';
+        message = 'Reset Password link expired.';
 
     if (!token)
         res.render('users/template', {
             user: req.user ? JSON.stringify(req.user) : 'null',
             isLoggedIn: req.user ? true : false,
             title: "Error",
-            message: message
+            paragraph: message
         });
     else {
         //TODO
@@ -193,57 +190,76 @@ exports.resetPassword = function(req, res){
         //3. if not expired, present reset password page/form
         User.findOne({reset_token: token}, function(err, usr) {
             var now = new Date();
-            console.log(now.getTime())
-            console.log(usr);
-            console.log(usr.reset_link_expires_millis)
             if(err || !usr) 
                 res.render('users/template', {
                     user: req.user ? JSON.stringify(req.user) : 'null',
                     isLoggedIn: req.user ? true : false,
                     title: "Error",
-                    message: message
+                    paragraph: message
                 });
             else if(now.getTime() < usr.reset_link_expires_millis)
                 res.render('users/template', {
                     user: req.user ? JSON.stringify(req.user) : 'null',
                     isLoggedIn: req.user ? true : false,
                     title: "Error",
-                    message: "Your reset link has expired."
+                    paragraph: "Your reset link has expired."
                 });
             else
                 res.render('users/reset', {
                     user: req.user ? JSON.stringify(req.user) : 'null',
                     title: "Reset Password",
-                    isLoggedIn: req.user ? true : false
+                    isLoggedIn: req.user ? true : false,
+                    token: token
                 });
 
         });
     }
 }
 exports.resetPasswordPost = function(req, res){
-
-        /*User.findOne({reset_token: token}, function(err, usr) {
-            var now = new Date();
-            if(err || !usr) 
-                res.render('users/template', {
-                    user: req.user ? JSON.stringify(req.user) : 'null',
-                    isLoggedIn: req.user ? true : false,
-                    title: "Error",
-                    message: message
-                });
-            else if(now.getTime() < usr.reset_link_expires_millis)
-                res.render('users/template', {
-                    user: req.user ? JSON.stringify(req.user) : 'null',
-                    isLoggedIn: req.user ? true : false,
-                    title: "Error",
-                    message: "Your reset link has expired."
-                });
-            else
-                res.render('users/reset', {
-                    user: req.user ? JSON.stringify(req.user) : 'null',
-                    title: "Reset Password",
-                    isLoggedIn: req.user ? true : false
-                });
-
-        });*/
+    var password = req.body.password;
+    var password2 = req.body.password2;
+    var token = req.body.token;
+    User.findOne({reset_token: token}, function(err, user) {
+        var now = new Date();
+        if(err || !user) 
+            res.render('users/template', {
+                user: req.user ? JSON.stringify(req.user) : 'null',
+                isLoggedIn: req.user ? true : false,
+                title: "Error",
+                paragraph: "Couldn't find user"
+            });
+        else if(validator.isNull(req.body.password))
+            res.render('users/template', {
+                user: req.user ? JSON.stringify(req.user) : 'null',
+                isLoggedIn: req.user ? true : false,
+                title: "Error",
+                paragraph: "Password Is Required"
+            });
+        else if(password != password2) 
+            res.render('users/reset', {
+                user: req.user ? JSON.stringify(req.user) : 'null',
+                isLoggedIn: req.user ? true : false,
+                title: "Reset Password",
+                token:token,
+                message: "Passwords must match"
+            });
+        else if(now.getTime() < user.reset_link_expires_millis)
+            res.render('users/template', {
+                user: req.user ? JSON.stringify(req.user) : 'null',
+                isLoggedIn: req.user ? true : false,
+                title: "Error",
+                paragraph: "Your reset link has expired."
+            });
+        else{
+            user.password = req.body.password;
+            user.reset_token = "";
+            user.save();
+            res.render('users/template', {
+                user: req.user ? JSON.stringify(req.user) : 'null',
+                title: "Successfully Changed Password",
+                isLoggedIn: req.user ? true : false,
+                paragraph: "Your password has been changed. Please login now."
+            });
+        }
+    });
 }

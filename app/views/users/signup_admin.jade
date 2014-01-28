@@ -1,0 +1,31 @@
+extends auth
+
+block auth  
+    .leads(data-ng-controller='LeadsController', data-ng-init='findOne()')
+      .row.header
+        .row.form-wrapper
+          .col-md-9
+            
+            form.form-horizontal(role='form', action="/users", method="post")
+              .form-group
+                .col-md-12
+                    h1 Sign up
+              .form-group
+                .col-md-12
+                  h3 Account
+              .form-group
+                label.col-md-1_5.control-label Name:
+                .col-md-10
+                  input.form-control(type='text', name="name", placeholder='Full name', value=user.name)
+              .form-group
+                label.col-md-1_5.control-label Email:
+                .col-md-10
+                  input.form-control(type='text', name="email", placeholder='Email', value=user.email)
+              .form-group
+                label.col-md-1_5.control-label Password:
+                .col-md-10
+                  input.form-control(type='password', name="password", placeholder='Password', value=user.password)
+              .col-md-11.field-box.actions
+                input.btn-glow.primary(type='submit', value='Sign up')
+                span OR
+                a.btn(type="submit") Help

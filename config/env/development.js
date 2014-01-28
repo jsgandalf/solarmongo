@@ -12,5 +12,6 @@ module.exports = {
     },
     stripe: {
         key: "sk_test_tthcngkRTRH1BWnT9HrqhC1u"
-    }
+    },
+    host: "localhost:3000"
 }

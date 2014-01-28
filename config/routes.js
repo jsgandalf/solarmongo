@@ -4,18 +4,20 @@ module.exports = function(app, passport, auth) {
     //User Routes
     var users = require('../app/controllers/users');
     app.get('/signin', users.signin);
-    app.get('/demo', users.signup);
+    app.get('/demo', users.demo);
     app.get('/signout', users.signout);
     app.get('/users/me', users.me);
-
+    app.get('/admin', users.signup_admin);
     //Setting up the users api
     app.post('/users', users.create);
 
-    //forgot password link, requires email
+    //forgot password templates
     app.get('/forgotpassword', users.getForgetPassword)
     app.get('/resetpasswordsuccess', users.getResetPasswordSuccess)
-    app.post('/forgot',users.forgotPassword);
     app.get('/reset/:id',users.resetPassword);
+    //forgot password post functions
+    app.post('/forgot',users.forgotPassword);
+    app.post('/resetpassword',users.resetPasswordPost)
 
     //Setting the local strategy route
     app.post('/users/session', passport.authenticate('local', {

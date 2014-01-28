@@ -12,5 +12,6 @@ module.exports = {
     },
     stripe: {
         key: "sk_live_RqqMUUv9rPsd3sPkdrv8PAje"
-    }
+    },
+    host: "www.solarmongo.com"
 }

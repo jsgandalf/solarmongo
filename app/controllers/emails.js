@@ -23,3 +23,16 @@ exports.sendContactEmail = function(req, res) {
         });
     });
 }
+
+exports.sendResetPassword = function(to, link){
+  sendgrid.send({
+      to: to,
+      from: 'support@solarmongo.com',
+      subject: 'Reset Password from SolarMongo!',
+      html: '<h2>Reset Password</h2>'
+            +'<p><a href="'+link+'">Click here to reset your password</a></p>'
+            +'<h3>Thank you for letting us help with your solar business</h3>'
+            +'<h3>Regards,</h3><br />'
+            +'<h3>Solarmongo Team</h3>'
+    });
+}

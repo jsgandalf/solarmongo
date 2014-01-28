@@ -37,7 +37,10 @@
         "grunt-cli": "latest",
         "grunt-env": "latest",
         "jwt-simple": "~0.1.0",
-        "sendgrid": "0.3.0-rc.1.7"
+        "sendgrid": "0.3.0-rc.1.7",
+        "stripe":"latest",
+        "validator":"latest",
+        "q":"latest"
     },
     "devDependencies": {
         "supertest": "latest",

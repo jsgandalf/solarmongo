@@ -397,3 +397,11 @@ label {
 .form-control::input::-webkit-input-placeholder {
   font-style: italic;
 }
+.jumbotron{
+    background-color: #EEEEEE;
+    color: inherit;
+    font-size: 21px;
+    font-weight: 200;
+    line-height: inherit;
+    margin-bottom: 30px;
+}

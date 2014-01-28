@@ -9,20 +9,23 @@
     controller: function ( $scope, $location, Global ) {
         $scope.global = Global;
         $scope.menu = [{
-            'title': 'About Us',
+            'title': 'About',
             'link': '../aboutus'
         }, {
             'title': 'Pricing',
             'link': '../pricing'
         }, {
-            'title': 'Contact Us',
+            'title': 'Contact',
             'link': '../contactus'
+        }, {
+            'title': 'Demo',
+            'link': '../demo'
         }];
-        $scope.navList = [{"name":"Dashboard","route":"dashboard","icon":"icon-home"},
-                {"name":"Leads","route":"leads","icon":"icon-book"},
-                {"name":"Contacts","route":"contacts","icon":"icon-user"},
-                {"name":"Tasks","route":"tasks","icon":"icon-check"},
-                {"name":"Reports","route":"reports","icon":"icon-bar-chart"}];
+        $scope.navList = [//{"name":"Dashboard","route":"dashboard","icon":"icon-home"},
+                {"name":"Leads","route":"leads","icon":"icon-group"},
+                {"name":"Settings","route":"settings","icon":"icon-cog"}];
+                //{"name":"Tasks","route":"tasks","icon":"icon-check"},
+                //{"name":"Reports","route":"reports","icon":"icon-bar-chart"}];
         $scope.isCollapsed = false;
         $scope.changeCollapsed = function($event){
             $event.stopPropagation();
@@ -30,6 +33,10 @@
         }
         $scope.isActive = function(route) {
             return ("/"+route) === $location.path();
+        }
+        $scope.isActiveFrontEnd = function(route){
+            var windowArry = window.location.href.split("/")
+            return (route == "../"+windowArry[windowArry.length-1]); 
         }
     }
   };

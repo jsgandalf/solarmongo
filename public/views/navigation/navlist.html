@@ -8,11 +8,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">SolarMongo</a>
+            <a class="navbar-brand" href="/">SolarMongo Beta</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-left hidden-xs">
-                <li class="dropdown">
+                <!--<li class="dropdown">
                     <a href="#" class="dropdown-toggle hidden-xs hidden-sm" data-toggle="dropdown">
                         Product
                         <b class="caret"></b>
@@ -25,12 +25,9 @@
                         <li class="dropdown-header">Stories</li>
                         <li><a href="#">testimonials</a></li>
                     </ul>
-                </li>
-                <li data-ng-repeat="item in menu" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
+                </li>-->
+                <li data-ng-repeat="item in menu" ng-class="{active:isActiveFrontEnd(item.link)}">
                     <a href="{{item.link}}">{{item.title}}</a>
-                </li>
-                <li>
-                    <a href="/signup">Sign Up</a>
                 </li>
             </ul>
             <form action="/users/session" method="post" class="navbar-form navbar-right ng-pristine ng-valid" role="form">
@@ -56,7 +53,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">SolarMongo</a>
+            <a class="navbar-brand" href="/">SolarMongo</a>
         </div>
         <ul class="nav navbar-nav pull-right hidden-xs">
             <li class="hidden-xs hidden-sm">

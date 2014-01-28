@@ -164,17 +164,6 @@ UserSchema.statics.findUser = function(email, token, cb) {
     });
 },
 
-UserSchema.statics.findUserByEmailOnly = function(email, cb) {
-    var self = this;
-    this.findOne({email: email}, function(err, usr) {
-        if(err || !usr) {
-            cb(err, null);
-        } else {
-            cb(false, usr);
-        }
-    });
-},
-
 UserSchema.statics.createUserToken = function(email, cb) {
     var self = this;
     this.findOne({email: email}, function(err, usr) {
@@ -185,9 +174,9 @@ UserSchema.statics.createUserToken = function(email, cb) {
         var token = self.encode({email: email});
         usr.token = new TokenModel({token:token});
         usr.save(function(err, usr) {
-            if (err) {
+            if (err)
                 cb(err, null);
-            } else {
+            else {
                 console.log("about to cb with usr.token.token: " + usr.token.token);
                 cb(false, usr.token.token);//token object, in turn, has a token property :)
             }
@@ -196,8 +185,8 @@ UserSchema.statics.createUserToken = function(email, cb) {
 },
 
 UserSchema.statics.generateResetToken = function(email, cb) {
-    console.log("in generateResetToken....");
-    this.findUserByEmailOnly(email, function(err, user) {
+    var self = this;
+    this.findOne({email:email}, function(err, user) {
         if (err) {
             cb(err, null);
         } else if (user) {
@@ -206,8 +195,14 @@ UserSchema.statics.generateResetToken = function(email, cb) {
             var now = new Date();
             var expires = new Date(now.getTime() + (config.resetTokenExpiresMinutes * 60 * 1000)).getTime();
             user.reset_token_expires_millis = expires;
-            user.save();
-            cb(false, user);
+            user.save(function(err, usr) {
+                if (err) {
+                    cb(err, null);
+                    console.log("Error: " + err);
+                } else 
+                    console.log(usr)
+                    cb(false, usr);
+            });
         } else {
             //TODO: This is not really robust and we should probably return an error code or something here
             cb(new Error('No user with that email found.'), null);

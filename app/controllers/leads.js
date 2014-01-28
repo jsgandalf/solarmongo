@@ -29,10 +29,7 @@ exports.create = function(req, res) {
 
     lead.save(function(err) {
         if (err) {
-            return res.send('users/signup', {
-                errors: err.errors,
-                lead: lead
-            });
+            res.jsonp({"errors": err.errors});
         } else {
             res.jsonp(lead);
         }
@@ -49,10 +46,7 @@ exports.update = function(req, res) {
 
     lead.save(function(err) {
         if (err) {
-            return res.send('users/signup', {
-                errors: err.errors,
-                lead: lead
-            });
+            res.jsonp({"errors": err.errors});
         } else {
             res.jsonp(lead);
         }
@@ -67,10 +61,7 @@ exports.destroy = function(req, res) {
 
     lead.remove(function(err) {
         if (err) {
-            return res.send('users/signup', {
-                errors: err.errors,
-                lead: lead
-            });
+            res.jsonp({"errors": err.errors});
         } else {
             res.jsonp(lead);
         }
@@ -90,9 +81,7 @@ exports.show = function(req, res) {
 exports.all = function(req, res) {
     Lead.find({user : req.user._id.toString()}).sort('-created').populate('user', 'name').exec(function(err, leads) {
         if (err) {
-            res.render('error', {
-                status: 500
-            });
+            res.jsonp({"errors": err.errors});
         } else {
             res.jsonp(leads);
         }

@@ -31,14 +31,14 @@ module.exports = function(grunt) {
                 }
             }
         },
-        jshint: {
-            all: {
-                src: ['gruntfile.js', 'server.js', 'app/**/*.js', 'public/js/**', 'test/**/*.js'],
-                options: {
-                    jshintrc: true
-                }
-            }
-        },
+        //jshint: {
+        //    all: {
+        //        src: ['gruntfile.js', 'server.js', 'app/**/*.js', 'public/js/**', 'test/**/*.js'],
+        //        options: {
+        //            jshintrc: true
+        //        }
+        //    }
+        //},
         nodemon: {
             dev: {
                 options: {
@@ -81,7 +81,7 @@ module.exports = function(grunt) {
 
     //Load NPM tasks 
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
+    //grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-nodemon');
@@ -92,7 +92,7 @@ module.exports = function(grunt) {
     grunt.option('force', true);
 
     //Default task(s).
-    grunt.registerTask('default', ['jshint', 'concurrent']);
+    grunt.registerTask('default', ['concurrent']);
 
     //Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

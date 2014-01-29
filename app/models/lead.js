@@ -85,6 +85,9 @@ LeadSchema.path('lastName').validate(function(lastName) {
     return lastName.length;
 }, 'Last Name of lead cannot be blank');
 
+LeadSchema.path('status').validate(function(status) {
+    return status.length;
+}, 'A status has to be set');
 /**
  * Statics
  */

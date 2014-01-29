@@ -54,7 +54,7 @@ exports.update = function(req, res) {
 };
 
 /**
- * Delete an lead
+ * Delete a lead
  */
 exports.destroy = function(req, res) {
     var lead = req.lead;
@@ -69,7 +69,7 @@ exports.destroy = function(req, res) {
 };
 
 /**
- * Show an lead
+ * Show a lead
  */
 exports.show = function(req, res) {
     res.jsonp(req.lead);

@@ -14,8 +14,8 @@ var SubscriptionSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    companyName: { type: String},
-    companyLogo: { type: String}
+    price: { type: String},
+    name: { type: String}
     
 });
 

@@ -105,10 +105,10 @@
                             <label>Roofing:</label>
                         </div>
                         <div class="col-md-5">
-                            <input type="text" data-ng-model="lead.siteNotes.roofingType" placeholder="Roofing Type" class="form-control" maxlength="30">
+                            <input type="text" data-ng-model="lead.jobSite.roofingType" placeholder="Roofing Type" class="form-control" maxlength="30">
                         </div>
                         <div class="col-md-5">
-                            <input type="text" data-ng-model="lead.siteNotes.layers" placeholder="Number of Layers" class="form-control small-inline" maxlength="30">
+                            <input type="text" data-ng-model="lead.jobSite.layers" placeholder="Number of Layers" class="form-control small-inline" maxlength="30">
                         </div>
                     </div>
                     <div class="form-group">
@@ -116,10 +116,10 @@
                             <label>Installation:</label>
                         </div>
                         <div class="col-md-5">
-                            <input type="text" data-ng-model="lead.siteNotes.height" placeholder="Installation Height" class="form-control" maxlength="30">
+                            <input type="text" data-ng-model="lead.jobSite.height" placeholder="Installation Height" class="form-control" maxlength="30">
                         </div>
                         <div class="col-md-5">
-                            <input type="text" data-ng-model="lead.siteNotes.pitch" placeholder="Roof Pitch" class="form-control small-inline" maxlength="30">
+                            <input type="text" data-ng-model="lead.jobSite.pitch" placeholder="Roof Pitch" class="form-control small-inline" maxlength="30">
                         </div>
                     </div>
                     <div class="form-group">
@@ -127,7 +127,7 @@
                             <label>Location:</label>    
                         </div>
                         <div class="col-md-10">
-                            <input class="form-control" type="text" name="title" placeholder="Site Location" data-ng-model="lead.siteNotes.location"/>
+                            <input class="form-control" type="text" name="title" placeholder="Site Location" data-ng-model="lead.jobSite.location"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -136,12 +136,12 @@
                         </div>
                         <div class="col-md-5">
                             <div class="middle-text">Solar Eye Availability Photo:</div>
-                            <div class="middle slider-frame primary" ng-click="lead.siteNotes.eyeAvailability = !lead.siteNotes.eyeAvailability">
-                                <span ng-class="{'on' : lead.siteNotes.eyeAvailability, '' : !lead.siteNotes.eyeAvailability}" class="slider-button off">{{lead.siteNotes.eyeAvailability && 'YES' || 'NO'}}</span>
+                            <div class="middle slider-frame primary" ng-click="lead.jobSite.eyeAvailability = !lead.jobSite.eyeAvailability">
+                                <span ng-class="{'on' : lead.jobSite.eyeAvailability, '' : !lead.jobSite.eyeAvailability}" class="slider-button off">{{lead.jobSite.eyeAvailability && 'YES' || 'NO'}}</span>
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <input type="text" placeholder="Rafter Spacing and Size" class="form-control small-inline" data-ng-model="lead.siteNotes.rafterSpacingAndSize">
+                            <input type="text" placeholder="Rafter Spacing and Size" class="form-control small-inline" data-ng-model="lead.jobSite.rafterSpacingAndSize">
                         </div>
                     </div>
                     <div class="form-group">
@@ -150,12 +150,12 @@
                         </div>
                         <div class="col-md-5">
                             <div class="middle-text">Engineered Truss:</div>
-                            <div class="middle slider-frame primary" ng-click="lead.siteNotes.truss = !lead.siteNotes.truss">
-                                <span ng-class="{'on' : lead.siteNotes.truss, '' : !lead.siteNotes.truss}" class="slider-button off">{{lead.siteNotes.truss && 'YES' || 'NO'}}</span>
+                            <div class="middle slider-frame primary" ng-click="lead.jobSite.truss = !lead.jobSite.truss">
+                                <span ng-class="{'on' : lead.jobSite.truss, '' : !lead.jobSite.truss}" class="slider-button off">{{lead.jobSite.truss && 'YES' || 'NO'}}</span>
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <input type="text" placeholder="Truss Type if not Engineered" class="form-control small-inline" data-ng-model="lead.siteNotes.otherTruss">
+                            <input type="text" placeholder="Truss Type if not Engineered" class="form-control small-inline" data-ng-model="lead.jobSite.otherTruss">
                         </div>
                     </div>    
                     <div class="form-group">
@@ -163,7 +163,7 @@
                             <label>Description:</label>
                         </div>
                         <div class="col-md-10">
-                            <textarea class="form-control" data-ng-model="lead.siteNotes.description"></textarea>
+                            <textarea class="form-control" data-ng-model="lead.jobSite.description"></textarea>
                             <span class="charactersleft">90 characters remaining. Field limited to 100 characters</span>
                         </div>
                     </div>

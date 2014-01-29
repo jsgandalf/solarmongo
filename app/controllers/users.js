@@ -82,7 +82,7 @@ exports.create = function(req, res, next) {
                     message = 'Please fill all the required fields';
             }
 
-            return res.render('users/signup', {
+            return res.render('users/signup_admin', {
                 message: message,
                 user: user
             });

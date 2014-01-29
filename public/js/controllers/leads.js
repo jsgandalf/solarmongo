@@ -27,9 +27,7 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
                 address:'',
                 city:'',
                 state:'',
-                zip:''
-            },
-            siteNotes:{
+                zip:'',
                 roofingType:'',
                 layers:'',
                 height:'',

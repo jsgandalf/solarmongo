@@ -64,6 +64,10 @@ var LeadSchema = new Schema({
         systemType:{type: String, default: '', trim:true}
     },
     siteSurveyNotes:{type: String, default: '', trim:true},
+    account: {
+        type: Schema.ObjectId,
+        ref: 'Account'
+    },
     user: {
         type: Schema.ObjectId,
         ref: 'User'

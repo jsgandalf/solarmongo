@@ -1,4 +1,4 @@
-<div class="leads" data-ng-controller="LeadsController" data-ng-init="findOne()">
+<div class="leads" data-ng-controller="AccountsController" data-ng-init="findOne()">
     <div class="row header">
         <div class="row form-wrapper">
             <div class="col-md-9 with-sidebar">
@@ -6,36 +6,34 @@
                     <br>
                     <div class="form-group">
                         <div class="col-md-8">
-                            <h3>General</h3>
+                            <h3>Company Details</h3>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-1_5 control-label">
-                          <label>Name:</label>
+                        <label class="col-md-1_5 control-label">Company Logo:</label>  
+                        <div class="col-md-10">
+                            <img src="img/companyLogoHere.png" class="col-xs-8 col-md-8" alt="user" />
                         </div>
-                        <div class="col-md-5">
-                          <input type="text" data-ng-model="lead.firstName" placeholder="First Name" class="form-control" maxlength="30" required>
-                        </div>
-                        <div class="col-md-5">
-                          <input type="text" data-ng-model="lead.lastName" placeholder="Last Name" class="form-control small-inline" maxlength="30" required>
+                        <div class="col-md-11 field-box actions">
+                            <input type="submit" value="Upload File" class="btn-glow primary">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-1_5 control-label">Company Name:</label>  
                         <div class="col-md-10">
-                            <input class="form-control" type="text" name="companyName" data-ng-model="lead.companyName" placeholder="Company Name"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-1_5 control-label">Title:</label>
-                        <div class="col-md-10">
-                            <input class="form-control" type="text" name="title"data-ng-model="lead.title" placeholder="Professional Career Title"/>
+                            <input class="form-control" type="text" name="companyName" data-ng-model="account.companyName" placeholder="Company Name"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-1_5 control-label">Email:</label>
                         <div class="col-md-10">
-                            <input class="form-control" type="text" data-ng-model="lead.email" placeholder="example@example.com">
+                            <input class="form-control" type="text" data-ng-model="account.email" placeholder="example@example.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1_5 control-label">Website:</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="title"data-ng-model="account.website" placeholder="Company website"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -43,10 +41,10 @@
                           <label>Phone:</label>
                         </div>
                         <div class="col-md-5">
-                          <input type="text" data-ng-model="lead.phoneWork" placeholder="Work Phone" class="form-control" maxlength="30">
+                          <input type="text" data-ng-model="account.phoneWork" placeholder="Work Phone" class="form-control" maxlength="30">
                         </div>
                         <div class="col-md-5">
-                          <input type="text" data-ng-model="lead.phoneMobile" placeholder="Mobile Phone" class="form-control small-inline" maxlength="30">
+                          <input type="text" data-ng-model="account.phoneMobile" placeholder="Mobile Phone" class="form-control small-inline" maxlength="30">
                         </div>
                     </div>
                     <div class="form-group">
@@ -54,7 +52,7 @@
                           <label>Address:</label>
                         </div>
                         <div class="col-md-10">
-                            <input type="text" placeholder="Street address" class="form-control" data-ng-model="lead.address">
+                            <input type="text" placeholder="Street address" class="form-control" data-ng-model="account.address">
                         </div>
                     </div>
                     <div class="form-group address-fields">
@@ -62,7 +60,7 @@
                           <label>&nbsp;</label>
                         </div>
                         <div class="col-md-3">
-                          <input type="text" placeholder="City" class="form-control" data-ng-model="lead.city">
+                          <input type="text" placeholder="City" class="form-control" data-ng-model="account.city">
                         </div>
                         <div id="state" class="ui-select col-md-4">
                             <select data-ng-model="lead.state">
@@ -130,7 +128,7 @@
                             <label class="control-label">Terms:</label>
                         </div>
                         <div class="col-md-10">
-                            <textarea class="form-control" data-ng-model="lead.notes"></textarea>
+                            <textarea class="form-control" data-ng-model="account.notes"></textarea>
                             <span class="charactersleft">90 characters remaining. Field limited to 100 characters</span>
                         </div>
                     </div>

@@ -50,41 +50,9 @@ module.exports = function(passport) {
         }
     ));    
 
-    //Use google strategy
-    /* If you get the following error: 
-    MongoError: E11000 duplicate key error index: mean-dev.users.$username_1  dup key: { : null }
-    you need to drop the old key of "username_1"
-    type in mongo shell: db.users.dropIndex('username_1')
-    */
-    /*passport.use(new GoogleStrategy({
-            clientID: config.google.clientID,
-            clientSecret: config.google.clientSecret,
-            callbackURL: config.google.callbackURL
-        },
-        function(accessToken, refreshToken, profile, done) {
-            User.findOne({
-                'google.id': profile.id
-            }, function(err, user) {
-                if (!user) {
-                    user = new User({
-                        name: profile.displayName,
-                        email: profile.emails[0].value,
-                        provider: 'google',
-                        google: profile._json
-                    });
-                    user.save(function(err) {
-                        if (err) console.log(err);
-                        return done(err, user);
-                    });
-                } else {
-                    return done(err, user);
-                }
-            });
-        }
-    ));*/
 
     //Protect endpoints in api using the BASIC strategry, requires passport-http
-    passport.use(new BasicStrategy(
+    /*passport.use(new BasicStrategy(
       function(email, password, done) {
             User.findOne({
                 email: email
@@ -105,7 +73,9 @@ module.exports = function(passport) {
                 return done(null, user);
             });
         }
-    ));
+    ));*/
+
+
     // Use the BearerStrategy within Passport.
     // Strategies in Passport require a `validate` function, which accept
     // credentials (in this case, a token), and invoke a callback with a user

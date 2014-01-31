@@ -7,7 +7,6 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     crypto = require('crypto'),
     config = require('../../config/config'),
-    authTypes = ['google'],
     jwt = require('jwt-simple'),
     tokenSecret = '@CSHeM*$[*GE_Q&stqOAIvkl6s%P-[B!De5o]HFzjM18BFa_!8D|{i2bBm.iE<W';
 
@@ -35,9 +34,7 @@ var UserSchema = new Schema({
         unique: true
     },
     hashed_password: String,
-    provider: String,
     salt: String,
-    google: {},
     date_created: {type: Date, default: Date.now},
     token: {type: Object},
     //For reset we use a reset token with an expiry (which must be checked)
@@ -63,22 +60,15 @@ var validatePresenceOf = function(value) {
     return value && value.length;
 };
 
-// the below 4 validations only apply if you are signing up traditionally
 UserSchema.path('name').validate(function(name) {
-    // if you are authenticating by any of the oauth strategies, don't validate
-    if (authTypes.indexOf(this.provider) !== -1) return true;
     return name.length;
 }, 'Name cannot be blank');
 
 UserSchema.path('email').validate(function(email) {
-    // if you are authenticating by any of the oauth strategies, don't validate
-    if (authTypes.indexOf(this.provider) !== -1) return true;
     return email.length;
 }, 'Email cannot be blank');
 
 UserSchema.path('hashed_password').validate(function(hashed_password) {
-    // if you are authenticating by any of the oauth strategies, don't validate
-    if (authTypes.indexOf(this.provider) !== -1) return true;
     return hashed_password.length;
 }, 'Password cannot be blank');
 
@@ -88,7 +78,7 @@ UserSchema.path('hashed_password').validate(function(hashed_password) {
  */
 UserSchema.pre('save', function(next) {
     if (!this.isNew) return next();
-    if (!validatePresenceOf(this.password) && authTypes.indexOf(this.provider) === -1)
+    if (!validatePresenceOf(this.password))
         next(new Error('Invalid password'));
     else
         next();

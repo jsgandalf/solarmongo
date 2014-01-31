@@ -77,6 +77,7 @@ var LeadSchema = new Schema({
 /**
  * Validations
  */
+ /*
 LeadSchema.path('firstName').validate(function(firstName) {
     return firstName.length;
 }, 'First Name of lead cannot be blank');
@@ -87,7 +88,8 @@ LeadSchema.path('lastName').validate(function(lastName) {
 
 LeadSchema.path('status').validate(function(status) {
     return status.length;
-}, 'A status has to be set');
+}, 'A status has to be set');*/
+
 /**
  * Statics
  */

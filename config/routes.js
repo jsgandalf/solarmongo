@@ -25,19 +25,6 @@ module.exports = function(app, passport, auth) {
         failureFlash: true
     }), users.session);
 
-    //Setting the google oauth routes
-    /*app.get('/auth/google', passport.authenticate('google', {
-        failureRedirect: '/signin',
-        scope: [
-            'https://www.googleapis.com/auth/userinfo.profile',
-            'https://www.googleapis.com/auth/userinfo.email'
-        ]
-    }), users.signin);
-
-    app.get('/auth/google/callback', passport.authenticate('google', {
-        failureRedirect: '/signin'
-    }), users.authCallback);*/
-
     //Finish with setting up the userId param
     app.param('userId', users.user);
 

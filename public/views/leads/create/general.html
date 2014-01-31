@@ -119,7 +119,19 @@
                             <input type="text" data-ng-model="zip" placeholder="Postal Code" class="form-control small-inline">
                         </div>
                     </div>
-                    
+                    <div class="form-group">
+                        <div class="col-md-1_5 control-label">
+                          <label>Lead Status:</label>
+                        </div>
+                        <div id="state" class="ui-select col-md-4">
+                            <select data-ng-model="status">
+                                <option value="">Not Contacted</option>
+                                <option value="Attempted">Attempted</option> 
+                                <option value="Contacted">Contacted</option> 
+                                <option value="New Opportunity">New Opportunity</option> 
+                                <option value="AdditionalContact">Additional Contact</option> 
+                                <option value="Disqualified">Disqualified</option> 
+                    </div>
                     <div class="form-group">
                         <div class="col-md-1_5">
                             <label class="control-label">Notes:</label>

@@ -5,56 +5,60 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
     $scope.submitted = false;
     $scope.create = function() {
         var lead = new Leads({
-            firstName: this.firstName,
-            lastName: this.lastName,
-            companyName: this.companyName,
-            title: this.title,
-            status: this.status,
-            email: this.email,
-            phoneWork: this.phoneWork,
-            phoneMobile: this.phoneMobile,
-            address: this.address,
-            city: this.city,
-            state: this.state,
-            zip: this.zip,
-            country: this.country,
-            longitude: null,
-            latitude: null,
-            notes: this.notes,
-            jobSite: {
-                firstName:'',
-                lastName:'',
-                address:'',
-                city:'',
-                state:'',
-                zip:'',
-                roofingType:'',
-                layers:'',
-                height:'',
-                pitch:'',
-                location:'',
-                eyeAvailability:false,
-                rafterSpacingAndSize:'',
-                truss:false,
-                otherTruss:'',
-                description:''
+            general: {
+                firstName: this.firstName,
+                lastName: this.lastName,
+                companyName: this.companyName,
+                title: this.title,
+                status: this.status,
+                email: this.email,
+                phoneWork: this.phoneWork,
+                phoneMobile: this.phoneMobile,
+                address: this.address,
+                city: this.city,
+                state: this.state,
+                zip: this.zip,
+                country: this.country,
+                longitude: null,
+                latitude: null,
+                notes: this.notes
             },
-            pictures: {
-                site:false,
-                inverterLocation:false,
-                powerMeterClosed:false,
-                powerMeterOpen:false,
-                shadingProblems:false,
-                arrayLocation:false,
-                breakerPanelsClosed:false,
-                breakerPanelsOpen:false
-            },
-            customerExpectation:{
-                partBill:'',
-                fullBill:'',
-                systemType:''
-            },
-            siteSurveyNotes: ''
+            siteSurvey: {
+                jobSite: {
+                    firstName:'',
+                    lastName:'',
+                    address:'',
+                    city:'',
+                    state:'',
+                    zip:'',
+                    roofingType:'',
+                    layers:'',
+                    height:'',
+                    pitch:'',
+                    location:'',
+                    eyeAvailability:false,
+                    rafterSpacingAndSize:'',
+                    truss:false,
+                    otherTruss:'',
+                    description:''
+                },
+                pictures: {
+                    site:false,
+                    inverterLocation:false,
+                    powerMeterClosed:false,
+                    powerMeterOpen:false,
+                    shadingProblems:false,
+                    arrayLocation:false,
+                    breakerPanelsClosed:false,
+                    breakerPanelsOpen:false
+                },
+                customerExpectation:{
+                    partBill:'',
+                    fullBill:'',
+                    systemType:''
+                },
+                siteSurveyNotes: ''
+            }
         });
         lead.$save(function(response) {
             //$location.path('leads/' + response._id);

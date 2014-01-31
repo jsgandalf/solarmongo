@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Lead = mongoose.model('Lead'),
+    SiteSurvey = mongoose.model('SiteSurvey'),
     _ = require('lodash');
 
 
@@ -24,13 +25,27 @@ exports.lead = function(req, res, next, id) {
  * Create a lead
  */
 exports.create = function(req, res) {
-    var lead = new Lead(req.body);
+    var lead = new Lead(req.body.general);
+    var siteSurvey = new SiteSurvey(req.body.siteSurvey);
     lead.user = req.user;
 
-    lead.save(function(err) {
+    //var siteSurvey = new SiteSurvey(req.body.siteSurvey);
+    //lead = _.extend(lead, req.body);
+    
+    //if(req.body.siteSurvey)
+    //    req.body.siteSurvey);
+    lead.save(siteSurvey, function(err) {
         if (err) {
             res.jsonp({"errors": err.errors});
         } else {
+            /*siteSurvey.lead = lead._id;
+            siteSurvey.save(function(err) {
+                if (err) {
+                    res.jsonp({"errors": err.errors});
+                } else {
+                    res.jsonp(lead);
+                }
+            });*/
             res.jsonp(lead);
         }
     });
@@ -41,8 +56,10 @@ exports.create = function(req, res) {
  */
 exports.update = function(req, res) {
     var lead = req.lead;
-
+    //console.log(lead);
     lead = _.extend(lead, req.body);
+    //console.log(lead);
+    console.log(req.body);
 
     lead.save(function(err) {
         if (err) {
@@ -79,11 +96,18 @@ exports.show = function(req, res) {
  * List of leads by id
  */
 exports.all = function(req, res) {
-    Lead.find({user : req.user._id.toString()}).sort('-created').populate('user', 'name').exec(function(err, leads) {
+    console.log(req.user._id.toString());
+    console.log(req.user._id);
+    Lead.find({user : req.user._id}).exec(function(err, leads){
+        console.log(err);
+        console.log(leads);
+        res.jsonp(leads);
+    });
+    /*Lead.find({user : req.user._id.toString()}).sort('-created').populate('user', 'name').exec(function(err, leads) {
         if (err) {
             res.jsonp({"errors": err.errors});
         } else {
             res.jsonp(leads);
         }
-    });
+    });*/
 };

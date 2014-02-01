@@ -29,7 +29,8 @@
         $scope.isCollapsed = false;
         $scope.changeCollapsed = function($event){
             $event.stopPropagation();
-            $scope.isCollapsed = !$scope.isCollapsed;
+            if($scope.isCollapsed)
+                $scope.isCollapsed = false;
         }
         $scope.isActive = function(route) {
             return ("/"+route) === $location.path();

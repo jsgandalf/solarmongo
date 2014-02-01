@@ -64,9 +64,10 @@ LeadSchema.path('status').validate(function(status) {
  * Statics
  */
 
-LeadSchema.pre('save', function(siteSurvey, next){
+/*LeadSchema.pre('save', function(siteSurvey, next){
     console.log(this._id);
     siteSurvey.lead = this._id;
+    SiteSurvey
     siteSurvey.save();
         /*{}).exec(function(){
         if(err){
@@ -74,9 +75,9 @@ LeadSchema.pre('save', function(siteSurvey, next){
             next(new Error('Stack trace error'+err));
         }else
             next();
-    });*/
+    });
         
-});
+});*/
 
  /*
 

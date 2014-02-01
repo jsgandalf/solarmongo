@@ -27,8 +27,6 @@ exports.user = {
  */
 exports.lead = {
     hasAuthorization: function(req, res, next) {
-        console.log(req.lead.user);
-        console.log(req.user);
         if (req.lead.user.id != req.user.id) {
             return res.send(401, 'User is not authorized');
         }

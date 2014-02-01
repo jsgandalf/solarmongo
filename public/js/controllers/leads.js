@@ -60,27 +60,27 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
                 siteSurveyNotes: ''
             }
         });
+        var self = this;
         lead.$save(function(response) {
             //$location.path('leads/' + response._id);
+            self.firstName = '';
+            self.lastName = '';
+            self.companyName = '';
+            self.title = '';
+            self.status = '';
+            self.email = '';
+            self.phoneWork = '';
+            self.phoneMobile = '';
+            self.address = '';
+            self.city = '';
+            self.state = '';
+            self.zip = '';
+            self.country = '';
+            self.longitude = '';
+            self.latitude = '';
+            self.notes = '';
             $location.path('leads/');
         });
-
-        this.firstName = '';
-        this.lastName = '';
-        this.companyName = '';
-        this.title = '';
-        this.status = '';
-        this.email = '';
-        this.phoneWork = '';
-        this.phoneMobile = '';
-        this.address = '';
-        this.city = '';
-        this.state = '';
-        this.zip = '';
-        this.country = '';
-        this.longitude = '';
-        this.latitude = '';
-        this.notes = '';
     };
 
     $scope.remove = function(lead) {

@@ -2,6 +2,14 @@
     display:block;
 }
 
+.select-style{
+  height: 34px;
+  margin-top: -4px;
+}
+.select-style select{
+  padding: 7px 30px 0 7px;
+}
+
 #state{
   /*width: 30%;*/
   height: 34px;

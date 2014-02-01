@@ -27,7 +27,7 @@
         "passport": "latest",
         "passport-local": "latest",
         "passport-http": "latest",
-        "passport-http-bearer": "1.0.1",
+        "passport-http-bearer": "latest",
         "lodash": "latest",
         "view-helpers": "latest",
         "mean-logger": "latest",

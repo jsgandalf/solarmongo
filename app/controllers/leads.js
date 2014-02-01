@@ -29,12 +29,41 @@ exports.create = function(req, res) {
     var siteSurvey = new SiteSurvey(req.body.siteSurvey);
     lead.user = req.user;
 
+    var promise = Lead.create(lead);
+    promise.then(function (newLead) {
+        res.jsonp(newLead);
+    },function(err){
+        console.log(err);
+        res.jsonp({"errors": err.errors});
+    });
+
+
     //var siteSurvey = new SiteSurvey(req.body.siteSurvey);
     //lead = _.extend(lead, req.body);
     
     //if(req.body.siteSurvey)
     //    req.body.siteSurvey);
-    lead.save(siteSurvey, function(err) {
+
+    /*siteSurvey.lead = myLead._id;
+            query2 = siteSurvey.save();
+            return query2.exec();*/
+            //console.log("lead: "+newLead._id)
+    /*lead.save(function(err) {
+        if (err) {
+            res.jsonp({"errors": err.errors});
+        } else {
+            res.jsonp(lead);
+        }
+    });*/
+    /*Q.ninvoke(lead.save(), 'toArray')
+        .then(function (newLead) {
+            console.log(newLead);
+            res.jsonp(newLead);
+        }, function(err) {
+            res.jsonp({"errors": err.errors});
+        });
+    */
+    /*lead.save(siteSurvey, function(err) {
         if (err) {
             res.jsonp({"errors": err.errors});
         } else {
@@ -46,9 +75,9 @@ exports.create = function(req, res) {
                     res.jsonp(lead);
                 }
             });*/
-            res.jsonp(lead);
+            /*res.jsonp(lead);
         }
-    });
+    });*/
 };
 
 /**
@@ -59,7 +88,7 @@ exports.update = function(req, res) {
     //console.log(lead);
     lead = _.extend(lead, req.body);
     //console.log(lead);
-    console.log(req.body);
+    //console.log(req.body);
 
     lead.save(function(err) {
         if (err) {
@@ -96,18 +125,11 @@ exports.show = function(req, res) {
  * List of leads by id
  */
 exports.all = function(req, res) {
-    console.log(req.user._id.toString());
-    console.log(req.user._id);
-    Lead.find({user : req.user._id}).exec(function(err, leads){
-        console.log(err);
-        console.log(leads);
-        res.jsonp(leads);
-    });
-    /*Lead.find({user : req.user._id.toString()}).sort('-created').populate('user', 'name').exec(function(err, leads) {
+    Lead.find({user : req.user._id.toString()}).sort('-created').populate('user', 'name').exec(function(err, leads) {
         if (err) {
             res.jsonp({"errors": err.errors});
         } else {
             res.jsonp(leads);
         }
-    });*/
+    });
 };

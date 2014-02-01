@@ -4,25 +4,24 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
     $scope.global = Global;
     $scope.submitted = false;
     $scope.create = function() {
+        console.log(this.state);
         var lead = new Leads({
-            general: {
-                firstName: this.firstName,
-                lastName: this.lastName,
-                companyName: this.companyName,
-                title: this.title,
-                status: this.status,
-                email: this.email,
-                phoneWork: this.phoneWork,
-                phoneMobile: this.phoneMobile,
-                address: this.address,
-                city: this.city,
-                state: this.state,
-                zip: this.zip,
-                country: this.country,
-                longitude: null,
-                latitude: null,
-                notes: this.notes
-            },
+            firstName: this.firstName,
+            lastName: this.lastName,
+            companyName: this.companyName,
+            title: this.title,
+            status: this.status,
+            email: this.email,
+            phoneWork: this.phoneWork,
+            phoneMobile: this.phoneMobile,
+            address: this.address,
+            city: this.city,
+            state: this.state,
+            zip: this.zip,
+            country: this.country,
+            longitude: null,
+            latitude: null,
+            notes: this.notes,
             siteSurvey: {
                 jobSite: {
                     firstName:'',
@@ -60,6 +59,7 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
                 siteSurveyNotes: ''
             }
         });
+        console.log(lead);
         var self = this;
         lead.$save(function(response) {
             //$location.path('leads/' + response._id);
@@ -105,7 +105,6 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
             lead.updated = [];
         }
         lead.updated.push(new Date().getTime());
-
         lead.$update(function() {
             Modal.open("Updated","Lead Successfully Updated!");
         });

@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
 
 
 /**
- * Find lead by id
+ * Find lead by id, middleware
  */
 exports.lead = function(req, res, next, id) {
     Lead.load(id, function(err, lead) {
@@ -25,59 +25,18 @@ exports.lead = function(req, res, next, id) {
  * Create a lead
  */
 exports.create = function(req, res) {
-    var lead = new Lead(req.body.general);
-    var siteSurvey = new SiteSurvey(req.body.siteSurvey);
+    var lead = new Lead(req.body);
+    //var siteSurvey = new SiteSurvey(req.body.siteSurvey);
     lead.user = req.user;
 
-    var promise = Lead.create(lead);
+    var promise = Lead.save(lead);
     promise.then(function (newLead) {
         res.jsonp(newLead);
-    },function(err){
+    }
+    ,function(err){
         console.log(err);
         res.jsonp({"errors": err.errors});
     });
-
-
-    //var siteSurvey = new SiteSurvey(req.body.siteSurvey);
-    //lead = _.extend(lead, req.body);
-    
-    //if(req.body.siteSurvey)
-    //    req.body.siteSurvey);
-
-    /*siteSurvey.lead = myLead._id;
-            query2 = siteSurvey.save();
-            return query2.exec();*/
-            //console.log("lead: "+newLead._id)
-    /*lead.save(function(err) {
-        if (err) {
-            res.jsonp({"errors": err.errors});
-        } else {
-            res.jsonp(lead);
-        }
-    });*/
-    /*Q.ninvoke(lead.save(), 'toArray')
-        .then(function (newLead) {
-            console.log(newLead);
-            res.jsonp(newLead);
-        }, function(err) {
-            res.jsonp({"errors": err.errors});
-        });
-    */
-    /*lead.save(siteSurvey, function(err) {
-        if (err) {
-            res.jsonp({"errors": err.errors});
-        } else {
-            /*siteSurvey.lead = lead._id;
-            siteSurvey.save(function(err) {
-                if (err) {
-                    res.jsonp({"errors": err.errors});
-                } else {
-                    res.jsonp(lead);
-                }
-            });*/
-            /*res.jsonp(lead);
-        }
-    });*/
 };
 
 /**
@@ -89,6 +48,8 @@ exports.update = function(req, res) {
     lead = _.extend(lead, req.body);
     //console.log(lead);
     //console.log(req.body);
+
+    console.log(req.body);
 
     lead.save(function(err) {
         if (err) {

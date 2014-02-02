@@ -25,6 +25,9 @@
                 <li data-ng-repeat="item in menu" ng-class="{active:isActiveFrontEnd(item.link)}">
                     <a href="{{item.link}}">{{item.title}}</a>
                 </li>
+                <li class="hidden-xs hidden-lg">
+                    <a href="/signin">Signin</a>
+                </li>
             </ul>
             <form action="/users/session" method="post" class="navbar-form navbar-form-responsive navbar-right" role="form">
                 <div class="form-group">

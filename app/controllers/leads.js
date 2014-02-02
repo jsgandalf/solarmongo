@@ -5,7 +5,6 @@
  */
 var mongoose = require('mongoose'),
     Lead = mongoose.model('Lead'),
-    Q = require('Q'),
     SiteSurvey = mongoose.model('SiteSurvey'),
     _ = require('lodash');
 

@@ -29,6 +29,7 @@ exports.create = function(req, res) {
     var lead = new Lead(req.body);
     
     lead.user = req.user;
+    lead.account = req.user.account; 
 
     SiteSurvey.create(req.body.siteSurvey, function(err, newSiteSurvey){
         if(err) res.jsonp({"errors": err.errors});
@@ -103,7 +104,7 @@ exports.show = function(req, res) {
  * List of leads by id
  */
 exports.all = function(req, res) {
-    Lead.find({user : req.user._id.toString()}).sort('-created').populate('user', 'name').exec(function(err, leads) {
+    Lead.find({account : req.user.account.toString()}).sort('-created').populate('user', 'name').exec(function(err, leads) {
         if (err) {
             res.jsonp({"errors": err.errors});
         } else {

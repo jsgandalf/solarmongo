@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     User = mongoose.model('User'),
+    Account = mongoose.model('Account'),
     stripe = require('./payments'),
     validator = require('validator'),
     mailer = require('./emails'),
@@ -64,34 +65,59 @@ exports.session = function(req, res) {
 exports.create = function(req, res, next) {
     var user = new User(req.body);
     var message = "";
+    if(user.name == "")
+        message = "Name is required";
     if(user.email == "")
         message = "Email is required";
     if(!validator.isEmail(user.email))
         message = "Not a valid email";
-    //else if(user.password
-    //stripe.addCustomer(req, res, user);
-    user.provider = 'local';
-    user.save(function(err) {
-        if (err) {
-            switch (err.code) {
-                case 11000:
-                case 11001:
-                    message = 'Email already exists';
-                    break;
-                default:
-                    message = 'Please fill all the required fields';
-            }
-
+    if(user.password == "")
+        message = "Password is required";
+    if(message!="")
+        return res.render('users/signup_admin', {
+            message: message,
+            user: user
+        });
+    User.findOne({email: user.email}).exec(function(err,isUser){
+        if(err) return next(err);
+        if(isUser) {
             return res.render('users/signup_admin', {
-                message: message,
+                message: "Email already exists",
                 user: user
             });
         }
-        req.logIn(user, function(err) {
-            if (err) return next(err);
-            return res.redirect('/');
-        });
-    });
+        var account = new Account;
+        account.users.push(user);
+        account.save(function(err){
+            if(err)
+                return res.render('users/signup_admin', {
+                    message: "Opps, there was an error that occured while trying to create your account, please contact technical support.",
+                    user: user
+                });
+            user.account = account._id;
+            user.save(function(err) {
+                if (err) {
+                    switch (err.code) {
+                        case 11000:
+                        case 11001:
+                            message = 'Email already exists';
+                            break;
+                        default:
+                            message = 'Please fill all the required fields';
+                    }
+
+                    return res.render('users/signup_admin', {
+                        message: message,
+                        user: user
+                    });
+                }else
+                    req.logIn(user, function(err) {
+                        if (err) return next(err);
+                        return res.redirect('/');
+                    }); 
+            });
+        })
+    })
 };
 
 /**

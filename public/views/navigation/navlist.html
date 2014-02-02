@@ -11,26 +11,22 @@
             <a class="navbar-brand" href="/">SolarMongo Beta</a>
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav pull-left hidden-xs">
-                <!--<li class="dropdown">
-                    <a href="#" class="dropdown-toggle hidden-xs hidden-sm" data-toggle="dropdown">
-                        Product
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Features Overview</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">Stories</li>
-                        <li><a href="#">testimonials</a></li>
-                    </ul>
-                </li>-->
+            <form action="/users/session" method="post" class="navbar-form navbar-right visible-xs" role="form">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+            
+            <ul class="nav navbar-nav navbar-left">
                 <li data-ng-repeat="item in menu" ng-class="{active:isActiveFrontEnd(item.link)}">
                     <a href="{{item.link}}">{{item.title}}</a>
                 </li>
             </ul>
-            <form action="/users/session" method="post" class="navbar-form navbar-right ng-pristine ng-valid" role="form">
+            <form action="/users/session" method="post" class="navbar-form navbar-form-responsive navbar-right" role="form">
                 <div class="form-group">
                     <input class="form-control" type="text" name="email" placeholder="Email">
                 </div>

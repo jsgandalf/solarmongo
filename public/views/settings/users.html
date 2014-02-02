@@ -34,15 +34,17 @@
                         <div class="col-md-1_5 control-label">
                           <label>User Role:</label>
                         </div>
-                        <div id="state" class="ui-select col-md-3">
-                            <select data-ng-model="lead.state">
-                                <option value="">Access Level</option>
-                                <option value="Admin">Administrator</option> 
-                                <option value="Installer">Installer</option>
-                                <option value="SalesRep">Sales Representative</option>
-                                <option value="LeadsAgency">Leads Agency</option>
-                                <option value="SalesAgency">Sales Agency</option>
-                            </select>
+                        <div class="col-md-8">
+                            <div class="select-style ui-select col-md-5">
+                                <select data-ng-model="user.state">
+                                    <option value="">--</option>
+                                    <option value="Admin">Administrator</option> 
+                                    <option value="Installer">Installer</option>
+                                    <option value="SalesRep">Sales Representative</option>
+                                    <option value="LeadsAgency">Leads Agency</option>
+                                    <option value="SalesAgency">Sales Agency</option>
+                                </select>
+                            </div>
                         </div> 
                     </div>                   
                     <div class="col-md-11 field-box actions">

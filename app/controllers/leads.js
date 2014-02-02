@@ -5,12 +5,13 @@
  */
 var mongoose = require('mongoose'),
     Lead = mongoose.model('Lead'),
+    Q = require('Q'),
     SiteSurvey = mongoose.model('SiteSurvey'),
     _ = require('lodash');
 
 
 /**
- * Find lead by id, middleware
+ * Find lead by id
  */
 exports.lead = function(req, res, next, id) {
     Lead.load(id, function(err, lead) {
@@ -26,17 +27,17 @@ exports.lead = function(req, res, next, id) {
  */
 exports.create = function(req, res) {
     var lead = new Lead(req.body);
-    //var siteSurvey = new SiteSurvey(req.body.siteSurvey);
+    
     lead.user = req.user;
 
-    var promise = Lead.save(lead);
-    promise.then(function (newLead) {
-        res.jsonp(newLead);
-    }
-    ,function(err){
-        console.log(err);
-        res.jsonp({"errors": err.errors});
-    });
+    SiteSurvey.create(req.body.siteSurvey, function(err, newSiteSurvey){
+        if(err) res.jsonp({"errors": err.errors});
+        lead.siteSurvey = newSiteSurvey._id;
+        Lead.create(lead, function(err){
+            if(err) res.jsonp({"errors": err.errors});
+            res.jsonp(lead);
+        });
+    })
 };
 
 /**
@@ -46,16 +47,18 @@ exports.update = function(req, res) {
     var lead = req.lead;
     //console.log(lead);
     lead = _.extend(lead, req.body);
-    //console.log(lead);
-    //console.log(req.body);
-
-    console.log(req.body);
-
     lead.save(function(err) {
         if (err) {
             res.jsonp({"errors": err.errors});
         } else {
-            res.jsonp(lead);
+            SiteSurvey.findById(req.body.siteSurvey._id, function (err, siteSurvey) {
+                if (err) res.jsonp({"errors": err.errors});              
+                siteSurvey = _.extend(siteSurvey, req.body.siteSurvey);
+                siteSurvey.save(function (err) {
+                    if (err) res.jsonp({"errors": err.errors});
+                    res.jsonp(lead);
+                });
+            });
         }
     });
 };
@@ -65,14 +68,28 @@ exports.update = function(req, res) {
  */
 exports.destroy = function(req, res) {
     var lead = req.lead;
-
+    console.log(req.lead);
     lead.remove(function(err) {
+        if (err) {
+            res.jsonp({"errors": err.errors});
+        } else {
+            SiteSurvey.findById(req.lead.siteSurvey._id, function (err, siteSurvey) {
+                if (err) res.jsonp({"errors": err.errors});              
+                siteSurvey.remove(function (err) {
+                    if (err) res.jsonp({"errors": err.errors});
+                    res.jsonp(lead);
+                });
+            });
+        }
+    });
+
+    /*lead.remove(function(err) {
         if (err) {
             res.jsonp({"errors": err.errors});
         } else {
             res.jsonp(lead);
         }
-    });
+    });*/
 };
 
 /**

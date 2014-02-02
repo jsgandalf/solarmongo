@@ -59,7 +59,6 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
                 siteSurveyNotes: ''
             }
         });
-        console.log(lead);
         var self = this;
         lead.$save(function(response) {
             //$location.path('leads/' + response._id);

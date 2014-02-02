@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+    SiteSurvey = require('./siteSurvey'),
     Schema = mongoose.Schema;
 
 /**
@@ -64,11 +65,6 @@ LeadSchema.path('status').validate(function(status) {
  * Statics
  */
 
-/*LeadSchema.pre('save', function(siteSurvey, next){
-    console.log(this._id);
-    siteSurvey.lead = this._id;
-    SiteSurvey
-    siteSurvey.save();
         /*{}).exec(function(){
         if(err){
             console.log("Stack trace error: "+err);
@@ -94,14 +90,5 @@ LeadSchema.statics.load = function(id, cb) {
     }).populate('siteSurvey').populate('user', 'name').exec(cb);
 };
 
-LeadSchema.statics.update = function(general, siteSurvey){
-    var promise = Lead.update(general);
-    promise.then(function (newLead) {
-        res.jsonp(newLead);
-    },function(err){
-        console.log(err);
-        res.jsonp({"errors": err.errors});
-    });
-}
 
 mongoose.model('Lead', LeadSchema);

@@ -2,7 +2,6 @@
 
 var mongoose = require('mongoose'),
     LocalStrategy = require('passport-local').Strategy,
-    GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
     BasicStrategy = require('passport-http').BasicStrategy,
     BearerStrategy = require('passport-http-bearer').Strategy,
     User = mongoose.model('User'),

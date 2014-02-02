@@ -1,8 +1,8 @@
-<div class="leads" data-ng-controller="LeadsController" data-ng-init="findOne()">
+<div class="leads">
     <div class="row header">
         <div class="row form-wrapper">
             <div class="col-md-9 with-sidebar">
-                <form class="form-horizontal" role="form" data-ng-submit="update()">
+                
                     <br>
                     <div class="form-group">
                         <div class="col-md-8">
@@ -65,7 +65,7 @@
                           <input type="text" placeholder="City" class="form-control" data-ng-model="lead.city">
                         </div>
                         <div class="col-md-4">
-                          <input type="text" placeholder="State" class="form-control" data-ng-model="state">
+                          <input type="text" placeholder="State" class="form-control" data-ng-model="lead.state">
                         </div>
                         <!--<div id="state" class="ui-select col-md-4">
                             <select data-ng-model="lead.state">
@@ -153,12 +153,8 @@
                             <span class="charactersleft">90 characters remaining. Field limited to 100 characters</span>
                         </div>
                     </div>
-                    <div class="col-md-11 field-box actions">
-                        <input type="submit" value="Update Lead" class="btn-glow primary">
-                        <span>OR</span>
-                        <input type="reset" class="reset" value="Cancel" onclick="window.history.back()">
-                    </div>
-                </form>
+                    
+
             </div>
             <div class="col-md-3 form-sidebar tag-sidebar">
                 <div class="btn-group toggle-inputs hidden-tablet">

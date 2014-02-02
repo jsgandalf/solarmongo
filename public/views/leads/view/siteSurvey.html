@@ -1,8 +1,8 @@
-<div class="leads" data-ng-controller="LeadsController" data-ng-init="findOne()">
+<div class="leads">
     <div class="row header">
         <div class="row form-wrapper">
             <div class="col-md-9"> <!--without-sidebar-->
-                <form class="form-horizontal" role="form" data-ng-submit="update()">
+                
                     <br>
                     <div class="form-group">
                         <div class="col-md-8">
@@ -11,13 +11,13 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-1_5 control-label">
-                            <label>Name:</label>
+                            <label>Name:{{lead.siteSurvey.firstName}}</label>
                         </div>
                         <div class="col-md-5">
-                            <input type="text" data-ng-model="lead.jobSite.firstName" placeholder="First Name" class="form-control" maxlength="30">
+                            <input type="text" data-ng-model="lead.siteSurvey.firstName" placeholder="First Name" class="form-control" maxlength="30">
                         </div>
                         <div class="col-md-5">
-                            <input type="text" data-ng-model="lead.jobSite.lastName" placeholder="Last Name" class="form-control small-inline" maxlength="30">
+                            <input type="text" data-ng-model="siteSurvey.jobSite.lastName" placeholder="Last Name" class="form-control small-inline" maxlength="30">
                         </div>
                     </div>
                     <div class="form-group">
@@ -25,7 +25,7 @@
                             <label>Address:</label>    
                         </div>
                         <div class="col-md-10">
-                            <input type="text" placeholder="Street address" class="form-control" data-ng-model="lead.jobSite.address">
+                            <input type="text" placeholder="Street address" class="form-control" data-ng-model="siteSurvey.jobSite.address">
                         </div>
                     </div>
                     <div class="form-group address-fields">
@@ -33,10 +33,10 @@
                             <label>&nbsp;</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="text" placeholder="City" class="form-control" data-ng-model="lead.jobSite.city">
+                            <input type="text" placeholder="City" class="form-control" data-ng-model="siteSurvey.jobSite.city">
                         </div>
                         <div id="state" class="ui-select col-md-4">
-                            <select data-ng-model="lead.jobSite.state">
+                            <select data-ng-model="siteSurvey.jobSite.state">
                                 <option value="">Select State</option>
                                 <option value="AL">Alabama</option> 
                                 <option value="AK">Alaska</option> 
@@ -92,7 +92,7 @@
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <input type="text" data-ng-model="lead.jobSite.zip" placeholder="Postal Code" class="form-control small-inline">
+                            <input type="text" data-ng-model="siteSurvey.jobSite.zip" placeholder="Postal Code" class="form-control small-inline">
                         </div>
                     </div>
                     <div class="form-group">
@@ -105,10 +105,10 @@
                             <label>Roofing:</label>
                         </div>
                         <div class="col-md-5">
-                            <input type="text" data-ng-model="lead.jobSite.roofingType" placeholder="Roofing Type" class="form-control" maxlength="30">
+                            <input type="text" data-ng-model="siteSurvey.jobSite.roofingType" placeholder="Roofing Type" class="form-control" maxlength="30">
                         </div>
                         <div class="col-md-5">
-                            <input type="text" data-ng-model="lead.jobSite.layers" placeholder="Number of Layers" class="form-control small-inline" maxlength="30">
+                            <input type="text" data-ng-model="siteSurvey.jobSite.layers" placeholder="Number of Layers" class="form-control small-inline" maxlength="30">
                         </div>
                     </div>
                     <div class="form-group">
@@ -116,10 +116,10 @@
                             <label>Installation:</label>
                         </div>
                         <div class="col-md-5">
-                            <input type="text" data-ng-model="lead.jobSite.height" placeholder="Installation Height" class="form-control" maxlength="30">
+                            <input type="text" data-ng-model="siteSurvey.jobSite.height" placeholder="Installation Height" class="form-control" maxlength="30">
                         </div>
                         <div class="col-md-5">
-                            <input type="text" data-ng-model="lead.jobSite.pitch" placeholder="Roof Pitch" class="form-control small-inline" maxlength="30">
+                            <input type="text" data-ng-model="siteSurvey.jobSite.pitch" placeholder="Roof Pitch" class="form-control small-inline" maxlength="30">
                         </div>
                     </div>
                     <div class="form-group">
@@ -127,7 +127,7 @@
                             <label>Location:</label>    
                         </div>
                         <div class="col-md-10">
-                            <input class="form-control" type="text" name="title" placeholder="Site Location" data-ng-model="lead.jobSite.location"/>
+                            <input class="form-control" type="text" name="title" placeholder="Site Location" data-ng-model="siteSurvey.jobSite.location"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -136,12 +136,12 @@
                         </div>
                         <div class="col-md-5">
                             <div class="middle-text">Solar Eye Availability Photo:</div>
-                            <div class="middle slider-frame primary" ng-click="lead.jobSite.eyeAvailability = !lead.jobSite.eyeAvailability">
-                                <span ng-class="{'on' : lead.jobSite.eyeAvailability, '' : !lead.jobSite.eyeAvailability}" class="slider-button off">{{lead.jobSite.eyeAvailability && 'YES' || 'NO'}}</span>
+                            <div class="middle slider-frame primary" ng-click="siteSurvey.jobSite.eyeAvailability = !siteSurvey.jobSite.eyeAvailability">
+                                <span ng-class="{'on' : siteSurvey.jobSite.eyeAvailability, '' : !siteSurvey.jobSite.eyeAvailability}" class="slider-button off">{{siteSurvey.jobSite.eyeAvailability && 'YES' || 'NO'}}</span>
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <input type="text" placeholder="Rafter Spacing and Size" class="form-control small-inline" data-ng-model="lead.jobSite.rafterSpacingAndSize">
+                            <input type="text" placeholder="Rafter Spacing and Size" class="form-control small-inline" data-ng-model="siteSurvey.jobSite.rafterSpacingAndSize">
                         </div>
                     </div>
                     <div class="form-group">
@@ -150,12 +150,12 @@
                         </div>
                         <div class="col-md-5">
                             <div class="middle-text">Engineered Truss:</div>
-                            <div class="middle slider-frame primary" ng-click="lead.jobSite.truss = !lead.jobSite.truss">
-                                <span ng-class="{'on' : lead.jobSite.truss, '' : !lead.jobSite.truss}" class="slider-button off">{{lead.jobSite.truss && 'YES' || 'NO'}}</span>
+                            <div class="middle slider-frame primary" ng-click="siteSurvey.jobSite.truss = !siteSurvey.jobSite.truss">
+                                <span ng-class="{'on' : siteSurvey.jobSite.truss, '' : !siteSurvey.jobSite.truss}" class="slider-button off">{{siteSurvey.jobSite.truss && 'YES' || 'NO'}}</span>
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <input type="text" placeholder="Truss Type if not Engineered" class="form-control small-inline" data-ng-model="lead.jobSite.otherTruss">
+                            <input type="text" placeholder="Truss Type if not Engineered" class="form-control small-inline" data-ng-model="siteSurvey.jobSite.otherTruss">
                         </div>
                     </div>    
                     <div class="form-group">
@@ -163,7 +163,7 @@
                             <label>Description:</label>
                         </div>
                         <div class="col-md-10">
-                            <textarea class="form-control" data-ng-model="lead.jobSite.description"></textarea>
+                            <textarea class="form-control" data-ng-model="siteSurvey.jobSite.description"></textarea>
                             <span class="charactersleft">90 characters remaining. Field limited to 100 characters</span>
                         </div>
                     </div>
@@ -182,32 +182,32 @@
                                     <tr>
                                         <td><div class="middle-text">Site:</div></td>
                                         <td>
-                                            <div class="middle slider-frame primary" ng-click="lead.pictures.site = !lead.pictures.site">
-                                                <span ng-class="{'on' : lead.pictures.site, '' : !lead.pictures.site}" class="slider-button off">{{lead.pictures.site && 'YES' || 'NO'}}</span>
+                                            <div class="middle slider-frame primary" ng-click="siteSurvey.pictures.site = !siteSurvey.pictures.site">
+                                                <span ng-class="{'on' : siteSurvey.pictures.site, '' : !siteSurvey.pictures.site}" class="slider-button off">{{siteSurvey.pictures.site && 'YES' || 'NO'}}</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><div class="middle-text">Inverter Location:</div></td>
                                         <td>
-                                            <div class="middle slider-frame primary" ng-click="lead.pictures.inverterLocation = !lead.pictures.inverterLocation">
-                                                <span ng-class="{'on' : lead.pictures.inverterLocation, '' : !lead.pictures.inverterLocation}" class="slider-button off">{{lead.pictures.inverterLocation && 'YES' || 'NO'}}</span>
+                                            <div class="middle slider-frame primary" ng-click="siteSurvey.pictures.inverterLocation = !siteSurvey.pictures.inverterLocation">
+                                                <span ng-class="{'on' : siteSurvey.pictures.inverterLocation, '' : !siteSurvey.pictures.inverterLocation}" class="slider-button off">{{siteSurvey.pictures.inverterLocation && 'YES' || 'NO'}}</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><div class="middle-text">Power Meter Closed:</div></td>
                                         <td>
-                                            <div class="middle slider-frame primary" ng-click="lead.pictures.powerMeterClosed = !lead.pictures.powerMeterClosed">
-                                                <span ng-class="{'on' : lead.pictures.powerMeterClosed, '' : !lead.pictures.powerMeterClosed}" class="slider-button off">{{lead.pictures.powerMeterClosed && 'YES' || 'NO'}}</span>
+                                            <div class="middle slider-frame primary" ng-click="siteSurvey.pictures.powerMeterClosed = !siteSurvey.pictures.powerMeterClosed">
+                                                <span ng-class="{'on' : siteSurvey.pictures.powerMeterClosed, '' : !siteSurvey.pictures.powerMeterClosed}" class="slider-button off">{{siteSurvey.pictures.powerMeterClosed && 'YES' || 'NO'}}</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><div class="middle-text">Power Meter Open:</div></td>
                                         <td>
-                                            <div class="middle slider-frame primary" ng-click="lead.pictures.powerMeterOpen = !lead.pictures.powerMeterOpen">
-                                                <span ng-class="{'on' : lead.pictures.powerMeterOpen, '' : !lead.pictures.powerMeterOpen}" class="slider-button off">{{lead.pictures.powerMeterOpen && 'YES' || 'NO'}}</span>
+                                            <div class="middle slider-frame primary" ng-click="siteSurvey.pictures.powerMeterOpen = !siteSurvey.pictures.powerMeterOpen">
+                                                <span ng-class="{'on' : siteSurvey.pictures.powerMeterOpen, '' : !siteSurvey.pictures.powerMeterOpen}" class="slider-button off">{{siteSurvey.pictures.powerMeterOpen && 'YES' || 'NO'}}</span>
                                             </div>
                                         </td>
                                     </tr>
@@ -221,32 +221,32 @@
                                     <tr>
                                         <td><div class="middle-text">Shading Problems:</div></td>
                                         <td>
-                                            <div class="middle slider-frame primary" ng-click="lead.pictures.shadingProblems = !lead.pictures.shadingProblems">
-                                                <span ng-class="{'on' : lead.pictures.shadingProblems, '' : !lead.pictures.shadingProblems}" class="slider-button off">{{lead.pictures.shadingProblems && 'YES' || 'NO'}}</span>
+                                            <div class="middle slider-frame primary" ng-click="siteSurvey.pictures.shadingProblems = !siteSurvey.pictures.shadingProblems">
+                                                <span ng-class="{'on' : siteSurvey.pictures.shadingProblems, '' : !siteSurvey.pictures.shadingProblems}" class="slider-button off">{{siteSurvey.pictures.shadingProblems && 'YES' || 'NO'}}</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><div class="middle-text">Array Location:</div></td>
                                         <td>
-                                            <div class="middle slider-frame primary" ng-click="lead.pictures.arrayLocation = !lead.pictures.arrayLocation">
-                                                <span ng-class="{'on' : lead.pictures.arrayLocation, '' : !lead.pictures.arrayLocation}" class="slider-button off">{{lead.pictures.arrayLocation && 'YES' || 'NO'}}</span>
+                                            <div class="middle slider-frame primary" ng-click="siteSurvey.pictures.arrayLocation = !siteSurvey.pictures.arrayLocation">
+                                                <span ng-class="{'on' : siteSurvey.pictures.arrayLocation, '' : !siteSurvey.pictures.arrayLocation}" class="slider-button off">{{siteSurvey.pictures.arrayLocation && 'YES' || 'NO'}}</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><div class="middle-text">Breaker Panels Closed:</div></td>
                                         <td>
-                                            <div class="middle slider-frame primary" ng-click="lead.pictures.breakerPanelsClosed = !lead.pictures.breakerPanelsClosed">
-                                                <span ng-class="{'on' : lead.pictures.breakerPanelsClosed, '' : !lead.pictures.breakerPanelsClosed}" class="slider-button off">{{lead.pictures.breakerPanelsClosed && 'YES' || 'NO'}}</span>
+                                            <div class="middle slider-frame primary" ng-click="siteSurvey.pictures.breakerPanelsClosed = !siteSurvey.pictures.breakerPanelsClosed">
+                                                <span ng-class="{'on' : siteSurvey.pictures.breakerPanelsClosed, '' : !siteSurvey.pictures.breakerPanelsClosed}" class="slider-button off">{{siteSurvey.pictures.breakerPanelsClosed && 'YES' || 'NO'}}</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><div class="middle-text">Breaker Panels Open:</div></td>
                                         <td>
-                                            <div class="middle slider-frame primary" ng-click="lead.pictures.breakerPanelsOpen = !lead.pictures.breakerPanelsOpen">
-                                                <span ng-class="{'on' : lead.pictures.breakerPanelsOpen, '' : !lead.pictures.breakerPanelsOpen}" class="slider-button off">{{lead.pictures.breakerPanelsOpen && 'YES' || 'NO'}}</span>
+                                            <div class="middle slider-frame primary" ng-click="siteSurvey.pictures.breakerPanelsOpen = !siteSurvey.pictures.breakerPanelsOpen">
+                                                <span ng-class="{'on' : siteSurvey.pictures.breakerPanelsOpen, '' : !siteSurvey.pictures.breakerPanelsOpen}" class="slider-button off">{{siteSurvey.pictures.breakerPanelsOpen && 'YES' || 'NO'}}</span>
                                             </div>
                                         </td>
                                     </tr>
@@ -270,10 +270,10 @@
                             <label>Bill:</label>
                         </div>
                         <div class="col-md-5">
-                            <input type="text" data-ng-model="lead.customerExpectation.partBill" placeholder="Part Bill" class="form-control small-inline" maxlength="30">
+                            <input type="text" data-ng-model="siteSurvey.customerExpectation.partBill" placeholder="Part Bill" class="form-control small-inline" maxlength="30">
                         </div>
                         <div class="col-md-5">
-                            <input type="text" data-ng-model="lead.customerExpectation.fullBill" placeholder="Full Bill" class="form-control small-inline" maxlength="30">
+                            <input type="text" data-ng-model="siteSurvey.customerExpectation.fullBill" placeholder="Full Bill" class="form-control small-inline" maxlength="30">
                         </div>
                     </div>
                     <div class="form-group">
@@ -282,7 +282,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="ui-select">
-                                <select data-ng-model="lead.customerExpectation.systemType">
+                                <select data-ng-model="siteSurvey.customerExpectation.systemType">
                                     <option value="">Please Select System Type</option>
                                     <option value="Grid Interactive">Grid Interactive</option>
                                     <option value="Grid Interactive With Battery Backup">Grid Interactive With Battery Backup</option>
@@ -296,16 +296,11 @@
                             <label>Notes:</label>
                         </div>
                         <div class="col-md-10">
-                            <textarea class="form-control" data-ng-model="lead.siteSurveyNotes"></textarea>
+                            <textarea class="form-control" data-ng-model="siteSurvey.siteSurveyNotes"></textarea>
                             <span class="charactersleft">90 characters remaining. Field limited to 100 characters</span>
                         </div>
                     </div>
-                    <div class="col-md-11 field-box actions">
-                        <input type="submit" value="Update Lead" class="btn-glow primary">
-                        <span>OR</span>
-                        <input type="reset" class="reset" value="Cancel" onclick="window.history.back()">
-                    </div>
-                </form>
+                    
             </div>
             <!--<div class="span3 form-sidebar pull-right">
                 <div class="btn-group toggle-inputs hidden-tablet">

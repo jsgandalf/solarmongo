@@ -91,7 +91,17 @@ Author.pre('remove', function(next) {
 LeadSchema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
-    }).populate('user', 'name').exec(cb);
+    }).populate('siteSurvey').populate('user', 'name').exec(cb);
 };
+
+LeadSchema.statics.update = function(general, siteSurvey){
+    var promise = Lead.update(general);
+    promise.then(function (newLead) {
+        res.jsonp(newLead);
+    },function(err){
+        console.log(err);
+        res.jsonp({"errors": err.errors});
+    });
+}
 
 mongoose.model('Lead', LeadSchema);

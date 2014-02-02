@@ -63,6 +63,7 @@ module.exports = function(app, passport, auth) {
     app.post('/api/token', api.getToken)
     
     var sendgrid = require('../app/controllers/emails');
+    
     // mailing server
     app.post('/sendContactEmail',sendgrid.sendContactEmail);
 };

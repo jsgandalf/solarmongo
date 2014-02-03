@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+    UserSchema = require("./user").theUserSchema,
     Schema = mongoose.Schema;
 
 /**
@@ -14,17 +15,22 @@ var AccountSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    companyName: { type: String},
-    companyPhone: { type: String},
-    companyEmail: { type: String},
-    companyAddress: { type: String},
-    companyCity: { type: String},
-    companyZip: { type: String},
-    companyState: { type: String},
-    companyCountry: { type: String},
-    companyTerms: { type: String},
+    updated: {
+        type: Date,
+        default: Date.now
+    },
+    name: { type: String},
+    phone: { type: String},
+    email: { type: String},
+    address: { type: String},
+    city: { type: String},
+    zip: { type: String},
+    state: { type: String},
+    country: { type: String},
+    terms: { type: String},
     payingTier: {type: String},
-    companyLogo: { type: String}
+    logo: { type: String},
+    users:[UserSchema]
     
 });
 
@@ -32,17 +38,20 @@ var AccountSchema = new Schema({
 /**
  * Validations
  */
-AccountSchema.path('companyName').validate(function(companyName) {
-    return companyName.length;
+ /*
+AccountSchema.path('name').validate(function(name) {
+    return name.length;
 }, 'Company Name cannot be blank');
 
-AccountSchema.path('companyEmail').validate(function(companyEmail) {
-    return companyEmail.length;
+AccountSchema.path('email').validate(function(email) {
+    return email.length;
 }, 'Email address cannot be blank');
 
-AccountSchema.path('companyCountry').validate(function(companyCountry) {
-    return companyCountry.length;
+AccountSchema.path('country').validate(function(country) {
+    return country.length;
 }, 'Country cannot be blank');
+*/
+
 /**
  * Statics
  */

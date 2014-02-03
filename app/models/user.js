@@ -39,7 +39,11 @@ var UserSchema = new Schema({
     token: {type: Object},
     //For reset we use a reset token with an expiry (which must be checked)
     reset_token: {type: String},
-    reset_token_expires_millis: {type: Number}
+    reset_token_expires_millis: {type: Number},
+    account: {
+        type: Schema.ObjectId,
+        ref: 'Account'
+    },
 });
 
 /**
@@ -76,13 +80,14 @@ UserSchema.path('hashed_password').validate(function(hashed_password) {
 /**
  * Pre-save hook
  */
+ /*
 UserSchema.pre('save', function(next) {
     if (!this.isNew) return next();
     if (!validatePresenceOf(this.password))
         next(new Error('Invalid password'));
     else
         next();
-});
+});*/
 
 /**
  * Methods
@@ -201,3 +206,4 @@ UserSchema.statics.generateResetToken = function(email, cb) {
 }
 
 mongoose.model('User', UserSchema);
+exports.theUserSchema = UserSchema;

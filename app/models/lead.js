@@ -46,6 +46,10 @@ var LeadSchema = new Schema({
     user: {
         type: Schema.ObjectId,
         ref: 'User'
+    },
+    assignee: {
+        type: Schema.ObjectId,
+        ref: 'User'
     }
 });
 

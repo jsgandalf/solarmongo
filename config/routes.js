@@ -52,6 +52,7 @@ module.exports = function(app, passport, auth) {
     app.get('/api/user', passport.authenticate('bearer', { session: false }), users.me);
 
     //Api
+    app.get('/api/user', passport.authenticate('bearer', { session: false }), users.me);
     app.get('/api/leads', passport.authenticate('bearer', { session: false }), leads.all);
     app.post('/api/leads', passport.authenticate('bearer', { session: false }), leads.create);
     app.get('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), leads.show);

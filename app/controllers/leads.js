@@ -100,7 +100,7 @@ exports.show = function(req, res) {
 };
 
 /**
- * List of leads by id
+ * List of leads by account id
  */
 exports.all = function(req, res) {
     Lead.find({account : req.user.account.toString()}).sort('-created').populate('user', 'name').exec(function(err, leads) {

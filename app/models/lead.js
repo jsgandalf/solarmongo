@@ -15,6 +15,10 @@ var LeadSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    updated:{
+        type: Date,
+        default: Date.now
+    },
     firstName: { type: String },
     lastName: { type: String },
     companyName: { type: String},

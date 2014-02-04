@@ -41,15 +41,15 @@ block content
 				| You will be using GET, POST, PUT, and DEL for your requests. All requests requires the user object described above.
 				ul
 					li
-						| GET LEADS(GET): /api/leads - returns: user (that is logged in), firstName, lastName, .. etc 
+						| GET LEADS(GET): /leads - returns: user (that is logged in), firstName, lastName, .. etc 
 					li
-						| CREATE LEAD(POST): /api/leads - requires at least: firstName, lastName - returns lead
+						| CREATE LEAD(POST): /leads - requires at least: firstName, lastName - returns lead
 					li
-						| GET A LEAD(GET): /api/leads/:leadId - requires: leadId - returns a lead, user (that is logged in), firstName, lastName, .. etc 
+						| GET A LEAD(GET): /leads/:leadId - requires: leadId - returns a lead, user (that is logged in), firstName, lastName, .. etc 
 					li
-						| UPDATE LEAD(PUT): /api/leads/:leadId - requires: leadId - updates a lead - returns lead
+						| UPDATE LEAD(PUT): /leads/:leadId - requires: leadId - updates a lead - returns lead
 					li
-						| DELETE LEAD(DEL): /api/leads/:leadId - requires: leadId - updates a lead - returns lead
+						| DELETE LEAD(DEL): /leads/:leadId - requires: leadId - updates a lead - returns lead
 			p
 
 		hr

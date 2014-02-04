@@ -172,7 +172,7 @@ UserSchema.statics.createUserToken = function(email, cb) {
             if (err)
                 cb(err, null);
             else {
-                console.log("about to cb with usr.token.token: " + usr.token.token);
+                //console.log("about to cb with usr.token.token: " + usr.token.token);
                 cb(false, usr.token.token);//token object, in turn, has a token property :)
             }
         });

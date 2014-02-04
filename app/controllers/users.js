@@ -111,10 +111,18 @@ exports.create = function(req, res, next) {
                         user: user
                     });
                 }else
-                    req.logIn(user, function(err) {
-                        if (err) return next(err);
-                        return res.redirect('/');
-                    }); 
+                    User.createUserToken(user.email,function(err){
+                        if(err)
+                            return res.render('users/signup_admin', {
+                                message: "Opps, there was an error that occured while trying to create your account, please contact technical support.",
+                                user: user
+                            });
+                        req.logIn(user, function(err) {
+                            if (err) return next(err);
+                            return res.redirect('/');
+                        });
+                    })
+                     
             });
         })
     })

@@ -29,7 +29,7 @@ exports.getToken = function(req, res){
                     if (err) {
                         res.json({error: 'Issue generating token'});
                     } else {
-                        res.json({token : usersToken});
+                        res.json(user);
                     }
                 });
         });

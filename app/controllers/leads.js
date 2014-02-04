@@ -100,7 +100,7 @@ exports.show = function(req, res) {
 };
 
 /**
- * List of leads by id
+ * List of leads by account id
  */
 exports.all = function(req, res) {
     console.log(req.user)

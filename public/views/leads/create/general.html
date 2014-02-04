@@ -140,6 +140,23 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-md-1_5 control-label">
+                            <label>Assignee:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="select-style ui-select col-md-5" data-ng-init="findUsers()">
+                                <select data-ng-model="assignee">
+                                    <option value="">Not Contacted</option>
+                                    <option value="Attempted">Attempted</option> 
+                                    <option value="Contacted">Contacted</option> 
+                                    <option value="New Opportunity">New Opportunity</option> 
+                                    <option value="AdditionalContact">Additional Contact</option> 
+                                    <option value="Disqualified">Disqualified</option> 
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-md-1_5">
                             <label class="control-label">Notes:</label>
                         </div>

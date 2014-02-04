@@ -103,7 +103,7 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
         if (!lead.updated) {
             lead.updated = [];
         }
-        lead.updated.push(new Date().getTime());
+        lead.updated = new Date().getTime();
         lead.$update(function() {
             Modal.open("Updated","Lead Successfully Updated!");
         });
@@ -122,4 +122,5 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
             $scope.lead = lead;
         });
     };
+    
 }]);

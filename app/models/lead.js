@@ -15,6 +15,10 @@ var LeadSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    updated:{
+        type: Date,
+        default: Date.now
+    },
     firstName: { type: String },
     lastName: { type: String },
     companyName: { type: String},
@@ -40,6 +44,10 @@ var LeadSchema = new Schema({
         ref: 'Account'
     },
     user: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    },
+    assignee: {
         type: Schema.ObjectId,
         ref: 'User'
     }

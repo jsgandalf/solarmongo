@@ -7,20 +7,30 @@ exports.requiresLogin = function(req, res, next, done) {
     /*if (!req.isAuthenticated()) {
         return res.send(401, 'User is not authorized');
     }*/
-    if(!req.user.token.token)
-        return res.send(401, 'Token is not authorized');
+    //token can be from the web app - req.user or from the api - req.body.user
+    var token = "";
+    console.log("here"); 
+    if(req.user.token.token)
+        token - req.user.token.token;
+    else if(req.body.access_token)
+        token = req.body.access_token;
+    else
+        return res.send(401, 'You are not authorized');
     var decoded;
     try{
-        decoded = User.decode(req.user.token.token);
+        decoded = User.decode(token);
     }catch(err){
         console.log("This is a stack trace error: "+err);
         return done(err);
     }
     //Now do a lookup on that email in mongodb ... if exists it's a real user
     if (decoded && decoded.email) {
-        User.findUser(decoded.email, req.user.token.token, function(err, user) {
+        User.findUser(decoded.email, token, function(err, user) {
             if (err) { return done(err); }
             if (!user) { return done(null, false); }
+            req.user = user;
+            console.log(user);
+            console.log(req.user);
             return done(null, user);
         });
     } else {

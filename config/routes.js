@@ -43,6 +43,7 @@ module.exports = function(app, passport, auth) {
     //Finish with setting up the leadId param
     app.param('leadId', leads.lead);
 
+    app.get('/api/token',api.getToken);
     app.post('/api/token',api.getToken);
     //Pages route
     app.get('/', pages.index);

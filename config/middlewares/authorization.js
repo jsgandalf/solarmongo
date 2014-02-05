@@ -11,7 +11,7 @@ exports.requiresLogin = function(req, res, next) {
     //token can be from the web app - req.user or from the api - req.body.user
         var token = "";
         console.log("here"); 
-        if(req.user.token.token)
+        if(typeof req.user.token.token)
             token = req.user.token.token;
         else if(req.body.access_token)
             token = req.body.access_token;

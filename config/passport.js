@@ -88,10 +88,6 @@ module.exports = function(passport) {
           // the user to `false` to indicate failure. Otherwise, return the
           // authenticated `user`. Note that in a production-ready application, one
           // would want to validate the token for authenticity.
-            if(!incomingToken && req.isAuthenticated()){
-                console.log("here2");
-                return done(null, req.user);
-            }
             var decoded;
             try{
                 decoded = User.decode(incomingToken);

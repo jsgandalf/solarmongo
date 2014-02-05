@@ -21,6 +21,7 @@
         "crypto": "0.0.3",
         "passport": "~0.1.18",
         "passport-local": "~0.1.6",
+        "passport-http-bearer": "1.0.1",
         "lodash": "~2.4.1",
         "view-helpers": "~0.1.4",
         "mean-logger": "0.0.1",

@@ -3,10 +3,9 @@
 var mongoose = require('mongoose'),
     LocalStrategy = require('passport-local').Strategy,
     //BasicStrategy = require('passport-http').BasicStrategy,
-    //BearerStrategy = require('passport-http-bearer').Strategy,
+    BearerStrategy = require('passport-http-bearer').Strategy,
     User = mongoose.model('User'),
     config = require('./config');
-
 
 module.exports = function(passport) {
     //Serialize sessions
@@ -49,7 +48,6 @@ module.exports = function(passport) {
         }
     ));    
 
-
     //Protect endpoints in api using the BASIC strategry, requires passport-http
     /*passport.use(new BasicStrategy(
       function(email, password, done) {
@@ -79,7 +77,7 @@ module.exports = function(passport) {
     // Strategies in Passport require a `validate` function, which accept
     // credentials (in this case, a token), and invoke a callback with a user
     // object.
-    /*
+    
     passport.use(new BearerStrategy({
       },
       function(incomingToken, done) {
@@ -90,6 +88,10 @@ module.exports = function(passport) {
           // the user to `false` to indicate failure. Otherwise, return the
           // authenticated `user`. Note that in a production-ready application, one
           // would want to validate the token for authenticity.
+            if(!incomingToken && req.isAuthenticated()){
+                console.log("here2");
+                return done(null, req.user);
+            }
             var decoded;
             try{
                 decoded = User.decode(incomingToken);
@@ -110,5 +112,5 @@ module.exports = function(passport) {
 
         });
       }
-    ));*/
+    ));
 };

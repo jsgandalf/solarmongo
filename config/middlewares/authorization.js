@@ -7,12 +7,18 @@
  */
 
 exports.requiresLogin = function(req, res, next) {
-    /*if (!req.isAuthenticated()) {
+    //Set access token in the request if access token is not present and user is authenticated
+    /*if(req.isAuthenticated() && !req["query"]["access_token"]){
+        //req.query.access_token = req.user.token.token;
+        next();
+    //if access token is present, then continue and test for the access token
+    }else if(req["body"]["access_token"]!=='undefined'){
+        next();
+    //else if the user doesn't have an access token and is not authenticated
+    }else if (!req.isAuthenticated()) {
         return res.send(401, 'User is not authorized');
     }*/
-    
-    //token can be from the web app - req.user or from the api - req.body.user
-    //api.authenticateToken(req, res, next);
+    next();
 };
 
 /**

@@ -65,7 +65,7 @@ exports.session = function(req, res) {
 exports.create = function(req, res, next) {
     var user = new User(req.body);
     var message = "";
-    (if(user.name == "")
+    if(user.name == "")
         message = "Name is required";
     if(user.email == "")
         message = "Email is required";

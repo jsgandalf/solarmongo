@@ -15,10 +15,10 @@ exports.getToken = function(req, res){
         email = req.body.email;
     if(req["body"] !== 'undefined' && req["body"]["password"] !== 'undefined')
         password = req.body.password;
-    if(req["query"] !== 'undefined' && req["query"]["email"] !== 'undefined')
-        email = req.query.email;
-    if(req["query"] !== 'undefined' && req["query"]["password"] !== 'undefined')
-        password = req.query.password;
+    //if(req["query"] !== 'undefined' && req["query"]["email"] !== 'undefined')
+    //    email = req.query.email;
+    //if(req["query"] !== 'undefined' && req["query"]["password"] !== 'undefined')
+    //    password = req.query.password;
     if(! email)
         res.json({error: 'Email required'});
     else if(! password)

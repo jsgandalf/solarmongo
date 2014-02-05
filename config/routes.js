@@ -8,7 +8,7 @@ var sendgrid = require('../app/controllers/emails');
 
 module.exports = function(app, passport, auth) {
     //User Routes
-    
+    var users = require('../app/controllers/users');
     app.get('/signin', users.signin);
     app.get('/demo', users.demo);
     app.get('/signout', users.signout);
@@ -35,6 +35,7 @@ module.exports = function(app, passport, auth) {
     app.param('userId', users.user);
 
     //Lead Routes
+    var leads = require('../app/controllers/leads');
     app.get('/leads', auth.requiresLogin, leads.all);
     app.post('/leads', auth.requiresLogin, leads.create);
     app.get('/leads/:leadId', auth.requiresLogin, auth.lead.hasAuthorization, leads.show);
@@ -44,9 +45,12 @@ module.exports = function(app, passport, auth) {
     //Finish with setting up the leadId param
     app.param('leadId', leads.lead);
 
+
     app.get('/api/token',api.getToken);
     app.post('/api/token',api.getToken);
+
     //Pages route
+    var pages = require('../app/controllers/pages');
     app.get('/', pages.index);
     app.get('/contactus', pages.contactUs);
     app.get('/aboutus', pages.aboutUs);
@@ -54,7 +58,11 @@ module.exports = function(app, passport, auth) {
     app.get('/api', pages.api);
 
     //access token will be access with a user object
-    // curl -v http://localhost:3000/api/token?email=example@example.com&password=password
+
+    // curl -v http://localhost:3000/api/token?user={..}
+    app.get('/api/token', auth.requiresLogin, users.me)
+    
+    var sendgrid = require('../app/controllers/emails');
 
     // mailing server
     app.post('/sendContactEmail',sendgrid.sendContactEmail);

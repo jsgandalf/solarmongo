@@ -9,32 +9,16 @@ block content
 			p
 				| REQUEST TOKEN (POST): /api/token - requires: email, password - returns the token that is user specific. Will require email and password as parameters.
 			p
-				| Pass this in to req.user: (remember that each of these parameters is necessary for the app to run properly, if you left out date_created for both user and token, and left out token._id, you'd be fine )
-			p
-				ul(style="list-style:none")
-					li
-						| user: {
-					li
-						| _id: 52f07e5437bd01a90f2ce51e,
-					li
-						| account: 52f07e5437bd01a90f2ce51f,
-					li
-						| email: 'sean@gmail.com',
-					li
-						| name: 's',
-					li
-						| token: { date_created: Mon Feb 03 2014 22:44:52 GMT-0700 (MST),
-					li
-						ul(style="list-style:none")
-							li
-								| _id: 52f07e5437bd01a90f2ce520,
-							li
-								| token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InNlYW5AZ21haWwuY29tIn0.Rq5HRC8OD9G1KscCySCcOUgQ9-ya__V06gWF_tTwWqo' },
-							li
-								| date_created: Mon Feb 03 2014 22:44:52 GMT-0700 (MST) 
-					li
-						| }
 
+			h3 User
+			p
+				| These are the User routes.  Require access_token as parameter
+			p
+				ul
+					li
+						| SIGN IN (GET): /api/signin - requires: email, password - returns user
+					li
+						| SIGN UP (POST): /api/signup - requires, email, password of new user - returns _id, message. Message will be "success" if true
 
 			h3 Leads
 			p

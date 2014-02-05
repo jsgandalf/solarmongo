@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
     User = mongoose.model('User'),
     Account = mongoose.model('Account'),
     stripe = require('./payments'),
-    validator = require('validator'),
+    //validator = require('validator'),
     mailer = require('./emails'),
     config = require('../../config/config');
 
@@ -65,14 +65,14 @@ exports.session = function(req, res) {
 exports.create = function(req, res, next) {
     var user = new User(req.body);
     var message = "";
-    if(user.name == "")
+    /*(if(user.name == "")
         message = "Name is required";
     if(user.email == "")
         message = "Email is required";
     if(!validator.isEmail(user.email))
         message = "Not a valid email";
     if(user.password == "")
-        message = "Password is required";
+        message = "Password is required";*/
     if(message!="")
         return res.render('users/signup_admin', {
             message: message,
@@ -171,8 +171,8 @@ exports.forgotPassword = function(req, res){
     var message ="";
     if(email == "")
         message = "Email is required";
-    else if(!validator.isEmail(email))
-        message = "Not a valid email";
+    /*else if(!validator.isEmail(email))
+        message = "Not a valid email";*/
     if(message!=""){
         res.render('users/forgotPassword', {
             user: req.user ? JSON.stringify(req.user) : 'null',
@@ -262,13 +262,13 @@ exports.resetPasswordPost = function(req, res){
                 title: "Error",
                 paragraph: "Couldn't find user"
             });
-        else if(validator.isNull(req.body.password))
+        /*else if(validator.isNull(req.body.password))
             res.render('users/template', {
                 user: req.user ? JSON.stringify(req.user) : 'null',
                 isLoggedIn: req.user ? true : false,
                 title: "Error",
                 paragraph: "Password Is Required"
-            });
+            });*/
         else if(password != password2) 
             res.render('users/reset', {
                 user: req.user ? JSON.stringify(req.user) : 'null',

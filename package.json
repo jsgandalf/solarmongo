@@ -48,8 +48,7 @@
         "karma-coverage": "~0.1.4",
         "karma": "~0.10.9",
         "jwt-simple": "~0.1.0",
-        "sendgrid": "0.3.0-rc.1.7",
-        "stripe":"latest"
+        "sendgrid": "0.3.0-rc.1.7"
     },
     "devDependencies": {
         "supertest": "latest",

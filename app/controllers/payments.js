@@ -1,4 +1,4 @@
-var config = require('../../config/config');
+/*var config = require('../../config/config');
 var stripe = require('stripe')(config.stripe.key);
 
 exports.chargeCard = function(req,res){
@@ -28,4 +28,4 @@ exports.addCustomer = function(req,res, email){
         console.log(err);
       // Deal with an error
     });
-}
+}*/

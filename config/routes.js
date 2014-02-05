@@ -47,11 +47,11 @@ module.exports = function(app, passport, auth) {
     app.del('/leads/:leadId', auth.requiresLogin, auth.lead.hasAuthorization, leads.destroy);
 
     //api
-    app.get('/api/leads', passport.authenticate('bearer', auth.requiresLogin, { session: false }), leads.all);
-    app.post('/api/leads', passport.authenticate('bearer', { session: false }), auth.requiresLogin, leads.create);
-    app.get('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.requiresLogin, auth.lead.hasAuthorization, leads.show);
-    app.put('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.requiresLogin, auth.lead.hasAuthorization, leads.update);
-    app.del('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.requiresLogin, auth.lead.hasAuthorization, leads.destroy);
+    app.get('/api/leads', passport.authenticate('bearer', { session: false }), leads.all);
+    app.post('/api/leads', passport.authenticate('bearer', { session: false }), leads.create);
+    app.get('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.show);
+    app.put('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.update);
+    app.del('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.destroy);
 
     //Finish with setting up the leadId param
     app.param('leadId', leads.lead);

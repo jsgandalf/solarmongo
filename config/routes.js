@@ -4,6 +4,7 @@ var users = require('../app/controllers/users');
 var leads = require('../app/controllers/leads');
 var api = require('../app/controllers/api');
 var pages = require('../app/controllers/pages');
+var sendgrid = require('../app/controllers/emails');
 
 module.exports = function(app, passport, auth) {
     //User Routes
@@ -53,10 +54,7 @@ module.exports = function(app, passport, auth) {
     app.get('/api', pages.api);
 
     //access token will be access with a user object
-    // curl -v http://localhost:3000/api/token?user={..}
-    
-    
-    var sendgrid = require('../app/controllers/emails');
+    // curl -v http://localhost:3000/api/token?email=example@example.com&password=password
 
     // mailing server
     app.post('/sendContactEmail',sendgrid.sendContactEmail);

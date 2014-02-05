@@ -10,6 +10,7 @@ var mongoose = require('mongoose'),
 exports.getToken = function(req, res){
     var email = req.query.email;
     var password = req.query.password;
+    console.log(req);
     if(! email)
         res.json({error: 'Email required'});
     else if(! password)

@@ -28,6 +28,7 @@
         "passport-local": "latest",
         "passport-http": "latest",
         "passport-http-bearer": "latest",
+        "passport-oauth": "latest",
         "lodash": "latest",
         "view-helpers": "latest",
         "mean-logger": "latest",

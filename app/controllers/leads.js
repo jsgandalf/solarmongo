@@ -26,7 +26,7 @@ exports.lead = function(req, res, next, id) {
  */
 exports.create = function(req, res) {
     var lead = new Lead(req.body);
-    
+    console.log(req);
     lead.user = req.user;
     lead.account = req.user.account; 
 
@@ -103,6 +103,7 @@ exports.show = function(req, res) {
  * List of leads by account id
  */
 exports.all = function(req, res) {
+    console.log(req.user)
     Lead.find({account : req.user.account.toString()}).sort('-created').populate('user', 'name').exec(function(err, leads) {
         if (err) {
             res.jsonp({"errors": err.errors});

@@ -2,8 +2,8 @@
 
 var mongoose = require('mongoose'),
     LocalStrategy = require('passport-local').Strategy,
-    BasicStrategy = require('passport-http').BasicStrategy,
-    BearerStrategy = require('passport-http-bearer').Strategy,
+    //BasicStrategy = require('passport-http').BasicStrategy,
+    //BearerStrategy = require('passport-http-bearer').Strategy,
     User = mongoose.model('User'),
     config = require('./config');
 
@@ -79,6 +79,7 @@ module.exports = function(passport) {
     // Strategies in Passport require a `validate` function, which accept
     // credentials (in this case, a token), and invoke a callback with a user
     // object.
+    /*
     passport.use(new BearerStrategy({
       },
       function(incomingToken, done) {
@@ -109,5 +110,5 @@ module.exports = function(passport) {
 
         });
       }
-    ));
+    ));*/
 };

@@ -1,5 +1,13 @@
 'use strict';
 
+
+var users = require('../app/controllers/users');
+var leads = require('../app/controllers/leads');
+var api = require('../app/controllers/api');
+var pages = require('../app/controllers/pages');
+var sendgrid = require('../app/controllers/emails');
+
+
 module.exports = function(app, passport, auth) {
     //User Routes
     var users = require('../app/controllers/users');
@@ -32,12 +40,17 @@ module.exports = function(app, passport, auth) {
     var leads = require('../app/controllers/leads');
     app.get('/leads', auth.requiresLogin, leads.all);
     app.post('/leads', auth.requiresLogin, leads.create);
-    app.get('/leads/:leadId', auth.requiresLogin, leads.show);
+    app.get('/leads/:leadId', auth.requiresLogin, auth.lead.hasAuthorization, leads.show);
     app.put('/leads/:leadId', auth.requiresLogin, auth.lead.hasAuthorization, leads.update);
     app.del('/leads/:leadId', auth.requiresLogin, auth.lead.hasAuthorization, leads.destroy);
 
     //Finish with setting up the leadId param
     app.param('leadId', leads.lead);
+
+
+    app.get('/api/token',api.getToken);
+    app.post('/api/token',api.getToken);
+
 
     //Pages route
     var pages = require('../app/controllers/pages');
@@ -47,24 +60,13 @@ module.exports = function(app, passport, auth) {
     app.get('/pricing', pages.pricing);
     app.get('/api', pages.api);
 
-    //Api auth
-    var api = require('../app/controllers/api');
-    app.get('/api/user', passport.authenticate('bearer', { session: false }), users.me);
+    //access token will be access with a user object
 
-    //Api
-    app.get('/api/user', passport.authenticate('bearer', { session: false }), users.me);
-    app.get('/api/leads', passport.authenticate('bearer', { session: false }), leads.all);
-    app.post('/api/leads', passport.authenticate('bearer', { session: false }), leads.create);
-    app.get('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), leads.show);
-    app.put('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), leads.update);
-    app.del('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), leads.destroy);
-
-    // curl -v http://localhost:3000/api/leads?access_token=123456789
-    app.get('/api/token', api.getToken)
-    app.post('/api/token', api.getToken)
+    // curl -v http://localhost:3000/api/token?user={..}
+    app.get('/api/token', auth.requiresLogin, users.me)
     
     var sendgrid = require('../app/controllers/emails');
-    
+
     // mailing server
     app.post('/sendContactEmail',sendgrid.sendContactEmail);
 };

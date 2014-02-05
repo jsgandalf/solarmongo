@@ -8,8 +8,8 @@ var mongoose = require('mongoose'),
 
 //getToken
 exports.getToken = function(req, res){
-    var email = req.query.email;
-    var password = req.query.password;
+    var email = req.body.email;
+    var password = req.body.password;
     console.log(req);
     if(! email)
         res.json({error: 'Email required'});

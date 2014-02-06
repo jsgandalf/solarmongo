@@ -48,6 +48,7 @@ module.exports = function(app, passport, auth) {
     app.del('/leads/:leadId', auth.requiresLogin, auth.lead.hasAuthorization, leads.destroy);
 
     //api
+    app.get('/api/leads/alldata', passport.authenticate('bearer', { session: false }), leads.allSiteSurvey);
     app.get('/api/leads', passport.authenticate('bearer', { session: false }), leads.all);
     app.post('/api/leads', passport.authenticate('bearer', { session: false }), leads.create);
     app.get('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.show);

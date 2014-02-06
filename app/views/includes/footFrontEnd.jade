@@ -1,0 +1,30 @@
+//want to get rid of this later, but right now required:
+script(type='text/javascript', src="http://code.jquery.com/jquery-1.10.1.min.js")
+script(type='text/javascript', src='/js/thirdparty/bootstrap.min.js')
+script(type='text/javascript', src="/js/thirdparty/googleAnalytics.js")
+
+
+//AngularJS
+script(type='text/javascript', src='/lib/angular/angular.js')
+script(type='text/javascript', src='/lib/angular-route/angular-route.js')
+
+//Angular UI
+//script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap.js')
+//script(type='text/javascript', src='//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.9.0.js')
+//script(type='text/javascript', src='/lib/angular-ui-utils/modules/route/route.js')
+//script(type='text/javascript', src='/lib/angular-ui-utils/ui-utils-min.js')
+
+//Application Init
+script(type='text/javascript', src='/js/frontEndApp/app.js')
+script(type='text/javascript', src='/js/frontEndApp/config.js')
+script(type='text/javascript', src='/js/frontEndApp/directives.js')
+
+//Application Services
+script(type='text/javascript', src='/js/frontEndApp/global.js')
+
+//Application Controllers
+script(type='text/javascript', src='/js/frontEndApp/slider.js')
+
+if (process.env.NODE_ENV == 'development')
+    //Livereload script rendered
+    script(type='text/javascript', src='http://' + req.host + ':35729/livereload.js')

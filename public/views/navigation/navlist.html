@@ -1,50 +1,5 @@
-<!-- navbar not authenticated -->
-<header class="navbar navbar-inverse navbar-fixed-top" role="navigation" data-ng-hide="global.authenticated">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">SolarMongo</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <form action="/users/session" method="post" class="navbar-form navbar-right visible-xs" role="form">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
-            </form>
-            
-            <ul class="nav navbar-nav navbar-left">
-                <li data-ng-repeat="item in menu" ng-class="{active:isActiveFrontEnd(item.link)}">
-                    <a href="{{item.link}}">{{item.title}}</a>
-                </li>
-                <li class="hidden-xs hidden-lg">
-                    <a href="/signin">Signin</a>
-                </li>
-            </ul>
-            <form action="/users/session" method="post" class="navbar-form navbar-form-responsive navbar-right" role="form">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
-            </form>
-        </div><!--/.nav-collapse -->
-    </div>
-</header>
-<!-- end navbar not authenticated -->
-
 <!-- navbar is authenticated-->
-<header class="navbar navbar-inverse" role="banner" data-ng-show="global.authenticated">
+<header class="navbar navbar-inverse" role="banner">
         <div class="navbar-header">
             <button class="navbar-toggle" type="button" data-toggle="collapse" id="menu-toggler" ng-click="isCollapsed = !isCollapsed">
                 <span class="sr-only">Toggle navigation</span>

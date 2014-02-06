@@ -68,7 +68,6 @@ exports.update = function(req, res) {
  */
 exports.destroy = function(req, res) {
     var lead = req.lead;
-    console.log(req.lead);
     lead.remove(function(err) {
         if (err) {
             res.jsonp({"errors": err.errors});

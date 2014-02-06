@@ -81,14 +81,6 @@ exports.destroy = function(req, res) {
             });
         }
     });
-
-    /*lead.remove(function(err) {
-        if (err) {
-            res.jsonp({"errors": err.errors});
-        } else {
-            res.jsonp(lead);
-        }
-    });*/
 };
 
 /**

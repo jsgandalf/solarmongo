@@ -1,0 +1,24 @@
+<div id="pad-wrapper" class="user-profile" data-ng-controller="ProductsController">
+    <!-- header -->
+    <div class="row header">
+        <div class="col-md-8">
+            <!--<img src="img/contact-profile.png" class="avatar img-circle">-->
+            <h1 class="main-title"><i class="icon-shopping-cart table-icon"></i><span>Create Product</span></h1>
+        </div>
+        <div data-ng-show="global.user._id == product.user._id">
+            <a class="btn-flat icon pull-right delete-user" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete Product" data-ng-click="remove();">
+                <i class="icon-trash"></i>
+            </a>
+        </div>
+    </div>
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">General</a></li>
+        </ul>
+        <div class="tab-content" id="tab-content">
+            <div class="tab-pane active" id="tab1" data-ng-include="'views/products/create/general.html'"></div>
+            <!--<div class="tab-pane" id="tab2" data-ng-include="'views/leads/view/siteSurvey.html'"></div>-->
+        </div>
+    </div>
+</div
+

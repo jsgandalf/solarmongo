@@ -37,3 +37,15 @@ exports.lead = {
         next();
     }
 };
+
+/**
+ * Product authorizations routing middleware
+ */
+exports.product = {
+    hasAuthorization: function(req, res, next) {
+        if (req.product.account.toString() != req.user.account.toString()) {
+            return res.send(401, 'You are not authorized');
+        }
+        next();
+    }
+};

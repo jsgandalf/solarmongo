@@ -4,6 +4,9 @@
 angular.module('mean').config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
+        when('/', {
+            redirectTo: '/leads'
+        }).
         when('/dashboard', {
             templateUrl: 'views/dashboard/view.html'
         }).
@@ -16,14 +19,17 @@ angular.module('mean').config(['$routeProvider',
         when('/leads/:leadId', {
             templateUrl: 'views/leads/view/view.html'
         }).
-        when('/leads/:leadId', {
-            templateUrl: 'views/leads/view/view.html'
+        when('/products', {
+            templateUrl: 'views/products/list.html'
+        }).
+        when('/products/create', {
+            templateUrl: 'views/products/create/create.html'
+        }).
+        when('/products/:productId', {
+            templateUrl: 'views/products/view/view.html'
         }).
         when('/settings', {
             templateUrl: 'views/settings/view.html'
-        }).
-        when('/', {
-            redirectTo: '/leads'
         }).
         otherwise({
             redirectTo: '/'

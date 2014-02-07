@@ -10,7 +10,7 @@
         $scope.global = Global;
         $scope.navList = [//{"name":"Dashboard","route":"dashboard","icon":"icon-home"},
                 {"name":"Leads","route":"leads","icon":"icon-group"},
-                {"name":"Products","route":"products","icon":"icon-shopping-cart"},
+                {"name":"Inventory","route":"products","icon":"icon-shopping-cart"},
                 {"name":"Settings","route":"settings","icon":"icon-cog"}];
                 //{"name":"Tasks","route":"tasks","icon":"icon-check"},
                 //{"name":"Reports","route":"reports","icon":"icon-bar-chart"}];

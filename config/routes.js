@@ -3,6 +3,7 @@
 
 var users = require('../app/controllers/users');
 var leads = require('../app/controllers/leads');
+var products = require('../app/controllers/products');
 var api = require('../app/controllers/api');
 var pages = require('../app/controllers/pages');
 var sendgrid = require('../app/controllers/emails');
@@ -40,7 +41,6 @@ module.exports = function(app, passport, auth) {
 
     app.get('/profile', passport.authenticate('bearer', { session: false }), users.me);
     //Lead Routes
-    var leads = require('../app/controllers/leads');
     app.get('/leads', leads.all);
     app.post('/leads', auth.requiresLogin, leads.create);
     app.get('/leads/:leadId', auth.lead.hasAuthorization, leads.show);
@@ -48,6 +48,7 @@ module.exports = function(app, passport, auth) {
     app.del('/leads/:leadId', auth.requiresLogin, auth.lead.hasAuthorization, leads.destroy);
 
     //api
+    app.get('/api/leads/alldata', passport.authenticate('bearer', { session: false }), leads.allSiteSurvey);
     app.get('/api/leads', passport.authenticate('bearer', { session: false }), leads.all);
     app.post('/api/leads', passport.authenticate('bearer', { session: false }), leads.create);
     app.get('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.show);
@@ -57,6 +58,22 @@ module.exports = function(app, passport, auth) {
     //Finish with setting up the leadId param
     app.param('leadId', leads.lead);
 
+    //product routes
+    app.get('/products', products.all);
+    app.post('/products', auth.requiresLogin, products.create);
+    app.get('/products/:productId', auth.product.hasAuthorization, products.show);
+    app.put('/products/:productId', auth.requiresLogin, auth.product.hasAuthorization, products.update);
+    app.del('/products/:productId', auth.requiresLogin, auth.product.hasAuthorization, products.destroy);
+
+    //api
+    app.get('/api/products', passport.authenticate('bearer', { session: false }), products.all);
+    app.post('/api/products', passport.authenticate('bearer', { session: false }), products.create);
+    app.get('/api/products/:productId', passport.authenticate('bearer', { session: false }), auth.product.hasAuthorization, products.show);
+    app.put('/api/products/:productId', passport.authenticate('bearer', { session: false }), auth.product.hasAuthorization, products.update);
+    app.del('/api/products/:productId', passport.authenticate('bearer', { session: false }), auth.product.hasAuthorization, products.destroy);
+    
+    //Finish with setting up the leadId param
+    app.param('productId', products.product);
 
     app.get('/api/token',api.getToken);
     app.post('/api/token',api.getToken);

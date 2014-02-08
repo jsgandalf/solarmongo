@@ -8,21 +8,9 @@
     templateUrl: '/views/navigation/navlist.html', // load the template file
     controller: function ( $scope, $location, Global ) {
         $scope.global = Global;
-        $scope.menu = [{
-            'title': 'About',
-            'link': '../aboutus'
-        }, {
-            'title': 'Pricing',
-            'link': '../pricing'
-        }, {
-            'title': 'Contact',
-            'link': '../contactus'
-        }, {
-            'title': 'Demo',
-            'link': '../demo'
-        }];
         $scope.navList = [//{"name":"Dashboard","route":"dashboard","icon":"icon-home"},
                 {"name":"Leads","route":"leads","icon":"icon-group"},
+                {"name":"Inventory","route":"products","icon":"icon-shopping-cart"},
                 {"name":"Settings","route":"settings","icon":"icon-cog"}];
                 //{"name":"Tasks","route":"tasks","icon":"icon-check"},
                 //{"name":"Reports","route":"reports","icon":"icon-bar-chart"}];
@@ -34,10 +22,6 @@
         }
         $scope.isActive = function(route) {
             return ("/"+route) === $location.path();
-        }
-        $scope.isActiveFrontEnd = function(route){
-            var windowArry = window.location.href.split("/")
-            return (route == "../"+windowArry[windowArry.length-1]); 
         }
     }
   };

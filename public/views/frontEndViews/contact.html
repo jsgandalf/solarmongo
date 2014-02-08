@@ -1,1 +1,41 @@
-<h1> contact us </h1>
+<div class="container">
+	<div class="jumbotron">
+		<h1>Contact Us</h1>
+		<p> We want to talk with you. Allow us to help streamline your sales and make your workflow easier and faster than ever.</p>
+		<div class="container">
+			<div class="row header no-jumbotron"></div>
+				<div class="row form-wrapper"></div>
+					<div class="col-md-12"></div>
+						<form class="form-horizontal"></form>
+						role='form',action="sendContactEmail",method="post")
+							<div class="form-group"></div>
+								<div class="col-md-2 control-label"
+									<label>Name:</label>
+								<div class="col-md-5"></div>
+									input.form-control(type='text', name="firstName" data-ng-model='firstName', placeholder='First Name', maxlength='30')
+								<div class="col-md-5"></div>
+									input.form-control.small-inline(type='text', name="lastName", data-ng-model='lastName', placeholder='Last Name', maxlength='30')
+							<div class="form-group"></div>
+								<label class="col-md-2 control-label">Company:</label>
+								<div class="col-md-10"></div>
+									input.form-control(type='text', name='companyName', data-ng-model='companyName', placeholder='Company Name')
+							<div class="form-group"></div>
+								<label class="col-md-2 control-label">Phone:</label>
+								<div class="col-md-10"></div>
+									input.form-control(type='text', name='phone', data-ng-model='phone', placeholder='Phone Number')
+							<div class="form-group"></div>
+								<label class="col-md-2 contol-label">Email:</label>
+								<div class="col-md-10"></div>
+									input.form-control(type='text', name="email", data-ng-model='email', placeholder='example@example.com',required="required")
+							<div class="form-group"></div>
+								<label class="col-md-2 control-label">Inquiry:
+								<div class="col-md-10"></div>
+									textarea.form-control(rows='5',type='text', name="inquiry",data-ng-model='inquiry', placeholder='Your inquiry here...', required="required")
+							<div class="form-group"></div>
+								<div class="col-md-12"></div>
+									<button type="submit" class="btn btn-success pull-right">Submit</button>
+	  hr
+    footer
+      p &copy; SolarMongo 2014
+   script(type="text/javascript").
+      window.user = !{user};								

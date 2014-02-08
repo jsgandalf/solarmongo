@@ -4,6 +4,7 @@
 var users = require('../app/controllers/users');
 var leads = require('../app/controllers/leads');
 var products = require('../app/controllers/products');
+var account = require('../app/controllers/accounts');
 var api = require('../app/controllers/api');
 var pages = require('../app/controllers/pages');
 var sendgrid = require('../app/controllers/emails');
@@ -74,6 +75,8 @@ module.exports = function(app, passport, auth) {
     
     //Finish with setting up the leadId param
     app.param('productId', products.product);
+
+    app.get('/account/getAssignees',auth.requiresLogin, account.getAssignees);
 
     app.get('/api/token',api.getToken);
     app.post('/api/token',api.getToken);

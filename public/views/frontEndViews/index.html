@@ -1,1 +1,31 @@
-<h1>hellow world</h1>
+<div class="container">
+  <div data-ng-controller="sliderController" class="slidercontainer">
+    <carousel interval="myInterval">
+      <slide ng-repeat="slide in slides" active="slide.active">
+        <div ng-include="slide.path"></div>
+        <!--img(ng-src='{{slide.image}}', style='margin: auto;')-->
+        <div class="carousel-caption">
+          <!--h4 Slide {{$index}}-->
+          <!--p {{slide.text}}-->
+        </div>
+      </slide>
+    </carousel>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Don't get bogged down in operational inefficiency!</h2>
+      <p>Reduce your cycle time by at least 30% as well as operational costs through our automated system for tracking paperwork electronically. </p>
+      <p><a href="#" class="btn">View a demo »</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Generate quotes and estimates on the go!</h2>
+      <p>Ditch the confusing spreadsheets. Explaining and generating quotes for your potential customers has never been easier.</p>
+      <p><a href="#" class="btn">Check out a mobile demo »</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Paperless + Mobility</h2>
+      <p>With our mobile apps and mobile web technologies, sales and installation in solar has never been more paperless and automated. All your documents are centralized making your solar business workflow easier than ever</p>
+      <p><a href="#" class="btn">View product video »</a></p>
+    </div>
+  </div>
+</div>

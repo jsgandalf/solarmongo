@@ -49,3 +49,15 @@ exports.product = {
         next();
     }
 };
+
+/**
+ * Account authorizations routing middleware
+ */
+/*exports.account = {
+    hasAuthorization: function(req, res, next) {
+        if (req.account._id.toString() != req.user.account.toString()) {
+            return res.send(401, 'You are not authorized');
+        }
+        next();
+    }
+};*/

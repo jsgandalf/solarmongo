@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('solarmongo', ['ngRoute', 'myDirectives', 'Global', 'slider']);
+angular.module('solarmongo', ['ngRoute', 'myDirectives', 'Global', 'ui.bootstrap','slider']);

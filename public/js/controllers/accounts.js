@@ -1,6 +1,5 @@
-angular.module('mean.accounts').controller('AccountsController', ['$scope', '$routeParams', '$location', 'Global', 'Modal', 'Accounts', function ($scope, $routeParams, $location, Global, Modal, Accounts) {
+angular.module('crm.account').controller('AccountsController', ['$scope', '$routeParams', '$location', 'Global', 'Modal', 'Account', function ($scope, $routeParams, $location, Global, Modal, Account) {
     $scope.global = Global;
-    $scope.submitted = false;
     $scope.create = function() {
         var account = new Accounts({
             companyName: this.companyName,

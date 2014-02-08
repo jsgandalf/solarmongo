@@ -8,6 +8,14 @@ var mongoose = require('mongoose'),
     _ = require('lodash');
 
 
+exports.getAssignees = function(req,res){
+    Account.findById(req.user.account, function(err, account){
+        if (err) return next(err);
+        else
+            res.jsonp(account.users)
+    });
+}
+
 /**
  * Find Account by id
  */

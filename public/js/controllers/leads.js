@@ -1,10 +1,8 @@
 'use strict';
 
-angular.module('mean.leads').controller('LeadsController', ['$scope', '$routeParams', '$location', 'Global', 'Modal', 'Leads', function ($scope, $routeParams, $location, Global, Modal, Leads) {
+angular.module('mean.leads').controller('LeadsController', ['$scope', '$routeParams', '$location', 'Global', 'Modal', 'Leads', 'Account', function ($scope, $routeParams, $location, Global, Modal, Leads, Account) {
     $scope.global = Global;
-    $scope.submitted = false;
     $scope.create = function() {
-        console.log(this.state);
         var lead = new Leads({
             firstName: this.firstName,
             lastName: this.lastName,
@@ -123,4 +121,9 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
         });
     };
     
+    $scope.findAssignees = function(){
+        Account.getAssignees(function(assignees){
+            $scope.assignees = assignees;
+        });
+    }
 }]);

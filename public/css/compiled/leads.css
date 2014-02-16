@@ -136,6 +136,7 @@ span.charactersleft {
 }
 .leads .form-wrapper textarea {
   height: 88px;
+  margin-top:7px;
 }
 .leads .textarea {
   margin-top: 0px;
@@ -245,6 +246,9 @@ span.charactersleft {
   .leads .form-wrapper .textarea textarea {
     width: 97%;
   }
+  .leads .form-wrapper textarea{
+    margin-top:0px;
+  }
   .leads .textarea span.charactersleft {
     display: inline-block;
     margin-left: 0;
@@ -275,6 +279,9 @@ span.charactersleft {
   }
   .leads .form-wrapper input.small-inline {
     margin: 10px 0px 0px 0px;
+  }
+  .leads .form-wrapper textarea{
+    margin-top:0px;
   }
   #state{
     width: 100%;

@@ -36,6 +36,13 @@ module.exports = function(app, passport, auth) {
         failureFlash: true
     }), users.session);
 
+    //user web app
+    app.get('/users',auth.requiresLogin, users.all);
+
+    //user api
+    app.get('/api/users', passport.authenticate('bearer', { session: false }), users.all);
+
+
     //Finish with setting up the userId param
     app.param('userId', users.user);
 
@@ -76,7 +83,13 @@ module.exports = function(app, passport, auth) {
     //Finish with setting up the leadId param
     app.param('productId', products.product);
 
+    //Account
     app.get('/account/getAssignees',auth.requiresLogin, account.getAssignees);
+    app.get('/account',auth.requiresLogin, account.getAssignees);
+
+    app.get('/account',passport.authenticate('bearer', { session: false }), account.show);
+    app.get('/api/account/getAssignees', passport.authenticate('bearer', { session: false }), account.getAssignees);
+
 
     app.get('/api/token',api.getToken);
     app.post('/api/token',api.getToken);

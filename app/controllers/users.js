@@ -297,3 +297,17 @@ exports.resetPasswordPost = function(req, res){
         }
     });
 }
+
+/* User web app code */
+/**
+ * List of leads by account id
+ */
+exports.all = function(req, res) {
+    User.find({account : req.user.account.toString()}).sort('-created').select("name email").exec(function(err, users) {
+        if (err) {
+            res.jsonp({"errors": err.errors});
+        } else {
+            res.jsonp(users);
+        }
+    });
+};

@@ -20,6 +20,7 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
             longitude: null,
             latitude: null,
             notes: this.notes,
+            assignee: this.assignee,
             siteSurvey: {
                 jobSite: {
                     firstName:'',
@@ -122,7 +123,7 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
     };
     
     $scope.findAssignees = function(){
-        Account.getAssignees(function(assignees){
+        Account.assignees.query(function(assignees){
             $scope.assignees = assignees;
         });
     }

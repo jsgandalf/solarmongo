@@ -4,15 +4,16 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+    User = mongoose.model('User'),
     Account = mongoose.model('Account'),
     _ = require('lodash');
 
 
 exports.getAssignees = function(req,res){
-    Account.findById(req.user.account, function(err, account){
+    User.find({ account: req.user.account}).select('name').exec(function(err, users){
         if (err) return next(err);
         else
-            res.jsonp(account.users)
+            res.jsonp(users)
     });
 }
 

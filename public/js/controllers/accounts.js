@@ -61,16 +61,14 @@ angular.module('crm.account').controller('AccountsController', ['$scope', '$rout
     };
 
     $scope.find = function() {
-        Accounts.query(function(accounts) {
+        Account.query(function(accounts) {
             $scope.accounts = accounts;
         });
     };
 
-    /*$scope.findOne = function() {
-        Leads.get({
-            leadId: $routeParams.leadId
-        }, function(lead) {
-            $scope.lead = lead;
+    $scope.findOne = function() {
+        Account.info.get(function(account) {
+            $scope.account = account;
         });
-    };*/
+    };
 }]);

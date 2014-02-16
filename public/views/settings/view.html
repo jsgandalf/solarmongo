@@ -1,14 +1,9 @@
-<div id="pad-wrapper" class="user-profile" data-ng-init="findOne()">
+<div id="pad-wrapper" class="user-profile">
     <!-- header -->
     <div class="row header">
         <div class="col-md-8">
             <!--<img src="img/contact-profile.png" class="avatar img-circle">-->
-            <h1 class="main-title"><i class="icon-book table-icon"></i><span>Company Settings</span></h1>
-        </div>
-        <div data-ng-show="global.user._id == lead.user._id">
-            <a class="btn-flat icon pull-right delete-user" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete Lead" data-ng-click="remove();">
-                <i class="icon-trash"></i>
-            </a>
+            <h1 class="main-title"><i class="icon-cog table-icon"></i><span>Company Settings</span></h1>
         </div>
     </div>
     <div class="tabbable"> <!-- Only required for left/right tabs -->
@@ -18,7 +13,7 @@
         </ul>
         <div class="tab-content" id="tab-content">
             <div class="tab-pane active" id="tab1" data-ng-include="'views/settings/branding.html'"></div>
-            <div class="tab-pane" id="tab2" data-ng-include="'views/settings/users.html'"></div>
+            <div class="tab-pane" id="tab2" data-ng-include="'views/settings/listUsers.html'"></div>
         </div>
     </div>
 </div>

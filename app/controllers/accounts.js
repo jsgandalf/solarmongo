@@ -49,15 +49,18 @@ exports.create = function(req, res) {
  * Update an account
  */
 exports.update = function(req, res) {
-    var account = req.account;
-
-    account = _.extend(account, req.body);
-
-    account.save(function(err) {
+    Account.findById(req.user.account.toString()).exec(function(err, account) {
         if (err) {
             res.jsonp({"errors": err.errors});
         } else {
-            res.jsonp(accounts);
+            account = _.extend(account, req.body);
+            account.save(function(err) {
+                if (err) {
+                    res.jsonp({"errors": err.errors});
+                } else {
+                    res.jsonp(account);
+                }
+            });
         }
     });
 };
@@ -81,18 +84,11 @@ exports.destroy = function(req, res) {
  * Show an account
  */
 exports.show = function(req, res) {
-    res.jsonp(req.account);
-};
-
-/**
- * List of accounts by id
- */
-exports.all = function(req, res) {
-    Account.find({user : req.user._id.toString()}).sort('-created').populate('user', 'name').exec(function(err, account) {
+    Account.findById(req.user.account.toString()).sort('-created').populate('user', 'name').exec(function(err, account) {
         if (err) {
             res.jsonp({"errors": err.errors});
         } else {
-            res.jsonp(leads);
+            res.jsonp(account);
         }
     });
 };

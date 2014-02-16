@@ -1,4 +1,4 @@
-<div class="leads" data-ng-init="findOne()">
+<div class="leads" data-ng-controller="AccountController" data-ng-init="findOne()">
     <div class="row header">
         <div class="row form-wrapper">
             <div class="col-md-9 with-sidebar">
@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <label class="col-md-1_5 control-label">Company Name:</label>  
                         <div class="col-md-10">
-                            <input class="form-control" type="text" name="companyName" data-ng-model="account.companyName" placeholder="Company Name"/>
+                            <input class="form-control" type="text" name="name" data-ng-model="account.name" placeholder="Company Name"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -33,7 +33,7 @@
                     <div class="form-group">
                         <label class="col-md-1_5 control-label">Website:</label>
                         <div class="col-md-10">
-                            <input class="form-control" type="text" name="title"data-ng-model="account.website" placeholder="Company website"/>
+                            <input class="form-control" type="text" name="website" data-ng-model="account.website" placeholder="Company website"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -62,7 +62,10 @@
                         <div class="col-md-3">
                           <input type="text" placeholder="City" class="form-control" data-ng-model="account.city">
                         </div>
-                        <div id="state" class="ui-select col-md-4">
+                        <div class="col-md-4">
+                          <input type="text" placeholder="State" class="form-control" data-ng-model="account.state">
+                        </div>
+                        <!--<div id="state" class="ui-select col-md-4">
                             <select data-ng-model="lead.state">
                                 <option value="">Select State</option>
                                 <option value="AL">Alabama</option> 
@@ -117,9 +120,9 @@
                                 <option value="WI">Wisconsin</option> 
                                 <option value="WY">Wyoming</option>
                             </select>
-                        </div>
+                        </div>-->
                         <div class="col-md-3">
-                            <input type="text" data-ng-model="lead.zip" placeholder="Postal Code" class="form-control small-inline">
+                            <input type="text" data-ng-model="account.zip" placeholder="Postal Code" class="form-control small-inline">
                         </div>
                     </div>
                     
@@ -128,7 +131,7 @@
                             <label class="control-label">Terms:</label>
                         </div>
                         <div class="col-md-10">
-                            <textarea class="form-control" data-ng-model="account.notes"></textarea>
+                            <textarea class="form-control" data-ng-model="account.terms" name="terms"></textarea>
                             <span class="charactersleft">90 characters remaining. Field limited to 100 characters</span>
                         </div>
                     </div>

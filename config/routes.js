@@ -84,10 +84,12 @@ module.exports = function(app, passport, auth) {
     app.param('productId', products.product);
 
     //Account
+    app.get('/account',auth.requiresLogin, account.show);
+    app.put('/account',auth.requiresLogin, account.update);
     app.get('/account/getAssignees',auth.requiresLogin, account.getAssignees);
-    app.get('/account',auth.requiresLogin, account.getAssignees);
 
     app.get('/account',passport.authenticate('bearer', { session: false }), account.show);
+    app.put('/account',passport.authenticate('bearer', { session: false }), account.update);
     app.get('/api/account/getAssignees', passport.authenticate('bearer', { session: false }), account.getAssignees);
 
 

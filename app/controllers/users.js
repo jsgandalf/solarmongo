@@ -87,7 +87,6 @@ exports.create = function(req, res, next) {
             });
         }
         var account = new Account;
-        account.users.push(user);
         account.save(function(err){
             if(err)
                 return res.render('users/signup_admin', {

@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    UserSchema = require("./user").theUserSchema,
+    //UserSchema = require("./user").theUserSchema, var mySchema = new Schema({users:[UserSchema]})
     Schema = mongoose.Schema;
 
 /**
@@ -20,7 +20,9 @@ var AccountSchema = new Schema({
         default: Date.now
     },
     name: { type: String},
-    phone: { type: String},
+    phoneWork: { type: String},
+    phoneMobile: { type: String},
+    website: { type: String},
     email: { type: String},
     address: { type: String},
     city: { type: String},
@@ -29,8 +31,7 @@ var AccountSchema = new Schema({
     country: { type: String},
     terms: { type: String},
     payingTier: {type: String},
-    logo: { type: String},
-    users:[UserSchema]
+    logo: { type: String}
     
 });
 

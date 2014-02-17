@@ -123,7 +123,7 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
     };
     
     $scope.findAssignees = function(){
-        Account.assignees.query(function(assignees){
+        Account.assignees.get(function(assignees){
             $scope.assignees = assignees;
         });
     }

@@ -43,7 +43,7 @@
                 </div>
             </div>
 
-            <a href="#!/leads/create" class="btn btn-success pull-right">
+            <a href="#!/settings/users/create" class="btn btn-success pull-right">
                 <span>+</span>
                 User
             </a>
@@ -57,9 +57,6 @@
                     <th class="span4 sortable">
                         Name
                     </th>
-                    <th class="span3 sortable">
-                        <span class="line"></span>City, State
-                    </th>
                     <th class="span2 sortable">
                         <span class="line"></span>Email
                     </th>
@@ -70,21 +67,19 @@
             </thead>
             <tbody>
             <!-- row -->
-            <tr data-ng-repeat="lead in leads | filter:query" ng-class="{first: $first}">
+            <tr data-ng-repeat="user in users | filter:query" ng-class="{first: $first}">
                 <td>
                     <!--<img src="img/contact-img.png" class="img-circle avatar hidden-phone">-->
-                    <a href="#!/leads/{{lead._id}}" class="name"><i class="icon-book table-icon"></i>{{lead.firstName}} {{lead.lastName}}</a>
-                    <span class="subtext">{{lead.companyName}}</span>
+                    <a href="#!/settings/users/{{user._id}}" class="name"><i class="icon-user table-icon"></i>{{user.name}}</a>
+                    <span class="subtext">{{user.role}}</span>
                 </td>
                 <td>
-                    {{lead.city}} {{lead.state}}
-                </td>
-                <td>
-                    {{lead.email}}
+                    {{user.email}}
                 </td>
                 <td class="align-right">
                     <ul class="actions">
-                        <li class="last"><i class="table-delete" data-ng-click="remove(lead);"></i></li>
+
+                        <li class="last" data-ng-if="global.user._id != user._id"><i class="table-delete" data-ng-click="remove(user);"></i></li>
                     </ul>
                 </td>
             </tr>

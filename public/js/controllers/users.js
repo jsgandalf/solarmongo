@@ -1,15 +1,18 @@
 angular.module('crm.users').controller('UsersController', ['$scope', '$routeParams', '$location', 'Global', 'Modal', 'Users', function ($scope, $routeParams, $location, Global, Modal, Users) {
     $scope.global = Global;
     $scope.create = function() {
-        var user = new User({
+        var user = new Users({
+            name: this.name,
             email: this.email,
+            password: this.password,
+            role: this.role
         });
         user.$save(function(response) {
-            //$location.path('leads/' + response._id);
-            $location.path('settings/');
+            if(response.message!="success")
+                Modal.open("Failed",response.message);
+            else
+                $location.path('settings/');
         });
-
-        this.name = '';
     };
 
     $scope.remove = function(user) {
@@ -34,9 +37,16 @@ angular.module('crm.users').controller('UsersController', ['$scope', '$routePara
             user.updated = [];
         }
         user.updated.push(new Date().getTime());
-
-        user.$update(function() {
-            Modal.open("Updated","User Successfully Updated!");
+        if(this.newpassword)
+            user.password = this.newpassword;
+        user.$update(function(response) {
+            if(!response.message){
+                location.reload(function(){
+                    Modal.open("Updated","User Successfully Updated!");
+                }); 
+            }else{
+                Modal.open("Failed",response.message);
+            }
         });
     };
 
@@ -47,7 +57,9 @@ angular.module('crm.users').controller('UsersController', ['$scope', '$routePara
     };
 
     $scope.findOne = function() {
-        Users.get(function(user) {
+        Users.get({
+            userId: $routeParams.userId
+        }, function(user) {
             $scope.user = user;
         });
     };

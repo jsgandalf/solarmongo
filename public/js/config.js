@@ -31,6 +31,12 @@ angular.module('mean').config(['$routeProvider',
         when('/settings', {
             templateUrl: 'views/settings/view.html'
         }).
+        when('/settings/users/create', {
+            templateUrl: 'views/settings/createUser/create.html'
+        }).
+        when('/settings/users/:userId', {
+            templateUrl: 'views/settings/viewUser/view.html'
+        }).
         otherwise({
             redirectTo: '/'
         });

@@ -26,7 +26,6 @@ exports.lead = function(req, res, next, id) {
  */
 exports.create = function(req, res) {
     var lead = new Lead(req.body);
-    console.log(req);
     lead.user = req.user;
     lead.account = req.user.account; 
 

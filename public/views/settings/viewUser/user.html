@@ -1,33 +1,30 @@
-<div class="leads" data-ng-controller="UsersController">
+<div class="leads">
     <div class="row header">
         <div class="row form-wrapper">
             <div class="col-md-9 with-sidebar">
-                <form class="form-horizontal" role="form" data-ng-submit="create()">
+                <form class="form-horizontal" role="form" data-ng-submit="update()">
                     <br>
                     <div class="form-group">
                         <div class="col-md-8">
-                            <h3>Create User</h3>
+                            <h3>User Information</h3>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-1_5 control-label">Name:</label>  
-                        <div class="col-md-5">
-                            <input class="form-control" type="text" name="name" data-ng-model="account.companyName" placeholder="First Name" maxlength="30"/>
-                        </div>
-                        <div class="col-md-5">
-                            <input class="form-control" type="text" name="companyName" data-ng-model="account.companyName" placeholder="Last Name" maxlength="30"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-1_5 control-label">Username:</label>
-                        <div class="col-md-10">
-                            <input class="form-control" type="text" name="title"data-ng-model="account.website" placeholder="Username"/>
+                        <div class="col-md-7">
+                            <input class="form-control" type="text" name="name" data-ng-model="user.name" placeholder="First Name" maxlength="30" required/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-1_5 control-label">Email:</label>
-                        <div class="col-md-10">
-                            <input class="form-control" type="text" data-ng-model="account.email" placeholder="example@example.com">
+                        <div class="col-md-7">
+                            <label class="control-label">{{user.email}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1_5 control-label">New Password:</label>
+                        <div class="col-md-7">
+                            <input class="form-control" type="password" name="newpassword" data-ng-model="newpassword" placeholder="password" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -36,8 +33,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="select-style ui-select col-md-5">
-                                <select data-ng-model="user.state">
-                                    <option value="">--</option>
+                                <select name="role" data-ng-model="user.role" required>
                                     <option value="Admin">Administrator</option> 
                                     <option value="Installer">Installer</option>
                                     <option value="SalesRep">Sales Representative</option>
@@ -48,7 +44,7 @@
                         </div> 
                     </div>                   
                     <div class="col-md-11 field-box actions">
-                        <input type="submit" value="Add User" class="btn-glow primary">
+                        <input type="submit" value="Save User" class="btn-glow primary">
                         <span>OR</span>
                         <input type="reset" class="reset" value="Cancel" onclick="window.history.back()">
                     </div>

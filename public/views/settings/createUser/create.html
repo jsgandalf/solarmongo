@@ -1,0 +1,19 @@
+<div id="pad-wrapper" class="user-profile" data-ng-controller="LeadsController">
+    <!-- header -->
+    <div class="row header">
+        <div class="col-md-8">
+            <!--<img src="img/contact-profile.png" class="avatar img-circle">-->
+            <h1 class="main-title"><i class="icon-book table-icon"></i><span>Create User</span></h1>
+        </div>
+    </div>
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">User</a></li>
+        </ul>
+        <div class="tab-content" id="tab-content">
+            <div class="tab-pane active" id="tab1" data-ng-include="'views/settings/createUser/createUser.html'"></div>
+            <!--<div class="tab-pane" id="tab2" data-ng-include="'views/leads/view/siteSurvey.html'"></div>-->
+        </div>
+    </div>
+</div
+

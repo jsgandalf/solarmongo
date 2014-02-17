@@ -31,7 +31,8 @@ var AccountSchema = new Schema({
     country: { type: String},
     terms: { type: String},
     payingTier: {type: String},
-    logo: { type: String}
+    logo: { type: String},
+    userCount: { type: Number}
     
 });
 
@@ -61,5 +62,27 @@ AccountSchema.path('country').validate(function(country) {
         _id: id
     }).populate('user', 'name').exec(cb);
 };*/
+
+AccountSchema.statics.incrementUserCount = function(accountId, cb) {
+    this.findById(accountId).exec(function(err, account) {
+        if(err || !account) {
+            cb(err, null);
+            console.log(err);
+        }else{
+            if(!account.userCount)
+                account.userCount=1;
+            account.userCount = account.userCount + 1;
+            account.save(function(err){
+                if(err || !account) {
+                    cb(err, null);
+                    console.log(err);
+                }else{
+                    cb(false, "success");
+                };
+            });
+        }
+    });
+}
+
 
 mongoose.model('Account', AccountSchema);

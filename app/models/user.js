@@ -44,6 +44,7 @@ var UserSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'Account'
     },
+    role: {type: String}
 });
 
 /**
@@ -151,6 +152,7 @@ UserSchema.statics.findUser = function(email, token, cb) {
     this.findOne({email: email}, function(err, usr) {
         if(err || !usr) {
             cb(err, null);
+            console.log(err);
         } else if (token === usr.token.token) {
             cb(false, {_id:usr._id, email: usr.email, token: usr.token, date_created: usr.date_created, name: usr.name,account: usr.account});
         } else {
@@ -163,6 +165,7 @@ UserSchema.statics.createUserToken = function(email, cb) {
     var self = this;
     this.findOne({email: email}, function(err, usr) {
         if(err || !usr) {
+            cb(err, null);
             console.log('err');
         }
         //Create a token and add to user and save
@@ -205,5 +208,13 @@ UserSchema.statics.generateResetToken = function(email, cb) {
     });
 }
 
+UserSchema.statics.load = function(id, cb) {
+    this.findOne({
+        _id: id
+    }).select('name email date_created role').exec(cb);
+};
+
+
 mongoose.model('User', UserSchema);
-exports.theUserSchema = UserSchema;
+//to export a subdocument, use the following example:
+//exports.theUserSchema = UserSchema;

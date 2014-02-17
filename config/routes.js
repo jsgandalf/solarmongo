@@ -2,6 +2,7 @@
 
 
 var users = require('../app/controllers/users');
+var webUsers = require('../app/controllers/webUsers');
 var leads = require('../app/controllers/leads');
 var products = require('../app/controllers/products');
 var account = require('../app/controllers/accounts');
@@ -12,7 +13,6 @@ var sendgrid = require('../app/controllers/emails');
 
 module.exports = function(app, passport, auth) {
     //User Routes
-    var users = require('../app/controllers/users');
     app.get('/signin', users.signin);
     app.get('/demo', users.demo);
     app.get('/signout', users.signout);
@@ -20,7 +20,7 @@ module.exports = function(app, passport, auth) {
     app.get('/admin', users.signup_admin);
     
     //Setting up the users api
-    app.post('/users', users.create);
+    app.post('/admin/users/create', users.create);
 
     //forgot password templates
     app.get('/forgotpassword', users.getForgetPassword)
@@ -29,6 +29,8 @@ module.exports = function(app, passport, auth) {
     //forgot password post functions
     app.post('/forgot',users.forgotPassword);
     app.post('/resetpassword',users.resetPasswordPost)
+    //Finish with setting up the userId param
+    app.param('userId', users.user);
 
     //Setting the local strategy route
     app.post('/users/session', passport.authenticate('local', {
@@ -36,15 +38,21 @@ module.exports = function(app, passport, auth) {
         failureFlash: true
     }), users.session);
 
-    //user web app
-    app.get('/users',auth.requiresLogin, users.all);
-
+    //web user in app
+    app.get('/users',auth.requiresLogin, webUsers.all);
+    app.post('/users',auth.requiresLogin, webUsers.add);
+    app.get('/users/:webUserId',auth.requiresLogin, webUsers.show);
+    app.put('/users/:webUserId',auth.requiresLogin, webUsers.update);
+    app.del('/users/:webUserId',auth.requiresLogin, webUsers.destroy);
+    
     //user api
-    app.get('/api/users', passport.authenticate('bearer', { session: false }), users.all);
-
-
-    //Finish with setting up the userId param
-    app.param('userId', users.user);
+    app.get('/api/users', passport.authenticate('bearer', { session: false }), webUsers.all);
+    app.post('/api/users',passport.authenticate('bearer', { session: false }), webUsers.add);
+    app.get('/api/users/:webUserId', passport.authenticate('bearer', { session: false }), webUsers.show);
+    app.put('/api/users/:webUserId',passport.authenticate('bearer', { session: false }), webUsers.update);
+    app.del('/api/users/:webUserId',passport.authenticate('bearer', { session: false }), webUsers.destroy);
+    //Finish with setting up the webUserId param
+    app.param('webUserId', webUsers.webUser);
 
 
     app.get('/profile', passport.authenticate('bearer', { session: false }), users.me);
@@ -87,30 +95,25 @@ module.exports = function(app, passport, auth) {
     app.get('/account',auth.requiresLogin, account.show);
     app.put('/account',auth.requiresLogin, account.update);
     app.get('/account/getAssignees',auth.requiresLogin, account.getAssignees);
-
-    app.get('/account',passport.authenticate('bearer', { session: false }), account.show);
-    app.put('/account',passport.authenticate('bearer', { session: false }), account.update);
+    //Account api
+    app.get('/api/account',passport.authenticate('bearer', { session: false }), account.show);
+    app.put('/api/account',passport.authenticate('bearer', { session: false }), account.update);
     app.get('/api/account/getAssignees', passport.authenticate('bearer', { session: false }), account.getAssignees);
 
 
     app.get('/api/token',api.getToken);
     app.post('/api/token',api.getToken);
 
-
     //Pages route
-    var pages = require('../app/controllers/pages');
     app.get('/', pages.index);
     app.get('/contactus', pages.contactUs);
     app.get('/aboutus', pages.aboutUs);
     app.get('/pricing', pages.pricing);
     app.get('/api', pages.api);
 
-    //access token will be access with a user object
-
-    // curl -v http://localhost:3000/api/token?user={..}
+    //access token will be access with an access token
+    // curl -v http://localhost:3000/api/?access_token=???
     app.get('/api/token', auth.requiresLogin, users.me)
-    
-    var sendgrid = require('../app/controllers/emails');
 
     // mailing server
     app.post('/sendContactEmail',sendgrid.sendContactEmail);

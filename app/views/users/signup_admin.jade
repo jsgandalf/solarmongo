@@ -25,6 +25,18 @@ block auth
                 label.col-md-1_5.control-label Password:
                 .col-md-10
                   input.form-control(type='password', name="password", placeholder='Password', value=user.password)
+              .form-group
+                label.col-md-1_5.control-label Role:
+                .col-md-10
+                  .select-style.ui-select.col-md-5
+                    select(required='', data-ng-model='role', name='role')
+                      option(value='') -- Select Role --
+                      option(value='Admin') Administrator
+                      option(value='Installer') Installer
+                      option(value='SalesRep') Sales Representative
+                      option(value='LeadsAgency') Leads Agency
+                      option(value='SalesAgency') Sales Agency
+
               .col-md-11.field-box.actions
                 input.btn-glow.primary(type='submit', value='Sign up')
                 span OR

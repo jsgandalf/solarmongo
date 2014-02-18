@@ -79,8 +79,12 @@ exports.create = function(req, res, next) {
             user: user
         });
     User.findOne({email: user.email}).exec(function(err,isUser){
-        if(err) return next(err);
+        if(err){
+            console.log(err);
+            return next(err);  
+        } 
         if(isUser) {
+            console.log('exists');
             return res.render('users/signup_admin', {
                 message: "Email already exists",
                 user: user
@@ -88,14 +92,17 @@ exports.create = function(req, res, next) {
         }
         var account = new Account;
         account.save(function(err){
-            if(err)
+            if(err){
+                console.log(err);
                 return res.render('users/signup_admin', {
                     message: "Opps, there was an error that occured while trying to create your account, please contact technical support.",
                     user: user
                 });
+            }
             user.account = account._id;
             user.save(function(err) {
                 if (err) {
+                    console.log(err);
                     switch (err.code) {
                         case 11000:
                         case 11001:
@@ -111,11 +118,13 @@ exports.create = function(req, res, next) {
                     });
                 }else
                     User.createUserToken(user.email,function(err){
-                        if(err)
+                        if(err){
+                            console.log(err);
                             return res.render('users/signup_admin', {
                                 message: "Opps, there was an error that occured while trying to create your account, please contact technical support.",
                                 user: user
                             });
+                        }
                         req.logIn(user, function(err) {
                             if (err) return next(err);
                             return res.redirect('/');

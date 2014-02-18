@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    PhotoSchema = require("./user").thePhotoSchema,
+    PhotoSchema = require("./photo").thePhotoSchema,
     Schema = mongoose.Schema;
 
 /**

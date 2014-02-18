@@ -1,7 +1,7 @@
 'use strict';
 
 //Modal service for creating modals on the fly
-angular.module('modal',['ui.bootstrap']).service('Modal', function($modal) {
+angular.module('modal',['ui.bootstrap','crm.photos']).service('Modal', function($modal,Photos) {
 	var title = "Title";
 	var body = "Body";
 	var element = "";
@@ -31,12 +31,12 @@ angular.module('modal',['ui.bootstrap']).service('Modal', function($modal) {
 		element = lead;
 		var modalInstance = $modal.open({
 		  templateUrl: 'views/modals/gallery.html',
-		  controller: ModalInstanceCtrl,
+		  controller: ModalInstanceCtrlPhoto,
 		  windowClass: "modal fade in"
 		});
 	};
 
-	var ModalInstanceCtrl = function ($scope,$modalInstance) {
+	var ModalInstanceCtrlPhoto = function ($scope,$modalInstance) {
 		$scope.lead = element;
 		$scope.addPhotoSiteSurvey = function () {
 			$modalInstance.close();
@@ -45,7 +45,7 @@ angular.module('modal',['ui.bootstrap']).service('Modal', function($modal) {
 	            lead.updated = [];
 	        }
 	        lead.updated = new Date().getTime();
-	        
+
 	        lead.$update(function() {
 	            
 	        });

@@ -154,7 +154,7 @@ UserSchema.statics.findUser = function(email, token, cb) {
             cb(err, null);
             console.log(err);
         } else if (token === usr.token.token) {
-            cb(false, {_id:usr._id, email: usr.email, token: usr.token, date_created: usr.date_created, name: usr.name,account: usr.account});
+            cb(false, {_id:usr._id, email: usr.email, token: usr.token, date_created: usr.date_created, name: usr.name,account: usr.account, role:usr.role});
         } else {
             cb(new Error('Token does not match.'), null);
         }

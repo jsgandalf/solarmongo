@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+    PhotoSchema = require("./user").thePhotoSchema,
     Schema = mongoose.Schema;
 
 /**
@@ -47,7 +48,8 @@ var siteSurveySchema = new Schema({
     lead: {
         type: Schema.ObjectId,
         ref: 'Lead'
-    }
+    },
+    gallery: [PhotoSchema]
 });
 
 /**

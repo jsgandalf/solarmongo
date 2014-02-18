@@ -4,6 +4,7 @@
 angular.module('modal',['ui.bootstrap']).service('Modal', function($modal) {
 	var title = "Title";
 	var body = "Body";
+	var element = "";
 	this.open = function (myTitle,myBody) {
 		title = myTitle
 		body = myBody
@@ -18,6 +19,38 @@ angular.module('modal',['ui.bootstrap']).service('Modal', function($modal) {
 		$scope.title = title;
 		$scope.body = body;
 		$scope.ok = function () {
+			$modalInstance.close();
+		};
+
+		/*$scope.cancel = function () {
+			$modalInstance.dismiss('cancel');
+		};*/
+	};
+
+	this.uploadPhoto = function (lead) {
+		element = lead;
+		var modalInstance = $modal.open({
+		  templateUrl: 'views/modals/gallery.html',
+		  controller: ModalInstanceCtrl,
+		  windowClass: "modal fade in"
+		});
+	};
+
+	var ModalInstanceCtrl = function ($scope,$modalInstance) {
+		$scope.lead = element;
+		$scope.addPhotoSiteSurvey = function () {
+			$modalInstance.close();
+			var lead = $scope.lead;
+	        if (!lead.updated) {
+	            lead.updated = [];
+	        }
+	        lead.updated = new Date().getTime();
+	        
+	        lead.$update(function() {
+	            
+	        });
+		};
+		$scope.close = function () {
 			$modalInstance.close();
 		};
 

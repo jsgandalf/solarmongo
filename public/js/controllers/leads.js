@@ -127,4 +127,8 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
             $scope.assignees = assignees;
         });
     }
+
+    $scope.uploadPhotoModal = function(){
+        Modal.uploadPhoto($scope.lead);
+    }
 }]);

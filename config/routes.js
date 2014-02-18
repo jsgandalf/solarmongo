@@ -9,6 +9,7 @@ var account = require('../app/controllers/accounts');
 var api = require('../app/controllers/api');
 var pages = require('../app/controllers/pages');
 var sendgrid = require('../app/controllers/emails');
+var s3 = require('../app/controllers/upload');
 
 
 module.exports = function(app, passport, auth) {
@@ -100,6 +101,8 @@ module.exports = function(app, passport, auth) {
     app.put('/api/account',passport.authenticate('bearer', { session: false }), account.update);
     app.get('/api/account/getAssignees', passport.authenticate('bearer', { session: false }), account.getAssignees);
 
+    //Uploader with amazon s3
+    app.get('/upload/put', s3.put);
 
     app.get('/api/token',api.getToken);
     app.post('/api/token',api.getToken);

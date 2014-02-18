@@ -8,7 +8,6 @@
     templateUrl: '/views/navigation/navlist.html', // load the template file
     controller: function ( $scope, $location, Global ) {
         $scope.global = Global;
-        console.log($scope.global)
         $scope.navList = [//{"name":"Dashboard","route":"dashboard","icon":"icon-home"},
                 {"name":"Leads","route":"leads","icon":"icon-group"},
                 {"name":"Inventory","route":"products","icon":"icon-shopping-cart"},

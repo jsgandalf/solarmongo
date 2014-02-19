@@ -7,6 +7,7 @@ var express = require('express'),
     mongoStore = require('connect-mongo')(express),
     flash = require('connect-flash'),
     helpers = require('view-helpers'),
+    hbs = require('hbs'),
     config = require('./config');
 
 module.exports = function(app, passport, db) {
@@ -29,8 +30,27 @@ module.exports = function(app, passport, db) {
     }
 
     //Set views path, template engine and default layout
+    //app.set('view engine', 'html');
+    //app.engine('html', require('hbs').__express);
+    app.set('view engine', 'hbs');
     app.set('views', config.root + '/app/views');
-    app.set('view engine', 'jade');
+    var blocks = {};
+    hbs.registerHelper('extend', function(name, context) {
+        var block = blocks[name];
+        if (!block) {
+            block = blocks[name] = [];
+        }
+
+        block.push(context.fn(this)); // for older versions of handlebars, use block.push(context(this));
+    });
+    hbs.registerHelper('block', function(name) {
+        var val = (blocks[name] || []).join('\n');
+
+        // clear the block
+        blocks[name] = [];
+        return val;
+    });
+    hbs.registerPartials(config.root + '/app/views/includes');
 
     //Enable jsonp
     app.enable("jsonp callback");
@@ -46,7 +66,7 @@ module.exports = function(app, passport, db) {
 
         //express/mongo session storage
         app.use(express.session({
-            secret: 'MEAN',
+            secret: 'dfkjsdblk234JdkfFHL987lkddkfjJJDfks',
             store: new mongoStore({
                 db: db.connection.db,
                 collection: 'sessions'

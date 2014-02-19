@@ -39,17 +39,17 @@ angular.module('modal',['ui.bootstrap','crm.photos']).service('Modal', function(
 	var ModalInstanceCtrlPhoto = function ($scope,$modalInstance) {
 		$scope.lead = element;
 		$scope.addPhotoSiteSurvey = function () {
-			$modalInstance.close();
-			var lead = $scope.lead;
-	        if (!lead.updated) {
-	            lead.updated = [];
-	        }
-	        lead.updated = new Date().getTime();
-
-	        lead.$update(function() {
-	            
-	        });
-		};
+			
+	        var photo = new Photos({
+	            photo: newPhoto,
+	            description: this.description,
+	            leadId: $scope.lead._id
+			});
+			photo.leads.pushPhoto(function(photo){
+				if(photo)
+					$modalInstance.close();	
+			});
+		}
 		$scope.close = function () {
 			$modalInstance.close();
 		};

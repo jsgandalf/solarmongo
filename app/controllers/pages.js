@@ -1,4 +1,5 @@
 'use strict';
+var config = require('../../config/config');
 
 exports.contactUs = function(req, res) {
     res.render('pages/contactUs', {
@@ -34,7 +35,9 @@ exports.api = function(req, res) {
 
 exports.index = function(req, res) {
     res.render('index', {
-        user: req.user ? JSON.stringify(req.user) : 'null',
-        isLoggedIn: req.user ? true : false
+        name: req.user ? req.user.name : 'null',
+        role: req.user ? req.user.role : 'null',
+        isLoggedIn: req.user ? true : false,
+        isDevelopment: config.env=='development'
     });
 };

@@ -1,0 +1,31 @@
+<!doctype html lang='en'>
+{{#if isLoggedIn}}
+
+{{> head }}
+<body>
+	<div data-ng-app="mean">
+		<navigation-list></navigation-list>
+		<div class="content">
+			<div class="view-container">
+				<div class="container-fluid" data-ng-view></div>
+			</div>
+		</div>
+	</div>
+	{{> foot}}
+</body>
+
+{{else}}
+
+{{> headFront }}
+
+<body>
+	<div data-ng-app="solarmongo">
+		<navigation-list></navigation-list>
+		{{{body}}}
+	</div>
+	{{> footFront}}
+</body>
+
+{{/if}}
+
+</html>

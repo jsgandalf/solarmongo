@@ -15,12 +15,12 @@ var mongoose = require('mongoose'),
 */
 var Token = new Schema({
     token: {type: String},
-    date_created: {type: Date, default: Date.now},
+    created: {type: Date, default: Date.now},
 });
 
 Token.methods.hasExpired= function(){
     var now = new Date();
-    return (now.getTime() - this.date_created.getTime()) > config.ttl;
+    return (now.getTime() - this.created.getTime()) > config.ttl;
 };
 var TokenModel = mongoose.model('Token', Token);
 
@@ -35,7 +35,8 @@ var UserSchema = new Schema({
     },
     hashed_password: String,
     salt: String,
-    date_created: {type: Date, default: Date.now},
+    created: {type: Date, default: Date.now},
+    updated: {type: Date, default: Date.now},
     token: {type: Object},
     //For reset we use a reset token with an expiry (which must be checked)
     reset_token: {type: String},
@@ -154,7 +155,7 @@ UserSchema.statics.findUser = function(email, token, cb) {
             cb(err, null);
             console.log(err);
         } else if (token === usr.token.token) {
-            cb(false, {_id:usr._id, email: usr.email, token: usr.token, date_created: usr.date_created, name: usr.name,account: usr.account, role:usr.role});
+            cb(false, {_id:usr._id, email: usr.email, token: usr.token,updated: usr.updated, created: usr.created, name: usr.name,account: usr.account, role:usr.role});
         } else {
             cb(new Error('Token does not match.'), null);
         }
@@ -211,7 +212,7 @@ UserSchema.statics.generateResetToken = function(email, cb) {
 UserSchema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
-    }).select('name email date_created role').exec(cb);
+    }).select('name email updated created role').exec(cb);
 };
 
 

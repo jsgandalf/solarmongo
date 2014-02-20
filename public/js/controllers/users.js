@@ -36,7 +36,7 @@ angular.module('crm.users').controller('UsersController', ['$scope', '$routePara
         if (!user.updated) {
             user.updated = [];
         }
-        user.updated.push(new Date().getTime());
+        user.updated = new Date().getTime();
         if(this.newpassword)
             user.password = this.newpassword;
         user.$update(function(response) {

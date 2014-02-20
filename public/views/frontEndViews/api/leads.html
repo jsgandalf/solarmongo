@@ -1,0 +1,89 @@
+<h3>Leads</h3>
+<p>
+	Don't forget to pass in an access_token with every request
+	<ul>
+		<li>get: /api/leads/alldata - gets all leads with siteSurvey</li>
+		<li>get: /api/leads - gets all leads</li>
+    	<li>post /api/leads - adds a lead, pass in the lead object with a siteSurvey Object</li>
+    	<li>get /api/leads/:leadId - gets 1 lead, pass in the leadId, returns a lead object</li>
+    	<li>put /api/leads/:leadId - updates a lead, pass in the leadId and lead object</li>
+    		<ul class="no-bullet">
+    			<li>lead:{</li>
+    				<ul>
+    					<li>"_id": "5302b4c4b16876de03af3b69",</li>
+    					<li>"account": "5302b38828a289d2033f6a62",</li>
+    					<li>"assignee": "5302b4b2b16876de03af3b67",</li>
+    					<li>"firstName": "John",</li>
+    					<li>"lastName": "Doe",</li>
+    					<li>"updated": 1392874630178, (milliseconds since 1970/01/01)</li>
+    					<li>"latitude": null,</li>
+    					<li>"longitude": null,</li>
+    					<li>"notes": "This is my notes, place my notes here",</li>
+    					<li>"status": "Contacted",</li>
+  						<li>"user": {
+  							<ul>
+  								<li>"_id": "5302b38828a289d2033f6a61",</li>
+    							<li>"name": "Gimli",</li>
+    							<li>"created": 1292825935491, (milliseconds since 1970/01/01)</li>
+    							<li>"updated": 1292825935491, (milliseconds since 1970/01/01)</li>
+    						</ul>
+    					</li>
+    					<li>},</li>
+  						<li>"created": 1292825935491, (milliseconds since 1970/01/01)</li>
+    					<li>"updated": 1292825935491, (milliseconds since 1970/01/01)</li>
+    					<li>"siteSurvey": {
+    						<ul>
+    							<li>"_id": "5302b4c4b16876de03af3b6a",</li>
+    							<li>"gallery": [],</li>
+    							<li>"siteSurveyNotes": "",</li>
+    							<li>"customerExpectation": {
+    								<ul>
+    									<li>"systemType": "",</li>
+    									<li>"fullBill": "",</li>
+    									<li>"partBill": ""</li>
+    								</ul>
+    							</li>
+    							<li>},</li>
+    							<li>"pictures": {
+    								<ul>
+    									<li>"breakerPanelsOpen": false,</li>
+    									<li>"breakerPanelsClosed": false,</li>
+    									<li>"arrayLocation": false,</li>
+										<li>"shadingProblems": false,</li>
+										<li>"powerMeterOpen": false,</li>
+										<li>"powerMeterClosed": false,</li>
+										<li>"inverterLocation": false,</li>
+										<li>"site": false</li>
+    								</ul>
+    							</li>
+    							<li>},</li>
+    							<li>"jobSite": {
+    								<ul>
+    									<li>"description": "",</li>
+										<li>"otherTruss": "",</li>
+										<li>"truss": false,</li>
+										<li>"rafterSpacingAndSize": "",</li>
+										<li>"eyeAvailability": false,</li>
+										<li>"location": "",</li>
+										<li>"pitch": "",</li>
+										<li>height": null,</li>
+										<li>"layers": "",</li>
+										<li>"roofingType": "",</li>
+										<li>"zip": "",</li>
+										<li>"state": "",</li>
+										<li>"city": "",</li>
+										<li>"address": "",</li>
+										<li>"lastName": "",</li>
+										<li>"firstName": ""</li>
+    								</ul>
+    							</li>
+    							<li>}</li>
+    						</ul>
+    					</li>
+    					<li>}</li>
+    				</ul>
+    			<li>}</li>
+    		</ul>
+    	<li>del /api/leads/:leadId - deletes a lead, pass in the leadId</li>
+    </ul>
+</p>

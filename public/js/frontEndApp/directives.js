@@ -5,7 +5,7 @@
  myDirectives.directive( 'navigationList', function () {
   return {
     restrict: 'E', // allow as an element; the default is only an attribute
-    templateUrl: '/views/frontEndViews/navlist.html', // load the template file
+    templateUrl: '/js/frontEndApp/navlist.html', // load the template file
     controller: function ( $scope, $location, Global ) {
         $scope.global = Global;
         $scope.menu = [{

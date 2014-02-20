@@ -109,8 +109,8 @@ module.exports = function(app, passport, auth) {
 
     //Pages route
     app.get('/', pages.index);
-    app.get('/contactus', pages.contactUs);
-    app.get('/aboutus', pages.aboutUs);
+    app.get('/contact', pages.contact);
+    app.get('/about', pages.about);
     app.get('/pricing', pages.pricing);
     app.get('/api', pages.api);
 

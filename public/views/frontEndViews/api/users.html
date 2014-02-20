@@ -1,0 +1,24 @@
+<h3>Users</h3>
+<p>
+	Don't forget to pass in an access_token with every request
+	<ul>
+		<li>get: /api/users - gets all users</li>
+    	<li>post /api/users - adds a user, pass in a user object</li>
+    	<li>get /api/users/:webUserId - gets 1 user, pass in the userid, returns a user object</li>
+    	<li>put /api/users/:webUserId - updates a user, pass in the userid and user object</li>
+    		<ul class="no-bullet">
+    			<li>user:{</li>
+    				<ul>
+    					<li>"_id": "5302b38828a289d2033f6a61",</li>
+    					<li>"email": "sean@gmail.com",</li>
+    					<li>"name": "Sean",</li>
+    					<li>"role": "Admin",</li>
+    					<li>"created": 1292825935491, (milliseconds since 1970/01/01)</li>
+    					<li>"updated": 1392874630178, (milliseconds since 1970/01/01)</li>
+    				</ul>
+    			<li>}</li>
+    		</ul>
+    	</li>
+    	<li>del /api/users/:webUserId - deletes a user, pass in the userid</li>
+    </ul>
+</p>

@@ -1,16 +1,16 @@
 'use strict';
 var config = require('../../config/config');
 
-exports.contactUs = function(req, res) {
-    res.render('pages/contactUs', {
+exports.contact = function(req, res) {
+    res.render('pages/contact', {
         user: req.user ? JSON.stringify(req.user) : 'null',
         isLoggedIn: req.user ? true : false,
         title: "Contact Us"
     });
 };
 
-exports.aboutUs = function(req, res) {
-    res.render('pages/aboutUs', {
+exports.about = function(req, res) {
+    res.render('pages/about', {
         user: req.user ? JSON.stringify(req.user) : 'null',
         isLoggedIn: req.user ? true : false,
         title: "About Us"
@@ -26,7 +26,7 @@ exports.pricing = function(req, res) {
 };
 
 exports.api = function(req, res) {
-    res.render('pages/api', {
+    res.render('api/api', {
         user: req.user ? JSON.stringify(req.user) : 'null',
         isLoggedIn: req.user ? true : false,
         title: "API"

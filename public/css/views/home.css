@@ -9,3 +9,14 @@ body{
     font-weight: normal ;
     line-height: inherit;
 }
+
+.container .footer{
+	color:grey;
+	margin-left:20px;
+}
+.no-bullet{
+	list-style:none;
+}
+.no-bullet li{
+	list-style:none;	
+}

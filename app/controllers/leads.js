@@ -51,7 +51,7 @@ exports.update = function(req, res) {
             res.jsonp({"errors": err.errors});
         } else {
             SiteSurvey.findById(req.body.siteSurvey._id, function (err, siteSurvey) {
-                if (err) res.jsonp({"errors": err.errors});              
+                if (err || !siteSurvey) res.jsonp({"errors": err.errors});              
                 siteSurvey = _.extend(siteSurvey, req.body.siteSurvey);
                 siteSurvey.save(function (err) {
                     if (err) res.jsonp({"errors": err.errors});

@@ -20,8 +20,8 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
             longitude: null,
             latitude: null,
             notes: this.notes,
-            assignee: this.assignee,
-            siteSurvey: {
+            assignee: this.assignee
+            /*siteSurvey: {
                 jobSite: {
                     firstName:'',
                     lastName:'',
@@ -56,7 +56,7 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
                     systemType:''
                 },
                 siteSurveyNotes: ''
-            }
+            }*/
         });
         var self = this;
         lead.$save(function(response) {

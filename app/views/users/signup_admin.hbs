@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="row header no-jumbotron">
+      	<div class="row form-wrapper">
+	        <div class="col-md-12">
+	        	{{#if message}}
+				<div class="fade in alert alert-danger">
+				  <button class="close" type="button" data-dismiss="alert">&times;</button>
+				  <strong>{{message}}</strong>
+				</div>
+				{{/if}}
+				<div class="leads">
+				  <div class="row header">
+				    <div class="row form-wrapper">
+				      <div class="col-md-9">
+				        <form role="form" action="/admin/users/create" method="post" class="form-horizontal">
+				          <div class="form-group">
+				            <div class="col-md-12">
+				              <h1>Sign up</h1>
+				            </div>
+				          </div>
+				          <div class="form-group">
+				            <div class="col-md-12">
+				              <h3>Account</h3>
+				            </div>
+				          </div>
+				          <div class="form-group">
+				            <label class="col-md-1_5 control-label">Name:</label>
+				            <div class="col-md-10">
+				              <input type="text" name="name" placeholder="Full name" value="{{user.name}}" class="form-control"/>
+				            </div>
+				          </div>
+				          <div class="form-group">
+				            <label class="col-md-1_5 control-label">Email:</label>
+				            <div class="col-md-10">
+				              <input type="text" name="email" placeholder="Email" value="{{user.email}}" class="form-control"/>
+				            </div>
+				          </div>
+				          <div class="form-group">
+				            <label class="col-md-1_5 control-label">Password:</label>
+				            <div class="col-md-10">
+				              <input type="password" name="password" placeholder="Password" value="{{user.password}}" class="form-control"/>
+				            </div>
+				          </div>
+				          <div class="form-group">
+				            <label class="col-md-1_5 control-label">Role:</label>
+				            <div class="col-md-10">
+				              <div class="select-style ui-select col-md-5">
+				                <select required="" name="role">
+				                  <option value="">-- Select Role --</option>
+				                  <option value="Admin">Administrator</option>
+				                  <option value="Installer">Installer</option>
+				                  <option value="SalesRep">Sales Representative</option>
+				                  <option value="LeadsAgency">Leads Agency</option>
+				                  <option value="SalesAgency">Sales Agency</option>
+				                </select>
+				              </div>
+				            </div>
+				          </div>
+				          <div class="col-md-11 field-box actions">
+				            <input type="submit" value="Sign up" class="btn-glow primary"/><span>OR</span><a type="submit" class="btn">Help</a>
+				          </div>
+				        </form>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -3,6 +3,12 @@
     <div class="row header no-jumbotron">
       <div class="row form-wrapper">
         <div class="col-md-12">
+          {{#if message}}
+            <div class="fade in alert alert-danger">
+              <button class="close" type="button" data-dismiss="alert">&times;</button>
+              <strong>{{message}}</strong>
+            </div>
+          {{/if}}
           <h2>Sign in</h2><br/>
           <form role="form" action="/users/session" method="post" class="signin form-horizontal">
             <div class="form-group">

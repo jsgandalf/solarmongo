@@ -1,0 +1,291 @@
+#footer {
+    background-color: #252528;
+    color: #FFFFFF;
+    margin-top: 140px;
+    min-height: 260px;
+    padding-top: 35px;
+}
+#footer .footer_header {
+    color: #C4C4C4;
+    font-size: 25px;
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 40px;
+    margin-left: 15px;
+}
+#footer .recent_posts {
+    margin-left: 0;
+}
+#footer .recent_posts .post {
+    margin-bottom: 70px;
+    width: 93%;
+}
+#footer .recent_posts .post img {
+    float: left;
+    margin-right: 20px;
+}
+#footer .recent_posts .post .date {
+    font-style: italic;
+    font-weight: bold;
+}
+#footer .recent_posts .post .title {
+    color: #B5B5B6;
+    display: block;
+    font-size: 14px;
+}
+#footer .testimonials .wrapper {
+    margin: 0 auto;
+    width: 82%;
+}
+#footer .testimonials .footer_header {
+    margin-left: 30px;
+}
+#footer .testimonials .quote {
+    color: #BFBFC0;
+}
+#footer .testimonials .quote span {
+    float: left;
+    font-family: Georgia !important;
+    font-size: 32px;
+    font-style: italic;
+    margin-right: 8px;
+    position: relative;
+    top: 5px;
+}
+#footer .testimonials .author {
+    margin-top: 40px;
+}
+#footer .testimonials .author img {
+    float: left;
+    margin-right: 15px;
+    position: relative;
+    top: -6px;
+}
+#footer .testimonials .name {
+    font-size: 13px;
+    font-weight: bold;
+}
+#footer .testimonials .info {
+    color: #CCCCCC;
+    font-style: italic;
+}
+#footer .contact {
+    text-align: right;
+}
+#footer .contact .footer_header {
+    margin-left: 35px;
+    text-align: left;
+}
+#footer .contact input[type="text"], #footer .contact textarea {
+    background-color: #1F1F21;
+    border: medium none;
+    border-radius: 3px;
+    color: #868687;
+    font-family: Lato !important;
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding: 8px 20px;
+    transition: background-color 0.2s linear 0s;
+    width: 95%;
+}
+#footer .contact input[type="text"]:focus, #footer .contact textarea:focus {
+    background-color: #000000;
+    border: medium none;
+    box-shadow: none;
+}
+#footer .contact input[type="submit"] {
+    background-color: #3E3E40;
+    border: medium none;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 20px;
+    transition: background-color 0.2s linear 0s;
+}
+#footer .contact input[type="submit"]:hover {
+    background-color: #2190DB;
+}
+#footer .credits {
+    border-top: 1px solid #343437;
+    padding: 10px 0 60px;
+}
+#footer .credits .social {
+    margin-top: 30px;
+    text-align: center;
+}
+#footer .credits .social a {
+    margin: 10px;
+}
+#footer .credits .social a span {
+    display: inline-block;
+    height: 33px;
+    width: 33px;
+}
+#footer .credits .social a span.ico1, #footer .credits .social a span.icoh {
+    background-position: 0 0;
+}
+#footer .credits .social a span.ico2, #footer .credits .social a span.ico2h {
+    background-position: -37px 0;
+}
+#footer .credits .social a span.ico3, #footer .credits .social a span.ico3h {
+    background-position: -75px 0;
+}
+#footer .credits .social a span.ico4, #footer .credits .social a span.ico4h {
+    background-position: -112px -1px;
+}
+#footer .credits .social a span.ico5, #footer .credits .social a span.ico5h {
+    background-position: -151px 0;
+}
+#footer .credits .social a span.ico6, #footer .credits .social a span.ico6h {
+    background-position: -188px -1px;
+}
+#footer .credits .social a span.ico7, #footer .credits .social a span.ico7h {
+    background-position: -226px 0;
+}
+#footer .credits .social a:hover span.socialicons {
+    display: none;
+}
+#footer .credits .social a:hover span.socialicons_h {
+    display: inline-block !important;
+}
+#footer .credits .social span.socialicons_h {
+    display: none;
+}
+#footer .credits .copyright {
+    color: #A6A6A7;
+    font-style: italic;
+    margin-top: 30px;
+    text-align: center;
+}
+#footer .credits .socialicons {
+    background: url("../../img/socialicons.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 36px;
+    width: 265px;
+}
+#footer .credits .socialicons_h {
+    background: url("../../img/socialicons_h.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 36px;
+    width: 265px;
+}
+#footer .info {
+    margin-bottom: 10px;
+    margin-left: 0;
+}
+#footer .info .residence {
+    margin-left: 0;
+}
+#footer .info ul {
+    margin: 0;
+    padding: 0;
+}
+#footer .info ul li {
+    color: #777E83;
+    font-size: 16px;
+    line-height: 23px;
+    list-style: none outside none;
+}
+#footer .info ul a {
+    color: #777E83;
+    transition: color 0.2s ease 0s;
+}
+#footer .info ul a:hover {
+    color: #A9B4BB;
+}
+#footer .info .touch {
+    float: right;
+}
+#footer .info .touch ul li {
+    display: inline-block;
+    margin-left: 22px;
+}
+.page_header {
+    background-color: #000000;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 23px;
+    padding: 0 18px;
+}
+.social_icon {
+    background: url("../../img/social_icons.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 18px;
+    width: 110px;
+}
+.contact_social {
+    background: url("../../img/contact_social.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 34px;
+    width: 180px;
+}
+@media (max-width: 991px) {
+body {
+    padding-top: 0 !important;
+}
+.navbar.navbar-inverse {
+    background: none repeat scroll 0 0 #252528;
+}
+}
+@media (min-width: 768px) and (max-width: 991px) {
+.navbar {
+    margin-bottom: 0;
+}
+.navbar.transparent.navbar-fixed-top {
+    margin-bottom: -70px;
+    position: relative;
+}
+.navbar.home.navbar-fixed-top {
+    margin-bottom: -70px;
+    position: relative;
+}
+}
+@media (max-width: 767px) {
+.navbar.navbar-inverse .container .navbar-header .navbar-brand {
+    margin-left: -5px;
+}
+.navbar .navbar-nav .open .dropdown-menu > li > a {
+    font-weight: bold;
+    line-height: 25px;
+    padding: 5px 15px 5px 35px;
+}
+#footer .container {
+    padding: 0 20px;
+}
+#footer .footer_header {
+    margin-left: 0;
+}
+#footer .footer_header h3 {
+    margin-left: 0;
+}
+#footer .testimonials {
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+#footer .testimonials .footer_header {
+    margin-left: 0;
+}
+#footer .testimonials .wrapper {
+    float: left;
+    width: 100%;
+}
+#footer .contact {
+    margin: 0;
+}
+#footer .contact .footer_header {
+    margin-left: 0;
+}
+#footer .contact input[type="text"], #footer .contact textarea {
+    float: left;
+    width: 100%;
+}
+#footer .info .touch {
+    float: none;
+}
+#footer .info .touch ul {
+    margin: 15px 0;
+}
+#footer .info .touch ul li {
+    margin: 0 30px 0 0;
+}
+#footer .credits {
+    margin-top: 20px;
+}
+}

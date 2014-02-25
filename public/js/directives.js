@@ -1,8 +1,8 @@
 'use strict';
 
- var myDirectives = angular.module( 'myDirectives', [] );
+ var myDirectives = angular.module('myDirectives', [] );
 
- myDirectives.directive( 'navigationList', function () {
+ myDirectives.directive('navigationList', function () {
   return {
     restrict: 'E', // allow as an element; the default is only an attribute
     templateUrl: '/views/navigation/navlist.html', // load the template file
@@ -37,3 +37,21 @@ myDirectives.directive( 'siteSurveyDirective', function () {
     templateUrl: 'views/leads/siteSurvey.html', // load the template file
   };
 });
+
+myDirectives.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+            console.log("here");
+            
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    console.log("changed")
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}]);

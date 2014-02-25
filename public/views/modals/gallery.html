@@ -1,13 +1,14 @@
-<div class="modal-header">
+<div class="modal-header" >
   <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
   <h4 class="modal-title">Add New Photo</h4>
 </div>
 <div class="modal-body">
+  {{$myFile}}
     <form role="form" class="form-horizontal">
         <div class="form-group">
             <label class="col-lg-2 control-label" for="input1">Photo:</label>
             <div class="col-lg-10">
-                <input type="file" class="pull-left" id="input1" data-ng-model="newPhoto">
+              <input class="pull-left" id="input1" type="file" file-model="myFile"/>
             </div>
         </div>
         <div class="form-group">
@@ -20,5 +21,7 @@
 </div>
 <div class="modal-footer">
   <button class="btn btn-default" type="button" ng-click="close()">Close</button>
-  <button class="btn btn-primary" type="button" ng-click="addPhotoSiteSurvey()" data-ng-disabled="newPhoto==null">Add Photo</button>
+  <button class="btn btn-primary" type="button" ng-click="uploadFile()">Add Photo</button>
 </div>
+
+<!--data-ng-disabled="newPhoto==null"-->

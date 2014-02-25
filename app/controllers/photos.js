@@ -21,6 +21,26 @@ exports.product = function(req, res, next, id) {
     });
 };*/
 
+exports.add = function(req, res) {
+    console.log(req.files);  
+    console.log(req);                                          
+
+}
+
+/**
+ * Create a photo
+ */
+exports.addLeadPhoto = function(req, res) {
+    console.log("here");
+    /*var photo = new Photo(req.body);
+    product.user = req.user;
+    product.account = req.user.account;
+    Product.create(product, function(err){
+        if(err) res.jsonp({"errors": err.errors});
+        res.jsonp(product);
+    });*/
+};
+
 /**
  * Create a photo
  */

@@ -4,8 +4,8 @@
 angular.module('crm.photos').factory('Photos', ['$resource', function($resource) {
     return {
 	    leads: $resource('photos/leads/:leadId', {}, {
-			get: { method: 'GET', params: {}, isArray: true },
-			pushPhoto: { method: 'POST', params: { leadId: '@leadId'}, isArray: true }
+			//get: { method: 'GET', params: {}, isArray: true },
+			addPhoto: { method: 'POST', params: { leadId: '@leadId'}, isArray: true }
 		}),
 		info: $resource('photos/:photoId', {}, {
 		    update: { method: 'PUT', params:{photoId: '@_id'}, isArray: true}

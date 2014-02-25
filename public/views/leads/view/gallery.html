@@ -9,7 +9,12 @@
             <img alt="no-gallery" src="img/no-img-gallery.png">
             <h6>You don't have any photos</h6>
             <p>With the Basic plan you can upload up to 4 pictures per Site Survey.</p>
-            <a class="btn-glow success" ng-click="uploadPhotoModal()">Add new image</a>
+            <!-- TODO: make this a modal -->
+            <!--<a class="btn-glow success" ng-click="uploadPhotoModal()">Add new image</a>-->
+            <div ng-controller="uploadController">
+                <input type="file" file-model="myFile"/>
+                <button class="btn-glow success" ng-click="uploadFile()" ng-disabled="myFile==null">Upload Photo</button>
+            </div>
         </div>
     </div>
 </div>

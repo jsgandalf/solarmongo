@@ -131,4 +131,5 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
     $scope.uploadPhotoModal = function(){
         Modal.uploadPhoto($scope.lead);
     }
+
 }]);

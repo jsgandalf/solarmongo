@@ -20,3 +20,7 @@ body{
 .no-bullet li{
 	list-style:none;	
 }
+#in_pricing .head {
+	margin-bottom: 70px;
+	text-align: center;
+}

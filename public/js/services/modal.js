@@ -1,7 +1,7 @@
 'use strict';
 
 //Modal service for creating modals on the fly
-angular.module('modal',['ui.bootstrap','crm.photos']).service('Modal', function($modal,Photos) {
+angular.module('modal',['ui.bootstrap','crm.photos','crm.uploader','crm.fileModel']).service('Modal', function($modal, Photos, Uploader, $fileUpload) {
 	var title = "Title";
 	var body = "Body";
 	var element = "";
@@ -36,19 +36,34 @@ angular.module('modal',['ui.bootstrap','crm.photos']).service('Modal', function(
 		});
 	};
 
-	var ModalInstanceCtrlPhoto = function ($scope,$modalInstance) {
+	var ModalInstanceCtrlPhoto = function ($scope,$modalInstance,$fileUpload) {
 		$scope.lead = element;
+		$scope.uploadFile = function(){
+	        var file = $scope.myFile;
+	        console.log('file is ' + JSON.stringify(file));
+	        var uploadUrl = "/fileUpload";
+	        $fileUpload.uploadFileToUrl(file, uploadUrl);
+	    };
+
+
 		$scope.addPhotoSiteSurvey = function () {
-			
-	        var photo = new Photos({
-	            photo: newPhoto,
+	        //console.log(Uploader.addPhoto());
+	        var uploader = new Uploader({
+	        	data: this.newPhoto
+	        });
+	        uploader.$save(function(upload){
+	        	console.log(upload);
+	        })
+	        /*var photo = new Photos.leads({
+	            data: this.newPhoto,
 	            description: this.description,
 	            leadId: $scope.lead._id
-			});
-			photo.leads.pushPhoto(function(photo){
+			});*/
+			//Photos.info.leads.addPhoto
+			/*photo.leads.addPhoto(function(photo){
 				if(photo)
 					$modalInstance.close();	
-			});
+			});*/
 		}
 		$scope.close = function () {
 			$modalInstance.close();

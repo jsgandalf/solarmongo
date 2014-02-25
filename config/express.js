@@ -85,7 +85,10 @@ module.exports = function(app, passport, db) {
 
         //routes should be at the last
         app.use(app.router);
-        
+
+        //use file uploads
+        app.use(express.multipart());
+        app.use(express.bodyParser())
         //Setting the fav icon and static folder
         app.use(express.favicon());
         app.use(express.static(config.root + '/public'));

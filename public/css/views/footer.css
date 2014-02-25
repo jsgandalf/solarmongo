@@ -1,5 +1,5 @@
 #footer {
-    background-color: #252528;
+    background: linear-gradient(to bottom, #2C3742 0%, #28303A 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
     color: #FFFFFF;
     margin-top: 140px;
     min-height: 260px;

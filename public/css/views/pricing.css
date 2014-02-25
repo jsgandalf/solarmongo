@@ -30,7 +30,7 @@
     width: 95%;
 }
 #in_pricing .charts_wrapp .plan .wrapper {
-    padding: 33px 30px 26px;
+    padding: 54px 30px 84px;
 }
 #in_pricing .charts_wrapp .plan h3 {
     color: #535353;
@@ -167,7 +167,7 @@
     width: 100%;
 }
 #in_pricing2 .charts_wrapp .plan .wrapper {
-    padding: 33px 30px 26px;
+    padding: 54px 30px 84px;
 }
 #in_pricing2 .charts_wrapp .plan .price {
     color: #1189D9;
@@ -240,7 +240,7 @@
     box-shadow: none;
 }
 #in_pricing2 .black .plan .wrapper {
-    padding: 35px 25px 30px;
+    padding: 54px 30px 84px;
 }
 #in_pricing2 .black .plan h3 {
     color: #FFFFFF;

@@ -1,0 +1,293 @@
+.section_header {
+    margin-bottom: 60px;
+    width: 100%;
+}
+.section_header h3 {
+    border-bottom: 1px solid #B3B3B3;
+    color: #646464;
+    display: inline-block;
+    font-size: 27px;
+    font-style: italic;
+    font-weight: 300;
+    margin: 0;
+    padding-bottom: 0;
+}
+#aboutus {
+    margin-bottom: 90px;
+    margin-top: 70px;
+}
+#aboutus .intro h6 {
+    color: #252526;
+    font-size: 21px;
+    font-style: italic;
+    font-weight: normal;
+    line-height: 29px;
+    margin: 0 0 16px;
+}
+#aboutus .intro p {
+    color: #3F3F3F;
+    line-height: 24px;
+}
+#aboutus .flexslider {
+    border: 0 none;
+    box-shadow: none;
+    margin: 0;
+}
+#aboutus .flex-control-paging li a {
+    background: none repeat scroll 0 0 #666666;
+    border: 3px solid #E6E6E6;
+    box-shadow: none;
+    height: 11px;
+    width: 11px;
+}
+#aboutus .flex-control-paging li a.flex-active {
+    background: none repeat scroll 0 0 #2894DC;
+    border-color: #2894DC;
+    box-shadow: none;
+}
+#aboutus .flex-control-nav {
+    bottom: -30px;
+}
+#team {
+    background: none repeat scroll 0 0 #F7F7F7;
+    border-bottom: 1px solid #EEEEEE;
+    border-top: 1px solid #EEEEEE;
+    margin: 0 0 90px;
+    padding: 35px 0 25px;
+}
+#team .section_header {
+    margin-bottom: 60px;
+}
+#team .section_header h3 {
+    border-color: #9D9D9E;
+    color: #9D9D9E;
+    margin: 0;
+}
+#team .people {
+    margin: 0;
+}
+#team .people .row1 {
+    margin: 0 0 50px;
+}
+#team .people .bio_box {
+    margin: 0;
+}
+#team .people .bio_box img {
+    float: left;
+}
+#team .people .bio_box .info {
+    float: left;
+    margin: 38px 0 0 22px;
+}
+#team .people .bio_box .info p {
+    margin-bottom: 0;
+}
+#team .people .bio_box .info p.name {
+    color: #333333;
+    font-size: 21px;
+    font-style: italic;
+    margin-bottom: 4px;
+}
+#team .people .bio_box .info p.area {
+    color: #98989A;
+    font-style: italic;
+    margin-bottom: 18px;
+}
+#team .people .bio_box .info a {
+    margin-right: 10px;
+}
+#team .people .bio_box .info a span {
+    display: inline-block;
+    height: 33px;
+    width: 33px;
+}
+#team .people .bio_box .info a:hover span.socialicons {
+    display: none;
+}
+#team .people .bio_box .info a:hover span.socialicons_h {
+    display: inline-block !important;
+}
+#team .people .bio_box .info span.ico1, #team .people .bio_box .info span.ico1h {
+    background-position: 0 0;
+}
+#team .people .bio_box .info span.ico2, #team .people .bio_box .info span.ico2h {
+    background-position: -37px 0;
+}
+#team .people .bio_box .info span.ico3, #team .people .bio_box .info span.ico3h {
+    background-position: -75px 0;
+}
+#team .people .bio_box .info span.ico4, #team .people .bio_box .info span.ico4h {
+    background-position: -112px -1px;
+}
+#team .people .bio_box .info span.ico5, #team .people .bio_box .info span.ico5h {
+    background-position: -151px 0;
+}
+#team .people .bio_box .info span.ico6, #team .people .bio_box .info span.ico6h {
+    background-position: -188px -1px;
+}
+#team .people .bio_box .info span.ico7, #team .people .bio_box .info span.ico7h {
+    background-position: -226px 0;
+}
+#team .people .bio_boxr img {
+    margin-left: 12px;
+}
+.socialicons {
+    background: url("../../img/socialicons2.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 36px;
+    width: 265px;
+}
+.socialicons_h {
+    background: url("../../img/socialicons_h.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: none !important;
+    height: 36px;
+    width: 265px;
+}
+#process {
+    min-height: 350px;
+}
+#process .section_header {
+    margin-bottom: 60px;
+}
+#process .section_header h3 {
+    margin: 0;
+}
+#process .description {
+    position: relative;
+}
+#process .description .text {
+    display: none;
+    position: absolute;
+}
+#process .description .text.active {
+    display: block;
+}
+#process .description h4 {
+    font-size: 31px;
+    line-height: 35px;
+    margin-bottom: 20px;
+}
+#process .description p {
+    color: #3F3F3F;
+    font-size: 15px;
+    line-height: 26px;
+}
+#process .areas {
+    float: right;
+    margin-left: 0;
+}
+#process .areas .circle {
+    background: none repeat scroll 0 0 rgba(37, 37, 40, 0.9);
+    border-radius: 100%;
+    cursor: pointer;
+    float: left;
+    height: 210px;
+    margin-right: -45px;
+    text-align: center;
+    transition: all 0.3s ease 0s;
+    width: 210px;
+}
+#process .areas .circle:hover, #process .areas .circle.active {
+    background: none repeat scroll 0 0 #1189D9;
+}
+#process .areas .circle img {
+    margin-top: 56px;
+}
+#process .areas .circle span {
+    color: #FFFFFF;
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 21px;
+}
+#process .areas .first {
+    margin-left: 0;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+#team .people .bio_box {
+    text-align: center;
+}
+#team .people .bio_box img {
+    float: none;
+    margin-bottom: 25px;
+    margin-left: 0;
+}
+#team .people .bio_box .info {
+    float: none;
+    margin: 0;
+}
+#process .areas {
+    text-align: center;
+}
+#process .areas .last_circle {
+    display: inline-block;
+    float: none;
+    margin-left: -75px;
+    margin-top: -54px;
+}
+}
+@media (max-width: 767px) {
+#team .container {
+    padding: 0 20px;
+}
+#team .people .row1 {
+    margin: 0;
+}
+#team .people .bio_box {
+    margin-bottom: 35px;
+    overflow: hidden;
+}
+#team .people .bio_box img {
+    margin: 0;
+}
+#aboutus {
+    margin-bottom: 75px;
+}
+#aboutus .intro {
+    margin-bottom: 45px;
+}
+#process .areas {
+    margin-bottom: 0;
+    margin-top: 193px;
+    text-align: center;
+}
+#process .areas .circle {
+    display: inline-block;
+    float: none;
+    margin: 0;
+}
+#process .areas .last_circle {
+    margin-top: -23px;
+}
+}
+@media (max-width: 480px) {
+#team .people .bio_box {
+    text-align: center;
+}
+#team .people .bio_box img {
+    float: none;
+    margin-bottom: 18px;
+}
+#aboutus .intro {
+    margin-bottom: 30px;
+}
+#team .people .bio_box .info {
+    float: none;
+    margin: 0;
+}
+#process .areas {
+    margin-top: 250px;
+}
+#process .areas .circle {
+    height: 100px;
+    width: 100px;
+}
+#process .areas .circle img {
+    margin-top: 22px;
+}
+#process .areas .circle span {
+    display: none;
+}
+#process .areas .last_circle {
+    margin-top: 0;
+}
+}

@@ -2,13 +2,14 @@
     "name": "solarmongo",
     "version": "0.1.2",
     "dependencies": {
-        "angular": "latest",
+        "angular": "1.2.x",
         "angular-resource": "latest",
         "angular-cookies": "latest",
         "angular-mocks": "latest",
         "angular-route": "latest",
         "angular-bootstrap": "latest",
         "angular-ui-utils": "latest",
-        "bootstrap": "latest"
+        "bootstrap": "latest",
+        "ngUpload": "0.5.x"
     }
 }

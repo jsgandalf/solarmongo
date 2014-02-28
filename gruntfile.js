@@ -8,12 +8,12 @@ module.exports = function(grunt) {
             options:{
                 nospawn: true
             },
-            /*jade: {
+            hbs: {
                 files: ['app/views/**'],
                 options: {
                     livereload: true,
                 },
-            },*/
+            },
             js: {
                 files: ['server.js', 'app/**/*.js', 'public/js/**', 'test/**/*.js'],
                 //tasks: ['jshint'],

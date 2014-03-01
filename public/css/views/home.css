@@ -2,7 +2,7 @@ body{
 	 font-family: 'Lato',sans-serif !important;
 	padding-top: 60px;
   	padding-bottom: 0px;
-  	background: url(/img/paper.png);
+  	background: url(/img/diamond.png);
 }
 
 .feature {
@@ -42,5 +42,13 @@ h2{
 	text-align:center;
 	padding-left:15px;
 	padding-right:15px;
+}
+.feature2 {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px 1px #E0E0E0;
+    cursor: pointer;
+    padding: 40px;
+    margin-top: 30px;
 }
 

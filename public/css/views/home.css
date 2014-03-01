@@ -2,6 +2,7 @@ body{
 	 font-family: 'Lato',sans-serif !important;
 	padding-top: 60px;
   	padding-bottom: 0px;
+  	background: url(/img/paper.png);
 }
 
 .feature {
@@ -41,5 +42,4 @@ p{
 	padding-left:15px;
 	padding-right:15px;
 }
-
 

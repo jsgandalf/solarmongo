@@ -11,10 +11,36 @@
             <p>With the Basic plan you can upload up to 4 pictures per Site Survey.</p>
             <!-- TODO: make this a modal -->
             <!--<a class="btn-glow success" ng-click="uploadPhotoModal()">Add new image</a>-->
-            <div ng-controller="uploadController">
+            <!--<div ng-controller="uploadController">
                 <input type="file" file-model="myFile"/>
                 <button class="btn-glow success" ng-click="uploadFile()" ng-disabled="myFile==null">Upload Photo</button>
+            </div>-->
+            <div ng-controller="uploadController">
+               <form action="/uploads" ng-upload="complete(content)">
+                 <input type="file" name="avatar"></input>
+                 <input type="submit" value="Upload" ng-disabled="$isLoading"></input>
+               </form>
+               <form action="/uploads" ng-upload="completed(content)">
+     <input type="file" name="avatar"></input>
+     <div style='cursor: pointer' upload-submit>Upload with Div</div> &bull;
+   </form>
+   <form action="/uploads" ng-upload="complete(contents)">
+     <input type="file" name="avatar"></input>
+     <a href='javascript:void(0)'
+       class="upload-submit" >
+         Upload with Anchor</a>
+   </form>
             </div>
+            <!--<div ng-controller="uploadController">
+              <input type="text" ng-model="myModelObj">
+              <input type="file" ng-file-select="onFileSelect($files)" >
+              <input type="file" ng-file-select="onFileSelect($files)" multiple>
+              <div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class"
+                    ng-show="dropSupported">drop files here</div>
+              <div ng-file-drop-available="dropSupported=true" 
+                    ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
+              <button ng-click="upload.abort()">Cancel Upload</button>
+            </div>-->
         </div>
     </div>
 </div>

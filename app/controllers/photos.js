@@ -23,7 +23,7 @@ exports.product = function(req, res, next, id) {
 
 exports.add = function(req, res) {
     console.log(req.files);  
-    console.log(req);                                          
+    console.log(req.file);                
 
 }
 

@@ -10,6 +10,14 @@ var client = knox.createClient({
   //port: 8080
 });
 
+var fs = require('fs');
+
+/*app.use(express.bodyParser());
+app.use(app.router);
+app.use(express.static(__dirname));*/
+
+
+
 exports.put = function(req, response) {
   var buffer = new Buffer('a string of data');
   var headers = {

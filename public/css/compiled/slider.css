@@ -1,10 +1,11 @@
 .carousel{
-	height:380px;
+	height:300px;
 	border-radius: 10px;
 }
 #slider_container{
 	height:380px;
 	background-color:#FFFFFF;
+	padding:0;
 }
 .carousel-control.left{
 	background-image:none;

@@ -6,11 +6,26 @@
 	height:240px;
 	background-color:#FFFFFF;
 	padding:0;
+	width:74%;
+	margin:auto;
 }
+
+#slider_container p{
+	font-size: 20px;
+	margin-top:20px;
+}
+
+#slider_container a{
+	margin-top: 20px;
+}
+
 .carousel-control.left{
 	background-image:none;
 }
 
 .carousel-control.right{
 	background-image:none;
+}
+.carousel-indicators{
+	top:290px;
 }

@@ -4,6 +4,13 @@ body{
   	padding-bottom: 0px;
 }
 
+.feature {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px 1px #E0E0E0;
+    cursor: pointer;
+    padding: 40px 0 38px;
+}
 .no-jumbotron{
     color: inherit;
     font-size: 14px;
@@ -24,4 +31,15 @@ body{
 #in_pricing .head {
 	margin-bottom: 70px;
 	text-align: center;
+} 
+h2{
+	text-align:center;
+	padding-bottom: 20px;
 }
+p{
+	text-align:center;
+	padding-left:15px;
+	padding-right:15px;
+}
+
+

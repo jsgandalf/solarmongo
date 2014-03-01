@@ -1,3 +1,5 @@
+.aboutimg {border-radius: 15px;
+}
 .section_header {
     margin-bottom: 60px;
     width: 100%;
@@ -16,9 +18,9 @@
     margin-bottom: 90px;
     margin-top: 70px;
 }
-#aboutus .intro h6 {
+#aboutus .intro h4 {
     color: #252526;
-    font-size: 21px;
+    font-size: 31px;
     font-style: italic;
     font-weight: normal;
     line-height: 29px;
@@ -27,6 +29,7 @@
 #aboutus .intro p {
     color: #3F3F3F;
     line-height: 24px;
+    font-size: 15px;
 }
 #aboutus .flexslider {
     border: 0 none;

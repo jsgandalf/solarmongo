@@ -11,6 +11,7 @@ body{
     box-shadow: 0 1px 3px 1px #E0E0E0;
     cursor: pointer;
     padding: 40px 0 38px;
+    margin-top: 40px;
 }
 .no-jumbotron{
     color: inherit;
@@ -37,7 +38,7 @@ h2{
 	text-align:center;
 	padding-bottom: 20px;
 }
-p{
+.card-p{
 	text-align:center;
 	padding-left:15px;
 	padding-right:15px;

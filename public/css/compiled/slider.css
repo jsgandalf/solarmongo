@@ -4,4 +4,12 @@
 }
 #slider_container{
 	height:380px;
+	background-color:#FFFFFF;
+}
+.carousel-control.left{
+	background-image:none;
+}
+
+.carousel-control.right{
+	background-image:none;
 }

@@ -34,12 +34,32 @@
 }
 #in_pricing .charts_wrapp .plan h3 {
     color: #535353;
-    font-size: 28px;
+    font-size: 50px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    line-height: 25px;
+    margin: 0 0 5px;
+    text-align:center;
+}
+#in_pricing .charts_wrapp .plan h4 {
+    color: #535353;
+    font-size: 30px;
     font-style: italic;
     font-weight: normal;
     line-height: 25px;
     margin: 0 0 5px;
+    text-align:center;
 }
+#in_pricing .charts_wrapp .plan p {
+    color: #535353;
+    font-size: 20px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    line-height: 25px;
+    margin: 0 0 5px;
+    text-align:center;
+}
+
 #in_pricing .charts_wrapp .plan .price {
     color: #1189D9;
     font-size: 17px;
@@ -67,7 +87,7 @@
 }
 #in_pricing .charts_wrapp .plan .features p {
     color: #838385;
-    font-size: 14px;
+    font-size: 15px;
     margin-bottom: 5px;
 }
 #in_pricing .plan a.order {

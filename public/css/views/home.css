@@ -51,4 +51,14 @@ h2{
     padding: 40px;
     margin-top: 30px;
 }
+.box {
+     border-radius: 4px;
+    box-shadow: 0 1px 3px 1px #E0E0E0;
+    cursor: pointer;
+    padding: 40px;
+    margin-top: 30px;
+}
+.row {
+    padding-top:14px;
+}
 

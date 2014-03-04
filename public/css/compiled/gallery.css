@@ -1,3 +1,12 @@
+.uploadClass .drag_and_drop{
+  width:80%;
+  height:10%;
+  background-color:#F6F8F9;
+  height: 300px;
+  margin: auto;
+  width: 100%;
+}
+
 .gallery .gallery-wrapper {
   text-align: center;
   position: relative;
@@ -65,7 +74,7 @@
 .no-gallery .center {
   margin: 0 auto;
   text-align: center;
-  width: 42%;
+  width: 100%;
 }
 .no-gallery .center h6 {
   color: #364453;

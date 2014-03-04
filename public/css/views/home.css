@@ -34,10 +34,6 @@ body{
 	margin-bottom: 70px;
 	text-align: center;
 } 
-h2{
-	text-align:center;
-	padding-bottom: 20px;
-}
 .card-p{
 	text-align:center;
 	padding-left:15px;
@@ -51,6 +47,25 @@ h2{
     padding: 40px;
     margin-top: 30px;
 }
+.feature3 {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px 1px #E0E0E0;
+    padding: 40px;
+    margin-top: 40px;
+    vertical-align: top;
+}
+.custombutton {
+    margin-bottom: 23px;
+}
+.feature3 h1 {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+.feature3 h2 {
+    text-align:center;
+    margin: 0 0 25px 0;
+}
 .box {
      border-radius: 4px;
     box-shadow: 0 1px 3px 1px #E0E0E0;
@@ -61,4 +76,13 @@ h2{
 .row {
     padding-top:14px;
 }
+.row-submit {
+    float:right;
+}
+.form-group {
+    padding: 0 30px 0 30px;
+}
+
+
+
 

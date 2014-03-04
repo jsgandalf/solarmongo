@@ -13,6 +13,11 @@ body{
     padding: 40px 0 38px;
     margin-top: 40px;
 }
+.feature h2 {
+    text-align: center;
+    padding-bottom: 30px;
+    margin-top: 0;
+}
 .no-jumbotron{
     color: inherit;
     font-size: 14px;

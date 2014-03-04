@@ -1,0 +1,73 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'ng-file-upload' ]
+2 info using npm@1.3.21
+3 info using node@v0.10.24
+4 warn package.json crypto@0.0.3 crypto is also the name of a node core module.
+5 verbose readDependencies using package.json deps
+6 verbose cache add [ 'ng-file-upload@latest', null ]
+7 verbose cache add name=undefined spec="ng-file-upload@latest" args=["ng-file-upload@latest",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: 'ng-file-upload@latest',
+8 verbose parsed url   path: 'ng-file-upload@latest',
+8 verbose parsed url   href: 'ng-file-upload@latest' }
+9 verbose cache add name="ng-file-upload" spec="latest" args=["ng-file-upload","latest"]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'latest',
+10 verbose parsed url   path: 'latest',
+10 verbose parsed url   href: 'latest' }
+11 verbose addNamed [ 'ng-file-upload', 'latest' ]
+12 verbose addNamed [ null, null ]
+13 silly lockFile 4804f18e-ng-file-upload-latest ng-file-upload@latest
+14 verbose lock ng-file-upload@latest /Users/seanthomas/.npm/4804f18e-ng-file-upload-latest.lock
+15 info addNameTag [ 'ng-file-upload', 'latest' ]
+16 verbose url raw ng-file-upload
+17 verbose url resolving [ 'https://registry.npmjs.org/', './ng-file-upload' ]
+18 verbose url resolved https://registry.npmjs.org/ng-file-upload
+19 info trying registry request attempt 1 at 02:21:57
+20 http GET https://registry.npmjs.org/ng-file-upload
+21 http 404 https://registry.npmjs.org/ng-file-upload
+22 silly registry.get cb [ 404,
+22 silly registry.get   { date: 'Sun, 02 Mar 2014 09:21:59 GMT',
+22 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+22 silly registry.get     'content-type': 'application/json',
+22 silly registry.get     via: '1.1 varnish',
+22 silly registry.get     'cache-control': 'max-age=0',
+22 silly registry.get     'content-length': '52',
+22 silly registry.get     'accept-ranges': 'bytes',
+22 silly registry.get     age: '0',
+22 silly registry.get     'x-served-by': 'cache-v41-ASH, cache-sv61-SJC3',
+22 silly registry.get     'x-cache': 'MISS, MISS',
+22 silly registry.get     'x-cache-hits': '0, 0',
+22 silly registry.get     'x-timer': 'S1393752119.629030704,VS0,VS-119,VE-100,VE92',
+22 silly registry.get     'keep-alive': 'timeout=10, max=50',
+22 silly registry.get     connection: 'Keep-Alive' } ]
+23 silly lockFile 4804f18e-ng-file-upload-latest ng-file-upload@latest
+24 silly lockFile 4804f18e-ng-file-upload-latest ng-file-upload@latest
+25 error 404 'ng-file-upload' is not in the npm registry.
+25 error 404 You should bug the author to publish it
+25 error 404
+25 error 404 Note that you can also install from a
+25 error 404 tarball, folder, or http url, or git url.
+26 error System Darwin 13.0.0
+27 error command "node" "/usr/local/bin/npm" "install" "ng-file-upload"
+28 error cwd /Users/seanthomas/Documents/solarmongo
+29 error node -v v0.10.24
+30 error npm -v 1.3.21
+31 error code E404
+32 verbose exit [ 1, true ]

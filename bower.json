@@ -10,6 +10,6 @@
         "angular-bootstrap": "latest",
         "angular-ui-utils": "latest",
         "bootstrap": "latest",
-        "ngUpload": "0.5.x"
+        "ng-file-upload": "latest"
     }
 }

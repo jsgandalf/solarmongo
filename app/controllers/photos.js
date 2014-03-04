@@ -5,7 +5,20 @@
  */
 var mongoose = require('mongoose'),
     Photo = mongoose.model('Photo'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    fs = require('fs'),
+    formidable = require('formidable'),
+    util = require('util');
+
+    var knox = require("knox"),
+    config = require('../../config/config');
+
+    var client = knox.createClient({
+      key: "AKIAJQLIVXV5DPLXTP4A",
+      secret: "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",
+      bucket: "solarmongo"
+      //port: 8080
+    });
 
 
 /**
@@ -21,11 +34,76 @@ exports.product = function(req, res, next, id) {
     });
 };*/
 
-exports.add = function(req, res) {
-    console.log(req.files);  
-    console.log(req.file);                
+exports.test = function(req, res) {
+    res.writeHead(200, {'content-type': 'text/html'});
+    res.end(
+        '<form action="/upload" enctype="multipart/form-data" method="post">'+
+        '<input type="file" name="upload" multiple="multiple"><br>'+
+        '<input type="submit" value="Upload">'+
+        '</form>'
+    );
+    /*res.render('pages/test', {
+        user: req.user ? JSON.stringify(req.user) : 'null',
+        isLoggedIn: req.user ? true : false,
+        title: "Fun Times"
+    });*/
+};
 
+exports.add = function(req, res) {
+    var form = new formidable.IncomingForm();
+
+    form.parse(req, function(err, fields, files) {
+        if (!files || !files.file || files.file.size == '0') {
+            res.send("Photo must not be empty.");
+        }else if( files.file.type == 'image/png' || files.file.type == 'image/jpeg' || files.file.type == 'image/gif' ){
+            client.putFile(files.file.path,files.file.name, {'x-amz-acl': 'public-read','Content-Length': files.file.size, 'Content-Type': files.file.type}, function(err, resp){
+                if(err){
+                    console.log(err);
+                    res.send(err);
+                }else{
+                    res.send("Houston, were good");
+                }
+            });
+        }else{
+            res.send("Not a valid type! Must be jpg, jpeg, gif, or png");
+        }
+    });
 }
+
+    
+
+
+    /*
+
+    // parse a file upload
+    
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+   
+      //res.writeHead(200, {'content-type': 'text/plain'});
+      //res.write('Received upload:\n\n');
+      //res.end(util.inspect(files));
+    
+      var fileUploadMessage = "";
+        if (!files || !files.upload || files.upload.size == '0') {
+            res.send("Photo must not be empty.");
+        }
+            else{ 
+                var file = files.upload;
+                if( file.type == 'image/png' || file.type == 'image/jpeg' || file.type == 'image/gif' ){
+                    client.putFile(file.path, file.name, {'x-amz-acl': 'public-read','Content-Length': file.size, 'Content-Type': file.type}, function(err, resp){
+                        if(err){
+                            console.log(err);
+                            res.send(err);
+                        }else{
+                            res.send("Houston, were good");
+                        }
+                    });
+                }else{
+                    res.send("Not a valid type! Must be jpg, jpeg, gif, or png");
+                }
+            }
+    });*/
 
 /**
  * Create a photo

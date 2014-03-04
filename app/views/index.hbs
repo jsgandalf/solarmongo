@@ -13,19 +13,26 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <div class="feature">
-        <form role="form">
+      <div class="feature3">
+        <h2>Watch a quick product demo!
+        </h2>
+        <form role="form" method="post" action="sendContactEmail">
           <div class="form-group">
-            <input type="text" placeholder="Name" class="name form-control margininput">
-          <div class="form-group">  
-            <input type="text" placeholder="Email" class="email form-control margininput">
-          <div class="form-group">  
-            <input type="text" placeholder="Phone" class="phone form-control margininput">
-          <div class="form-group">  
-            <input type="text" placeholder="Company" class="company form-control margininput">
-          </div>
-          </div>
+            <input type="text" placeholder="Name" class="name form-control" name="firstName">
           </div>  
+          <div class="form-group">  
+            <input type="text" placeholder="Email" class="email form-control" name="email">
+          </div>  
+          <div class="form-group">  
+            <input type="text" placeholder="Phone" class="phone form-control" name="phone">
+          </div>  
+          <div class="form-group">  
+            <input type="text" placeholder="Company" class="company form-control" name="companyName">
+          </div>
+          <div class="form-group custombutton">
+            
+              <button class="btn btn-success pull-right" type="submit">Submit</button>
+            
           </div>
         </form>
       </div>

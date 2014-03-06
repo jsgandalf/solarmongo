@@ -34,21 +34,6 @@ exports.product = function(req, res, next, id) {
     });
 };*/
 
-exports.test = function(req, res) {
-    res.writeHead(200, {'content-type': 'text/html'});
-    res.end(
-        '<form action="/upload" enctype="multipart/form-data" method="post">'+
-        '<input type="file" name="upload" multiple="multiple"><br>'+
-        '<input type="submit" value="Upload">'+
-        '</form>'
-    );
-    /*res.render('pages/test', {
-        user: req.user ? JSON.stringify(req.user) : 'null',
-        isLoggedIn: req.user ? true : false,
-        title: "Fun Times"
-    });*/
-};
-
 exports.add = function(req, res) {
     var form = new formidable.IncomingForm();
 
@@ -56,12 +41,21 @@ exports.add = function(req, res) {
         if (!files || !files.file || files.file.size == '0') {
             res.send("Photo must not be empty.");
         }else if( files.file.type == 'image/png' || files.file.type == 'image/jpeg' || files.file.type == 'image/gif' ){
-            client.putFile(files.file.path,files.file.name, {'x-amz-acl': 'public-read','Content-Length': files.file.size, 'Content-Type': files.file.type}, function(err, resp){
+            client.putFile(files.file.path,req.user.account+"/"+files.file.name, {'x-amz-acl': 'public-read','Content-Length': files.file.size, 'Content-Type': files.file.type}, function(err, resp){
                 if(err){
                     console.log(err);
-                    res.send(err);
+                    res.send(err);      
                 }else{
-                    res.send("Houston, were good");
+                    var photo = new Photo({
+                        path: req.user.account+"/"+files.file.name,
+                        name: files.file.name,
+                        type: files.file.type
+                    });
+                    photo.save(function(err){
+                        if(err) res.jsonp({"errors": err.errors});
+                        res.jsonp(photo);
+                    });
+                    
                 }
             });
         }else{

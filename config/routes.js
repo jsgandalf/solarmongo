@@ -107,7 +107,6 @@ module.exports = function(app, passport, auth) {
     //photos
     app.post('/photos/leads/:leadId', auth.requiresLogin, photo.addLeadPhoto);
     
-    app.get('/test', photo.test);
     app.post('/upload', photo.add);
     //Uploader with amazon s3
     app.get('/upload/put', s3.put);

@@ -1,5 +1,8 @@
-angular.module( 'crm.fileModelController', [] ).controller('uploadController', ['$scope', '$upload', function($scope, $upload){
-    
+angular.module( 'crm.fileModelController', [] ).controller('uploadController', ['$scope', '$upload','Modal', function($scope, $upload, Modal){
+  $scope.clickUpload = function(){
+    $("#clickUpload").click();
+  }
+
 	$scope.complete = function(content) {
       console.log(content); // process content
     }
@@ -39,6 +42,13 @@ angular.module( 'crm.fileModelController', [] ).controller('uploadController', [
       }).success(function(data, status, headers, config) {
         // file is uploaded successfully
         console.log(data);
+        $scope.lead.siteSurvey.gallery.push(data);
+        console.log($scope.lead)
+        var lead = $scope.lead;
+        lead.updated = new Date().getTime();
+        lead.$update(function() {
+            Modal.open("Updated","Lead Successfully Updated!");
+        });
       });
       //.error(...)
       //.then(success, error, progress); 

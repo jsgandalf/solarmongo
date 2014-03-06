@@ -20,7 +20,9 @@ var PhotoSchema = new Schema({
         default: Date.now
     },
     description: { type: String},
-    location: { type: String}
+    path: { type: String},
+    name: {type:String},
+    type: {type:String}
 });
 
 

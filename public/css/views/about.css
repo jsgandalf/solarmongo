@@ -1,3 +1,12 @@
+#nomargin {
+    margin:0;
+}
+.contactdemo h3 {
+    padding-left:30px;
+}
+.contactdemo h4 {
+    padding-left:30px;
+}
 .aboutimg {border-radius: 15px;
 }
 .section_header {

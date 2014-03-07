@@ -50,6 +50,15 @@ exports.product = {
     }
 };
 
+exports.photo = {
+    hasAuthorization: function(req, res, next) {
+        if (req.photo.account.toString() != req.user.account.toString()) {
+            return res.send(401, 'You are not authorized');
+        }
+        next();
+    }
+};
+
 /**
  * Account authorizations routing middleware
  */

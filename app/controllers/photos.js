@@ -21,22 +21,9 @@ var mongoose = require('mongoose'),
     });
 
 
-/**
- * Find product by id
- */
- /*
-exports.product = function(req, res, next, id) {
-    Product.load(id, function(err, product) {
-        if (err) return next(err);
-        if (!product) return next(new Error('Failed to load product ' + id));
-        req.product = product;
-        next();
-    });
-};*/
 
 exports.add = function(req, res) {
     var form = new formidable.IncomingForm();
-
     form.parse(req, function(err, fields, files) {
         if (!files || !files.file || files.file.size == '0') {
             res.send("Photo must not be empty.");
@@ -49,13 +36,14 @@ exports.add = function(req, res) {
                     var photo = new Photo({
                         path: req.user.account+"/"+files.file.name,
                         name: files.file.name,
-                        type: files.file.type
+                        type: files.file.type,
+                        lead: req.params.lead,
+                        account: req.user.account
                     });
                     photo.save(function(err){
                         if(err) res.jsonp({"errors": err.errors});
                         res.jsonp(photo);
                     });
-                    
                 }
             });
         }else{
@@ -66,51 +54,17 @@ exports.add = function(req, res) {
 
     
 
-
-    /*
-
-    // parse a file upload
-    
-    var form = new formidable.IncomingForm();
-    form.parse(req, function(err, fields, files) {
-   
-      //res.writeHead(200, {'content-type': 'text/plain'});
-      //res.write('Received upload:\n\n');
-      //res.end(util.inspect(files));
-    
-      var fileUploadMessage = "";
-        if (!files || !files.upload || files.upload.size == '0') {
-            res.send("Photo must not be empty.");
-        }
-            else{ 
-                var file = files.upload;
-                if( file.type == 'image/png' || file.type == 'image/jpeg' || file.type == 'image/gif' ){
-                    client.putFile(file.path, file.name, {'x-amz-acl': 'public-read','Content-Length': file.size, 'Content-Type': file.type}, function(err, resp){
-                        if(err){
-                            console.log(err);
-                            res.send(err);
-                        }else{
-                            res.send("Houston, were good");
-                        }
-                    });
-                }else{
-                    res.send("Not a valid type! Must be jpg, jpeg, gif, or png");
-                }
-            }
-    });*/
-
 /**
- * Create a photo
+ * Find photo by id
  */
-exports.addLeadPhoto = function(req, res) {
-    console.log("here");
-    /*var photo = new Photo(req.body);
-    product.user = req.user;
-    product.account = req.user.account;
-    Product.create(product, function(err){
-        if(err) res.jsonp({"errors": err.errors});
-        res.jsonp(product);
-    });*/
+
+exports.photo = function(req, res, next, id) {
+    Photo.load(id, function(err, photo) {
+        if (err) return next(err);
+        if (!photo) return next(new Error('Failed to load photo ' + id));
+        req.photo = photo;
+        next();
+    });
 };
 
 /**
@@ -118,11 +72,11 @@ exports.addLeadPhoto = function(req, res) {
  */
 exports.create = function(req, res) {
     var photo = new Photo(req.body);
-    product.user = req.user;
-    product.account = req.user.account; 
-    Product.create(product, function(err){
+    photo.user = req.user;
+    photo.account = req.user.account; 
+    Photo.create(photo, function(err){
         if(err) res.jsonp({"errors": err.errors});
-        res.jsonp(product);
+        res.jsonp(photo);
     });
 };
 
@@ -130,14 +84,14 @@ exports.create = function(req, res) {
  * Update a product
  */
 exports.update = function(req, res) {
-    var product = req.product;
+    var photo = req.photo;
     //console.log(product);
-    product = _.extend(product, req.body);
-    product.save(function(err) {
+    photo = _.extend(photo, req.body);
+    photo.save(function(err) {
         if (err)
             res.jsonp({"errors": err.errors});
         else 
-            res.jsonp(product);
+            res.jsonp(photo);
     });
 };
 
@@ -145,12 +99,12 @@ exports.update = function(req, res) {
  * Delete a product
  */
 exports.destroy = function(req, res) {
-    var product = req.product;
-    product.remove(function(err) {
+    var photo = req.photo;
+    photo.remove(function(err) {
         if (err)
             res.jsonp({"errors": err.errors});
         else
-            res.jsonp(product);
+            res.jsonp(photo);
     });
 };
 
@@ -158,7 +112,7 @@ exports.destroy = function(req, res) {
  * Show a product
  */
 exports.show = function(req, res) {
-    res.jsonp(req.product);
+    res.jsonp(req.photo);
 };
 
 
@@ -166,7 +120,7 @@ exports.show = function(req, res) {
  * List of products by account id
  */
 exports.all = function(req, res) {
-    Product.find({account : req.user.account.toString()}).sort('-created').populate('user', 'name').exec(function(err, products) {
+    Photo.find({lead : req.lead._id.toString()}).sort('-created').populate('user', 'name').exec(function(err, products) {
         if (err) {
             res.jsonp({"errors": err.errors});
         } else {

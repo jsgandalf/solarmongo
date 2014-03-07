@@ -5,6 +5,7 @@ var users = require('../app/controllers/users');
 var webUsers = require('../app/controllers/webUsers');
 var leads = require('../app/controllers/leads');
 var products = require('../app/controllers/products');
+var photos = require('../app/controllers/photos');
 var account = require('../app/controllers/accounts');
 var api = require('../app/controllers/api');
 var pages = require('../app/controllers/pages');
@@ -59,6 +60,27 @@ module.exports = function(app, passport, auth) {
 
 
     app.get('/profile', passport.authenticate('bearer', { session: false }), users.me);
+
+    //Photo Routes
+    app.post('/upload/lead/:lead', auth.requiresLogin, photo.add);
+
+    //Photo Routes - Note that most of these routes aren't done, only the one above and photos.all
+    app.get('/photos/lead/:leadId', photos.all);
+    app.post('/photos', auth.requiresLogin, photos.create);
+    app.get('/photos/:photoId', auth.photo.hasAuthorization, photos.show);
+    app.put('/photos/:photoId', auth.requiresLogin, auth.photo.hasAuthorization, photos.update);
+    app.del('/photos/lead/:photoId', auth.requiresLogin, auth.photo.hasAuthorization, photos.destroy);
+
+    //api
+    app.get('/api/photos', passport.authenticate('bearer', { session: false }), photo.all);
+    app.post('/api/photos', passport.authenticate('bearer', { session: false }), photo.create);
+    app.get('/api/photos/:photoId', passport.authenticate('bearer', { session: false }), auth.photo.hasAuthorization, photo.show);
+    app.put('/api/photos/:photoId', passport.authenticate('bearer', { session: false }), auth.photo.hasAuthorization, photo.update);
+    app.del('/api/photos/lead/:photoId', passport.authenticate('bearer', { session: false }), auth.photo.hasAuthorization, photo.destroy);
+
+    //Finish with setting up the photoId param
+    app.param('photoId', photos.photo);
+
     //Lead Routes
     app.get('/leads', leads.all);
     app.post('/leads', auth.requiresLogin, leads.create);
@@ -105,9 +127,11 @@ module.exports = function(app, passport, auth) {
 
 
     //photos
-    app.post('/photos/leads/:leadId', auth.requiresLogin, photo.addLeadPhoto);
+    //app.post('/photos/leads/:leadId', auth.requiresLogin, photo.addLeadPhoto);
     
-    app.post('/upload', photo.add);
+  
+
+
     //Uploader with amazon s3
     app.get('/upload/put', s3.put);
 

@@ -17,7 +17,8 @@ angular.module('mean', [
 	'myDirectives',
 	'crm.fileModelController',
 	'placeHolder',
-	'angularFileUpload'
+	'angularFileUpload',
+	'crm.photos'
 	//'ngUpload'
 ]);
 

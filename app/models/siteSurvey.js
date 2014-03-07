@@ -49,7 +49,7 @@ var siteSurveySchema = new Schema({
         type: Schema.ObjectId,
         ref: 'Lead'
     },
-    gallery: [PhotoSchema]
+    gallery: [Object]
 });
 
 /**

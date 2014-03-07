@@ -25,8 +25,10 @@ angular.module( 'crm.fileModelController', [] ).controller('uploadController', [
     //$files: an array of files selected, each file has name, size, and type.
     for (var i = 0; i < $files.length; i++) {
       var file = $files[i];
+      //$scope.myModelObj.siteSurvey = $scope.lead.siteSurvey._id
+      //console.log($scope.myModelObj)
       $scope.upload = $upload.upload({
-        url: 'upload',
+        url: 'upload/lead/'+$scope.lead._id,
         // method: POST or PUT,
         // headers: {'headerKey': 'headerValue'},
         // withCredentials: true,
@@ -42,13 +44,14 @@ angular.module( 'crm.fileModelController', [] ).controller('uploadController', [
       }).success(function(data, status, headers, config) {
         // file is uploaded successfully
         console.log(data);
-        $scope.lead.siteSurvey.gallery.push(data);
-        console.log($scope.lead)
-        var lead = $scope.lead;
-        lead.updated = new Date().getTime();
-        lead.$update(function() {
-            Modal.open("Updated","Lead Successfully Updated!");
-        });
+        console.log($scope.photos.push(data));
+        //console.log($scope.lead.siteSurvey._id)
+        //var lead = $scope.lead;
+        //lead.updated = new Date().getTime();
+        //lead.$update(function() {
+        //  alert("yo")
+        //    Modal.open("Updated","Lead Successfully Updated!");
+        //});
       });
       //.error(...)
       //.then(success, error, progress); 

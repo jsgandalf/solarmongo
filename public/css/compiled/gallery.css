@@ -35,6 +35,7 @@
 .gallery .img-container img {
   border: 4px solid #dff0fd;
   border-radius: 3px;
+  width: 100%;
   cursor: pointer;
 }
 .gallery .img-container .title {
@@ -60,7 +61,7 @@
   top: 23%;
 }
 .gallery .img-container span.trash {
-  top: 48%;
+  top: 32%;
 }
 .gallery .new-img {
   display: inline-block;

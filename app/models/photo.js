@@ -22,7 +22,15 @@ var PhotoSchema = new Schema({
     description: { type: String},
     path: { type: String},
     name: {type:String},
-    type: {type:String}
+    type: {type:String},
+    lead: {
+        type: Schema.ObjectId,
+        ref: 'Lead'
+    },
+    account: {
+        type: Schema.ObjectId,
+        ref: 'Account'
+    },
 });
 
 

@@ -22,7 +22,9 @@ angular.module('crm.photos').controller('PhotosController', ['$scope', '$routePa
 
     $scope.remove = function(photo) {
         if (photo) {
-            photo.$destroy();
+            Photos.crud.remove({
+                photoId: photo._id
+            });
 
             for (var i in $scope.photos) {
                 if ($scope.photos[i] === photo) {
@@ -31,7 +33,9 @@ angular.module('crm.photos').controller('PhotosController', ['$scope', '$routePa
             }
         }
         else {
-            $scope.photo.$destroy();
+            Photos.crud.remove({
+                photoId: photo._id
+            });
         }
     };
 

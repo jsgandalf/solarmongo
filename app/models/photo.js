@@ -60,6 +60,12 @@ AccountSchema.path('country').validate(function(country) {
     }).populate('user', 'name').exec(cb);
 };*/
 
+PhotoSchema.statics.load = function(id, cb) {
+    this.findOne({
+        _id: id
+    }).exec(cb);
+};
+
 
 mongoose.model('Photo', PhotoSchema);
 exports.thePhotoSchema = PhotoSchema;

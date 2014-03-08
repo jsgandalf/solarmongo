@@ -58,6 +58,12 @@ angular.module('crm.photos').controller('PhotosController', ['$scope', '$routePa
         });
     };
 
+    $scope.findCompanyPhotos = function(leadId) {
+        Photos.company.getAll(function(photos) {
+            $scope.photos = photos;
+        });
+    };
+
     $scope.findOne = function() {
         Products.get({
             productId: $routeParams.productId

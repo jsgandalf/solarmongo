@@ -28,17 +28,49 @@ exports.add = function(req, res) {
         if (!files || !files.file || files.file.size == '0') {
             res.send("Photo must not be empty.");
         }else if( files.file.type == 'image/png' || files.file.type == 'image/jpeg' || files.file.type == 'image/gif' ){
-            client.putFile(files.file.path,req.user.account+"/"+files.file.name, {'x-amz-acl': 'public-read','Content-Length': files.file.size, 'Content-Type': files.file.type}, function(err, resp){
+            client.putFile(files.file.path,req.user.account+"/"+req.param.lead+"/"+files.file.name, {'x-amz-acl': 'public-read','Content-Length': files.file.size, 'Content-Type': files.file.type}, function(err, resp){
                 if(err){
                     console.log(err);
                     res.send(err);      
                 }else{
                     var photo = new Photo({
-                        path: req.user.account+"/"+files.file.name,
+                        path: req.user.account+"/"+req.param.lead+"/"+files.file.name,
                         name: files.file.name,
                         type: files.file.type,
                         lead: req.params.lead,
-                        account: req.user.account
+                        account: req.user.account,
+                        photoType: "lead"
+                    });
+                    photo.save(function(err){
+                        if(err) res.jsonp({"errors": err.errors});
+                        res.jsonp(photo);
+                    });
+                }
+            });
+        }else{
+            res.send("Not a valid type! Must be jpg, jpeg, gif, or png");
+        }
+    });
+}
+
+exports.addCompanyPhoto = function(req, res) {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+        if (!files || !files.file || files.file.size == '0') {
+            res.send("Photo must not be empty.");
+        }else if( files.file.type == 'image/png' || files.file.type == 'image/jpeg' || files.file.type == 'image/gif' ){
+            client.putFile(files.file.path,req.user.account+"/companyPhotos/"+files.file.name, {'x-amz-acl': 'public-read','Content-Length': files.file.size, 'Content-Type': files.file.type}, function(err, resp){
+                if(err){
+                    console.log(err);
+                    res.send(err);      
+                }else{
+                    var photo = new Photo({
+                        path: req.user.account+"/companyPhotos/"+files.file.name,
+                        name: files.file.name,
+                        type: files.file.type,
+                        lead: req.params.lead,
+                        account: req.user.account,
+                        photoType: "company"
                     });
                     photo.save(function(err){
                         if(err) res.jsonp({"errors": err.errors});
@@ -124,14 +156,23 @@ exports.show = function(req, res) {
 
 
 /**
- * List of products by account id
+ * List of products by lead id
  */
 exports.all = function(req, res) {
-    Photo.find({lead : req.lead._id.toString()}).sort('-created').populate('user', 'name').exec(function(err, products) {
+    Photo.find({lead : req.lead._id.toString()}).sort('-created').exec(function(err, photos) {
         if (err) {
             res.jsonp({"errors": err.errors});
         } else {
-            res.jsonp(products);
+            res.jsonp(photos);
         }
+    });
+};
+
+exports.getCompanyPhotos = function(req, res) {
+    Photo.find({account : req.user.account.toString(), photoType:"company"} ).sort('-created').exec().then(function(photos) {
+        res.jsonp(photos);
+    },function(err){
+        console.log(err)
+        res.jsonp({"errors": err.errors,err:err});
     });
 };

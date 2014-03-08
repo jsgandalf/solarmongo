@@ -64,6 +64,9 @@ module.exports = function(app, passport, auth) {
     //Photo Routes
     app.post('/upload/lead/:lead', auth.requiresLogin, photo.add);
 
+    app.get('/upload/companyPhoto', auth.requiresLogin, photo.getCompanyPhotos);
+    app.post('/upload/companyPhoto', auth.requiresLogin, photo.addCompanyPhoto);
+
     //Photo Routes - Note that most of these routes aren't done, only the one above and photos.all
     app.get('/photos/lead/:leadId', photos.all);
     app.post('/photos', auth.requiresLogin, photos.create);

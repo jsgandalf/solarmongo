@@ -1,8 +1,21 @@
+.no-list{
+  list-style: none;
+  text-align: center;
+  width:100%;
+  margin:auto;
+}
+
 .dragImage{
   background:url(/img/new-gallery-img.png) no-repeat;
   width: 230px;
   margin: auto;
   height: 200px;
+}
+
+.uploadClass input{
+  text-align: center;
+  width:100%;
+  margin-bottom:20px;
 }
 
 .uploadClass .drag_and_drop{

@@ -23,6 +23,7 @@ var PhotoSchema = new Schema({
     path: { type: String},
     name: {type:String},
     type: {type:String},
+    photoType: {type:String},
     lead: {
         type: Schema.ObjectId,
         ref: 'Lead'

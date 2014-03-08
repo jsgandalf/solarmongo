@@ -26,7 +26,7 @@
                 <div style="clear:both">
                 
                 <div ng-controller="uploadController" class="uploadClass">
-                    <input id="clickUpload" type="file" ng-file-select="onFileSelect($files)" multiple>
+                    <input id="clickUpload" type="file" ng-file-select="onFileSelect($files)">
                     <div ng-click="clickUpload()" class="drag_and_drop" ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class" ng-show="dropSupported">
                     <br />
                     <div class="dragImage">

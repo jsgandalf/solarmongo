@@ -39,7 +39,8 @@
         "sendgrid": "0.3.0-rc.1.7",
         "validator":"3.2.1",
         "knox": "0.8.9",
-        "formidable": "latest"
+        "formidable": "latest",
+        "q": "1.0.x"
     },
     "devDependencies": {
         "grunt-contrib-watch": "0.5.x",

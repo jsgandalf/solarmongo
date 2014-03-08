@@ -8,7 +8,7 @@ var mongoose = require('mongoose'),
     _ = require('lodash'),
     fs = require('fs'),
     formidable = require('formidable'),
-    util = require('util');
+    Q = require('q');
 
     var knox = require("knox"),
     config = require('../../config/config');
@@ -104,8 +104,14 @@ exports.destroy = function(req, res) {
     photo.remove(function(err) {
         if (err)
             res.jsonp({"errors": err.errors});
-        else
-            res.jsonp(photo);
+        else{
+            client.deleteFile(photo.path, function(err, resp){
+                if (err)
+                    res.jsonp({"errors": err.errors});   
+                else
+                    res.jsonp(photo);
+            });
+        }
     });
 };
 

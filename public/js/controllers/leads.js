@@ -132,4 +132,8 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
         Modal.uploadPhoto($scope.lead);
     }
 
+    $scope.csvModal = function(){
+        Modal.csvModal($scope);
+    }
+
 }]);

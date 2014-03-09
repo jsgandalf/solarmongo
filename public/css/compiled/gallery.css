@@ -5,6 +5,19 @@
   margin:auto;
 }
 
+.csvDragImage{
+  background: url("/img/new-gallery-img.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  height: 140px;
+  margin: 13px auto auto;
+  width: 230px;
+}
+
+.dragDropDiv p{
+  text-align: center
+}
+
+
+
 .dragImage{
   background:url(/img/new-gallery-img.png) no-repeat;
   width: 230px;

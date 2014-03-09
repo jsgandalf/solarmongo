@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <h3>Mass upload CSV file</h3>
+</div>
+<div class="modal-body">
+    <p>
+    	<div ng-controller="uploadController" class="uploadClass">
+            <input id="clickUploadCSV" type="file" ng-file-select="onFileSelectCSV($files)">
+            <!--<div ng-click="clickUploadCSV()" class="drag_and_drop" ng-file-drop="onFileSelectCSV($files)" ng-file-drag-over-class="optional-css-class" ng-show="dropSupported">
+                <br />
+                <div class="csvDragImage">
+                </div>
+                <div class="dragDropDiv">
+                <br/>
+                <br />
+                <p>Drag and Drop CSV Files</p>
+            	</div>
+            </div>
+            <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!
+            </div>-->
+        </div>
+    </p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">Upload</button>
+    <button class="btn btn-default" ng-click="close()">Cancel</button>
+</div>

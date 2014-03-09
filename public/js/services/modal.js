@@ -36,41 +36,83 @@ angular.module('modal',['ui.bootstrap','crm.photos','crm.uploader','crm.fileMode
 		});
 	};
 
-	var ModalInstanceCtrlPhoto = function ($scope,$modalInstance,$fileUpload) {
-		$scope.lead = element;
-		$scope.uploadFile = function(){
-	        var file = $scope.myFile;
-	        console.log('file is ' + JSON.stringify(file));
-	        var uploadUrl = "/fileUpload";
-	        $fileUpload.uploadFileToUrl(file, uploadUrl);
-	    };
+	function upload(url, fileData, file,$upload){
+	    //var file = $files[i];
+	    $upload.upload({
+	      url: url,
+	      data: fileData,
+	      file: file,
+	    }).progress(function(evt) {
+	      console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+	    }).success(function(data, status, headers, config) {
+	      // file is uploaded successfully
+	      return data;
+	    });
+  	}
 
-
-		$scope.addPhotoSiteSurvey = function () {
-	        //console.log(Uploader.addPhoto());
-	        var uploader = new Uploader({
-	        	data: this.newPhoto
-	        });
-	        uploader.$save(function(upload){
-	        	console.log(upload);
-	        })
-	        /*var photo = new Photos.leads({
-	            data: this.newPhoto,
-	            description: this.description,
-	            leadId: $scope.lead._id
-			});*/
-			//Photos.info.leads.addPhoto
-			/*photo.leads.addPhoto(function(photo){
-				if(photo)
-					$modalInstance.close();	
-			});*/
-		}
+	var csvInstanceCtrl = function ($scope,$modalInstance,$upload) {
 		$scope.close = function () {
 			$modalInstance.close();
 		};
-
-		/*$scope.cancel = function () {
-			$modalInstance.dismiss('cancel');
-		};*/
+		$scope.onFileSelectCSV = function($files) {
+		    //console.log($scope.leads)
+		    //var deferred = $q.defer();
+	      if($files[0]){
+	      	$upload.upload({
+		      url: 'upload/companyPhoto',
+		      data: {myObj: $scope.myModelObj},
+		      file: $files[0],
+		    }).progress(function(evt) {
+		      console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+		    }).success(function(data, status, headers, config) {
+		      // file is uploaded successfully
+		      console.log(data);
+	          $modalInstance.close();
+		    });
+	      }
+		};
 	};
+
+	this.csvModal = function ($scope) {
+		var modalInstance = $modal.open({
+		  templateUrl: 'views/leads/csvModal.html',
+		  windowClass: "modal fade in",
+		  scope: $scope,
+		  controller: csvInstanceCtrl
+		});
+	};
+
+	var photoInstanceCtrl = function ($scope,$modalInstance,$upload) {
+		$scope.close = function () {
+			$modalInstance.close();
+		};
+		$scope.onFileSelectPhoto = function($files) {
+		    //console.log($scope.leads)
+		    //var deferred = $q.defer();
+	      if($files[0]){
+	      	$upload.upload({
+		      url: 'upload/companyPhoto',
+		      data: {myObj: $scope.myModelObj},
+		      file: $files[0],
+		    }).progress(function(evt) {
+		      console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+		    }).success(function(data, status, headers, config) {
+		      // file is uploaded successfully
+		      console.log(data);
+	          $modalInstance.close();
+		    });
+	      }
+		};
+	};
+
+	this.csvModal = function ($scope) {
+		var modalInstance = $modal.open({
+		  templateUrl: 'views/modals/upload.html',
+		  windowClass: "modal fade in",
+		  scope: $scope,
+		  controller: photoInstanceCtrl
+		});
+	};
+
+
 });

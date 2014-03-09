@@ -40,7 +40,8 @@
         "validator":"3.2.1",
         "knox": "0.8.9",
         "formidable": "latest",
-        "q": "1.0.x"
+        "q": "1.0.x",
+        "csvtojson":"0.1.x"
     },
     "devDependencies": {
         "grunt-contrib-watch": "0.5.x",

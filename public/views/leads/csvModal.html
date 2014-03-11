@@ -3,8 +3,8 @@
 </div>
 <div class="modal-body">
     <p>
-    	<div ng-controller="uploadController" class="uploadClass">
-            <input id="clickUploadCSV" type="file" ng-file-select="onFileSelectCSV($files)">
+    	<div class="uploadClass">
+            <input id="clickUploadCSV" type="file" ng-file-select="onFileSelectCSV($files)" ng-if="showInput">
             <!--<div ng-click="clickUploadCSV()" class="drag_and_drop" ng-file-drop="onFileSelectCSV($files)" ng-file-drag-over-class="optional-css-class" ng-show="dropSupported">
                 <br />
                 <div class="csvDragImage">
@@ -18,9 +18,22 @@
             <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!
             </div>-->
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <input ng-repeat="key in keys" class="bold form-control" type="text" readonly="readonly" value="{{key}}">
+            </div>
+            <div class="col-md-6">
+                <div class="importkeys ui-select" ng-repeat="key in keys" >
+                    <select ng-model="importKey">
+                        <option selected="noimport">Don't Import</option>
+                        <option ng-repeat="key in keys" value="{{key}}">{{key}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
     </p>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="ok()">Upload</button>
+    <button class="btn btn-primary" ng-click="ok()" ng-disabled="keys">Save</button>
     <button class="btn btn-default" ng-click="close()">Cancel</button>
 </div>

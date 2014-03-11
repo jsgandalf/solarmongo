@@ -51,7 +51,11 @@ angular.module('modal',['ui.bootstrap','crm.photos','crm.uploader','crm.fileMode
   	}
 
 	var csvInstanceCtrl = function ($scope,$modalInstance,$upload) {
+		$scope.keys = [];
+		$scope.showInput = true;
+
 		$scope.close = function () {
+			$scope.keys = [];
 			$modalInstance.close();
 		};
 		$scope.onFileSelectCSV = function($files) {
@@ -59,15 +63,25 @@ angular.module('modal',['ui.bootstrap','crm.photos','crm.uploader','crm.fileMode
 		    //var deferred = $q.defer();
 	      if($files[0]){
 	      	$upload.upload({
-		      url: 'upload/companyPhoto',
+		      url: '/leads/massupload',
 		      data: {myObj: $scope.myModelObj},
 		      file: $files[0],
 		    }).progress(function(evt) {
 		      console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
 		    }).success(function(data, status, headers, config) {
-		      // file is uploaded successfully
-		      console.log(data);
-	          $modalInstance.close();
+		      	// file is uploaded successfully
+		      	var keys=[];
+		      	for (var key in data) {
+					for (var i in data[key][0] ) { 
+						keys.push(i);
+					}
+					console.log(keys)
+					if(keys)
+						break;	
+				}
+				$scope.keys = keys;
+				$scope.showInput = false;
+	          	//$modalInstance.close();
 		    });
 	      }
 		};
@@ -99,13 +113,14 @@ angular.module('modal',['ui.bootstrap','crm.photos','crm.uploader','crm.fileMode
 		    }).success(function(data, status, headers, config) {
 		      // file is uploaded successfully
 		      console.log(data);
+
 	          $modalInstance.close();
 		    });
 	      }
 		};
 	};
 
-	this.csvModal = function ($scope) {
+	this.photoUpload = function ($scope) {
 		var modalInstance = $modal.open({
 		  templateUrl: 'views/modals/upload.html',
 		  windowClass: "modal fade in",

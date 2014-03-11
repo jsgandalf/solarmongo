@@ -6,7 +6,9 @@
 var mongoose = require('mongoose'),
     Lead = mongoose.model('Lead'),
     SiteSurvey = mongoose.model('SiteSurvey'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    formidable = require('formidable'),
+    Q = require('q');
 
 
 /**
@@ -29,7 +31,6 @@ exports.create = function(req, res) {
     lead.user = req.user;
     lead.account = req.user.account; 
     var siteSurvey = new SiteSurvey(req.body.siteSurvey);
-    console.log(siteSurvey);
     SiteSurvey.create(siteSurvey, function(err, newSiteSurvey){
         if(err) res.jsonp({"errors": err.errors});
         lead.siteSurvey = newSiteSurvey._id;
@@ -37,7 +38,7 @@ exports.create = function(req, res) {
             if(err) res.jsonp({"errors": err.errors});
             res.jsonp(lead);
         });
-    })
+    });
 };
 
 /**
@@ -113,3 +114,36 @@ exports.all = function(req, res) {
         }
     });
 };
+
+exports.massUpload = function(req, res){
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+        console.log(files.file.type)
+        if (!files || !files.file || files.file.size == '0') {
+            res.send("CSV must not be empty.");
+        }else if( files.file.type == 'text/csv'){
+            
+            var Converter=require("csvtojson").core.Converter;
+
+            console.log(files.file.path)
+            //CSV File Path or CSV String or Readable Stream Object
+            var csvFileName=files.file.path;
+
+            //new converter instance
+            var csvConverter=new Converter();
+
+            //end_parsed will be emitted once parsing finished
+            csvConverter.on("end_parsed",function(jsonObj){
+               res.jsonp(jsonObj)
+            });
+
+            //read from file
+            csvConverter.from(csvFileName);
+        }else{
+            res.send("Not a valid type! Must be CSV format");
+        }
+    });
+
+
+    
+}

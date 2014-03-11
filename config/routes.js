@@ -87,6 +87,9 @@ module.exports = function(app, passport, auth) {
     //Finish with setting up the photoId param
     app.param('photoId', photos.photo);
 
+    //mass upload
+    app.post('/leads/massupload',auth.requiresLogin, leads.massUpload)
+
     //Lead Routes
     app.get('/leads', leads.all);
     app.post('/leads', auth.requiresLogin, leads.create);

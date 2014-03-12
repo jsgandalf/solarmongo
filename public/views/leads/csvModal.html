@@ -18,11 +18,19 @@
             <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!
             </div>-->
         </div>
+        <div class="row" ng-if="step2">
+            <div class="col-md-12">
+                <h3 class="center">Match up csv values with lead values</h3>
+                <br />
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-6">
+                <h4>csv values</h4>
                 <input ng-repeat="key in keys" class="bold form-control" type="text" readonly="readonly" value="{{key}}">
             </div>
             <div class="col-md-6">
+                <h4>lead values</h4>
                 <div class="importkeys ui-select" ng-repeat="key in keys" >
                     <select ng-model="importKey">
                         <option selected="noimport">Don't Import</option>

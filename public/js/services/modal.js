@@ -53,10 +53,13 @@ angular.module('modal',['ui.bootstrap','crm.photos','crm.uploader','crm.fileMode
 	var csvInstanceCtrl = function ($scope,$modalInstance,$upload) {
 		$scope.keys = [];
 		$scope.showInput = true;
+		$scope.step2 = false;
 
 		$scope.close = function () {
 			$scope.keys = [];
 			$modalInstance.close();
+			$scope.showInput = true;
+			$scope.step2 = false;
 		};
 		$scope.onFileSelectCSV = function($files) {
 		    //console.log($scope.leads)
@@ -81,6 +84,7 @@ angular.module('modal',['ui.bootstrap','crm.photos','crm.uploader','crm.fileMode
 				}
 				$scope.keys = keys;
 				$scope.showInput = false;
+				$scope.step2 = true;
 	          	//$modalInstance.close();
 		    });
 	      }

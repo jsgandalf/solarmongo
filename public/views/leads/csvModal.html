@@ -24,7 +24,7 @@
                 <br />
             </div>
         </div>
-        <div class="row">
+        <div class="row" ng-if="step2">
             <div class="col-md-6">
                 <h4>csv values</h4>
                 <input ng-repeat="key in keys" class="bold form-control" type="text" readonly="readonly" value="{{key}}">

@@ -115,6 +115,15 @@ exports.all = function(req, res) {
     });
 };
 
+exports.getLeadSchema = function(req, res){
+    var result = [];
+    Lead.schema.eachPath(function(value){
+        if(value != "_id" && value != "assignee" && value != "__v" && value !="updated")
+            result.push(value)
+    });
+    res.jsonp(result)
+}
+
 exports.massUpload = function(req, res){
     var form = new formidable.IncomingForm();
     form.parse(req, function(err, fields, files) {
@@ -142,8 +151,5 @@ exports.massUpload = function(req, res){
         }else{
             res.send("Not a valid type! Must be CSV format");
         }
-    });
-
-
-    
+    }); 
 }

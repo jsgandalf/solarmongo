@@ -27,14 +27,14 @@
         <div class="row" ng-if="step2">
             <div class="col-md-6">
                 <h4>csv values</h4>
-                <input ng-repeat="key in keys" class="bold form-control" type="text" readonly="readonly" value="{{key}}">
+                <input ng-repeat="key in keys" class="bold form-control" type="text" readonly="readonly" value="{{key.name}}">
             </div>
             <div class="col-md-6">
-                <h4>lead values</h4>
+                <h4 ng-click="test()">lead values</h4>
                 <div class="importkeys ui-select" ng-repeat="key in keys" >
-                    <select ng-model="importKey">
-                        <option selected="noimport">Don't Import</option>
-                        <option ng-repeat="key in keys" value="{{key}}">{{key}}</option>
+                    <select>
+                        <option value="noimport">Don't Import</option>
+                        <option ng-repeat="value in leadvalues" value="{{value}}" ng-click="key.match = value">{{value}}</option>
                     </select>
                 </div>
             </div>
@@ -42,6 +42,6 @@
     </p>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="ok()" ng-disabled="keys">Save</button>
+    <button class="btn btn-primary" ng-click="save()" ng-disabled="step3">Save</button>
     <button class="btn btn-default" ng-click="close()">Cancel</button>
 </div>

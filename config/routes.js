@@ -89,6 +89,7 @@ module.exports = function(app, passport, auth) {
 
     //mass upload
     app.post('/leads/massupload',auth.requiresLogin, leads.massUpload)
+    app.get('/leads/getLeadSchema',auth.requiresLogin, leads.getLeadSchema)
 
     //Lead Routes
     app.get('/leads', leads.all);

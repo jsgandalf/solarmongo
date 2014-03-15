@@ -1,3 +1,4 @@
+var fs = require('fs');
 var config = require('../../config/config');
 var sendgrid  = require('sendgrid')(
   config.sendgrid.username,
@@ -36,3 +37,24 @@ exports.sendResetPassword = function(to, link){
             +'<h3>Solarmongo Team</h3>'
     });
 }
+
+exports.market = function(req, res) {
+  fs.readFile('./app/views/emails/template.html', function (err, html) {
+    if (err) {
+        throw err; 
+    }
+    sendgrid.send({
+      to: 'sean.alan.thomas@gmail.com',
+      from: 'info@solarmongo.com',
+      subject: 'Manage Your Entire Solar Business Online!',
+      html: html
+    }, function(err, json) {
+        if (err) { return console.error(err); }
+        res.render('pages/thankyou', {
+            user: req.user ? JSON.stringify(req.user) : 'null',
+            isLoggedIn: req.user ? true : false,
+            title: "Thankyou for your inquiry!"
+        });
+    });
+  });
+}   

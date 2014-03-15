@@ -160,4 +160,5 @@ module.exports = function(app, passport, auth) {
 
     // mailing server
     app.post('/sendContactEmail',sendgrid.sendContactEmail);
+    app.get('/market',sendgrid.market);
 };

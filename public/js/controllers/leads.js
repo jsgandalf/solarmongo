@@ -20,7 +20,9 @@ angular.module('mean.leads').controller('LeadsController', ['$scope', '$routePar
             longitude: null,
             latitude: null,
             notes: this.notes,
-            assignee: this.assignee
+            assignee: this.assignee,
+            appointmentDate: this.appointmentDate,
+            isHomeOwner: this.isHomeOwner
             /*siteSurvey: {
                 jobSite: {
                     firstName:'',

@@ -152,6 +152,28 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-md-1_5 control-label">
+                            <label>Date:</label>
+                        </div>
+                        <div class="col-md-5">
+                            <label>Set an Appointment Date with lead</label>
+                            <div class="field-box">
+                                <input type="text" value="03/29/2013" class="form-control input-datepicker" ng-model="appointmentDate" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-1_5 control-label">
+                            <label>Home:</label>    
+                        </div>
+                        <div class="col-md-5">
+                            <div class="middle-text">Is a home owner?</div>
+                            <div class="middle slider-frame primary" ng-click="isHomeOwner = !isHomeOwner">
+                                <span ng-class="{'on' : isHomeOwner, '' : !isHomeOwner}" class="slider-button off">{{isHomeOwner && 'YES' || 'NO'}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-md-1_5">
                             <label class="control-label">Notes:</label>
                         </div>
@@ -167,6 +189,7 @@
                     </div>
                 </form>
             </div>
+            <!--
             <div class="col-md-3 form-sidebar tag-sidebar">
                 <div class="btn-group toggle-inputs hidden-tablet">
                     <button class="glow left" data-input="inline">Tags</button>
@@ -185,6 +208,17 @@
                     <li><a href="#">Import from an Excel file</a></li>
                 </ul>
             </div>
+        -->
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(function () {
+
+        // datepicker plugin
+        $('.input-datepicker').datepicker().on('changeDate', function (ev) {
+            $(".datepicker").hide();
+            //$('.input-datepicker').datepicker('hide');
+        });
+    });
+</script>

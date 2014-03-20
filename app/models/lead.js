@@ -50,7 +50,9 @@ var LeadSchema = new Schema({
     assignee: {
         type: Schema.ObjectId,
         ref: 'User'
-    }
+    },
+    appointmentDate: {type: Date},
+    isHomeOwner: {type: String}
 });
 
 /**

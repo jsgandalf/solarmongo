@@ -162,13 +162,20 @@
                         <div class="col-md-5">
                             <label>Set an Appointment Date with lead</label>
                             <div class="field-box">
-                                <input type="text" class="form-control input-datepicker" ng-model="lead.appointmentDate" ng-patter="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$"/>
+                                <div class="col-md-6" ng-controller="DatepickerDemoCtrl">
+                                    <p class="input-group">
+                                      <input show-button-bar="false" type="text" class="appointmentDate form-control" datepicker-popup="{{format}}" ng-model="lead.appointmentDate" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                      <span class="input-group-btn">
+                                        <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-1_5 control-label">
-                            <label>Home:</label>    
+                            <label>Home:</label>
                         </div>
                         <div class="col-md-5">
                             <div class="middle-text">Is a home owner?</div>
@@ -186,8 +193,6 @@
                             <span class="charactersleft">90 characters remaining. Field limited to 100 characters</span>
                         </div>
                     </div>
-                    
-
             </div>
             <!--<div class="col-md-3 form-sidebar tag-sidebar">
                 <div class="btn-group toggle-inputs hidden-tablet">
@@ -210,31 +215,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-        $(function () {
-
-function getISODateTime(d){
-    // padding function
-    var s = function(a,b){return(1e15+a+"").slice(-b)};
-
-    // default date parameter
-    if (typeof d === 'undefined'){
-        d = new Date();
-    };
-
-    // return ISO datetime
-    return d.getFullYear() + '-' +
-        s(d.getMonth()+1,2) + '-' +
-        s(d.getDate(),2) + ' ' +
-        s(d.getHours(),2) + ':' +
-        s(d.getMinutes(),2) + ':' +
-        s(d.getSeconds(),2);
-}
-            // datepicker plugin
-            $('.input-datepicker').datepicker().on('changeDate', function (ev) {
-                $(".datepicker").hide();
-                //$('.input-datepicker').datepicker('hide');
-            });
-        });
-    </script>

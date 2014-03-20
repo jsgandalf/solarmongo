@@ -18,7 +18,8 @@ angular.module('mean', [
 	'crm.fileModelController',
 	'placeHolder',
 	'angularFileUpload',
-	'crm.photos'
+	'crm.photos',
+	'crm.datepicker'
 	//'ngUpload'
 ]);
 
@@ -31,3 +32,4 @@ angular.module('crm.photos', []);
 angular.module('crm.uploader', []);
 angular.module('crm.fileModel', []);
 angular.module('crm.fileModelController', []);
+angular.module('crm.datepicker', ['ui.bootstrap']);

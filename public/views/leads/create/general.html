@@ -158,7 +158,14 @@
                         <div class="col-md-5">
                             <label>Set an Appointment Date with lead</label>
                             <div class="field-box">
-                                <input type="text" value="03/29/2013" class="form-control input-datepicker" ng-model="appointmentDate" />
+                                <div class="col-md-6">
+                                    <p class="input-group">
+                                      <input show-button-bar="false" type="text" class="appointmentDate form-control" datepicker-popup="{{format}}" ng-model="appointmentDate" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                                      <span class="input-group-btn">
+                                        <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>

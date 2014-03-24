@@ -41,3 +41,12 @@ exports.index = function(req, res) {
         isDevelopment: config.env=='development'
     });
 };
+
+exports.privacy = function(req, res) {
+    res.render('pages/privacy', {
+        name: req.user ? req.user.name : 'null',
+        role: req.user ? req.user.role : 'null',
+        isLoggedIn: req.user ? true : false,
+        isDevelopment: config.env=='development'
+    });
+};

@@ -1,3 +1,14 @@
+.no-list{
+    list-style: none;
+}
+
+.footer_links a{
+    display:inline-block;
+    
+    font-style: italic;
+    text-align: center;
+}
+
 #footer {
     background: linear-gradient(to bottom, #2C3742 0%, #28303A 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
     color: #FFFFFF;

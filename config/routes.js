@@ -153,6 +153,7 @@ module.exports = function(app, passport, auth) {
     app.get('/contact', pages.contact);
     app.get('/about', pages.about);
     app.get('/pricing', pages.pricing);
+    app.get('/privacy', pages.privacy);
     app.get('/api', pages.api);
 
     //access token will be access with an access token

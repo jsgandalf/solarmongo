@@ -34,11 +34,16 @@ exports.api = function(req, res) {
 };
 
 exports.index = function(req, res) {
+    var token = "";
+    console.log(req.user)
+    //if(!req.user.token.token)
+        console.log("undefined")
     res.render('index', {
         name: req.user ? req.user.name : 'null',
         role: req.user ? req.user.role : 'null',
         isLoggedIn: req.user ? true : false,
-        isDevelopment: config.env=='development'
+        isDevelopment: config.env=='development',
+        token: req.user ? req.user.token.token : 'null'
     });
 };
 

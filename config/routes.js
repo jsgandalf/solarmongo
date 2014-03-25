@@ -10,7 +10,6 @@ var account = require('../app/controllers/accounts');
 var api = require('../app/controllers/api');
 var pages = require('../app/controllers/pages');
 var sendgrid = require('../app/controllers/emails');
-var s3 = require('../app/controllers/upload');
 var photo = require('../app/controllers/photos');
 var fs = require('fs');
 
@@ -43,18 +42,12 @@ module.exports = function(app, passport, auth) {
     }), users.session);
 
     //web user in app
-    app.get('/users',auth.requiresLogin, webUsers.all);
-    app.post('/users',auth.requiresLogin, webUsers.add);
-    app.get('/users/:webUserId',auth.requiresLogin, webUsers.show);
-    app.put('/users/:webUserId',auth.requiresLogin, webUsers.update);
-    app.del('/users/:webUserId',auth.requiresLogin, webUsers.destroy);
+    app.get('/users',passport.authenticate('bearer', { session: false }), webUsers.all);
+    app.post('/users',passport.authenticate('bearer', { session: false }), webUsers.add);
+    app.get('/users/:webUserId',passport.authenticate('bearer', { session: false }), webUsers.show);
+    app.put('/users/:webUserId',passport.authenticate('bearer', { session: false }), webUsers.update);
+    app.del('/users/:webUserId',passport.authenticate('bearer', { session: false }), webUsers.destroy);
     
-    //user api
-    app.get('/api/users', passport.authenticate('bearer', { session: false }), webUsers.all);
-    app.post('/api/users',passport.authenticate('bearer', { session: false }), webUsers.add);
-    app.get('/api/users/:webUserId', passport.authenticate('bearer', { session: false }), webUsers.show);
-    app.put('/api/users/:webUserId',passport.authenticate('bearer', { session: false }), webUsers.update);
-    app.del('/api/users/:webUserId',passport.authenticate('bearer', { session: false }), webUsers.destroy);
     //Finish with setting up the webUserId param
     app.param('webUserId', webUsers.webUser);
 
@@ -62,89 +55,63 @@ module.exports = function(app, passport, auth) {
     app.get('/profile', passport.authenticate('bearer', { session: false }), users.me);
 
     //Photo Routes
-    app.post('/upload/lead/:lead', auth.requiresLogin, photo.add);
+    app.post('/upload/lead/:lead', passport.authenticate('bearer', { session: false }), photo.add);
 
-    app.get('/upload/companyPhoto', auth.requiresLogin, photo.getCompanyPhotos);
     //api
     app.get('/upload/companyPhoto', passport.authenticate('bearer', { session: false }), photo.getCompanyPhotos);
     
-    app.post('/upload/companyPhoto', auth.requiresLogin, photo.addCompanyPhoto);
+    app.post('/upload/companyPhoto', passport.authenticate('bearer', { session: false }), photo.addCompanyPhoto);
 
     //Photo Routes - Note that most of these routes aren't done, only the one above and photos.all
-    app.get('/photos/lead/:leadId', photos.all);
-    app.post('/photos', auth.requiresLogin, photos.create);
-    app.get('/photos/:photoId', auth.photo.hasAuthorization, photos.show);
-    app.put('/photos/:photoId', auth.requiresLogin, auth.photo.hasAuthorization, photos.update);
-    app.del('/photos/:photoId', auth.requiresLogin, auth.photo.hasAuthorization, photos.destroy);
+    app.get('/photos/lead/:leadId', passport.authenticate('bearer', { session: false }), photos.all);
 
-    //api
-    app.get('/api/photos', passport.authenticate('bearer', { session: false }), photo.all);
-    app.post('/api/photos', passport.authenticate('bearer', { session: false }), photo.create);
-    app.get('/api/photos/:photoId', passport.authenticate('bearer', { session: false }), auth.photo.hasAuthorization, photo.show);
-    app.put('/api/photos/:photoId', passport.authenticate('bearer', { session: false }), auth.photo.hasAuthorization, photo.update);
-    app.del('/api/photos/:photoId', passport.authenticate('bearer', { session: false }), auth.photo.hasAuthorization, photo.destroy);
+    app.get('/photos', passport.authenticate('bearer', { session: false }), photo.all);
+    app.post('/photos', passport.authenticate('bearer', { session: false }), photos.create);
+    app.get('/photos/:photoId', passport.authenticate('bearer', { session: false }),auth.photo.hasAuthorization, photos.show);
+    app.put('/photos/:photoId', passport.authenticate('bearer', { session: false }), auth.photo.hasAuthorization, photos.update);
+    app.del('/photos/:photoId', passport.authenticate('bearer', { session: false }), auth.photo.hasAuthorization, photos.destroy);
 
     //Finish with setting up the photoId param
     app.param('photoId', photos.photo);
 
     //mass upload
-    app.post('/leads/massupload',auth.requiresLogin, leads.massUpload)
-    app.get('/leads/getLeadSchema',auth.requiresLogin, leads.getLeadSchema)
+    app.post('/leads/massupload',passport.authenticate('bearer', { session: false }), leads.massUpload)
+    app.get('/leads/getLeadSchema',passport.authenticate('bearer', { session: false }), leads.getLeadSchema)
 
     //Lead Routes
-    app.get('/leads', leads.all);
+    /*app.get('/leads', leads.all);
     app.post('/leads', auth.requiresLogin, leads.create);
     app.get('/leads/:leadId', auth.lead.hasAuthorization, leads.show);
     app.put('/leads/:leadId', auth.requiresLogin, auth.lead.hasAuthorization, leads.update);
     app.del('/leads/:leadId', auth.requiresLogin, auth.lead.hasAuthorization, leads.destroy);
+    */
 
-    //api
-    app.get('/api/leads/alldata', passport.authenticate('bearer', { session: false }), leads.allSiteSurvey);
-    app.get('/api/leads', passport.authenticate('bearer', { session: false }), leads.all);
-    app.post('/api/leads', passport.authenticate('bearer', { session: false }), leads.create);
-    app.get('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.show);
-    app.put('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.update);
-    app.del('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.destroy);
+    app.get('/leads/alldata', passport.authenticate('bearer', { session: false }), leads.allSiteSurvey);
+    app.get('/leads', passport.authenticate('bearer', { session: false }), leads.all);
+    app.post('/leads', passport.authenticate('bearer', { session: false }), leads.create);
+    app.get('/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.show);
+    app.put('/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.update);
+    app.del('/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.destroy);
 
     //Finish with setting up the leadId param
     app.param('leadId', leads.lead);
 
-    //product routes
-    app.get('/products', products.all);
-    app.post('/products', auth.requiresLogin, products.create);
-    app.get('/products/:productId', auth.product.hasAuthorization, products.show);
-    app.put('/products/:productId', auth.requiresLogin, auth.product.hasAuthorization, products.update);
-    app.del('/products/:productId', auth.requiresLogin, auth.product.hasAuthorization, products.destroy);
-
-    //api
-    app.get('/api/products', passport.authenticate('bearer', { session: false }), products.all);
-    app.post('/api/products', passport.authenticate('bearer', { session: false }), products.create);
-    app.get('/api/products/:productId', passport.authenticate('bearer', { session: false }), auth.product.hasAuthorization, products.show);
-    app.put('/api/products/:productId', passport.authenticate('bearer', { session: false }), auth.product.hasAuthorization, products.update);
-    app.del('/api/products/:productId', passport.authenticate('bearer', { session: false }), auth.product.hasAuthorization, products.destroy);
+    app.get('/products', passport.authenticate('bearer', { session: false }), products.all);
+    app.post('/products', passport.authenticate('bearer', { session: false }), products.create);
+    app.get('/products/:productId', passport.authenticate('bearer', { session: false }), auth.product.hasAuthorization, products.show);
+    app.put('/products/:productId', passport.authenticate('bearer', { session: false }), auth.product.hasAuthorization, products.update);
+    app.del('/products/:productId', passport.authenticate('bearer', { session: false }), auth.product.hasAuthorization, products.destroy);
     
     //Finish with setting up the leadId param
     app.param('productId', products.product);
 
-    //Account
-    app.get('/account',auth.requiresLogin, account.show);
-    app.put('/account',auth.requiresLogin, account.update);
-    app.get('/account/getAssignees',auth.requiresLogin, account.getAssignees);
     //Account api
-    app.get('/api/account',passport.authenticate('bearer', { session: false }), account.show);
-    app.put('/api/account',passport.authenticate('bearer', { session: false }), account.update);
-    app.get('/api/account/getAssignees', passport.authenticate('bearer', { session: false }), account.getAssignees);
+    app.get('/account',passport.authenticate('bearer', { session: false }), account.show);
+    app.put('/account',passport.authenticate('bearer', { session: false }), account.update);
+    app.get('/account/getAssignees', passport.authenticate('bearer', { session: false }), account.getAssignees);
 
 
-    //photos
-    //app.post('/photos/leads/:leadId', auth.requiresLogin, photo.addLeadPhoto);
-    
-  
-
-
-    //Uploader with amazon s3
-    app.get('/upload/put', s3.put);
-
+    //api get token
     app.get('/api/token',api.getToken);
     app.post('/api/token',api.getToken);
 

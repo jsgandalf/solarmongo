@@ -52,6 +52,7 @@
 <script type="text/javascript" src="/js/controllers/users.js"></script>
 <script type="text/javascript" src="/js/controllers/photos.js"></script>
 <script type="text/javascript" src="/js/controllers/datepicker.js"></script>
+<script type="text/javascript" src="/js/security/security.js"></script>
 
 <!-- Uploader -->
 <script type="text/javascript" src="/js/uploader/service.js"></script>
@@ -69,6 +70,7 @@
 	window.role = "{{role}}";
 	window.name = "{{name}}";
 	window.authenticated = {{isLoggedIn}};
+	window.sessionStorage.token = "{{token}}";
 </script>
 
 <!--Livereload script rendered-->

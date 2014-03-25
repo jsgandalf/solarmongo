@@ -8,7 +8,7 @@
     templateUrl: '/js/frontEndApp/navlist.html', // load the template file
     controller: function ( $scope, $location, Global ) {
         $scope.global = Global;
-        $scope.menu = [{
+        /*$scope.menu = [{
             'title': 'About',
             'link': 'about'
         }, {
@@ -20,8 +20,19 @@
         }, {
             'title': 'Demo',
             'link': 'demo'
-        }];
+        }];*/
         
+        $scope.menu = [{
+            'title': 'About',
+            'link': 'about'
+        }, {
+            'title': 'Contact',
+            'link': 'contact'
+        }, {
+            'title': 'Demo',
+            'link': 'demo'
+        }];
+
         /*$scope.isCollapsed = false;
         $scope.changeCollapsed = function($event){
             $event.stopPropagation();

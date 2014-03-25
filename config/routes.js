@@ -77,15 +77,6 @@ module.exports = function(app, passport, auth) {
     //mass upload
     app.post('/leads/massupload',passport.authenticate('bearer', { session: false }), leads.massUpload)
     app.get('/leads/getLeadSchema',passport.authenticate('bearer', { session: false }), leads.getLeadSchema)
-
-    //Lead Routes
-    /*app.get('/leads', leads.all);
-    app.post('/leads', auth.requiresLogin, leads.create);
-    app.get('/leads/:leadId', auth.lead.hasAuthorization, leads.show);
-    app.put('/leads/:leadId', auth.requiresLogin, auth.lead.hasAuthorization, leads.update);
-    app.del('/leads/:leadId', auth.requiresLogin, auth.lead.hasAuthorization, leads.destroy);
-    */
-
     app.get('/leads/alldata', passport.authenticate('bearer', { session: false }), leads.allSiteSurvey);
     app.get('/leads', passport.authenticate('bearer', { session: false }), leads.all);
     app.post('/leads', passport.authenticate('bearer', { session: false }), leads.create);

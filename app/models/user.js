@@ -8,21 +8,9 @@ var mongoose = require('mongoose'),
     crypto = require('crypto'),
     config = require('../../config/config'),
     jwt = require('jwt-simple'),
-    tokenSecret = '@CSHeM*$[*GE_Q&stqOAIvkl6s%P-[B!De5o]HFzjM18BFa_!8D|{i2bBm.iE<W';
+    tokenSecret = '@CSHeM*$[*GE_Q&stqOAIvkl6s%P-[B!De5o]HFzjM18BFa_!8D|{i2bBm.iE<W',
+    TokenModel = require('./token');
 
-/*
-    Token Schema
-*/
-var Token = new Schema({
-    token: {type: String},
-    created: {type: Date, default: Date.now},
-});
-
-Token.methods.hasExpired= function(){
-    var now = new Date();
-    return (now.getTime() - this.created.getTime()) > config.ttl;
-};
-var TokenModel = mongoose.model('Token', Token);
 
 /**
  * User Schema

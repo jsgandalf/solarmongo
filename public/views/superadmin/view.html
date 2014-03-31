@@ -1,0 +1,45 @@
+<div id="pad-wrapper" class="user-profile" data-ng-controller="LeadsController" data-ng-init="findOne()">
+    <!-- header -->
+    <div class="row header">
+        <div class="col-md-8">
+            <!--<img src="img/contact-profile.png" class="avatar img-circle">-->
+            <h1 class="main-title"><i class="icon-config table-icon"></i><span>Super Admin</span></h1>
+        </div>
+        <div data-ng-show="global.user._id == lead.user._id">
+            <a class="btn-flat icon pull-right delete-user" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete Lead" data-ng-click="remove();">
+                <i class="icon-trash"></i>
+            </a>
+        </div>
+    </div>
+    <form class="form-horizontal" role="form" data-ng-submit="update()">
+        <tabset>
+            <tab heading="Users">
+                <div data-ng-include="'views/frontEndViews/api/users.html'"></div>
+            </tab>
+        </tabset>
+        <!--<div class="tabbable"> 
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">General</a></li>
+                <li><a href="#tab2" data-toggle="tab">Site Survey</a></li>
+                <li><a href="#tab3" data-toggle="tab">Photos</a></li>
+            </ul>
+            <div class="tab-content" id="tab-content">
+                <div class="tab-pane active" id="tab1" data-ng-include="'views/leads/view/general.html'"></div>
+                <div class="tab-pane" id="tab2" data-ng-include="'views/leads/view/siteSurvey.html'"></div>
+                <div class="tab-pane" id="tab3" data-ng-include="'views/leads/view/gallery.html'"></div>
+            </div>
+        </div>-->
+        <div class="row header leads">
+            <div class="row form-wrapper">
+                <div class="col-md-9">
+                    <div class="col-md-11 field-box actions">
+                        <input type="submit" value="Update Lead" class="btn-glow primary">
+                        <span>OR</span>
+                        <input type="reset" class="reset" value="Cancel" onclick="window.history.back()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div
+

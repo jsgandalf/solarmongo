@@ -37,6 +37,9 @@ angular.module('mean').config(['$routeProvider',
         when('/settings/users/:userId', {
             templateUrl: 'views/settings/viewUser/view.html'
         }).
+        when('/superadmin/', {
+            templateUrl: 'views/superadmin/view.html'
+        }).
         otherwise({
             redirectTo: '/'
         });

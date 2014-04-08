@@ -36,14 +36,18 @@ exports.api = function(req, res) {
 exports.index = function(req, res) {
     var token = "";
     console.log(req.user)
-    //if(!req.user.token.token)
-        console.log("undefined")
+    if(!req.user){
+        token="";
+    }else{
+        console.log(req.user)
+        token= req.user.token.token;
+    }
     res.render('index', {
         name: req.user ? req.user.name : 'null',
         role: req.user ? req.user.role : 'null',
         isLoggedIn: req.user ? true : false,
         isDevelopment: config.env=='development',
-        token: req.user ? req.user.token.token : 'null'
+        token: token
     });
 };
 

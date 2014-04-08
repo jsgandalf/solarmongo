@@ -38,13 +38,47 @@ exports.sendResetPassword = function(to, link){
     });
 }
 
+
+
 exports.market = function(req, res) {
-  fs.readFile('./app/views/emails/template.html', function (err, html) {
+  var fileName = './app/views/emails/template.html';
+  fs.exists(fileName, function(exists) {
+    if (exists) {
+      fs.stat(fileName, function(error, stats) {
+        fs.open(fileName, "r", function(error, fd) {
+          var buffer = new Buffer(stats.size);
+   
+          fs.read(fd, buffer, 0, buffer.length, null, function(error, bytesRead, buffer) {
+            var data = buffer.toString("utf8", 0, buffer.length);
+   
+            var result = data.replace(/#{Company}/g, 'SolarMongo');
+            sendgrid.send({
+              to: ['sean.alan.thomas@gmail.com'],
+              from: 'info@solarmongo.com',
+              subject: 'Manage Your Entire Solar Business Online!',
+              html: result
+            }, function(err, json) {
+                if (err) { return console.error(err); }
+                res.render('pages/thankyou', {
+                    user: req.user ? JSON.stringify(req.user) : 'null',
+                    isLoggedIn: req.user ? true : false,
+                    title: "Thankyou for your inquiry!"
+                });
+            });
+            fs.close(fd);
+          });
+        });
+      });
+    }
+  });
+  /*fs.readFile('./app/views/emails/template.html', function (err, html) {
     if (err) {
         throw err; 
     }
+    //var result = html.replace("/#{Company}/g", 'My Company');
+    console.log(html);
     sendgrid.send({
-      to: 'sean.alan.thomas@gmail.com',
+      to: ['sean.alan.thomas@gmail.com','bakwarte2@gmail.com'],
       from: 'info@solarmongo.com',
       subject: 'Manage Your Entire Solar Business Online!',
       html: html
@@ -56,5 +90,5 @@ exports.market = function(req, res) {
             title: "Thankyou for your inquiry!"
         });
     });
-  });
+  });*/
 }   

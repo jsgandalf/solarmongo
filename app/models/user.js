@@ -203,6 +203,52 @@ UserSchema.statics.load = function(id, cb) {
     }).select('name email updated created role').exec(cb);
 };
 
+UserSchema.statics.getToken = function(email) {
+    var deferred = Q.defer();
+    var self = this;
+    this.findOne({email: email}, function(err, usr) {
+        if(err || !usr) {
+            console.log('err: '+err);
+            deferred.reject(err);
+        }
+        //Create a token and add to user and save 
+        var token = self.encode({
+            _id:usr._id, 
+            email: usr.email, 
+            token: usr.token,
+            name: usr.name,
+        });
+        usr.token = new Token({token:token});
+        usr.save(function(err, usr) {
+            if (err)
+                deferred.reject(err);
+            else {
+                deferred.resolve(usr.token.token); //token object has a token property.
+            }
+        });
+    });
+    return deferred.promise;
+};
+UserSchema.statics.getTokenByUser = function(user,cb) {
+    var deferred = Q.defer();
+    var token = this.encode({
+        _id:user._id, 
+        email: user.email, 
+        token: user.token,
+        name: user.name
+    });
+    user.token = new Token({token:token});
+    user.save(function(err, usr) {
+        if (err){
+            console.log(err);
+            deferred.reject(err);
+        } else {
+            deferred.resolve(user.token.token); //token object has a token property
+        }
+    });
+    return deferred.promise;
+};
+
 
 mongoose.model('User', UserSchema);
 //to export a subdocument, use the following example:

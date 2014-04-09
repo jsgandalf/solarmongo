@@ -136,6 +136,57 @@ exports.create = function(req, res, next) {
     })
 };
 
+exports.getToken = function(req, res){
+    User.findOne({
+        email: email
+    }, function(err, user) {
+        if (err)
+            res.json({error: err});
+        else if (! user || user==null)
+            res.json({error: 'Unknown user'});
+        else if (!user.authenticate(password)) 
+            res.json({error: 'Invalid password'});
+        else
+            User.getToken(email).then(function(token){
+                res.jsonp({token:token});
+            }, function(err){
+                console.log(err);
+                res.jsonp({error: 'Issue generating token'});
+            });
+    });
+}
+
+exports.authenticate = function(req, res){
+    
+    var email,password; 
+    if(req["body"] !== 'undefined' && req["body"]["email"] !== 'undefined')
+        email = req.body.email;
+    if(req["body"] !== 'undefined' && req["body"]["password"] !== 'undefined')
+        password = req.body.password;
+    if(! email)
+        res.jsonp({message: 'Email required'});
+    else if(! password)
+        res.jsonp({message: 'Passwword required'});
+    else
+        User.findOne({
+            email: email
+        }, function(err, user) {
+            if (err)
+                res.jsonp({message: err});
+            else if (! user || user==null)
+                res.jsonp({message: 'Unknown user'});
+            else if (!user.authenticate(password)) 
+                res.jsonp({message: 'Invalid password'});
+            else
+                User.getToken(email).then(function(token){
+                    res.jsonp({token:token});
+                }, function(err){
+                    console.log(err);
+                    res.jsonp({message: 'Issue generating token'});
+                });
+        });
+}
+
 /**
  * Send User
  */

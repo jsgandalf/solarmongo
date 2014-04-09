@@ -106,7 +106,7 @@ exports.create = function(req, res) {
     var photo = new Photo(req.body);
     photo.user = req.user;
     photo.account = req.user.account; 
-    Photo.create(photo, function(err){
+    photo.save(function(err){
         if(err) res.jsonp({"errors": err.errors});
         res.jsonp(photo);
     });

@@ -106,6 +106,7 @@ exports.allSiteSurvey = function(req, res) {
  * List of leads by account id
  */
 exports.all = function(req, res) {
+    console.log(req.user)
     Lead.find({account : req.user.account.toString()}).sort('-created').populate('user', 'name').exec(function(err, leads) {
         if (err) {
             res.jsonp({"errors": err.errors});

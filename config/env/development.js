@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    db: "mongodb://useradmin:​a13Ba56s7Bjskd93jfkd183JIELKDXCM23498fM@oceanic.mongohq.com:10038/app23922529",
+    db: "mongodb://secretuser:Greensolar8989!@oceanic.mongohq.com:10020/solarmongodev",
     app: {
         name: "SolarMongo - A Modern CRM - Development"
     },

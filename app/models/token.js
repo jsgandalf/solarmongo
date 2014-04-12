@@ -1,4 +1,4 @@
- /*
+/*
     Token Schema
 */
 
@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
 
 var Token = new Schema({
     token: {type: String},
-    created: {type: Date, default: Date.now},
+    created: {type: Date, default: Date.now}
 });
 
 Token.methods.hasExpired= function(){

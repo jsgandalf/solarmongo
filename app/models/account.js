@@ -5,7 +5,8 @@
  */
 var mongoose = require('mongoose'),
     //UserSchema = require("./user").theUserSchema, var mySchema = new Schema({users:[UserSchema]})
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    Q = require('q');
 
 /**
  * Account Schema
@@ -62,6 +63,29 @@ AccountSchema.path('country').validate(function(country) {
         _id: id
     }).populate('user', 'name').exec(cb);
 };*/
+
+AccountSchema.statics.insertAccount = function(){
+    /*
+    var account = new Account;
+        account.save(function(err){
+            if(err){
+                console.log(err);
+                return res.render('users/signup_admin', {
+                    message: "Opps, there was an error that occured while trying to create your account, please contact technical support.",
+                    user: user
+                });
+            }
+    */
+    var deferred = Q.defer();
+    this.create({}).then(function(account){
+        console.log(account)
+        deferred.resolve(account);
+    },function(err){
+        console.log(err);
+        deferred.reject(err);
+    })
+    return deferred.promise;
+}
 
 AccountSchema.statics.incrementUserCount = function(accountId, cb) {
     this.findById(accountId).exec(function(err, account) {

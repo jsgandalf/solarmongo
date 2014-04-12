@@ -64,6 +64,7 @@ exports.session = function(req, res) {
  */
 exports.create = function(req, res, next) {
     var user = new User(req.body);
+    console.log(req.body)
     var message = "";
     if(user.name == "")
         message = "Name is required";
@@ -78,62 +79,38 @@ exports.create = function(req, res, next) {
             message: message,
             user: user
         });
-    User.findOne({email: user.email}).exec(function(err,isUser){
-        if(err){
-            console.log(err);
-            return next(err);  
-        } 
+    User.findOne({email: user.email}).exec().then(function(isUser){
         if(isUser) {
-            console.log('exists');
             return res.render('users/signup_admin', {
                 message: "Email already exists",
                 user: user
             });
-        }
-        var account = new Account;
-        account.save(function(err){
-            if(err){
-                console.log(err);
-                return res.render('users/signup_admin', {
-                    message: "Opps, there was an error that occured while trying to create your account, please contact technical support.",
-                    user: user
+        }else{
+            return Account.create({}).then(function(account){
+                console.log(account._id)
+                return account._id;
+            }).then(function(accountId){
+                console.log("user:"+user)
+                console.log("account:"+accountId);
+                User.createUser(user,accountId).then(function(newuser){
+                    console.log(newuser);
+                    return newuser;
                 });
-            }
-            user.account = account._id;
-            user.save(function(err) {
-                if (err) {
-                    console.log(err);
-                    switch (err.code) {
-                        case 11000:
-                        case 11001:
-                            message = 'Email already exists';
-                            break;
-                        default:
-                            message = 'Please fill all the required fields';
-                    }
-
-                    return res.render('users/signup_admin', {
-                        message: message,
-                        user: user
-                    });
-                }else
-                    User.createUserToken(user.email,function(err){
-                        if(err){
-                            console.log(err);
-                            return res.render('users/signup_admin', {
-                                message: "Opps, there was an error that occured while trying to create your account, please contact technical support.",
-                                user: user
-                            });
-                        }
-                        req.logIn(user, function(err) {
-                            if (err) return next(err);
-                            return res.redirect('/');
-                        });
-                    })
-                     
             });
-        })
-    })
+        }
+    }).then(function(newuser){
+        console.log(newuser)
+        req.logIn(user, function(err) {
+            if (err) return next(err);
+            return res.redirect('/');
+        });
+    }, function(err){
+        console.log(err);
+        return res.render('users/signup_admin', {
+            message: "Opps, there was an error that occured while trying to create your account, please contact technical support.",
+            user: user
+        });
+    });
 };
 
 exports.getToken = function(req, res){

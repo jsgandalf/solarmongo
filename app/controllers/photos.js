@@ -27,7 +27,7 @@ exports.addMobilePhoto = function(req, res){
     if (!file || file.size <= '0') {
         res.jsonp({message:"Photo must not be empty."});
     }else if( files.file.type == 'image/png' || files.file.type == 'image/jpeg' || files.file.type == 'image/gif' ){
-        client.putFile(file.path,"/test/"+file.name, {'x-amz-acl': 'public-read','Content-Length': file.size, 'Content-Type': file.type}, function(err, resp){
+        client.putFile(file.path,file.path,req.user.account+"/"+req.params.lead+"/"+file.name, {'x-amz-acl': 'public-read','Content-Length': file.size, 'Content-Type': file.type}, function(err, resp){
             if(err){
                 console.log(err);
                 res.jsonp({message:err});

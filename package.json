@@ -21,6 +21,7 @@
         "express": "~3.4.7",
         "hbs": "2.4.0",
         "mongoose": "~3.8.x",
+        "connect": "~2.14.x",
         "connect-mongo": "~0.4.x",
         "connect-flash": "~0.1.x",
         "crypto": "~0.0.x",

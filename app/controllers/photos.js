@@ -43,9 +43,16 @@ exports.addMobilePhoto = function(req, res){
                 });
                 photo.save(function(err){
                     if(err) res.jsonp({"errors": err.errors});
-                    res.jsonp(photo);
+                    console.log(photo);
+                    res.jsonp({
+                        path: req.user.account+"/"+req.params.lead+"/"+file.name,
+                        name: file.name,
+                        type: file.type,
+                        lead: req.params.lead,
+                        account: req.user.account,
+                        photoType: "lead",
+                    });
                 });
-                res.jsonp({success:true});
             }
         });
     }else{

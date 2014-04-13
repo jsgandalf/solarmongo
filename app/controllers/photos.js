@@ -28,15 +28,15 @@ exports.addMobilePhoto = function(req, res){
     if (!file || file.size == '0') {
         res.jsonp({message:"Photo must not be empty."});
     }else if( file.type == 'image/png' || file.type == 'image/jpeg' || file.type == 'image/gif' ){
-        client.putFile(file.path,"/test/"+file.name, {'x-amz-acl': 'public-read','Content-Length': file.size, 'Content-Type': file.type}, function(err, resp){
+        client.putFile(file.path,req.user.account+"/"+req.params.lead+"/"+file.name, {'x-amz-acl': 'public-read','Content-Length': file.size, 'Content-Type': file.type}, function(err, resp){
             if(err){
                 console.log(err);
                 res.jsonp({message:err});
             }else{
-                /*var photo = new Photo({
-                    path: req.user.account+"/"+req.params.lead+"/"+files.file.name,
-                    name: files.file.name,
-                    type: files.file.type,
+                var photo = new Photo({
+                    path: req.user.account+"/"+req.params.lead+"/"+file.name,
+                    name: file.name,
+                    type: file.type,
                     lead: req.params.lead,
                     account: req.user.account,
                     photoType: "lead"
@@ -44,7 +44,7 @@ exports.addMobilePhoto = function(req, res){
                 photo.save(function(err){
                     if(err) res.jsonp({"errors": err.errors});
                     res.jsonp(photo);
-                });*/
+                });
                 res.jsonp({success:true});
             }
         });

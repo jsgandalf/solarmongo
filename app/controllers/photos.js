@@ -49,8 +49,8 @@ exports.addMobilePhoto = function(req, res){
                         name: file.name,
                         type: file.type,
                         lead: req.params.lead,
-                        account: req.user.account,
                         photoType: "lead",
+                        _id: photo._id
                     });
                 });
             }

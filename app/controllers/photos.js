@@ -59,34 +59,32 @@ exports.add = function(req, res) {
 }
 
 exports.addCompanyPhoto = function(req, res) {
-    var form = new formidable.IncomingForm();
-    form.parse(req, function(err, fields, files) {
-        if (!files || !files.file || files.file.size == '0') {
-            res.send("Photo must not be empty.");
-        }else if( files.file.type == 'image/png' || files.file.type == 'image/jpeg' || files.file.type == 'image/gif' ){
-            client.putFile(files.file.path,req.user.account+"/companyPhotos/"+files.file.name, {'x-amz-acl': 'public-read','Content-Length': files.file.size, 'Content-Type': files.file.type}, function(err, resp){
-                if(err){
-                    console.log(err);
-                    res.send(err);      
-                }else{
-                    var photo = new Photo({
-                        path: req.user.account+"/companyPhotos/"+files.file.name,
-                        name: files.file.name,
-                        type: files.file.type,
-                        lead: req.params.lead,
-                        account: req.user.account,
-                        photoType: "company"
-                    });
-                    photo.save(function(err){
-                        if(err) res.jsonp({"errors": err.errors});
-                        res.jsonp(photo);
-                    });
-                }
-            });
-        }else{
-            res.send("Not a valid type! Must be jpg, jpeg, gif, or png");
-        }
-    });
+    var file = req.files.file;
+    if (!file || file.size == '0') {
+        res.jsonp({message:"Photo must not be empty."});
+    }else if( file.type == 'image/png' || file.type == 'image/jpeg' || file.type == 'image/gif' ){
+        client.putFile(file.path,req.user.account+"/companyPhotos/"+file.name, {'x-amz-acl': 'public-read','Content-Length': file.size, 'Content-Type': file.type}, function(err, resp){
+            if(err){
+                console.log(err);
+                res.send(err);      
+            }else{
+                var photo = new Photo({
+                    path: req.user.account+"/"+req.params.lead+"/"+file.name,
+                    name: file.name,
+                    type: file.type,
+                    lead: req.params.lead,
+                    photoType: "lead",
+                    _id: photo._id
+                });
+                photo.save(function(err){
+                    if(err) res.jsonp({"errors": err.errors});
+                    res.jsonp(photo);
+                });
+            }
+        });
+    }else{
+        res.send("Not a valid type! Must be jpg, jpeg, gif, or png");
+    }
 }
 
     

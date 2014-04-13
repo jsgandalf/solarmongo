@@ -24,33 +24,27 @@ var mongoose = require('mongoose'),
 
 exports.addMobilePhoto = function(req, res){
     var file = req.files.photo;
-    //if (!file || file.size <= '0') {
-    //    res.jsonp({message:"Photo must not be empty."});
-    //}else if( file.type == 'image/png' || file.type == 'image/jpeg' || file.type == 'image/gif' ){
-        //req.user.account+"/"+req.params.lead+"/"+file.name
-        client.putFile(file.path,file.path,"/test", {'x-amz-acl': 'public-read','Content-Length': file.size, 'Content-Type': file.type}, function(err, resp){
-            if(err){
-                console.log(err);
-                res.jsonp({message:err});
-            }else{
-                /*var photo = new Photo({
-                    path: req.user.account+"/"+req.params.lead+"/"+file.name,
-                    name: file.name,
-                    type: file.type,
-                    lead: req.params.lead,
-                    account: req.user.account,
-                    photoType: "lead"
-                });
-                photo.save(function(err){
-                    if(err) res.jsonp({"errors": err.errors});
-                    res.jsonp(photo);
-                });*/
-                res.jsonp({success:true});
-            }
-        });
-    /*}else{
-        res.jsonp({message:"Not a valid type! Must be jpg, jpeg, gif, or png"});
-    }*/
+    console.log(file);
+    client.putFile(file.path,"/test/"+file.name, {'x-amz-acl': 'public-read','Content-Length': file.size, 'Content-Type': file.type}, function(err, resp){
+        if(err){
+            console.log(err);
+            res.jsonp({message:err});
+        }else{
+            /*var photo = new Photo({
+                path: req.user.account+"/"+req.params.lead+"/"+files.file.name,
+                name: files.file.name,
+                type: files.file.type,
+                lead: req.params.lead,
+                account: req.user.account,
+                photoType: "lead"
+            });
+            photo.save(function(err){
+                if(err) res.jsonp({"errors": err.errors});
+                res.jsonp(photo);
+            });*/
+            res.jsonp({success:true});
+        }
+    });
 }
 
 exports.add = function(req, res) {

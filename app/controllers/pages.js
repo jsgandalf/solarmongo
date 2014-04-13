@@ -33,6 +33,15 @@ exports.api = function(req, res) {
     });
 };
 
+exports.upload = function(req, res) {
+    res.render('pages/upload', {
+        user: req.user ? JSON.stringify(req.user) : 'null',
+        isLoggedIn: req.user ? true : false,
+        title: "API"
+    });
+};
+
+
 exports.index = function(req, res) {
     var token = "";
     console.log(req.user)

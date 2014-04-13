@@ -22,6 +22,41 @@ var mongoose = require('mongoose'),
 
 
 
+exports.addMobilePhoto = function(req, res){
+    console.log(req.files);
+    //res.jsonp({files:req.files});
+    /*fs.readFile(req.files, function (err, data) {
+      console.log(data)
+      var newPath = __dirname + "/public";
+      fs.writeFile(newPath, data, function (err) {
+        res.jsonp({files:data});
+      });
+    });*/
+    /*fs.readFile(req.files.image.path, function (err, data) {
+        console.log(req.files.image.name)
+        var imageName = req.files.image.name
+        /// If there's an error
+        if(!imageName){
+
+            console.log("There was an error")
+            res.redirect("/");
+            res.end();
+
+        } else {
+
+          var newPath = __dirname + "/uploads/fullsize/" + imageName;
+
+          /// write file to uploads/fullsize folder
+          fs.writeFile(newPath, data, function (err) {
+
+            /// let's see it
+            res.redirect("/uploads/fullsize/" + imageName);
+
+          });
+        }
+    });*/
+}
+
 exports.add = function(req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function(err, fields, files) {

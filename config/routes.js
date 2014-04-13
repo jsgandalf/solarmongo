@@ -57,6 +57,10 @@ module.exports = function(app, passport, auth) {
     //Photo Routes
     app.post('/upload/lead/:lead', passport.authenticate('bearer', { session: false }), photo.add);
 
+    app.post('/mobile/upload', photo.addMobilePhoto);
+
+    app.get('/upload', pages.upload)
+
     //api
     app.get('/upload/companyPhoto', passport.authenticate('bearer', { session: false }), photo.getCompanyPhotos);
     

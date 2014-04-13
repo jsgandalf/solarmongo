@@ -14,4 +14,4 @@ TokenSchema.methods.hasExpired= function(){
     var now = new Date();
     return (now.getTime() - this.created.getTime()) > config.ttl;
 };
-var TokenModel = mongoose.model('Token', TokenSchema);
+mongoose.model('Token', TokenSchema);

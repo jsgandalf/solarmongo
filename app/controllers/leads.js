@@ -52,14 +52,19 @@ exports.update = function(req, res) {
         if (err) {
             res.jsonp({"errors": err.errors});
         } else {
-            SiteSurvey.findById(req.body.siteSurvey._id, function (err, siteSurvey) {
-                if (err || !siteSurvey) res.jsonp({"errors": err.errors});              
-                siteSurvey = _.extend(siteSurvey, req.body.siteSurvey);
-                siteSurvey.save(function (err) {
-                    if (err) res.jsonp({"errors": err.errors});
-                    res.jsonp(lead);
+            if(req.body.siteSurvey._id){
+                SiteSurvey.findById(req.body.siteSurvey._id, function (err, siteSurvey) {
+                    if (err || !siteSurvey) res.jsonp({"errors": err.errors});              
+                    siteSurvey = _.extend(siteSurvey, req.body.siteSurvey);
+                    siteSurvey.save(function (err) {
+                        if (err) res.jsonp({"errors": err.errors});
+                        res.jsonp(lead);
+                    });
                 });
-            });
+            }else{
+                res.jsonp(lead);
+            }
+
         }
     });
 };

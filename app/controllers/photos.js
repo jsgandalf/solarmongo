@@ -66,7 +66,7 @@ exports.addCompanyPhoto = function(req, res) {
         client.putFile(file.path,req.user.account+"/companyPhotos/"+file.name, {'x-amz-acl': 'public-read','Content-Length': file.size, 'Content-Type': file.type}, function(err, resp){
             if(err){
                 console.log(err);
-                res.send(err);      
+                res.jsonp({message:"Not a valid type! Must be jpg, jpeg, gif, or png"});
             }else{
                 var photo = new Photo({
                     path: req.user.account+"/"+req.params.lead+"/"+file.name,
@@ -83,7 +83,7 @@ exports.addCompanyPhoto = function(req, res) {
             }
         });
     }else{
-        res.send("Not a valid type! Must be jpg, jpeg, gif, or png");
+        res.jsonp({message:"Not a valid type! Must be jpg, jpeg, gif, or png"});
     }
 }
 

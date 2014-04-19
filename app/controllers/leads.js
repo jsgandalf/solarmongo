@@ -52,7 +52,9 @@ exports.update = function(req, res) {
         if (err) {
             res.jsonp({"errors": err.errors});
         } else {
-            if(req.body.siteSurvey._id){
+            if(!req.body.siteSurvey._id){
+                res.jsonp(lead);
+            }else{
                 SiteSurvey.findById(req.body.siteSurvey._id, function (err, siteSurvey) {
                     if (err || !siteSurvey) res.jsonp({"errors": err.errors});              
                     siteSurvey = _.extend(siteSurvey, req.body.siteSurvey);
@@ -61,8 +63,6 @@ exports.update = function(req, res) {
                         res.jsonp(lead);
                     });
                 });
-            }else{
-                res.jsonp(lead);
             }
 
         }

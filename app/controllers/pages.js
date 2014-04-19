@@ -1,5 +1,7 @@
 'use strict';
-var config = require('../../config/config');
+var config = require('../../config/config'),
+    mongoose = require('mongoose'),
+    User = mongoose.model('User');
 
 exports.contact = function(req, res) {
     res.render('pages/contact', {
@@ -44,20 +46,27 @@ exports.upload = function(req, res) {
 
 exports.index = function(req, res) {
     var token = "";
-    console.log(req.user)
     if(!req.user){
         token="";
+        res.render('index', {
+            name: req.user ? req.user.name : 'null',
+            role: req.user ? req.user.role : 'null',
+            isLoggedIn: req.user ? true : false,
+            isDevelopment: config.env=='development',
+            token: token
+        });        
     }else{
-        console.log(req.user)
-        token= req.user.token.token;
+        User.getToken(req.user.email).then(function(token){
+            res.render('index', {
+                name: req.user ? req.user.name : 'null',
+                role: req.user ? req.user.role : 'null',
+                isLoggedIn: req.user ? true : false,
+                isDevelopment: config.env=='development',
+                token: token
+            });        
+        })
     }
-    res.render('index', {
-        name: req.user ? req.user.name : 'null',
-        role: req.user ? req.user.role : 'null',
-        isLoggedIn: req.user ? true : false,
-        isDevelopment: config.env=='development',
-        token: token
-    });
+    
 };
 
 exports.privacy = function(req, res) {

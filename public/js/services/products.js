@@ -2,7 +2,7 @@
 
 //Leads service used for leads REST endpoint
 angular.module('mean.products').factory('Products', ['$resource', function($resource) {
-    return $resource('products/:productId', {
+    return $resource('api/products/:productId', {
         productId: '@_id'
     }, {
         update: {

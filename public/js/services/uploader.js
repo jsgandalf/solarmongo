@@ -2,7 +2,7 @@
 
 //Leads service used for leads REST endpoint
 angular.module('crm.uploader').factory('Uploader', ['$resource', function($resource) {
-    return $resource('uploader/:uploadMethod', {
+    return $resource('api/uploader/:uploadMethod', {
         uploadMethod: '@uploadMethod'
     }, {
         addPhoto: {

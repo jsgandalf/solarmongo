@@ -22,7 +22,7 @@ angular.module( 'crm.fileModelController', [] ).controller('uploadController', [
   $scope.onFileSelect = function($files) {
     if($scope.photos.length<4){
       for (var i = 0; i < $files.length; i++) {
-        upload('upload/lead/'+$scope.lead._id,{myObj: $scope.myModelObj},$files[i]).then(function(data){
+        upload('api/upload/lead/'+$scope.lead._id,{myObj: $scope.myModelObj},$files[i]).then(function(data){
           $scope.photos.push(data);
         })
       }
@@ -35,7 +35,7 @@ angular.module( 'crm.fileModelController', [] ).controller('uploadController', [
     console.log($scope.photos.length)
     if($scope.photos.length==0){
       for (var i = 0; i < $files.length; i++) {
-        upload('upload/companyPhoto',{myObj: $scope.myModelObj},$files[i]).then(function(data){
+        upload('api/upload/companyPhoto',{myObj: $scope.myModelObj},$files[i]).then(function(data){
           $scope.photos.push(data);
         })
       }

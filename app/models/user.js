@@ -9,7 +9,8 @@ var mongoose = require('mongoose'),
     config = require('../../config/config'),
     jwt = require('jwt-simple'),
     tokenSecret = '@CSHeM*$[*GE_Q&stqOAIvkl6s%P-[B!De5o]HFzjM18BFa_!8D|{i2bBm.iE<W',
-    TokenModel = mongoose.model('Token')
+    TokenModel = mongoose.model('Token'),
+    Q = require('q')
 
 /**
  * User Schema
@@ -142,7 +143,7 @@ UserSchema.statics.findUser = function(email, token, cb) {
             cb(err, null);
             console.log(err);
         } else if (token === usr.token.token) {
-            cb(false, {_id:usr._id, email: usr.email, token: usr.token,updated: usr.updated, created: usr.created, name: usr.name,account: usr.account, role:usr.role});
+            cb(false, {_id:usr._id, email: usr.email, token: usr.token.token,updated: usr.updated, created: usr.created, name: usr.name,account: usr.account, role:usr.role});
         } else {
             cb(new Error('Token does not match.'), null);
         }
@@ -217,7 +218,7 @@ UserSchema.statics.getToken = function(email) {
             token: usr.token,
             name: usr.name,
         });
-        usr.token = new Token({token:token});
+        usr.token = new TokenModel({token:token});
         usr.save(function(err, usr) {
             if (err)
                 deferred.reject(err);
@@ -236,7 +237,7 @@ UserSchema.statics.getTokenByUser = function(user,cb) {
         token: user.token,
         name: user.name
     });
-    user.token = new Token({token:token});
+    user.token = new TokenModel({token:token});
     user.save(function(err, usr) {
         if (err){
             console.log(err);

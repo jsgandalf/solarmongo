@@ -212,12 +212,7 @@ UserSchema.statics.getToken = function(email) {
             deferred.reject(err);
         }
         //Create a token and add to user and save 
-        var token = self.encode({
-            _id:usr._id, 
-            email: usr.email, 
-            token: usr.token,
-            name: usr.name,
-        });
+        var token = self.encode({email: usr.email});
         usr.token = new TokenModel({token:token});
         usr.save(function(err, usr) {
             if (err)
@@ -228,17 +223,12 @@ UserSchema.statics.getToken = function(email) {
         });
     });
     return deferred.promise;
-};
+};  
 UserSchema.statics.getTokenByUser = function(user,cb) {
     var deferred = Q.defer();
-    var token = this.encode({
-        _id:user._id, 
-        email: user.email, 
-        token: user.token,
-        name: user.name
-    });
+    var token = self.encode({email: usr.email});
     user.token = new TokenModel({token:token});
-    user.save(function(err, usr) {
+    user.save(function(err, usr) {  
         if (err){
             console.log(err);
             deferred.reject(err);

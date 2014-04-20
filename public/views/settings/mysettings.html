@@ -1,0 +1,19 @@
+<div id="pad-wrapper" class="user-profile">
+    <!-- header -->
+    <div class="row header">
+        <div class="col-md-8">
+            <!--<img src="img/contact-profile.png" class="avatar img-circle">-->
+            <h1 class="main-title"><i class="icon-cog table-icon"></i><span>Company Settings</span></h1>
+        </div>
+    </div>
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">Branding</a></li>
+            <li><a href="#tab2" data-toggle="tab">Users</a></li>
+        </ul>
+        <div class="tab-content" id="tab-content">
+            <div class="tab-pane active" id="tab1" data-ng-include="'views/settings/branding.html'"></div>
+            <div class="tab-pane" id="tab2" data-ng-include="'views/settings/listUsers.html'"></div>
+        </div>
+    </div>
+</div>

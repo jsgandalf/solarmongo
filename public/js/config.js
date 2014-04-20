@@ -28,6 +28,9 @@ angular.module('mean').config(['$routeProvider',
         when('/products/:productId', {
             templateUrl: 'views/products/view/view.html'
         }).
+        when('/settings/mysettings', {
+            templateUrl: 'views/settings/mysettings.html'
+        }).
         when('/settings', {
             templateUrl: 'views/settings/view.html'
         }).

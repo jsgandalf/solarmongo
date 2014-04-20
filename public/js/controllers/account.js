@@ -1,5 +1,6 @@
 angular.module('crm.account').controller('AccountController', ['$scope', '$routeParams', '$location', 'Global', 'Modal', 'Account', function ($scope, $routeParams, $location, Global, Modal, Account) {
     $scope.global = Global;
+
     $scope.create = function() {
         var account = new Accounts({
             companyName: this.companyName,

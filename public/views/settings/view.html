@@ -6,35 +6,12 @@
             <h1 class="main-title"><i class="icon-cog table-icon"></i><span>Company Settings</span></h1>
         </div>
     </div>
-   <tabset>
-    <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled" select="saveHistory(tab.href)">
-      {{tab.content}}
-    </tab>
-  </tabset>
-   
-    <!--<tabset>
-        <tab heading="Users" select="saveHistory('users')">
-            <div  data-ng-include="'views/frontEndViews/api/users.html'"></div>
+    <tabset>
+        <tab heading="Branding" >
+            <div data-ng-include="'views/settings/branding.html'"></div>
         </tab>
-        <tab heading="Leads" select="saveHistory('leads')">
-            <div select="true"  data-ng-include="'views/frontEndViews/api/leads.html'"></div>
+        <tab heading="Users" >
+            <div data-ng-include="'views/settings/listUsers.html'"></div>
         </tab>
-        <tab heading="Inventory">
-            <div data-ng-include="'views/frontEndViews/api/products.html'"></div>
-        </tab>
-        <tab heading="Settings">
-            <div data-ng-include="'views/frontEndViews/api/settings.html'"></div>
-        </tab>
-    </tabset>-->
-
-    <!--<div class="tabbable">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab1" data-toggle="tab">Branding</a></li>
-            <li><a href="#tab2" data-toggle="tab">Users</a></li>
-        </ul>
-        <div class="tab-content" id="tab-content">
-            <div class="tab-pane active" id="tab1" data-ng-include="'views/settings/branding.html'"></div>
-            <div class="tab-pane" id="tab2" data-ng-include="'views/settings/listUsers.html'"></div>
-        </div>
-    </div>-->
+    </tabset>
 </div>

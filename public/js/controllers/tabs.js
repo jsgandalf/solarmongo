@@ -5,9 +5,15 @@ angular.module('crm.account').controller('TabController', ['$scope', '$routePara
       { title:"tab1", href:"#/route1/page1" },
       { title:"tab2", href:"#/route1/page2" }
     ];
+    
+    $scope.isActiveTab = function(route){
+        return route == $location.hash();
+    }
 
-    $scope.changeHash = function(data) {
-      window.location.hash = data;
-    };
-
+    $scope.saveHistory = function(myHash){
+        $scope.tab1 = false;
+        $scope.tab2 = false;
+        myHash["active"] = true;
+        $location.hash(myHash);
+    }
 }]);

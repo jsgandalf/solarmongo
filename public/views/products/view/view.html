@@ -12,14 +12,11 @@
         </div>
     </div>
     <form class="form-horizontal" role="form" data-ng-submit="update()">
-        <div class="tabbable"> <!-- Only required for left/right tabs -->
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab1" data-toggle="tab">General</a></li>
-            </ul>
-            <div class="tab-content" id="tab-content">
-                <div class="tab-pane active" id="tab1" data-ng-include="'views/products/view/general.html'"></div>
-            </div>
-        </div>
+        <tabset>
+            <tab heading="General" >
+                <div data-ng-include="'views/products/view/general.html'"></div>
+            </tab>
+        </tabset>
         <div class="row header leads">
             <div class="row form-wrapper">
                 <div class="col-md-9">

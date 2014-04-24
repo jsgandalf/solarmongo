@@ -46,7 +46,6 @@ exports.create = function(req, res) {
  */
 exports.update = function(req, res) {
     var lead = req.lead;
-    //console.log(lead);
     lead = _.extend(lead, req.body);
     lead.save(function(err) {
         if (err) {

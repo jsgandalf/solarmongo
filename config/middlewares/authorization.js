@@ -59,6 +59,29 @@ exports.photo = {
     }
 };
 
+var privs = require('../privs');
+
+//Priveledges table
+
+exports.authorize = function(rights) {
+  return function(req, res, next) {
+    var accessLevels = privs.getAccessLevels();
+    var userRoles = privs.getRoles();
+    //console.log("accessLevels[rights.access]: "+accessLevels[rights.access])
+    console.log(accessLevels[rights.access] & userRoles[req.user.role])
+    console.log(userRoles[req.user.role]);
+    console.log("here2");
+    if(rights.access && accessLevels[rights.access] & userRoles[req.user.role]) {
+      console.log("here");
+      //1 0000
+      //0 0001
+      next();
+    } else {
+      res.redirect('/');
+    }
+  };
+};
+
 /**
  * Account authorizations routing middleware
  */

@@ -15,7 +15,7 @@
                 //{"name":"Tasks","route":"tasks","icon":"icon-check"},
                 //{"name":"Reports","route":"reports","icon":"icon-bar-chart"}];
         for(var i in $scope.navList){
-            if($scope.navList[i].route == "settings" && $scope.global.user.role != 'Admin')
+            if($scope.navList[i].route == "settings" && $scope.global.user.role != 'admin' && $scope.global.user.role != 'installer')
                 $scope.navList.splice(i, 1);
         }
         $scope.isCollapsed = false;

@@ -1,26 +1,31 @@
 'use strict';
 
 
-var users = require('../app/controllers/users');
-var webUsers = require('../app/controllers/webUsers');
-var leads = require('../app/controllers/leads');
-var products = require('../app/controllers/products');
-var photos = require('../app/controllers/photos');
-var account = require('../app/controllers/accounts');
-var api = require('../app/controllers/api');
-var pages = require('../app/controllers/pages');
-var sendgrid = require('../app/controllers/emails');
-var photo = require('../app/controllers/photos');
+var users = require('../app/controllers/users'),
+    webUsers = require('../app/controllers/webUsers'),
+    leads = require('../app/controllers/leads'),
+    products = require('../app/controllers/products'),
+    photos = require('../app/controllers/photos'),
+    account = require('../app/controllers/accounts'),
+    api = require('../app/controllers/api'),
+    pages = require('../app/controllers/pages'),
+    sendgrid = require('../app/controllers/emails'),
+    photo = require('../app/controllers/photos'),
+    privs = require('./privs');
+
 var fs = require('fs');
 
 
 module.exports = function(app, passport, auth) {
+    
+    app.get('/access-levels', privs.accessLevels);
+
     //User Routes
     app.get('/signin', users.signin);
     app.get('/demo', users.demo);
     app.get('/signout', users.signout);
     app.get('/users/me', users.me);
-    app.get('/admin', users.signup_admin);
+    app.get('/admin', auth.authorize({access: 'superadmin'}), users.signup_admin);
     
     //Setting up the users api
     app.post('/admin/users/create', users.create);
@@ -80,7 +85,7 @@ module.exports = function(app, passport, auth) {
     app.post('/api/leads/massupload',passport.authenticate('bearer', { session: false }), leads.massUpload)
     app.get('/api/leads/getLeadSchema',passport.authenticate('bearer', { session: false }), leads.getLeadSchema)
     app.get('/api/leads/alldata', passport.authenticate('bearer', { session: false }), leads.allSiteSurvey);
-    app.get('/api/leads', passport.authenticate('bearer', { session: false }), leads.all);
+    app.get('/api/leads', auth.authorize({access: 'user'}), passport.authenticate('bearer', { session: false }), leads.all);
     app.post('/api/leads', passport.authenticate('bearer', { session: false }), leads.create);
     app.get('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.show);
     app.put('/api/leads/:leadId', passport.authenticate('bearer', { session: false }), auth.lead.hasAuthorization, leads.update);

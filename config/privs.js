@@ -1,21 +1,29 @@
 'use strict';
 
 var userRoles = {
-  anonymous: 1, // 0001
-  student:   2, // 0010
-  teacher:   4, // 0100
-  admin:     8  // 1000
+  admin: 1, // 0001
+  installer:   2, // 0010
+  sales:   4, // 0100
+  leadAgency:     8,  // 1000
+  salesAgency:     16,  // 1 0000
+  superadmin:     32  // 1 0000
 };
 
 var accessLevels = {
-  public: userRoles.anonymous | // 1111
-          userRoles.student |
-          userRoles.teacher |
-          userRoles.admin,
-  user:   userRoles.student | // 1110
-          userRoles.teacher |
-          userRoles.admin,
-  admin:  userRoles.admin // 1000
+  public: userRoles.admin | // 1111
+          userRoles.installer |
+          userRoles.sales |
+          userRoles.leadAgency |
+          userRoles.salesAgency |
+          userRoles.superadmin,
+  user:   userRoles.admin | // 1111
+          userRoles.installer |
+          userRoles.sales |
+          userRoles.leadAgency |
+          userRoles.salesAgency |
+          userRoles.superadmin,
+  admin:  userRoles.admin, // 1000
+  superadmin:  userRoles.superadmin, // 1000
 };
 
 exports.accessLevels = function(req, res, next) {

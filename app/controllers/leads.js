@@ -51,7 +51,7 @@ exports.update = function(req, res) {
         if (err) {
             res.jsonp({"errors": err.errors});
         } else {
-            if(typeof req.body.siteSurvey._id != "undefined"){
+            if(typeof req.body.siteSurvey._id == "undefined"){
                 res.jsonp(lead);
             }else{
                 SiteSurvey.findById(req.body.siteSurvey._id, function (err, siteSurvey) {

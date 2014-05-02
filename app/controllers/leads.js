@@ -29,8 +29,9 @@ exports.lead = function(req, res, next, id) {
 exports.create = function(req, res) {
     var lead = new Lead(req.body);
     lead.user = req.user;
-    lead.account = req.user.account; 
-    var siteSurvey = new SiteSurvey(req.body.siteSurvey);
+    lead.account = req.user.account;
+    //var siteSurvey = new SiteSurvey(req.body.siteSurvey);
+    var siteSurvey = new SiteSurvey();
     SiteSurvey.create(siteSurvey, function(err, newSiteSurvey){
         if(err) res.jsonp({"errors": err.errors});
         lead.siteSurvey = newSiteSurvey._id;

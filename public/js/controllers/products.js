@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.products').controller('ProductsController', ['$scope', '$routeParams', '$location', 'Global', 'Modal', 'Products', function ($scope, $routeParams, $location, Global, Modal, Products) {
+angular.module('mean.products').controller('ProductsController', ['$scope','$http', '$routeParams', '$location', 'Global', 'Modal', 'Products', function ($scope, $http, $routeParams, $location, Global, Modal, Products) {
     $scope.global = Global;
     $scope.create = function() {
         var product = new Products({
@@ -60,5 +60,10 @@ angular.module('mean.products').controller('ProductsController', ['$scope', '$ro
             $scope.product = product;
         });
     };
+
+
+    $scope.testBug = function(){
+        $http.get('/api/leads/alldata').success(function(){});
+    }
     
 }]);
